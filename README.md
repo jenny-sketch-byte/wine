@@ -43,8 +43,15 @@ Goal: pass efficiently as a non-native English speaker, with strong written-answ
 - [x] Sediment/deposits vocab (`00_toolkit/vocab.md`)
 - [x] Argentina — irrigation (`02_regions/other/argentina.md`)
 - [x] Alsace — climate + sweetness range (`02_regions/france/alsace.md`)
-- [ ] Foundations: climate — not yet written as standalone sheet
-- [ ] Everything else
+- [x] Foundations: climate (`01_foundations/climate.md`)
+- [x] Foundations: viticulture (`01_foundations/viticulture.md`)
+- [x] Foundations: winemaking (`01_foundations/winemaking.md`)
+- [x] Foundations: oak (`01_foundations/oak.md`)
+- [x] Bordeaux — Left/Right Bank soils & grapes (`02_regions/france/bordeaux.md`)
+- [x] Burgundy — appellation hierarchy & terroir fragmentation (`02_regions/france/burgundy.md`)
+- [ ] Rhône, Loire, Champagne — remaining France priority regions
+- [ ] Italy, Spain, Germany, USA, Australia/NZ, other remaining regions
+- [ ] Sparkling (03), Fortified (04), Business (05)
 
 ## Core exam facts to keep in view
 - Pass: 55% | Distinction: 80%
