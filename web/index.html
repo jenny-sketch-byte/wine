@@ -1,0 +1,875 @@
+<title>Field Sheets — A Systematic Wine Primer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #E6E7E2;
+    --surface: #F6F6F2;
+    --surface-2: #FBFBF9;
+    --ink: #24272A;
+    --muted: #5C6059;
+    --faint: #8A8D85;
+    --line: #D2D2C8;
+    --accent: #7C2142;
+    --accent-ink: #FBF3F5;
+    --accent-soft: #F1DEE3;
+    --clay: #9C6B48;
+    --clay-soft: #E9DCCC;
+    --good: #3E6B4F;
+    --good-soft: #DCE9DF;
+    --bad: #A6392B;
+    --bad-soft: #F3DEDA;
+    --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", monospace;
+    --shadow: 0 1px 2px rgba(36,39,42,0.06), 0 6px 20px rgba(36,39,42,0.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1B1C1E;
+      --surface: #232427;
+      --surface-2: #29292C;
+      --ink: #ECEAE3;
+      --muted: #ADAFA6;
+      --faint: #797C75;
+      --line: #35363A;
+      --accent: #D97A9B;
+      --accent-ink: #2A1319;
+      --accent-soft: #3A2029;
+      --clay: #D3A26F;
+      --clay-soft: #3A2E20;
+      --good: #7FBE93;
+      --good-soft: #1E2F23;
+      --bad: #E08D80;
+      --bad-soft: #372220;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1C1E; --surface: #232427; --surface-2: #29292C; --ink: #ECEAE3;
+    --muted: #ADAFA6; --faint: #797C75; --line: #35363A;
+    --accent: #D97A9B; --accent-ink: #2A1319; --accent-soft: #3A2029;
+    --clay: #D3A26F; --clay-soft: #3A2E20;
+    --good: #7FBE93; --good-soft: #1E2F23; --bad: #E08D80; --bad-soft: #372220;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #E6E7E2; --surface: #F6F6F2; --surface-2: #FBFBF9; --ink: #24272A;
+    --muted: #5C6059; --faint: #8A8D85; --line: #D2D2C8;
+    --accent: #7C2142; --accent-ink: #FBF3F5; --accent-soft: #F1DEE3;
+    --clay: #9C6B48; --clay-soft: #E9DCCC;
+    --good: #3E6B4F; --good-soft: #DCE9DF; --bad: #A6392B; --bad-soft: #F3DEDA;
+    --shadow: 0 1px 2px rgba(36,39,42,0.06), 0 6px 20px rgba(36,39,42,0.07);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+  table { font-variant-numeric: tabular-nums; }
+  a { color: inherit; }
+  button { font-family: inherit; }
+
+  .app {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--line);
+    padding: 1.5rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .brand { display: flex; flex-direction: column; gap: 0.15rem; }
+  .brand .mark { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.01em; }
+  .brand .sub { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; }
+
+  .nav-group { display: flex; flex-direction: column; gap: 0.15rem; }
+  .nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 0.6rem 0.5rem 0.35rem;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .nav-item:hover { background: var(--surface-2); }
+  .nav-item.active {
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  .nav-item.active .nav-item-title { color: var(--accent); font-weight: 600; }
+  .nav-item-title { flex: 1; }
+  .chip {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--faint);
+    flex-shrink: 0;
+  }
+  .chip.started { background: var(--clay); }
+  .chip.mastered { background: var(--good); }
+
+  .sidebar-foot {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .progress-line { font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); }
+  .reset-btn {
+    background: none; border: none; color: var(--faint); font-size: 0.75rem;
+    text-align: left; padding: 0; cursor: pointer; text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .reset-btn:hover { color: var(--bad); }
+
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 0.9rem; left: 0.9rem;
+    z-index: 30;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    box-shadow: var(--shadow);
+  }
+  .menu-toggle span, .menu-toggle::before, .menu-toggle::after { display:none; }
+  .menu-toggle .bars { display: flex; flex-direction: column; gap: 4px; }
+  .menu-toggle .bars i { display:block; width: 18px; height: 2px; background: var(--ink); }
+
+  /* ---------- Main ---------- */
+  main { padding: 2.5rem 3rem 5rem; max-width: 780px; }
+
+  .home-hero { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.25rem; }
+  .home-hero h1 { font-size: 2.4rem; }
+  .home-hero p { color: var(--muted); font-size: 1rem; max-width: 58ch; }
+
+  .home-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  table.ledger { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  table.ledger th {
+    text-align: left; font-family: var(--font-mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
+    padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line);
+  }
+  table.ledger td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  table.ledger tr:last-child td { border-bottom: none; }
+  table.ledger tr.clickable { cursor: pointer; }
+  table.ledger tr.clickable:hover td { background: var(--surface-2); }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-mono); font-size: 0.72rem;
+  }
+
+  .topic-header { margin-bottom: 1.75rem; }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--clay); margin-bottom: 0.5rem;
+  }
+  .topic-header h2 { font-size: 2.15rem; margin-bottom: 0.35rem; }
+  .topic-tagline { color: var(--muted); font-size: 1.02rem; max-width: 62ch; }
+
+  .signature-wrap { margin: 1.1rem 0 0.3rem; }
+  .signature-wrap canvas { display: block; width: 100%; height: 46px; border-radius: 6px; }
+  .signature-caption {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--faint);
+    display: flex; justify-content: space-between; margin-top: 0.3rem;
+  }
+
+  .content-block { margin-bottom: 1.9rem; }
+  .content-block h3 {
+    font-size: 1.05rem; margin-bottom: 0.65rem; padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .content-block p { margin: 0 0 0.6rem; }
+  .content-block ul, .content-block ol { margin: 0 0 0.6rem; padding-left: 1.25rem; }
+  .content-block li { margin-bottom: 0.3rem; }
+  .content-block strong { color: var(--ink); }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 0.6rem; }
+  table.data { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 420px; }
+  table.data th {
+    text-align: left; background: var(--surface-2); font-weight: 600;
+    padding: 0.5rem 0.7rem; border: 1px solid var(--line); font-size: 0.82rem;
+  }
+  table.data td { padding: 0.5rem 0.7rem; border: 1px solid var(--line); }
+
+  .callout {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.9rem 1rem; font-size: 0.92rem;
+  }
+  .callout .callout-label {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--clay); margin-bottom: 0.4rem; display:block;
+  }
+  .callout blockquote { margin: 0; font-style: italic; color: var(--ink); }
+
+  /* ---------- Quiz ---------- */
+  .quiz-section { margin-top: 2.5rem; padding-top: 1.75rem; border-top: 2px solid var(--line); }
+  .quiz-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.1rem; gap: 1rem; flex-wrap: wrap; }
+  .quiz-title-row h3 { font-size: 1.3rem; font-family: var(--font-display); }
+  .quiz-score { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+
+  .quiz-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.1rem 1.2rem; margin-bottom: 1rem; box-shadow: var(--shadow);
+  }
+  .quiz-q { font-size: 0.98rem; margin-bottom: 0.85rem; font-weight: 600; }
+  .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .quiz-option {
+    display: flex; align-items: flex-start; gap: 0.65rem;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px;
+    padding: 0.55rem 0.75rem; cursor: pointer; text-align: left; width: 100%;
+    font-size: 0.9rem; color: var(--ink);
+  }
+  .quiz-option:hover:not(:disabled) { border-color: var(--accent); }
+  .quiz-option .opt-letter {
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--faint);
+    min-width: 1.1rem;
+  }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-option.correct { background: var(--good-soft); border-color: var(--good); }
+  .quiz-option.correct .opt-letter { color: var(--good); }
+  .quiz-option.incorrect { background: var(--bad-soft); border-color: var(--bad); }
+  .quiz-option.incorrect .opt-letter { color: var(--bad); }
+  .quiz-option.dimmed { opacity: 0.55; }
+
+  .quiz-explain {
+    margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--line);
+    font-size: 0.86rem; color: var(--muted); display: none;
+  }
+  .quiz-explain.show { display: block; }
+  .quiz-explain b { color: var(--ink); }
+
+  .topic-nav { display: flex; justify-content: space-between; margin-top: 2.5rem; gap: 1rem; }
+  .topic-nav-btn {
+    display: flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 1rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    cursor: pointer; max-width: 48%; color: var(--ink);
+  }
+  .topic-nav-btn:hover { border-color: var(--accent); }
+  .topic-nav-btn .tn-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.08em; }
+  .topic-nav-btn .tn-title { font-family: var(--font-display); font-size: 1rem; }
+  .topic-nav-btn.next { text-align: right; align-items: flex-end; margin-left: auto; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-item, .quiz-option, .topic-nav-btn, .reset-btn { transition: background-color .15s ease, border-color .15s ease, opacity .15s ease; }
+  }
+
+  @media (max-width: 860px) {
+    .app { grid-template-columns: minmax(0, 1fr); }
+    .sidebar {
+      position: fixed; left: 0; top: 0; width: 260px; z-index: 25;
+      transform: translateX(-100%);
+      transition: transform .2s ease;
+      box-shadow: var(--shadow);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .menu-toggle { display: flex; }
+    main { padding: 4.5rem 1.25rem 4rem; }
+    .home-hero h1 { font-size: 1.8rem; }
+    .topic-header h2 { font-size: 1.6rem; }
+  }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="app">
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><span class="bars"><i></i><i></i><i></i></span></button>
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="mark">Field Sheets</div>
+      <div class="sub">A systematic wine primer</div>
+    </div>
+    <div id="navContainer"></div>
+    <div class="sidebar-foot">
+      <div class="progress-line" id="progressLine">0 / 0 topics mastered</div>
+      <button class="reset-btn" id="resetBtn">Reset my progress</button>
+    </div>
+  </nav>
+  <main id="main"></main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============ DATA ============ */
+
+  var TOPICS = [
+    {
+      id: "climate",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Climate",
+      tagline: "The macro and site-level factors that set every region's baseline — the concept every region sheet builds on.",
+      signature: { low: 35, high: 68, rainfall: 0.6, note: "illustrative — the general pattern, not one place" },
+      sections: [
+        { h: "Macroclimate factors", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Factor</th><th>Effect</th></tr>
+            <tr><td>Latitude</td><td>Lower latitude = more direct sun, warmer. Viable wine belt roughly 30–50° N/S.</td></tr>
+            <tr><td>Altitude</td><td>Temperature drops ~0.6°C per 100m — high sites in warm latitudes recover cool-climate character.</td></tr>
+            <tr><td>Proximity to water</td><td>Moderates temperature (slow to heat/cool) → smaller diurnal range, longer season, less frost risk.</td></tr>
+            <tr><td>Ocean currents</td><td>Cold currents (Benguela, Humboldt) cool coastal regions well below their latitude's expectation.</td></tr>
+            <tr><td>Wind</td><td>Cools and dries the canopy, can reduce disease pressure (e.g. the Mistral) or add vine stress if constant.</td></tr>
+            <tr><td>Mountains / rain shadow</td><td>Block moisture-bearing winds, creating a dry zone on the leeward side.</td></tr>
+          </table></div>` },
+        { h: "Three climate types to know cold", body: `
+          <ul>
+            <li><strong>Maritime</strong> — ocean-moderated, narrow annual range, rain spread year-round, higher vintage variation (Bordeaux, Loire).</li>
+            <li><strong>Continental</strong> — land-locked, wide annual range, hot summers/cold winters, more settled summers (Burgundy, Mendoza).</li>
+            <li><strong>Mediterranean</strong> — warm/hot, dry summers, mild wet winters, low vintage variation (southern Rhône, much of Spain).</li>
+          </ul>` },
+        { h: "Diurnal range — the recurring concept", body: `
+          <p>The gap between daytime high and nighttime low. A <strong>large diurnal range</strong> means warm days build sugar while cool nights preserve acidity and aromatics — common at altitude and in continental sites (Mendoza, Marlborough, Barossa foothills).</p>
+          <div class="callout"><span class="callout-label">Sentence template</span>
+          <blockquote>"The large diurnal range in [region] means grapes accumulate sugar during warm days while retaining acidity during cool nights, resulting in ripe fruit with a fresh, balanced structure."</blockquote></div>` },
+        { h: "Hazards — know the mechanism, not just the name", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Hazard</th><th>Timing</th><th>Mechanism</th></tr>
+            <tr><td>Spring frost</td><td>Bud burst</td><td>Ice forms in tissue, kills young shoots</td></tr>
+            <tr><td>Hail</td><td>Growing season</td><td>Physical damage to leaves/fruit, can trigger rot</td></tr>
+            <tr><td>Drought</td><td>Growing season</td><td>Vine stress; mild = concentration, severe = ripening shuts down</td></tr>
+            <tr><td>Fungal disease</td><td>Warm, humid</td><td>Damages leaves/fruit, reduces yield and ripening capacity</td></tr>
+            <tr><td>Grey rot</td><td>Wet conditions near harvest</td><td>Botrytis in unfavourable conditions — spoils fruit</td></tr>
+          </table></div>` }
+      ],
+      quiz: [
+        { q: "Which climate type is land-locked with a wide annual temperature range and settled summers?", options: ["Maritime", "Continental", "Mediterranean", "Alpine"], correct: 1, explain: "Continental climates (Burgundy, Mendoza) lack a moderating water body, so summers and winters diverge sharply." },
+        { q: "A rain shadow is caused by:", options: ["Cold ocean currents", "Mountains blocking moisture-bearing winds", "Cold air sinking to valley floors", "High altitude alone"], correct: 1, explain: "A mountain range (Vosges, Andes) intercepts prevailing moisture-bearing winds, leaving the leeward side dry." },
+        { q: "A large diurnal range typically produces grapes with:", options: ["Low sugar, low acid", "High sugar, low acid", "High sugar while retaining acidity", "Low sugar, high acid"], correct: 2, explain: "Warm days build sugar; cool nights slow acid degradation — the combination prized in high-altitude and continental sites." },
+        { q: "Which vintage-variation risk is most associated with maritime climates at harvest time?", options: ["Spring frost", "Rain causing dilution or rot", "Extreme heat", "Wind during flowering"], correct: 1, explain: "Maritime climates spread rainfall through the year, so a wet spell right at harvest is the classic maritime vintage risk." }
+      ]
+    },
+    {
+      id: "viticulture",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Viticulture",
+      tagline: "Vineyard decisions — training, canopy, yield, harvest, disease pressure — that shape what arrives at the winery.",
+      sections: [
+        { h: "Training & canopy management", body: `
+          <ul>
+            <li><strong>VSP</strong> (Vertical Shoot Positioning) — narrow upright canopy, good exposure/airflow, mechanization-friendly, common in cool/moderate climates.</li>
+            <li><strong>Bush vine (gobelet)</strong> — no wires, self-shading protects fruit in hot/dry/windy climates (old-vine Grenache, Chenin in South Africa).</li>
+            <li><strong>Leaf removal</strong> in the fruit zone raises sun exposure and airflow — aids ripening and lowers rot risk, but risks sunburn in hot climates.</li>
+          </ul>` },
+        { h: "Yield control", body: `
+          <p><strong>Pruning</strong> (winter) sets the maximum number of buds — the primary yield lever. <strong>Green harvest</strong> (dropping bunches mid-season) concentrates the remaining fruit but costs money and yield. Overcropping dilutes flavour concentration: yield control → concentration → quality/price tier is a standard exam link.</p>` },
+        { h: "Irrigation", body: `
+          <p>Essential in low-rainfall regions (see the <strong>Argentina</strong> sheet for the full worked example). <strong>Deficit irrigation</strong> — deliberately withholding water at controlled points — limits berry size and concentrates flavour. Flood/furrow is cheap but imprecise and promotes dilution; drip is precise and reduces yield. Many EU regions restrict irrigation for quality-tier wine; many New World regions treat it as essential and normal.</p>` },
+        { h: "Harvest: hand vs machine", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th></th><th>Hand harvest</th><th>Machine harvest</th></tr>
+            <tr><td>Selectivity</td><td>Can leave unripe/diseased bunches</td><td>Non-selective</td></tr>
+            <tr><td>Cost</td><td>Higher</td><td>Lower</td></tr>
+            <tr><td>Use case</td><td>Steep slopes, whole-bunch methods, sparkling base wine</td><td>Flat/accessible terrain, can pick at night for cool fruit</td></tr>
+          </table></div>` },
+        { h: "Disease pressure", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Issue</th><th>Conditions</th><th>Impact</th></tr>
+            <tr><td>Powdery mildew</td><td>Warm, humid, low light</td><td>Coats leaves/fruit, stunts ripening</td></tr>
+            <tr><td>Downy mildew</td><td>Warm, wet</td><td>Damages leaves, reduces photosynthesis/yield</td></tr>
+            <tr><td>Grey rot</td><td>Wet/humid near harvest</td><td>Spoils fruit — must be sorted out</td></tr>
+            <tr><td>Noble rot</td><td>Morning mist + afternoon sun</td><td>Same fungus, concentrates sugar/flavour deliberately for sweet wine</td></tr>
+            <tr><td>Phylloxera</td><td>Root-feeding aphid</td><td>Solved by grafting onto resistant rootstock — standard practice today</td></tr>
+          </table></div>` }
+      ],
+      quiz: [
+        { q: "What is the primary lever for controlling a vine's yield?", options: ["Irrigation timing", "Winter pruning (bud number)", "Leaf removal", "Harvest date"], correct: 1, explain: "Pruning sets the maximum number of buds/shoots — the main yield control decision, made months before the growing season starts." },
+        { q: "Deficit irrigation is best described as:", options: ["Watering as much as possible for maximum yield", "Withholding water at controlled points to limit berry size and concentrate flavour", "An emergency response to drought", "A method only used in flood irrigation"], correct: 1, explain: "It's a deliberate, precise quality tool — not a survival measure — used where irrigation is legal and available." },
+        { q: "Grey rot and noble rot are:", options: ["Different fungi entirely", "The same fungus (Botrytis cinerea) under different conditions", "Only found in Sauternes", "Unrelated to humidity"], correct: 1, explain: "Botrytis cinerea causes spoilage (grey rot) in wet/humid conditions, but deliberately concentrates sugar (noble rot) when morning mist is followed by drying afternoon sun." },
+        { q: "Phylloxera was historically controlled by:", options: ["Fungicide spraying", "Grafting vinifera onto resistant rootstock", "Switching to machine harvest", "Deficit irrigation"], correct: 1, explain: "Grafting European vinifera onto phylloxera-resistant American rootstock is standard practice today, aside from rare sandy-soil exceptions." }
+      ]
+    },
+    {
+      id: "winemaking",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Winemaking",
+      tagline: "What happens after harvest — white, rosé, red, and sweet wine production paths.",
+      sections: [
+        { h: "White winemaking", body: `
+          <ol>
+            <li>Pressed before fermentation (skins removed early) to avoid extracting tannin/colour.</li>
+            <li>Optional brief <strong>skin contact</strong> pre-fermentation to lift aroma/flavour compounds.</li>
+            <li>Fermentation often cool (12–18°C) in stainless steel for fresh fruit aromatics; barrel fermentation builds texture for fuller styles.</li>
+            <li>Optional <strong>malolactic conversion</strong> — sharp malic acid → softer lactic acid + buttery diacetyl. Used for round styles (Chardonnay), avoided for aromatic/high-acid styles (Riesling).</li>
+            <li>Optional <strong>lees ageing (sur lie)</strong> — adds texture and, with extended contact, bready autolytic character.</li>
+          </ol>` },
+        { h: "Rosé — three methods", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Method</th><th>Process</th><th>Result</th></tr>
+            <tr><td>Direct pressing</td><td>Immediate press, brief skin contact only</td><td>Palest, most delicate (Provence style)</td></tr>
+            <tr><td>Short maceration</td><td>Brief skin contact, pressed off as if for white</td><td>Light–medium colour, more fruit character</td></tr>
+            <tr><td>Saignée</td><td>Juice "bled off" early from a red fermentation</td><td>Often deeper colour; a byproduct of concentrating the remaining red</td></tr>
+          </table></div>` },
+        { h: "Red winemaking", body: `
+          <p>Juice ferments together with skins/seeds — the core difference from white winemaking: colour, tannin, and flavour are all extracted during fermentation. <strong>Cap management</strong> (punch-down or pump-over) mixes the floating cap of skins back into the fermenting juice. <strong>Extended maceration</strong> beyond fermentation adds more tannin/colour/structure for age-worthy styles. <strong>Free-run juice</strong> (higher quality) vs <strong>press wine</strong> (more tannic) may be blended back in varying proportions.</p>` },
+        { h: "Carbonic maceration", body: `
+          <p>Whole uncrushed bunches ferment intracellularly in a CO₂-rich sealed environment, producing low-tannin, fruity wines for early drinking — the Beaujolais signature.</p>` },
+        { h: "Sweet wine, in brief", body: `
+          <p>Late harvest (extended hang time), noble rot (Sauternes, Alsace SGN, Tokaji), and fortification (see <strong>04_fortified</strong>) all retain sugar by different mechanisms. Chaptalization adds sugar <em>before</em> fermentation to raise potential alcohol — it is not a sweetening technique, since that sugar ferments fully to alcohol.</p>` }
+      ],
+      quiz: [
+        { q: "Malolactic conversion changes:", options: ["Tartaric acid into malic acid", "Malic acid into softer lactic acid", "Sugar into alcohol", "Tannin into colour"], correct: 1, explain: "MLC softens a wine's perceived acidity and can add buttery diacetyl character — used for fuller styles, avoided for aromatic/high-acid whites." },
+        { q: "Which rosé method involves bleeding off juice early from a red wine fermentation?", options: ["Direct pressing", "Short maceration", "Saignée", "Carbonic maceration"], correct: 2, explain: "Saignée concentrates the remaining red wine while producing rosé as a secondary product." },
+        { q: "What is the defining structural difference between red and white winemaking?", options: ["Reds always use more oak", "Reds ferment with skins/seeds in contact with the juice", "Whites always use wild yeast", "Reds are always chaptalized"], correct: 1, explain: "Fermenting on the skins is what extracts colour and tannin — the core mechanism separating red from white winemaking." },
+        { q: "Chaptalization is best described as:", options: ["Adding sugar to sweeten the finished wine", "Adding acid to a warm-climate must", "Adding sugar before/during fermentation to raise potential alcohol", "A method of fortification"], correct: 2, explain: "The added sugar ferments fully to alcohol — it corrects under-ripeness, it does not add residual sweetness." }
+      ]
+    },
+    {
+      id: "oak",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Oak",
+      tagline: "Flavour, tannin, and micro-oxygenation — three separate effects that are easy to conflate.",
+      sections: [
+        { h: "Three effects, not one", body: `
+          <ol>
+            <li><strong>Flavour</strong> — vanilla, toast, spice, coconut, smoke.</li>
+            <li><strong>Tannin/structure</strong> — new oak especially adds tannin and ageing potential.</li>
+            <li><strong>Micro-oxygenation</strong> — barrels aren't airtight; slow oxygen ingress softens tannins and stabilises colour (reds), and can add nutty/oxidative complexity (whites).</li>
+          </ol>` },
+        { h: "New vs old, size, and origin", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th></th><th>French oak</th><th>American oak</th></tr>
+            <tr><td>Grain</td><td>Tight</td><td>Looser/wider</td></tr>
+            <tr><td>Flavour</td><td>Subtle spice, cedar, fine tannin</td><td>Bolder vanilla, coconut, dill</td></tr>
+            <tr><td>Cost</td><td>More expensive</td><td>Cheaper</td></tr>
+            <tr><td>Typical use</td><td>Bordeaux, Burgundy, many premium reds/whites</td><td>Traditional Rioja, some New World Cabernet/Shiraz</td></tr>
+          </table></div>
+          <p>Barrel size matters too: a <strong>barrique</strong> (~225L) has a high surface-area-to-volume ratio (strong influence); a <strong>foudre</strong> (1,000L+) gives low relative flavour impact while still allowing micro-oxygenation.</p>` },
+        { h: "Alternatives and where oak is avoided", body: `
+          <p>Oak chips/staves in inert vessels add flavour cheaply but skip the micro-oxygenation/structural benefit — a real cost/quality marker. Oak is minimised or avoided for aromatic whites (Riesling, most Sauvignon Blanc, Muscat) where varietal aromatics are the point.</p>` }
+      ],
+      quiz: [
+        { q: "Which of these is NOT one of oak's three effects on wine?", options: ["Flavour compounds", "Micro-oxygenation", "Malolactic conversion", "Tannin/structure"], correct: 2, explain: "Malolactic conversion is a bacterial process unrelated to the oak vessel itself — a common point of confusion." },
+        { q: "Compared to a barrique, a large foudre gives:", options: ["More oak flavour, no oxygenation", "Less relative oak flavour, but still some micro-oxygenation", "Identical influence, just holds more wine", "No oxygenation and no flavour"], correct: 1, explain: "Foudres have a much lower surface-area-to-volume ratio, so oak flavour is muted, but the wine still ages via oxygen ingress through the wood." },
+        { q: "Oak chips/staves in a steel tank provide:", options: ["Flavour and micro-oxygenation", "Flavour compounds but no micro-oxygenation benefit", "Micro-oxygenation only", "Tannin removal"], correct: 1, explain: "Chips add flavour cheaply but an inert steel tank doesn't allow the slow oxygen ingress a real barrel does." },
+        { q: "Why is oak typically avoided for Riesling?", options: ["Riesling can't survive barrel ageing", "Oak would mask its delicate varietal aromatics and freshness", "Riesling has too much tannin already", "It's a legal restriction in all Riesling regions"], correct: 1, explain: "Aromatic, high-acid whites are valued for freshness and varietal character, which oak flavour would overwhelm." }
+      ]
+    },
+    {
+      id: "alsace",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Alsace",
+      tagline: "One grape, a full range of sweetness — enabled entirely by climate.",
+      signature: { low: 30, high: 78, rainfall: 0.22, note: "cool continental · Vosges rain shadow · ~500mm/yr" },
+      sections: [
+        { h: "Climate", body: `<p><strong>Cool continental.</strong> The Vosges Mountains to the west block Atlantic weather, creating a rain shadow: warm dry summers, cold winters, ~500mm rainfall/year (one of France's driest regions), and a large diurnal range. Hazards are low overall — dry autumns cut rot risk — aside from winter frost.</p>` },
+        { h: "Soils & key grapes", body: `<p>Highly varied (granite, limestone, marl, sandstone) across a narrow strip — the basis of Grand Cru site distinctions. <strong>Riesling</strong> (high acid retention, ages well), <strong>Gewurztraminer</strong> (aromatic, low acid), <strong>Pinot Gris</strong> (full-bodied), <strong>Muscat</strong> (aromatic, usually dry). Wines are almost always varietally labelled — unusual for France — and little to no oak is used, to preserve aromatics.</p>` },
+        { h: "Styles — the key exam theme", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Style</th><th>Mechanism</th></tr>
+            <tr><td>Dry</td><td>Normal ripeness, picked on schedule</td></tr>
+            <tr><td>Off-dry/medium</td><td>Slightly extended hang time; dry autumn allows this safely</td></tr>
+            <tr><td>Vendange Tardive</td><td>Extended hang time; diurnal swing concentrates sugar while preserving acid</td></tr>
+            <tr><td>Sélection de Grains Nobles</td><td>Requires noble rot — occasional morning mist + afternoon sun in the right vintages</td></tr>
+          </table></div>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain how climate allows both dry and sweet styles</span><blockquote>"Alsace is protected by the Vosges Mountains, causing a rain shadow that results in low rainfall and reduced disease pressure. This means grapes can safely hang on the vine well past normal ripeness. Combined with a large diurnal range, sugar accumulates gradually while acidity is preserved, allowing producers to pick at different points — from dry, to late harvest, to botrytized Sélection de Grains Nobles in the right vintages."</blockquote></div>` }
+      ],
+      quiz: [
+        { q: "What creates Alsace's rain shadow?", options: ["The Rhine river", "The Vosges Mountains blocking Atlantic weather", "The Mediterranean Sea", "High latitude alone"], correct: 1, explain: "The Vosges sit west of Alsace, intercepting Atlantic moisture before it reaches the vineyards." },
+        { q: "Why are Alsace wines almost always labelled by grape variety?", options: ["EU law requires it everywhere", "It's a regional convention, unusual for France", "Blending is banned", "There is only one appellation"], correct: 1, explain: "Varietal labelling is a distinctive Alsace convention — most of France labels by place, not grape." },
+        { q: "What is required to make a Sélection de Grains Nobles?", options: ["Extended maceration", "Noble rot from morning mist plus afternoon sun", "Chaptalization", "Machine harvesting"], correct: 1, explain: "SGN needs botrytis, which requires humidity to establish the fungus and sun to dry the grapes and concentrate them without spoilage." },
+        { q: "Alsace's large diurnal range primarily helps produce:", options: ["High-tannin reds", "Sugar accumulation with preserved acidity", "Fortified wine", "Heavy oak character"], correct: 1, explain: "Warm days and cool nights let sugar build while retaining the acid backbone that defines Alsace's aromatic whites." }
+      ]
+    },
+    {
+      id: "argentina",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Argentina (Mendoza)",
+      tagline: "Irrigation as both survival necessity and precision quality tool.",
+      signature: { low: 18, high: 88, rainfall: 0.08, note: "semi-arid · Andes rain shadow · ~200mm/yr" },
+      sections: [
+        { h: "Climate & why irrigation is necessary", body: `<p><strong>Semi-arid to desert, continental.</strong> The Andes block Pacific moisture, leaving Mendoza with only ~200mm rainfall/year — far below vine requirements. Altitude is a key modifier: Uco Valley vineyards reach 1,500m+, giving high UV and a large diurnal range. Without irrigation using Andean snowmelt, vines would suffer severe drought stress: poor canopy, unripe fruit, stuck ripening.</p>` },
+        { h: "Irrigation as a quality tool, not just survival", body: `<p>Because rainfall is near zero, growers control water timing/quantity precisely — unlike rain-dependent regions where vintage is largely out of their hands. <strong>Deficit irrigation</strong> deliberately withholds water at key points (e.g. post-fruit-set) to concentrate flavour and control berry size/yield. Flood irrigation is cheap but imprecise and encourages vigour/dilution; drip is precise and improves concentration.</p>` },
+        { h: "Key grapes", body: `<p><strong>Malbec</strong> (signature), also Torrontés, Cabernet Sauvignon, Bonarda.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain why irrigation is necessary and how it affects quality</span><blockquote>"Mendoza sits in the rain shadow of the Andes, receiving only around 200mm of rainfall per year, insufficient for vine growth. This means irrigation using Andean snowmelt is essential for survival. Because rainfall is minimal, growers can precisely control water application through deficit irrigation, withholding water at key growth stages to concentrate flavour and reduce berry size, resulting in more concentrated, higher-quality fruit than under natural rainfall alone."</blockquote></div>` }
+      ],
+      quiz: [
+        { q: "Mendoza's rain shadow is caused by which mountain range?", options: ["The Alps", "The Andes", "The Rockies", "The Vosges"], correct: 1, explain: "The Andes block Pacific moisture-bearing winds from reaching Mendoza." },
+        { q: "Deficit irrigation is used to:", options: ["Maximise yield at all costs", "Withhold water at key points to concentrate flavour and control berry size", "Replace the need for snowmelt", "Prevent frost"], correct: 1, explain: "It's a deliberate quality-control tool available precisely because rainfall (and therefore uncontrolled water input) is so low." },
+        { q: "Higher-altitude Mendoza vineyards (e.g. Uco Valley) are associated with:", options: ["Lower UV, smaller diurnal range", "Higher UV and a larger diurnal range", "Higher rainfall", "No irrigation needed"], correct: 1, explain: "Altitude increases UV exposure and widens the day/night temperature swing — a quality factor tied to freshness and aromatics." },
+        { q: "Compared to drip irrigation, flood irrigation tends to:", options: ["Be more precise and reduce yields", "Be cheap but imprecise, encouraging vigour and dilution", "Only be legal for premium wine", "Eliminate the need for snowmelt"], correct: 1, explain: "Flood/furrow systems apply water broadly and imprecisely, which can overwater vines and dilute concentration compared to targeted drip." }
+      ]
+    },
+    {
+      id: "bordeaux",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Bordeaux",
+      tagline: "The Left Bank / Right Bank divide — soil dictates the grape.",
+      signature: { low: 42, high: 66, rainfall: 0.75, note: "maritime · significant vintage variation" },
+      sections: [
+        { h: "Climate", body: `<p><strong>Maritime.</strong> The Atlantic and the Gironde estuary moderate temperature and reduce spring frost risk. The growing season is long and mild, but vintage variation is significant — rain at flowering (poor fruit set) or at harvest (dilution/rot) is the main risk.</p>` },
+        { h: "Soils — the core divide", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Bank</th><th>Soil</th><th>Dominant grape</th><th>Why</th></tr>
+            <tr><td>Left Bank (Médoc, Graves)</td><td>Gravel, well-drained, retains daytime heat</td><td>Cabernet Sauvignon</td><td>Drains well and retains heat, suiting late-ripening, vigorous Cabernet</td></tr>
+            <tr><td>Right Bank (St-Émilion, Pomerol)</td><td>Clay & limestone, cooler, water-retentive</td><td>Merlot</td><td>Retains moisture, suiting earlier-ripening Merlot which is drought-sensitive</td></tr>
+          </table></div>` },
+        { h: "Appellation & classification", body: `<p>Regional (Bordeaux AOC / Supérieur) → sub-regional (Médoc, Graves) → communal (Margaux, Pauillac, St-Julien, St-Estèphe / St-Émilion, Pomerol). Separate producer-based classifications sit alongside this: the <strong>1855 Classification</strong> (Left Bank, Sauternes, rarely revised), the periodically-revised <strong>St-Émilion Classification</strong>, and Pomerol, which has none at all — reputation and price alone signal quality there.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain the Left Bank / Right Bank grape split</span><blockquote>"The Left Bank has well-drained gravel soils that retain daytime heat, suiting the late-ripening, vigorous Cabernet Sauvignon, which needs a long warm season. The Right Bank has cooler, water-retentive clay and limestone, suiting the earlier-ripening Merlot, more prone to drought stress. This means the two banks favour different grapes based on how well each variety's ripening needs match the soil's drainage and heat-retention properties."</blockquote></div>` }
+      ],
+      quiz: [
+        { q: "Why does the Left Bank favour Cabernet Sauvignon?", options: ["Clay soils retain water for it", "Gravel drains well and retains daytime heat, suiting a late-ripening variety", "It's cooler there", "Cabernet needs high rainfall"], correct: 1, explain: "Cabernet Sauvignon ripens late and needs sustained warmth — gravel's drainage and heat retention supply exactly that." },
+        { q: "What is the primary vintage risk in Bordeaux's maritime climate?", options: ["Extreme drought", "Rain at flowering or harvest causing poor fruit set, dilution, or rot", "Permanent frost", "Excessive UV"], correct: 1, explain: "Maritime climates spread rain through the year, so poorly timed rain at flowering or harvest is the classic Bordeaux vintage risk." },
+        { q: "Which Bordeaux sub-region has no official producer classification?", options: ["Médoc", "Sauternes", "Pomerol", "St-Émilion"], correct: 2, explain: "Pomerol relies entirely on reputation and market price to signal quality tier, unlike the 1855 or St-Émilion systems." },
+        { q: "Bordeaux wines are typically produced as:", options: ["Single-varietal wines", "Blends, allowing balance across vintage variation", "100% whole-bunch ferments", "Unoaked exclusively"], correct: 1, explain: "Blending multiple grapes (e.g. more Merlot in a cool year) lets producers hedge against vintage-to-vintage weather variation." }
+      ]
+    },
+    {
+      id: "burgundy",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Burgundy",
+      tagline: "Extreme parcel fragmentation and a strict vineyard-quality pyramid.",
+      signature: { low: 32, high: 72, rainfall: 0.5, note: "cool continental · marginal ripening climate" },
+      sections: [
+        { h: "Climate & soils", body: `<p><strong>Cool continental</strong> — inland, no major moderating water body, so vintage variation is significant (frost, poor flowering, harvest rain are all real risks). <strong>Kimmeridgian limestone and marl</strong> dominate the Côte d'Or, with extreme parcel fragmentation: dozens of distinct <em>climats</em> on the same slope, historically mapped by monks, each with subtly different soil, aspect, and drainage.</p>` },
+        { h: "Key grapes", body: `<p><strong>Pinot Noir</strong> — thin-skinned, early-budding (frost risk), highly terroir-expressive. <strong>Chardonnay</strong> — adaptable, expresses both terroir and winemaking choice, from lean/mineral (Chablis) to rich/buttery (Meursault). Plus Gamay (Beaujolais) and Aligoté.</p>` },
+        { h: "The appellation pyramid", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Tier</th><th>Description</th><th>Approx. share</th></tr>
+            <tr><td>Regional</td><td>Bourgogne AOC — sourced from anywhere in Burgundy</td><td>~50%</td></tr>
+            <tr><td>Village</td><td>From a specific commune (e.g. Gevrey-Chambertin)</td><td>~35%</td></tr>
+            <tr><td>Premier Cru</td><td>Named, higher-quality parcels within a village</td><td>~10%</td></tr>
+            <tr><td>Grand Cru</td><td>The top sites, own appellation, tiny production</td><td>~1–2%</td></tr>
+          </table></div>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain how the hierarchy reflects vineyard quality</span><blockquote>"Burgundy's appellation system is based on a hierarchy of vineyard sites, from broad regional appellations up to tightly delimited Grand Cru parcels. This is due to centuries of observation of how soil, drainage, and aspect vary even within a single slope on the Côte d'Or, meaning the narrowest, most historically consistent sites were identified as Grand Cru. This results in wines from higher tiers commanding significantly higher prices, reflecting both scarcity and more consistent quality."</blockquote></div>` }
+      ],
+      quiz: [
+        { q: "What is a 'climat' in Burgundy?", options: ["A weather pattern", "A named vineyard parcel with distinct soil/aspect/drainage", "A classification of producer", "A style of Chardonnay"], correct: 1, explain: "Climats are the historically mapped, individually named vineyard parcels that underpin Burgundy's entire quality hierarchy." },
+        { q: "Roughly what share of Burgundy's production is Grand Cru?", options: ["~50%", "~35%", "~10%", "~1–2%"], correct: 3, explain: "Grand Cru sites are tiny in area and production, which is a major driver of their price relative to Village or Regional wine." },
+        { q: "Why is Pinot Noir considered highly terroir-expressive?", options: ["It is thick-skinned and neutral", "It is thin-skinned and sensitive to subtle site differences", "It is always heavily oaked", "It only grows in warm climates"], correct: 1, explain: "Pinot Noir's thin skin and sensitivity make it a clear lens onto small differences in soil, aspect, and microclimate." },
+        { q: "Which best describes Burgundy's climate risk profile?", options: ["Very low vintage variation, like a desert climate", "Significant vintage variation from frost, flowering, and harvest-time rain", "No frost risk at all", "Only hail is a concern"], correct: 1, explain: "As a cool continental, marginal-ripening climate, Burgundy sees real year-to-year swings driven by frost, poor fruit set, and harvest weather." }
+      ]
+    }
+  ];
+
+  var GROUP_ORDER = ["foundations", "regions"];
+  var GROUP_LABELS = { foundations: "Foundations", regions: "Regions" };
+
+  /* ============ STATE ============ */
+
+  var STORAGE_KEY = "fieldsheets-progress-v1";
+  var state = loadProgress();
+  var currentTopic = null; // null = home
+
+  function loadProgress() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveProgress() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function topicStatus(id) {
+    var s = state[id];
+    if (!s || !s.answered) return "new";
+    var total = TOPICS.find(function (t) { return t.id === id; }).quiz.length;
+    var answeredCount = Object.keys(s.answered).length;
+    if (answeredCount === 0) return "new";
+    if (answeredCount < total) return "started";
+    return s.correctCount === total ? "mastered" : "started";
+  }
+
+  /* ============ RENDER: SIDEBAR ============ */
+
+  function renderSidebar() {
+    var container = document.getElementById("navContainer");
+    container.innerHTML = "";
+    GROUP_ORDER.forEach(function (group) {
+      var groupWrap = document.createElement("div");
+      groupWrap.className = "nav-group";
+      var label = document.createElement("div");
+      label.className = "nav-label";
+      label.textContent = GROUP_LABELS[group];
+      groupWrap.appendChild(label);
+
+      TOPICS.filter(function (t) { return t.group === group; }).forEach(function (t) {
+        var btn = document.createElement("button");
+        btn.className = "nav-item" + (currentTopic === t.id ? " active" : "");
+        var status = topicStatus(t.id);
+        btn.innerHTML = '<span class="nav-item-title">' + t.title + '</span><span class="chip ' + status + '"></span>';
+        btn.addEventListener("click", function () { navigate(t.id); });
+        groupWrap.appendChild(btn);
+      });
+      container.appendChild(groupWrap);
+    });
+
+    var masteredCount = TOPICS.filter(function (t) { return topicStatus(t.id) === "mastered"; }).length;
+    document.getElementById("progressLine").textContent = masteredCount + " / " + TOPICS.length + " topics mastered";
+  }
+
+  /* ============ RENDER: CLIMATE SIGNATURE CANVAS ============ */
+
+  function drawSignature(canvas, sig) {
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.getBoundingClientRect();
+    var w = Math.max(rect.width, 300);
+    var h = 46;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    var ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+
+    var trackY = 26, trackH = 10;
+    // track background
+    ctx.fillStyle = "rgba(128,128,128,0.15)";
+    roundRect(ctx, 0, trackY, w, trackH, 5);
+    ctx.fill();
+
+    // gradient bar for diurnal range (night color -> day color)
+    var x0 = (sig.low / 100) * w;
+    var x1 = (sig.high / 100) * w;
+    var grad = ctx.createLinearGradient(x0, 0, x1, 0);
+    grad.addColorStop(0, "#5B6FA8");
+    grad.addColorStop(1, "#D9A441");
+    ctx.fillStyle = grad;
+    roundRect(ctx, x0, trackY, Math.max(x1 - x0, 4), trackH, 5);
+    ctx.fill();
+
+    // low/high markers
+    ctx.fillStyle = "#5B6FA8";
+    ctx.beginPath(); ctx.arc(x0, trackY + trackH / 2, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#D9A441";
+    ctx.beginPath(); ctx.arc(x1, trackY + trackH / 2, 4, 0, Math.PI * 2); ctx.fill();
+
+    // rainfall dots above
+    var dotCount = 14;
+    var activeDots = Math.round(dotCount * sig.rainfall);
+    for (var i = 0; i < dotCount; i++) {
+      var dx = (w / dotCount) * (i + 0.5);
+      ctx.beginPath();
+      ctx.arc(dx, 8, 2.3, 0, Math.PI * 2);
+      ctx.fillStyle = i < activeDots ? "rgba(124,33,66,0.55)" : "rgba(128,128,128,0.18)";
+      ctx.fill();
+    }
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  /* ============ RENDER: HOME ============ */
+
+  function renderHome() {
+    var main = document.getElementById("main");
+    var rows = TOPICS.map(function (t) {
+      var status = topicStatus(t.id);
+      var pillColor = status === "mastered" ? "var(--good)" : status === "started" ? "var(--clay)" : "var(--faint)";
+      var pillText = status === "mastered" ? "mastered" : status === "started" ? "in progress" : "not started";
+      return '<tr class="clickable" data-id="' + t.id + '">' +
+        '<td>' + t.groupLabel + '</td>' +
+        '<td style="font-family: var(--font-display); font-size: 1rem;">' + t.title + '</td>' +
+        '<td><span class="status-pill" style="color:' + pillColor + '"><span class="chip ' + status + '"></span>' + pillText + '</span></td>' +
+        '</tr>';
+    }).join("");
+
+    main.innerHTML =
+      '<div class="home-hero">' +
+        '<h1>Field Sheets</h1>' +
+        '<p>A systematic wine primer built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here.</p>' +
+      '</div>' +
+      '<div class="home-table-wrap"><table class="ledger">' +
+        '<tr><th>Section</th><th>Topic</th><th>Status</th></tr>' +
+        rows +
+      '</table></div>';
+
+    main.querySelectorAll("tr[data-id]").forEach(function (row) {
+      row.addEventListener("click", function () { navigate(row.getAttribute("data-id")); });
+    });
+  }
+
+  /* ============ RENDER: TOPIC ============ */
+
+  function renderTopic(topic) {
+    var main = document.getElementById("main");
+    var sectionsHtml = topic.sections.map(function (s) {
+      return '<div class="content-block"><h3>' + s.h + '</h3>' + s.body + '</div>';
+    }).join("");
+
+    var signatureHtml = "";
+    if (topic.signature) {
+      signatureHtml =
+        '<div class="signature-wrap"><canvas id="sigCanvas"></canvas>' +
+        '<div class="signature-caption"><span>night</span><span>' + topic.signature.note + '</span><span>day</span></div></div>';
+    }
+
+    main.innerHTML =
+      '<div class="topic-header">' +
+        '<div class="eyebrow">' + topic.groupLabel + '</div>' +
+        '<h2>' + topic.title + '</h2>' +
+        '<p class="topic-tagline">' + topic.tagline + '</p>' +
+        signatureHtml +
+      '</div>' +
+      sectionsHtml +
+      renderQuizSection(topic) +
+      renderTopicNav(topic);
+
+    if (topic.signature) {
+      var canvas = main.querySelector("#sigCanvas");
+      requestAnimationFrame(function () { drawSignature(canvas, topic.signature); });
+    }
+
+    wireQuiz(topic);
+    wireTopicNav(topic);
+  }
+
+  function renderQuizSection(topic) {
+    var st = state[topic.id] || { answered: {}, correctCount: 0 };
+    var answeredCount = Object.keys(st.answered || {}).length;
+    var cards = topic.quiz.map(function (q, qi) {
+      var savedAnswer = st.answered ? st.answered[qi] : undefined;
+      var options = q.options.map(function (opt, oi) {
+        var cls = "quiz-option";
+        var letter = String.fromCharCode(65 + oi);
+        if (savedAnswer !== undefined) {
+          if (oi === q.correct) cls += " correct";
+          else if (oi === savedAnswer) cls += " incorrect";
+          else cls += " dimmed";
+        }
+        return '<button class="' + cls + '" data-qi="' + qi + '" data-oi="' + oi + '" ' + (savedAnswer !== undefined ? "disabled" : "") + '>' +
+          '<span class="opt-letter">' + letter + '</span><span>' + opt + '</span></button>';
+      }).join("");
+      return '<div class="quiz-card" data-qi="' + qi + '">' +
+        '<div class="quiz-q">' + (qi + 1) + '. ' + q.q + '</div>' +
+        '<div class="quiz-options">' + options + '</div>' +
+        '<div class="quiz-explain' + (savedAnswer !== undefined ? " show" : "") + '"><b>Why: </b>' + q.explain + '</div>' +
+      '</div>';
+    }).join("");
+
+    return '<div class="quiz-section">' +
+      '<div class="quiz-title-row"><h3>Quick check</h3><span class="quiz-score">' + (st.correctCount || 0) + ' / ' + topic.quiz.length + ' correct · ' + answeredCount + ' / ' + topic.quiz.length + ' answered</span></div>' +
+      cards +
+    '</div>';
+  }
+
+  function wireQuiz(topic) {
+    var main = document.getElementById("main");
+    main.querySelectorAll(".quiz-option").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var qi = parseInt(btn.getAttribute("data-qi"), 10);
+        var oi = parseInt(btn.getAttribute("data-oi"), 10);
+        recordAnswer(topic, qi, oi);
+        renderTopic(topic); // re-render to lock in state
+      });
+    });
+  }
+
+  function recordAnswer(topic, qi, oi) {
+    if (!state[topic.id]) state[topic.id] = { answered: {}, correctCount: 0 };
+    var s = state[topic.id];
+    if (s.answered[qi] !== undefined) return; // already answered
+    s.answered[qi] = oi;
+    if (oi === topic.quiz[qi].correct) s.correctCount = (s.correctCount || 0) + 1;
+    saveProgress();
+    renderSidebar();
+  }
+
+  function renderTopicNav(topic) {
+    var idx = TOPICS.findIndex(function (t) { return t.id === topic.id; });
+    var prev = TOPICS[idx - 1];
+    var next = TOPICS[idx + 1];
+    var html = '<div class="topic-nav">';
+    html += prev ? '<button class="topic-nav-btn prev" data-id="' + prev.id + '"><span class="tn-label">&larr; Previous</span><span class="tn-title">' + prev.title + '</span></button>' : '<span></span>';
+    html += next ? '<button class="topic-nav-btn next" data-id="' + next.id + '"><span class="tn-label">Next &rarr;</span><span class="tn-title">' + next.title + '</span></button>' : '<span></span>';
+    html += '</div>';
+    return html;
+  }
+
+  function wireTopicNav(topic) {
+    var main = document.getElementById("main");
+    main.querySelectorAll(".topic-nav-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () { navigate(btn.getAttribute("data-id")); });
+    });
+  }
+
+  /* ============ NAVIGATION ============ */
+
+  function navigate(id) {
+    currentTopic = id;
+    renderSidebar();
+    var topic = TOPICS.find(function (t) { return t.id === id; });
+    if (topic) renderTopic(topic); else renderHome();
+    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+    closeSidebarMobile();
+  }
+
+  /* ============ MOBILE SIDEBAR ============ */
+
+  function closeSidebarMobile() {
+    document.getElementById("sidebar").classList.remove("open");
+  }
+  document.getElementById("menuToggle").addEventListener("click", function () {
+    document.getElementById("sidebar").classList.toggle("open");
+  });
+
+  /* ============ RESET ============ */
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    if (window.confirm("Clear your quiz progress on this device?")) {
+      state = {};
+      saveProgress();
+      renderSidebar();
+      if (currentTopic) {
+        var t = TOPICS.find(function (t2) { return t2.id === currentTopic; });
+        renderTopic(t);
+      } else {
+        renderHome();
+      }
+    }
+  });
+
+  /* ============ INIT ============ */
+
+  renderSidebar();
+  renderHome();
+})();
+</script>
