@@ -1014,7 +1014,17 @@
       profile: ["White", "Medium-high acidity", "Medium body", "Pepper and spice notes"],
       chars: ["Medium skin", "Grows a lot of leaf canopy"],
       region: "Wachau, Austria",
-      climate: ["Cool continental", "Cooled by the Danube river", "Steep terraced vineyards"] }
+      climate: ["Cool continental", "Cooled by the Danube river", "Steep terraced vineyards"] },
+    { grape: "Cabernet Sauvignon",
+      profile: ["Red", "Deep colour", "High tannin", "High acidity", "Dark fruit (blackcurrant, mint)"],
+      chars: ["Thick skin", "Small berries", "Ripens late"],
+      region: "Coonawarra, Australia",
+      climate: ["Warm and dry", "Cooled a little by the ocean", "Famous red clay soil (terra rossa) over limestone"] },
+    { grape: "Semillon",
+      profile: ["White", "Low aroma when young", "Medium body", "Honey and toast notes as it ages"],
+      chars: ["Thin skin", "Picked early, at low sugar, to keep acidity"],
+      region: "Hunter Valley, Australia",
+      climate: ["Warm and humid", "Early picking is a deliberate choice to counter the heat"] }
   ];
 
   var SCENARIOS = [
@@ -1997,8 +2007,21 @@
   /* ============ RENDER: MATCH GAME ============ */
 
   function startMatchRound() {
-    var pool = MATCH_PAIRS.map(function (p, i) { return i; });
-    var picked = shuffleArr(pool).slice(0, Math.min(ROUND_SIZE, pool.length));
+    var pool = shuffleArr(MATCH_PAIRS.map(function (p, i) { return i; }));
+    var picked = [];
+    var usedGrapes = {};
+    var usedRegions = {};
+    // Greedy pick avoiding duplicate grape names or duplicate region names in one round,
+    // so e.g. Cabernet Sauvignon (Left Bank Bordeaux) and Cabernet Sauvignon (Coonawarra)
+    // never appear together and create an ambiguous match.
+    pool.forEach(function (idx) {
+      if (picked.length >= ROUND_SIZE) return;
+      var p = MATCH_PAIRS[idx];
+      if (usedGrapes[p.grape] || usedRegions[p.region]) return;
+      picked.push(idx);
+      usedGrapes[p.grape] = true;
+      usedRegions[p.region] = true;
+    });
     matchState.roundPairs = picked;
     matchState.grapeOrder = shuffleArr(picked);
     matchState.regionOrder = shuffleArr(picked);
