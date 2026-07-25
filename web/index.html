@@ -304,6 +304,83 @@
   }
 
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Bilingual chrome ---------- */
+  .he { direction: rtl; unicode-bidi: embed; }
+  .nav-label-he { font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 0.5em; color: var(--faint); }
+  .nav-item-he { display: block; font-size: 0.72rem; color: var(--faint); margin-top: 0.05rem; font-weight: 400; }
+  .btn .he, .filter-chip .he { font-size: 0.85em; opacity: 0.85; margin-left: 0.4em; }
+  .callout-label .he { text-transform: none; letter-spacing: 0; }
+
+  /* ---------- Practice hero / filters ---------- */
+  .practice-hero { margin-bottom: 1.5rem; }
+  .practice-hero h2 { font-size: 2rem; }
+  .practice-hero .he-line { color: var(--muted); font-size: 1rem; margin-top: 0.25rem; }
+  .practice-hero p.sub { color: var(--muted); max-width: 62ch; margin-top: 0.7rem; }
+
+  .filter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .filter-chip { font-family: var(--font-mono); font-size: 0.78rem; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; color: var(--ink); }
+  .filter-chip.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- Command word glossary ---------- */
+  .glossary { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin-bottom: 1.75rem; }
+  .glossary summary { cursor: pointer; padding: 0.8rem 1rem; font-family: var(--font-display); font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .glossary summary::-webkit-details-marker { display: none; }
+  .glossary summary .he { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); }
+  .glossary-body { padding: 0 1rem 1rem; }
+  .glossary-row { display: grid; grid-template-columns: 130px 1fr; gap: 0.6rem; padding: 0.55rem 0; border-top: 1px dashed var(--line); font-size: 0.86rem; }
+  .glossary-row:first-child { border-top: none; }
+  .glossary-row .gw { font-weight: 600; }
+  .glossary-row .gw .he { display: block; font-size: 0.82em; color: var(--clay); font-weight: 400; margin-top: 0.1em; }
+
+  /* ---------- Written practice ---------- */
+  .written-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.35rem; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
+  .written-command { display: inline-flex; align-items: baseline; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); background: var(--clay-soft); padding: 0.25rem 0.6rem; border-radius: 5px; margin-bottom: 0.7rem; }
+  .written-command .he { text-transform: none; letter-spacing: 0; }
+  .written-q { font-size: 1.1rem; margin-bottom: 1rem; font-family: var(--font-display); }
+  .written-textarea { width: 100%; min-height: 150px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; padding: 0.8rem; resize: vertical; }
+  .written-textarea:focus { border-color: var(--accent); }
+  .written-actions { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
+  .btn { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; padding: 0.6rem 1.1rem; border-radius: 7px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer; }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { opacity: 0.9; }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+
+  .reveal-block { margin-top: 1.3rem; padding-top: 1.1rem; border-top: 2px solid var(--line); }
+
+  .rubric-list { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .rubric-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 0.55rem 0.7rem; cursor: pointer; }
+  .rubric-item input { margin-top: 0.2rem; accent-color: var(--accent); pointer-events: none; }
+  .rubric-item .he { display: block; color: var(--muted); font-size: 0.85em; margin-top: 0.15em; }
+  .rubric-item.checked { border-color: var(--good); background: var(--good-soft); }
+
+  .lost-to-row { margin-top: 1.2rem; }
+  .lost-to-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 0.5rem; display: block; }
+  .lost-to-label .he { text-transform: none; letter-spacing: 0; margin-left: 0.5em; }
+  .pill-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .pill-btn { font-size: 0.82rem; padding: 0.4rem 0.75rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; color: var(--ink); }
+  .pill-btn.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+  .log-section { margin-top: 2.5rem; }
+  .log-section h3 { font-size: 1.2rem; margin-bottom: 0.9rem; }
+  .log-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  table.log { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 520px; }
+  table.log th { text-align: left; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); }
+  table.log td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.log tr:last-child td { border-bottom: none; }
+  .log-empty { padding: 1.5rem; text-align: center; color: var(--faint); font-size: 0.88rem; line-height: 1.7; }
+  .log-del { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 0.78rem; text-decoration: underline; }
+  .log-del:hover { color: var(--bad); }
+
+  /* ---------- MCQ practice ---------- */
+  .mcq-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .mcq-progress { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+  .mcq-topic-tag { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clay); margin-bottom: 0.5rem; display: block; }
+  .mcq-summary-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .mcq-summary-item { padding: 0.7rem 0.9rem; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 0.86rem; line-height: 1.5; }
+  .mcq-summary-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .mcq-summary-item.right { border-color: var(--good); background: var(--good-soft); }
 </style>
 
 <div class="app">
@@ -584,14 +661,233 @@
     }
   ];
 
-  var GROUP_ORDER = ["foundations", "regions"];
-  var GROUP_LABELS = { foundations: "Foundations", regions: "Regions" };
+  var COMMAND_GLOSSARY = [
+    { en: "Identify / State / Name", he: "זהה / קבע / ציין", want: "A fact, term, or item — no explanation needed.", wantHe: "עובדה, מונח או פריט — בלי צורך בהסבר." },
+    { en: "Describe", he: "תאר", want: "What something IS or looks like — characteristics, not causes.", wantHe: "מה משהו הוא או נראה — מאפיינים, לא סיבות." },
+    { en: "Explain", he: "הסבר", want: "WHY or HOW something happens — cause → effect. Most marks live here.", wantHe: "למה או איך משהו קורה — סיבה ← תוצאה. כאן נמצא רוב הניקוד." },
+    { en: "Outline", he: "הצג בקווים כלליים", want: "A brief summary of several points — breadth over depth.", wantHe: "סיכום קצר של כמה נקודות — רוחב ולא עומק." },
+    { en: "Compare", he: "השווה", want: "Similarities AND differences — one-sided answers lose marks.", wantHe: "דמיון וגם הבדלים — תשובה חד-צדדית מפסידה נקודות." },
+    { en: "Discuss", he: "דון", want: "Multiple angles or factors, weighed against each other.", wantHe: "כמה זוויות או גורמים, הנשקלים זה מול זה." }
+  ];
+
+  var WRITTEN = {
+    climate: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how climate can affect vintage variation in a maritime region.",
+        model: "Maritime regions are moderated by nearby oceans, giving a narrower annual temperature range, but rainfall is spread across the year. This means poorly timed rain — at flowering or at harvest — is a real risk in any given year, causing poor fruit set or diluted, rot-affected fruit. As a result, maritime regions such as Bordeaux see greater vintage-to-vintage quality variation than climates with more settled, dry summers.",
+        rubric: [
+          { en: "Names the factor (ocean proximity / rain spread through the year)", he: "מזהה את הגורם (קרבה לים / גשם לאורך השנה)" },
+          { en: "States the mechanism (poorly timed rain at flowering/harvest)", he: "מסביר את המנגנון (גשם בזמן לא נכון בפריחה/בבציר)" },
+          { en: "States the outcome on the wine/vintage (poor fruit set, dilution, rot)", he: "מציין את התוצאה על היין/הבציר (הפריה חלשה, דילול, רקבון)" },
+          { en: "Names a real example region (e.g. Bordeaux, Loire)", he: "נותן דוגמה אמיתית לאזור (למשל בורדו, לואר)" }
+        ]
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        q: "Describe the difference between a maritime and a continental climate.",
+        model: "A maritime climate is moderated by a nearby ocean, giving a narrow annual temperature range and rainfall spread throughout the year. A continental climate is land-locked, giving a wide annual temperature range with hot summers and cold winters, and generally more settled, drier summers than a maritime climate.",
+        rubric: [
+          { en: "States both climate types' key features (not just one)", he: "מציין את המאפיינים של שני סוגי האקלים (לא רק אחד)" },
+          { en: "Mentions annual temperature range for each", he: "מזכיר את טווח הטמפרטורות השנתי של כל אחד" },
+          { en: "Mentions rainfall pattern for each", he: "מזכיר את דפוס המשקעים של כל אחד" },
+          { en: "No unnecessary cause-effect reasoning — this is Describe, not Explain", he: "בלי הסברי סיבה-תוצאה מיותרים — זו שאלת תיאור, לא הסבר" }
+        ]
+      }
+    ],
+    viticulture: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how canopy management can affect grape ripening and wine quality.",
+        model: "Leaf removal in the fruit zone increases sun exposure and airflow around the bunches, which improves ripening and reduces the risk of fungal disease in humid conditions. This allows growers to harvest riper, cleaner fruit, resulting in wines with better flavour concentration and fewer green or under-ripe characteristics.",
+        rubric: [
+          { en: "Names the technique (leaf removal / canopy management)", he: "מזהה את הטכניקה (הסרת עלים / ניהול הנוף)" },
+          { en: "States the mechanism (more sun exposure and airflow)", he: "מסביר את המנגנון (יותר חשיפה לשמש ואוורור)" },
+          { en: "Links to disease risk reduction", he: "מקשר להפחתת סיכון למחלות" },
+          { en: "States the outcome (riper, cleaner fruit → better concentration)", he: "מציין את התוצאה (פרי בשל ונקי יותר ← ריכוז טעמים טוב יותר)" }
+        ]
+      },
+      {
+        command: "Compare", commandHe: "השווה",
+        q: "Compare hand harvesting and machine harvesting.",
+        model: "Hand harvesting is selective, allowing pickers to leave unripe or diseased bunches behind, and is essential on steep slopes or for methods requiring whole bunches, but it is significantly more expensive. Machine harvesting is faster and cheaper, and can take place at night to keep fruit cool, but it is non-selective and only viable on relatively flat, accessible terrain. The choice reflects a trade-off between cost and selectivity, with premium producers often favouring hand harvesting despite the cost.",
+        rubric: [
+          { en: "Addresses hand harvesting (selectivity, cost, terrain)", he: "מתייחס לבציר ידני (סלקטיביות, עלות, שטח)" },
+          { en: "Addresses machine harvesting (speed, cost, terrain, night picking)", he: "מתייחס לבציר מכני (מהירות, עלות, שטח, בציר לילי)" },
+          { en: "States at least one similarity or trade-off connecting them", he: "מציין לפחות דמיון אחד או פשרה המקשרת ביניהם" },
+          { en: "Covers both methods roughly equally — not one-sided", he: "מתייחס לשתי השיטות במידה דומה — לא חד-צדדי" }
+        ]
+      }
+    ],
+    winemaking: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how maceration techniques affect the style of a red wine.",
+        model: "Extended maceration keeps the must in contact with grape skins for longer after fermentation, which extracts more tannin and colour compounds. This results in a wine with greater structure and ageing potential, suited to premium, age-worthy styles rather than wines intended for early drinking.",
+        rubric: [
+          { en: "Names the technique (extended maceration / cap management)", he: "מזהה את הטכניקה (מיצוי ממושך / ניהול הכובע)" },
+          { en: "States the mechanism (skin contact extracts tannin/colour)", he: "מסביר את המנגנון (מגע עם הקליפות מפיק טאנין/צבע)" },
+          { en: "States the outcome (structure, ageing potential)", he: "מציין את התוצאה (מבנה, פוטנציאל התיישנות)" },
+          { en: "Links to a style or quality-tier implication", he: "מקשר להשלכה על סגנון היין או רמת האיכות" }
+        ]
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        q: "Describe how a rosé wine can be made using the saignée method.",
+        model: "In the saignée method, juice is 'bled off' early from a red wine fermentation that is still in contact with the skins. This bled-off juice, now lightly coloured, is fermented separately as rosé, while the remaining must becomes a more concentrated red wine due to a higher skin-to-juice ratio.",
+        rubric: [
+          { en: "States that juice is bled off from a red fermentation", he: "מציין שהמיץ 'מדמם' מתסיסה אדומה" },
+          { en: "States the juice is fermented separately as rosé", he: "מציין שהמיץ מותסס בנפרד לרוזה" },
+          { en: "Notes the effect on the remaining red wine (more concentrated)", he: "מציין את ההשפעה על היין האדום שנותר (מרוכז יותר)" },
+          { en: "Purely descriptive — no unnecessary 'why' reasoning", he: "תיאורי בלבד — בלי הסברי 'למה' מיותרים" }
+        ]
+      }
+    ],
+    oak: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how the choice of oak vessel affects the style of a wine.",
+        model: "Ageing in a new, small barrique gives a high surface-area-to-volume ratio, extracting pronounced vanilla, toast, and tannin from the wood, while allowing slow oxygen ingress that softens the wine's structure over time. This results in a wine with greater richness, spice character, and ageing potential compared to one aged in neutral, large-format oak or stainless steel.",
+        rubric: [
+          { en: "Names the vessel variable (size / new vs old)", he: "מזהה את משתנה הכלי (גודל / חדש מול ישן)" },
+          { en: "States the mechanism (surface-area-to-volume ratio / micro-oxygenation)", he: "מסביר את המנגנון (יחס שטח-פנים לנפח / חמצון זעיר)" },
+          { en: "States the flavour/structure outcome", he: "מציין את התוצאה על טעם/מבנה" },
+          { en: "Contrasts with an alternative (large format or steel)", he: "משווה לחלופה (כלי גדול או פלדת אל-חלד)" }
+        ]
+      },
+      {
+        command: "Compare", commandHe: "השווה",
+        q: "Compare the effect of French oak and American oak on a wine's style.",
+        model: "French oak has a tighter grain, giving a more subtle contribution of spice, cedar, and fine tannin, and is generally more expensive due to the need to split rather than saw the wood. American oak has a looser grain, contributing bolder vanilla, coconut, and dill notes, and is cheaper to produce. Both can add structure and flavour complexity, but a producer's choice reflects the intensity of oak character and cost they want for a given style — traditional Rioja, for example, has historically favoured American oak.",
+        rubric: [
+          { en: "Addresses French oak (grain, flavour, cost)", he: "מתייחס לאלון צרפתי (מרקם, טעם, עלות)" },
+          { en: "Addresses American oak (grain, flavour, cost)", he: "מתייחס לאלון אמריקאי (מרקם, טעם, עלות)" },
+          { en: "States a similarity (both add flavour/structure)", he: "מציין דמיון (שניהם מוסיפים טעם/מבנה)" },
+          { en: "Gives a real style example", he: "נותן דוגמה אמיתית לסגנון יין" }
+        ]
+      }
+    ],
+    alsace: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how climatic conditions in Alsace allow Riesling to be made in both dry and sweet styles.",
+        model: "Alsace is protected by the Vosges Mountains, causing a rain shadow that results in low rainfall and reduced disease pressure. This means grapes can safely hang on the vine well past normal ripeness. Combined with a large diurnal range, sugar accumulates gradually while acidity is preserved, allowing producers to pick at different points — from dry, to late harvest, to botrytized Sélection de Grains Nobles in the right vintages.",
+        rubric: [
+          { en: "Names the factor (Vosges Mountains / rain shadow)", he: "מזהה את הגורם (הרי הווז' / צל גשם)" },
+          { en: "States the mechanism (low rainfall → extended hang time possible)", he: "מסביר את המנגנון (מעט גשם ← אפשר להשאיר ענבים זמן רב יותר)" },
+          { en: "Mentions diurnal range's role in sugar/acid balance", he: "מזכיר את תפקיד טווח היום-לילה באיזון סוכר/חומצה" },
+          { en: "Names at least two resulting styles (dry, late harvest, SGN)", he: "מציין לפחות שני סגנונות יין שנוצרים (יבש, בציר מאוחר, SGN)" }
+        ]
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        q: "Describe the range of grape varieties grown in Alsace and their characteristics.",
+        model: "Alsace's key varieties are Riesling, which retains high acidity and ages well; Gewurztraminer, which is highly aromatic with low acidity; Pinot Gris, which is full-bodied and can be made dry or sweet; and Muscat, which is aromatic and usually made dry. Wines are typically labelled by grape variety rather than by place.",
+        rubric: [
+          { en: "Lists at least 3 of the 4 key grapes", he: "מציין לפחות 3 מתוך 4 הזנים המרכזיים" },
+          { en: "States a defining characteristic for each grape named", he: "מציין מאפיין מגדיר לכל זן שהוזכר" },
+          { en: "Notes the varietal-labelling convention", he: "מציין את המוסכמה של תיוג לפי זן" },
+          { en: "Purely descriptive facts, no causal chain", he: "עובדות תיאוריות בלבד, בלי שרשרת סיבתית" }
+        ]
+      }
+    ],
+    argentina: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain why irrigation is necessary in Mendoza and how it can be used to affect wine quality.",
+        model: "Mendoza sits in the rain shadow of the Andes, receiving only around 200mm of rainfall per year, insufficient for vine growth. This means irrigation using Andean snowmelt is essential for survival. Because rainfall is minimal, growers can precisely control water application through deficit irrigation, withholding water at key growth stages to concentrate flavour and reduce berry size, resulting in more concentrated, higher-quality fruit than under natural rainfall alone.",
+        rubric: [
+          { en: "States the climate cause (Andes rain shadow, low rainfall)", he: "מציין את הגורם האקלימי (צל הגשם של האנדים, מעט גשם)" },
+          { en: "States irrigation is necessary for survival (snowmelt)", he: "מציין שההשקיה הכרחית להישרדות (שלג נמס)" },
+          { en: "Explains deficit irrigation as a separate quality tool", he: "מסביר את השקיית המחסור ככלי איכות נפרד" },
+          { en: "Two-part structure: necessity, then quality control", he: "מבנה דו-חלקי: הכרח, ולאחר מכן בקרת איכות" }
+        ]
+      },
+      {
+        command: "Discuss", commandHe: "דון",
+        q: "Discuss how altitude affects wine quality in Mendoza.",
+        model: "Altitude affects Mendoza's wine quality in several ways. Higher-altitude sites, such as those in the Uco Valley at 1,500m or more, receive greater UV exposure, which can concentrate phenolic compounds in grape skins. Altitude also widens the diurnal temperature range, allowing sugar to build during warm days while acidity is preserved during cool nights. In addition, higher sites often have more reliable access to Andean snowmelt for irrigation. Taken together, these factors mean altitude is now a significant quality marker in Mendoza, with many premium producers specifically seeking out high-altitude vineyard sites.",
+        rubric: [
+          { en: "Covers more than one factor (UV, diurnal range, snowmelt access)", he: "מכסה יותר מגורם אחד (UV, טווח יום-לילה, גישה לשלג נמס)" },
+          { en: "Links the factors to a quality outcome, not just listing them", he: "מקשר את הגורמים לתוצאת איכות, לא רק מפרט אותם" },
+          { en: "Names a specific place example (Uco Valley)", he: "נותן דוגמה ספציפית למקום (עמק אוקו)" },
+          { en: "Reaches an overall judgement or conclusion", he: "מגיע למסקנה כוללת" }
+        ]
+      }
+    ],
+    bordeaux: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain why Cabernet Sauvignon dominates the Left Bank while Merlot dominates the Right Bank.",
+        model: "The Left Bank has well-drained gravel soils that retain daytime heat, suiting the late-ripening, vigorous Cabernet Sauvignon, which needs a long warm season. The Right Bank has cooler, water-retentive clay and limestone, suiting the earlier-ripening Merlot, more prone to drought stress. This means the two banks favour different grapes based on how well each variety's ripening needs match the soil's drainage and heat-retention properties.",
+        rubric: [
+          { en: "States the Left Bank soil and its property (gravel, drainage/heat)", he: "מציין את קרקע הגדה השמאלית ותכונתה (חצץ, ניקוז/חום)" },
+          { en: "States the Right Bank soil and its property (clay/limestone, moisture)", he: "מציין את קרקע הגדה הימנית ותכונתה (חרסית/גיר, לחות)" },
+          { en: "Links each grape's ripening need to the matching soil", he: "מקשר את צורך ההבשלה של כל זן לקרקע המתאימה" },
+          { en: "Addresses both banks — not one-sided", he: "מתייחס לשתי הגדות — לא חד-צדדי" }
+        ]
+      },
+      {
+        command: "Compare", commandHe: "השווה",
+        q: "Compare the 1855 Classification and the Saint-Émilion Classification.",
+        model: "The 1855 Classification ranks Left Bank châteaux (plus Sauternes) into five tiers and has been revised only once since its creation, making it a largely fixed historical ranking. The Saint-Émilion Classification, by contrast, is revised roughly every ten years, allowing producers to be promoted or demoted based on current quality. Both systems rank individual producers or estates rather than the appellation as a whole, but the Saint-Émilion system responds to change over time while the 1855 Classification largely reflects nineteenth-century reputation.",
+        rubric: [
+          { en: "States a similarity (both rank individual producers/estates)", he: "מציין דמיון (שתיהן מדרגות יצרנים/אחוזות בודדים)" },
+          { en: "States a key difference (fixed vs periodically revised)", he: "מציין הבדל מרכזי (קבוע מול מתעדכן מעת לעת)" },
+          { en: "Notes which regions each system covers", he: "מציין אילו אזורים כל מערכת מכסה" },
+          { en: "Addresses both classifications roughly equally", he: "מתייחס לשתי השיטות במידה דומה" }
+        ]
+      }
+    ],
+    burgundy: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        q: "Explain how Burgundy's appellation hierarchy reflects differences in vineyard quality.",
+        model: "Burgundy's appellation system is based on a hierarchy of vineyard sites, from broad regional appellations up to tightly delimited Grand Cru parcels. This is due to centuries of observation of how soil, drainage, and aspect vary even within a single slope on the Côte d'Or, meaning the narrowest, most historically consistent sites were identified as Grand Cru. This results in wines from higher tiers commanding significantly higher prices, reflecting both scarcity and more consistent quality.",
+        rubric: [
+          { en: "Names the hierarchy structure (regional → village → 1er → grand cru)", he: "מזהה את מבנה ההיררכיה (אזורי ← כפרי ← פרמייה ← גרנד קרו)" },
+          { en: "States the mechanism (historical observation of soil/drainage/aspect)", he: "מסביר את המנגנון (תצפית היסטורית על קרקע/ניקוז/כיוון)" },
+          { en: "Links tier to price/scarcity outcome", he: "מקשר את הדרגה לתוצאה של מחיר/נדירות" },
+          { en: "Names the Côte d'Or as the core example", he: "מזכיר את קוט דור כדוגמה המרכזית" }
+        ]
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        q: "Describe the differences between Village, Premier Cru, and Grand Cru Burgundy.",
+        model: "Village-level wine is sourced from vineyards within a specific commune, such as Gevrey-Chambertin, and makes up roughly 35% of production. Premier Cru wine comes from named, higher-quality vineyard parcels within a village, at around 10% of production. Grand Cru wine comes from the very top vineyard sites, which have their own appellation separate from the village name, and make up only around 1–2% of production.",
+        rubric: [
+          { en: "States what defines each of the three tiers", he: "מציין מה מגדיר כל אחת משלוש הדרגות" },
+          { en: "Notes the approximate share of production for at least two tiers", he: "מציין את חלק הייצור המשוער של לפחות שתי דרגות" },
+          { en: "Notes that Grand Cru has its own appellation name", he: "מציין שלגרנד קרו יש שם מינוח משלו" },
+          { en: "Purely descriptive facts, ordered broad to narrow", he: "עובדות תיאוריות בלבד, מסודרות מהרחב לצר" }
+        ]
+      }
+    ]
+  };
+
+  var GROUP_ORDER = ["practice", "foundations", "regions"];
+  var GROUP_LABELS = {
+    practice: { en: "Practice", he: "תרגול" },
+    foundations: { en: "Foundations", he: "יסודות" },
+    regions: { en: "Regions", he: "אזורים" }
+  };
+  var PRACTICE_ITEMS = [
+    { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
+    { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
+  ];
 
   /* ============ STATE ============ */
 
   var STORAGE_KEY = "fieldsheets-progress-v1";
+  var WRITTEN_LOG_KEY = "fieldsheets-written-log-v1";
+  var MCQ_STATS_KEY = "fieldsheets-mcq-stats-v1";
   var state = loadProgress();
-  var currentTopic = null; // null = home
+  var writtenLog = loadWrittenLog();
+  var mcqStats = loadMcqStats();
+  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice"
+
+  var wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
+  var mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
 
   function loadProgress() {
     try {
@@ -601,6 +897,24 @@
   }
   function saveProgress() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function loadWrittenLog() {
+    try {
+      var raw = localStorage.getItem(WRITTEN_LOG_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+  function saveWrittenLog() {
+    try { localStorage.setItem(WRITTEN_LOG_KEY, JSON.stringify(writtenLog)); } catch (e) {}
+  }
+  function loadMcqStats() {
+    try {
+      var raw = localStorage.getItem(MCQ_STATS_KEY);
+      return raw ? JSON.parse(raw) : { best: 0, lastScore: null, lastTotal: null };
+    } catch (e) { return { best: 0, lastScore: null, lastTotal: null }; }
+  }
+  function saveMcqStats() {
+    try { localStorage.setItem(MCQ_STATS_KEY, JSON.stringify(mcqStats)); } catch (e) {}
   }
   function topicStatus(id) {
     var s = state[id];
@@ -622,17 +936,27 @@
       groupWrap.className = "nav-group";
       var label = document.createElement("div");
       label.className = "nav-label";
-      label.textContent = GROUP_LABELS[group];
+      label.innerHTML = GROUP_LABELS[group].en + '<span class="nav-label-he">' + GROUP_LABELS[group].he + '</span>';
       groupWrap.appendChild(label);
 
-      TOPICS.filter(function (t) { return t.group === group; }).forEach(function (t) {
-        var btn = document.createElement("button");
-        btn.className = "nav-item" + (currentTopic === t.id ? " active" : "");
-        var status = topicStatus(t.id);
-        btn.innerHTML = '<span class="nav-item-title">' + t.title + '</span><span class="chip ' + status + '"></span>';
-        btn.addEventListener("click", function () { navigate(t.id); });
-        groupWrap.appendChild(btn);
-      });
+      if (group === "practice") {
+        PRACTICE_ITEMS.forEach(function (p) {
+          var btn = document.createElement("button");
+          btn.className = "nav-item" + (currentView === p.id ? " active" : "");
+          btn.innerHTML = '<span class="nav-item-title">' + p.title + '<span class="nav-item-he">' + p.titleHe + '</span></span>';
+          btn.addEventListener("click", function () { navigate(p.id); });
+          groupWrap.appendChild(btn);
+        });
+      } else {
+        TOPICS.filter(function (t) { return t.group === group; }).forEach(function (t) {
+          var btn = document.createElement("button");
+          btn.className = "nav-item" + (currentView === t.id ? " active" : "");
+          var status = topicStatus(t.id);
+          btn.innerHTML = '<span class="nav-item-title">' + t.title + '</span><span class="chip ' + status + '"></span>';
+          btn.addEventListener("click", function () { navigate(t.id); });
+          groupWrap.appendChild(btn);
+        });
+      }
       container.appendChild(groupWrap);
     });
 
@@ -715,7 +1039,7 @@
     main.innerHTML =
       '<div class="home-hero">' +
         '<h1>Field Sheets</h1>' +
-        '<p>A systematic wine primer built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here.</p>' +
+        '<p>A systematic wine primer built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here. For drilling exam technique directly, head to <strong>Practice</strong> at the top of the sidebar for written self-marking and shuffled multiple-choice sets.</p>' +
       '</div>' +
       '<div class="home-table-wrap"><table class="ledger">' +
         '<tr><th>Section</th><th>Topic</th><th>Status</th></tr>' +
@@ -831,14 +1155,360 @@
     });
   }
 
+  /* ============ RENDER: COMMAND WORD GLOSSARY ============ */
+
+  function renderGlossary() {
+    var rows = COMMAND_GLOSSARY.map(function (c) {
+      return '<div class="glossary-row"><div class="gw">' + c.en + '<span class="he">' + c.he + '</span></div>' +
+        '<div>' + c.want + '<div class="he" style="margin-top:0.25em;">' + c.wantHe + '</div></div></div>';
+    }).join("");
+    return '<details class="glossary"><summary>Command words — know these cold <span class="he">מילות פעולה — תדעו בעל פה</span></summary>' +
+      '<div class="glossary-body">' + rows + '</div></details>';
+  }
+
+  /* ============ RENDER: WRITTEN PRACTICE ============ */
+
+  function allWrittenPrompts(filter) {
+    var list = [];
+    TOPICS.forEach(function (t) {
+      if (filter !== "all" && t.group !== filter) return;
+      (WRITTEN[t.id] || []).forEach(function (w, idx) {
+        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: w });
+      });
+    });
+    return list;
+  }
+
+  function pickRandomPrompt(filter) {
+    var pool = allWrittenPrompts(filter);
+    if (!pool.length) return null;
+    var candidates = pool;
+    if (wpState.current && pool.length > 1) {
+      var curKey = wpState.current.topicId + ":" + wpState.current.idx;
+      candidates = pool.filter(function (p) { return (p.topicId + ":" + p.idx) !== curKey; });
+    }
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  function resetWpAnswerState() {
+    wpState.userAnswer = "";
+    wpState.revealed = false;
+    wpState.checkedRubric = {};
+    wpState.lostTo = null;
+  }
+
+  function renderWrittenPractice() {
+    var main = document.getElementById("main");
+    if (!wpState.current) wpState.current = pickRandomPrompt(wpState.filter);
+    var entry = wpState.current;
+
+    var filterLabels = { all: ["All", "הכל"], foundations: ["Foundations", "יסודות"], regions: ["Regions", "אזורים"] };
+    var filterChips = ["all", "foundations", "regions"].map(function (f) {
+      return '<button class="filter-chip' + (wpState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f][0] + ' · ' + filterLabels[f][1] + '</button>';
+    }).join("");
+
+    var cardHtml;
+    if (entry) {
+      var w = entry.data;
+      var rubricHtml = w.rubric.map(function (r, ri) {
+        var checked = !!wpState.checkedRubric[ri];
+        return '<li class="rubric-item' + (checked ? " checked" : "") + '" data-ri="' + ri + '">' +
+          '<input type="checkbox" ' + (checked ? "checked" : "") + ' />' +
+          '<span>' + r.en + '<span class="he">' + r.he + '</span></span></li>';
+      }).join("");
+
+      var lostOptions = [
+        ["content", "Content gap", "פער בתוכן"],
+        ["command", "Misread command word", "פירוש שגוי של מילת הפעולה"],
+        ["vocab", "Vocabulary", "אוצר מילים"],
+        ["structure", "Structure", "מבנה התשובה"],
+        ["none", "Solid answer", "תשובה טובה"]
+      ].map(function (o) {
+        return '<button class="pill-btn' + (wpState.lostTo === o[0] ? " active" : "") + '" data-lost="' + o[0] + '">' + o[1] + ' · ' + o[2] + '</button>';
+      }).join("");
+
+      cardHtml = '<div class="written-card">' +
+        '<div class="written-command">' + w.command + '<span class="he">' + w.commandHe + '</span></div>' +
+        '<span class="mcq-topic-tag">' + entry.groupLabel + ' — ' + entry.topicTitle + '</span>' +
+        '<div class="written-q">' + w.q + '</div>' +
+        '<textarea class="written-textarea" id="wpAnswer" placeholder="Write your answer here… / כתוב את התשובה שלך כאן">' + escapeHtml(wpState.userAnswer || "") + '</textarea>' +
+        '<div class="written-actions">' +
+          '<button class="btn primary" id="wpReveal">Reveal model answer &amp; rubric<span class="he">הצג תשובת מופת</span></button>' +
+          '<button class="btn" id="wpNew">New question<span class="he">שאלה חדשה</span></button>' +
+        '</div>' +
+        (wpState.revealed ?
+          '<div class="reveal-block">' +
+            '<div class="callout"><span class="callout-label">Model answer<span class="he"> · תשובת מופת</span></span><blockquote>"' + w.model + '"</blockquote></div>' +
+            '<ul class="rubric-list">' + rubricHtml + '</ul>' +
+            '<div class="lost-to-row"><span class="lost-to-label">Marks likely lost to<span class="he">נקודות שאבדו בגלל</span></span><div class="pill-group">' + lostOptions + '</div></div>' +
+            '<div class="written-actions"><button class="btn primary" id="wpSave" ' + (wpState.lostTo ? "" : "disabled") + '>Save to my log<span class="he">שמור ביומן שלי</span></button></div>' +
+          '</div>'
+        : "") +
+      '</div>';
+    } else {
+      cardHtml = '<div class="written-card">No prompts in this filter yet.</div>';
+    }
+
+    main.innerHTML =
+      '<div class="practice-hero">' +
+        '<h2>Written Practice</h2>' +
+        '<div class="he-line">תרגול כתיבה — כתבו תשובה, גלו תשובת מופת, ודרגו את עצמכם</div>' +
+        '<p class="sub">Pick a question, write your answer under real exam conditions, then reveal a model answer and self-mark against the checklist — the same process from <code>06_past_papers/log.md</code>, now interactive.</p>' +
+      '</div>' +
+      '<div class="filter-row">' + filterChips + '</div>' +
+      renderGlossary() +
+      cardHtml +
+      renderWrittenLog();
+
+    wireWrittenPractice();
+  }
+
+  function renderWrittenLog() {
+    if (!writtenLog.length) {
+      return '<div class="log-section"><h3>My log <span style="font-weight:400;color:var(--muted);">· היומן שלי</span></h3>' +
+        '<div class="log-table-wrap"><div class="log-empty">No saved answers yet — save your first self-marked answer above.<br>עדיין אין תשובות שמורות — שמרו את התשובה הראשונה שלכם למעלה.</div></div></div>';
+    }
+    var lostLabels = { content: "Content gap", command: "Command word", vocab: "Vocabulary", structure: "Structure", none: "Solid answer" };
+    var rows = writtenLog.map(function (e, i) {
+      return '<tr><td>' + e.date + '</td><td>' + e.topicTitle + '</td><td>' + e.command + '</td><td>' + e.rubricChecked + ' / ' + e.rubricTotal + '</td><td>' + (lostLabels[e.lostTo] || e.lostTo) + '</td><td><button class="log-del" data-logidx="' + i + '">remove</button></td></tr>';
+    }).join("");
+    return '<div class="log-section"><h3>My log <span style="font-weight:400;color:var(--muted);">· היומן שלי</span></h3>' +
+      '<div class="log-table-wrap"><table class="log"><tr><th>Date</th><th>Topic</th><th>Command</th><th>Self-check</th><th>Marks lost to</th><th></th></tr>' + rows + '</table></div></div>';
+  }
+
+  function wireWrittenPractice() {
+    var main = document.getElementById("main");
+    main.querySelectorAll(".filter-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        wpState.filter = btn.getAttribute("data-filter");
+        wpState.current = pickRandomPrompt(wpState.filter);
+        resetWpAnswerState();
+        renderWrittenPractice();
+      });
+    });
+    var ta = main.querySelector("#wpAnswer");
+    if (ta) ta.addEventListener("input", function () { wpState.userAnswer = ta.value; });
+    var revealBtn = main.querySelector("#wpReveal");
+    if (revealBtn) revealBtn.addEventListener("click", function () {
+      wpState.revealed = true;
+      renderWrittenPractice();
+    });
+    var newBtn = main.querySelector("#wpNew");
+    if (newBtn) newBtn.addEventListener("click", function () {
+      wpState.current = pickRandomPrompt(wpState.filter);
+      resetWpAnswerState();
+      renderWrittenPractice();
+    });
+    main.querySelectorAll(".rubric-item").forEach(function (li) {
+      li.addEventListener("click", function () {
+        var ri = li.getAttribute("data-ri");
+        wpState.checkedRubric[ri] = !wpState.checkedRubric[ri];
+        renderWrittenPractice();
+      });
+    });
+    main.querySelectorAll("[data-lost]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        wpState.lostTo = btn.getAttribute("data-lost");
+        renderWrittenPractice();
+      });
+    });
+    var saveBtn = main.querySelector("#wpSave");
+    if (saveBtn) saveBtn.addEventListener("click", saveWrittenEntry);
+    main.querySelectorAll(".log-del").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var idx = parseInt(btn.getAttribute("data-logidx"), 10);
+        writtenLog.splice(idx, 1);
+        saveWrittenLog();
+        renderWrittenPractice();
+      });
+    });
+  }
+
+  function saveWrittenEntry() {
+    var entry = wpState.current;
+    var w = entry.data;
+    var checkedCount = Object.keys(wpState.checkedRubric).filter(function (k) { return wpState.checkedRubric[k]; }).length;
+    writtenLog.unshift({
+      date: new Date().toISOString().slice(0, 10),
+      topicTitle: entry.topicTitle,
+      command: w.command,
+      q: w.q,
+      answer: wpState.userAnswer || "",
+      model: w.model,
+      rubricTotal: w.rubric.length,
+      rubricChecked: checkedCount,
+      lostTo: wpState.lostTo
+    });
+    saveWrittenLog();
+    wpState.current = pickRandomPrompt(wpState.filter);
+    resetWpAnswerState();
+    renderWrittenPractice();
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  /* ============ RENDER: MULTIPLE CHOICE PRACTICE ============ */
+
+  function allMcqQuestions(filter) {
+    var list = [];
+    TOPICS.forEach(function (t) {
+      if (filter !== "all" && t.group !== filter) return;
+      t.quiz.forEach(function (q, idx) {
+        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: q });
+      });
+    });
+    return list;
+  }
+
+  function shuffleArr(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function renderMcqPractice() {
+    var main = document.getElementById("main");
+    if (mcqState.phase === "setup") main.innerHTML = renderMcqSetup();
+    else if (mcqState.phase === "running") main.innerHTML = renderMcqRunning();
+    else main.innerHTML = renderMcqSummary();
+    wireMcqPractice();
+  }
+
+  function renderMcqSetup() {
+    var filterLabels = { all: ["All topics", "כל הנושאים"], foundations: ["Foundations", "יסודות"], regions: ["Regions", "אזורים"] };
+    var filterChips = ["all", "foundations", "regions"].map(function (f) {
+      return '<button class="filter-chip' + (mcqState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f][0] + ' · ' + filterLabels[f][1] + '</button>';
+    }).join("");
+    var poolSize = allMcqQuestions(mcqState.filter).length;
+    var statsHtml = '<div class="mcq-stats-row"><span>Best score: ' + (mcqStats.best || 0) + '</span>' +
+      (mcqStats.lastScore !== null ? '<span>Last attempt: ' + mcqStats.lastScore + ' / ' + mcqStats.lastTotal + '</span>' : '') + '</div>';
+    return '<div class="practice-hero">' +
+        '<h2>Multiple Choice Practice</h2>' +
+        '<div class="he-line">שאלות אמריקאיות — תרגול עם הסבר לכל תשובה</div>' +
+        '<p class="sub">A shuffled set pulled from every topic\'s quick check. Answer, see the explanation immediately, then move on — this is drilling recall, not first-time learning.</p>' +
+      '</div>' +
+      '<div class="filter-row">' + filterChips + '</div>' +
+      statsHtml +
+      '<div class="written-actions" style="margin-top:1.2rem;"><button class="btn primary" id="mcqStart" ' + (poolSize ? "" : "disabled") + '>Start practice set (' + poolSize + ' questions)<span class="he">התחל תרגול</span></button></div>';
+  }
+
+  function renderMcqRunning() {
+    var total = mcqState.pool.length;
+    var item = mcqState.pool[mcqState.index];
+    var q = item.data;
+    var answered = mcqState.answered;
+    var optionsHtml = q.options.map(function (opt, oi) {
+      var cls = "quiz-option";
+      var letter = String.fromCharCode(65 + oi);
+      if (answered !== null) {
+        if (oi === q.correct) cls += " correct";
+        else if (oi === answered) cls += " incorrect";
+        else cls += " dimmed";
+      }
+      return '<button class="' + cls + '" data-oi="' + oi + '" ' + (answered !== null ? "disabled" : "") + '>' +
+        '<span class="opt-letter">' + letter + '</span><span>' + opt + '</span></button>';
+    }).join("");
+    var isLast = mcqState.index + 1 >= total;
+    return '<div class="mcq-progress">Question ' + (mcqState.index + 1) + ' / ' + total + ' · Score ' + mcqState.score + '</div>' +
+      '<div class="quiz-card">' +
+        '<span class="mcq-topic-tag">' + item.groupLabel + ' — ' + item.topicTitle + '</span>' +
+        '<div class="quiz-q">' + q.q + '</div>' +
+        '<div class="quiz-options">' + optionsHtml + '</div>' +
+        (answered !== null ? '<div class="quiz-explain show"><b>Why: </b>' + q.explain + '</div>' : '') +
+      '</div>' +
+      (answered !== null ?
+        '<div class="written-actions"><button class="btn primary" id="mcqNext">' + (isLast ? "See results" : "Next question") + '<span class="he">' + (isLast ? "לתוצאות" : "לשאלה הבאה") + '</span></button></div>'
+        : "");
+  }
+
+  function renderMcqSummary() {
+    var total = mcqState.results.length;
+    var itemsHtml = mcqState.results.map(function (r) {
+      return '<li class="mcq-summary-item ' + (r.correct ? "right" : "wrong") + '"><strong>' + r.topicTitle + ':</strong> ' + r.q + '<br><span style="color:var(--muted);">' + r.explain + '</span></li>';
+    }).join("");
+    return '<div class="practice-hero"><h2>Results</h2><div class="he-line">תוצאות</div></div>' +
+      '<div class="written-card"><div style="font-size:2rem;font-family:var(--font-display);">' + mcqState.score + ' / ' + total + '</div>' +
+      (mcqState.isNewBest ? '<div style="color:var(--good);font-family:var(--font-mono);font-size:0.85rem;margin-top:0.3rem;">New best score! · שיא חדש</div>' : '') +
+      '</div>' +
+      '<ul class="mcq-summary-list">' + itemsHtml + '</ul>' +
+      '<div class="written-actions" style="margin-top:1.5rem;"><button class="btn primary" id="mcqAgain">Practice again<span class="he">תרגול נוסף</span></button></div>';
+  }
+
+  function wireMcqPractice() {
+    var main = document.getElementById("main");
+    main.querySelectorAll(".filter-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        mcqState.filter = btn.getAttribute("data-filter");
+        renderMcqPractice();
+      });
+    });
+    var startBtn = main.querySelector("#mcqStart");
+    if (startBtn) startBtn.addEventListener("click", function () {
+      mcqState.pool = shuffleArr(allMcqQuestions(mcqState.filter));
+      mcqState.index = 0;
+      mcqState.score = 0;
+      mcqState.answered = null;
+      mcqState.results = [];
+      mcqState.isNewBest = false;
+      mcqState.phase = "running";
+      renderMcqPractice();
+    });
+    main.querySelectorAll(".quiz-option").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var oi = parseInt(btn.getAttribute("data-oi"), 10);
+        var item = mcqState.pool[mcqState.index];
+        var isCorrect = oi === item.data.correct;
+        mcqState.answered = oi;
+        if (isCorrect) mcqState.score++;
+        mcqState.results.push({ topicTitle: item.topicTitle, q: item.data.q, explain: item.data.explain, correct: isCorrect });
+        renderMcqPractice();
+      });
+    });
+    var nextBtn = main.querySelector("#mcqNext");
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      if (mcqState.index + 1 < mcqState.pool.length) {
+        mcqState.index++;
+        mcqState.answered = null;
+        renderMcqPractice();
+      } else {
+        var prevBest = mcqStats.best || 0;
+        mcqStats.lastScore = mcqState.score;
+        mcqStats.lastTotal = mcqState.pool.length;
+        mcqState.isNewBest = mcqState.score > prevBest && mcqState.pool.length > 0;
+        if (mcqState.isNewBest) mcqStats.best = mcqState.score;
+        saveMcqStats();
+        mcqState.phase = "summary";
+        renderMcqPractice();
+      }
+    });
+    var againBtn = main.querySelector("#mcqAgain");
+    if (againBtn) againBtn.addEventListener("click", function () {
+      mcqState.phase = "setup";
+      renderMcqPractice();
+    });
+  }
+
   /* ============ NAVIGATION ============ */
 
-  function navigate(id) {
-    currentTopic = id;
-    renderSidebar();
-    var topic = TOPICS.find(function (t) { return t.id === id; });
+  function renderCurrentView() {
+    if (currentView === "written-practice") { renderWrittenPractice(); return; }
+    if (currentView === "mcq-practice") { renderMcqPractice(); return; }
+    var topic = TOPICS.find(function (t) { return t.id === currentView; });
     if (topic) renderTopic(topic); else renderHome();
-    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  }
+
+  function navigate(id) {
+    currentView = id;
+    renderSidebar();
+    renderCurrentView();
+    window.scrollTo({ top: 0, behavior: "auto" });
     closeSidebarMobile();
   }
 
@@ -854,16 +1524,17 @@
   /* ============ RESET ============ */
 
   document.getElementById("resetBtn").addEventListener("click", function () {
-    if (window.confirm("Clear your quiz progress on this device?")) {
+    if (window.confirm("Clear all progress, saved written answers, and quiz stats on this device?\nלמחוק את כל ההתקדמות, התשובות השמורות וניקוד השאלון במכשיר הזה?")) {
       state = {};
+      writtenLog = [];
+      mcqStats = { best: 0, lastScore: null, lastTotal: null };
       saveProgress();
+      saveWrittenLog();
+      saveMcqStats();
+      wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
+      mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
       renderSidebar();
-      if (currentTopic) {
-        var t = TOPICS.find(function (t2) { return t2.id === currentTopic; });
-        renderTopic(t);
-      } else {
-        renderHome();
-      }
+      renderCurrentView();
     }
   });
 
