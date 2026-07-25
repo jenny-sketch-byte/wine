@@ -381,6 +381,20 @@
   .mcq-summary-item { padding: 0.7rem 0.9rem; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 0.86rem; line-height: 1.5; }
   .mcq-summary-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
   .mcq-summary-item.right { border-color: var(--good); background: var(--good-soft); }
+
+  /* ---------- Cold Read practice ---------- */
+  .clue-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .clue-list li { background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 0.6rem 0.8rem; font-size: 0.92rem; }
+  .clue-list li::before { content: "?"; font-family: var(--font-mono); color: var(--clay); margin-inline-end: 0.5rem; font-weight: 700; }
+  .chain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .chain-step { display: grid; grid-template-columns: 150px 1fr; gap: 0.8rem; padding: 0.55rem 0; border-top: 1px dashed var(--line); font-size: 0.9rem; }
+  .chain-step:first-child { border-top: none; }
+  .chain-step .cs-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clay); }
+  .chain-step .cs-label .he { display: block; text-transform: none; letter-spacing: 0; font-size: 1.05em; margin-top: 0.15em; }
+  .cr-answer { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--line); font-family: var(--font-display); font-size: 1.3rem; }
+  .cr-answer .source { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); margin-top: 0.3rem; text-transform: none; }
+  .cr-pair-note { margin-top: 0.9rem; }
+  .cr-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
 </style>
 
 <div class="app">
@@ -872,8 +886,124 @@
     regions: { en: "Regions", he: "אזורים" }
   };
   var PRACTICE_ITEMS = [
+    { id: "cold-read", title: "Cold Read", titleHe: "קריאה קרה" },
     { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
     { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
+  ];
+
+  var CHAIN_LABELS = [
+    { en: "Location", he: "מיקום" },
+    { en: "Climate type", he: "סוג אקלים" },
+    { en: "Ripening implication", he: "השלכה על ההבשלה" },
+    { en: "Soil — modifier", he: "קרקע — גורם משנה" },
+    { en: "Grape / style", he: "זן / סגנון" }
+  ];
+
+  var COLD_READ = [
+    {
+      id: "case-alsace",
+      clues: [
+        "Cool continental climate, protected from a major ocean by a mountain range immediately to its west.",
+        "One of the driest wine regions in its home country — around 500mm of rain per year.",
+        "Large day-to-night temperature swing for a generally cool climate."
+      ],
+      chain: [
+        "Inland, continental Western Europe, with a substantial mountain range directly on the windward side.",
+        "Cool continental — but noticeably drier than a maritime neighbour at the same latitude would be. Something is blocking rainfall.",
+        "A rain shadow keeps rainfall low and disease pressure down, meaning grapes can safely hang on the vine well past normal ripeness without rotting.",
+        "Soils are highly varied (granite, limestone, marl, sandstone), creating site-to-site variation — but the climate is what makes extended hang time possible in the first place.",
+        "Aromatic white grapes suited to high acid retention, capable of the full range from bone dry to intensely sweet, botrytized styles — all from the same variety, depending on how long it hangs."
+      ],
+      answer: "Alsace, France",
+      source: "02_regions/france/alsace.md"
+    },
+    {
+      id: "case-mendoza",
+      clues: [
+        "Semi-arid to desert climate, sitting in the rain shadow of a major mountain range.",
+        "Around 200mm of rainfall a year — far below what a vine needs unassisted.",
+        "Vineyards range from the valley floor up to 1,500 metres or more."
+      ],
+      chain: [
+        "High-altitude sites at the base of a major mountain range, far from any ocean's moderating influence.",
+        "Continental, semi-arid to desert.",
+        "Near-zero natural rainfall means vines cannot survive without irrigation — but it also means growers have precise control over water timing, unlike anywhere with real rainfall.",
+        "Not the headline factor here — altitude and deliberate water management (deficit irrigation) do more of the explanatory work than soil type alone.",
+        "A dark-skinned signature variety, concentrated by controlled water stress, with altitude-driven freshness from a wide diurnal range despite the hot, dry base climate."
+      ],
+      answer: "Mendoza, Argentina",
+      source: "02_regions/other/argentina.md"
+    },
+    {
+      id: "case-bordeaux",
+      clues: [
+        "A large estuary runs through the middle of the region, moderating temperature.",
+        "Long, mild growing season — but real year-to-year variation in quality.",
+        "Two sides of the same estuary, with very different soils just a few kilometres apart."
+      ],
+      chain: [
+        "Coastal / estuary-moderated, temperate Western Europe.",
+        "Maritime — narrow annual temperature range, rainfall spread through the year (a real risk at flowering and at harvest).",
+        "Mild enough overall to ripen multiple varieties reliably, but rainfall timing from year to year is the main quality swing factor.",
+        "This is where the story splits: one side has well-drained, heat-retaining gravel; the other has cooler, water-retentive clay and limestone. Same base climate, two different local answers to it.",
+        "A late-ripening, structured variety dominates the gravel side; an earlier-ripening, softer variety dominates the clay side — blended reds built around that split."
+      ],
+      answer: "Bordeaux, France (Left Bank / Right Bank)",
+      source: "02_regions/france/bordeaux.md"
+    },
+    {
+      id: "case-burgundy",
+      clues: [
+        "Inland, with no major body of water nearby to moderate temperature.",
+        "A single narrow escarpment where soil and aspect change dramatically over a few hundred metres.",
+        "Real frost risk at bud burst, real risk of poor fruit set, real risk of rain at harvest."
+      ],
+      chain: [
+        "Inland, continental Western Europe.",
+        "Cool continental, marginal for ripening — meaning vintage variation is a constant, real risk (frost, flowering, harvest rain).",
+        "A thin-skinned, early-budding variety is viable here specifically because summers get warm enough — but the margin for error is thin.",
+        "For once, soil IS the headline factor: centuries of observation of subtle limestone/marl and aspect differences on one narrow slope produced an extremely fine-grained vineyard hierarchy.",
+        "Highly terroir-expressive, site-driven wines, where the name of the vineyard matters more than almost anywhere else in the wine world."
+      ],
+      answer: "Burgundy (Côte d'Or), France",
+      source: "02_regions/france/burgundy.md"
+    },
+    {
+      id: "case-los-carneros",
+      clues: [
+        "Sits at the edge of a large bay, in a generally warm wine-producing state.",
+        "Regular fog and wind roll in from the water.",
+        "Latitude alone would suggest a warm climate here — the actual climate is much cooler."
+      ],
+      chain: [
+        "Adjacent to a large bay, within a state whose latitude is generally warm for wine growing.",
+        "Cooled well below what latitude predicts, by marine fog and wind.",
+        "Cooling fog plus drying wind together lower temperature and reduce disease pressure at the same time.",
+        "Secondary here — the bay's cooling effect is doing the heavy lifting, not the soil.",
+        "Suited to a thin-skinned, early-budding, cool-climate-loving variety, despite sitting inside a generally warm state."
+      ],
+      answer: "Los Carneros, California, USA",
+      source: "WSET sample paper, Question 3b",
+      pairsWith: "case-central-otago"
+    },
+    {
+      id: "case-central-otago",
+      clues: [
+        "The most southerly wine region in its country.",
+        "Unusually high altitude and inland for its country's wine regions, which are normally coastal.",
+        "Wide day-to-night temperature swing; more settled, sunnier summers than its coastal neighbours."
+      ],
+      chain: [
+        "High altitude, inland, at an extreme latitude for its hemisphere.",
+        "Continental rather than the maritime climate typical of the rest of its country — altitude and distance from the coast both push it this way.",
+        "A wide diurnal range lets sugar build on sunny days while acid is preserved on cold nights.",
+        "Secondary to the altitude/continentality story here.",
+        "Again a thin-skinned, cool-climate variety — arriving at the same answer as a bay-cooled site, by a completely different mechanism."
+      ],
+      answer: "Central Otago, New Zealand",
+      source: "WSET sample paper, Question 3b",
+      pairsWith: "case-los-carneros"
+    }
   ];
 
   /* ============ STATE ============ */
@@ -881,13 +1011,16 @@
   var STORAGE_KEY = "fieldsheets-progress-v1";
   var WRITTEN_LOG_KEY = "fieldsheets-written-log-v1";
   var MCQ_STATS_KEY = "fieldsheets-mcq-stats-v1";
+  var COLDREAD_STATS_KEY = "fieldsheets-coldread-stats-v1";
   var state = loadProgress();
   var writtenLog = loadWrittenLog();
   var mcqStats = loadMcqStats();
-  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice"
+  var crStats = loadColdReadStats();
+  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "cold-read"
 
   var wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
   var mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
+  var crState = { current: null, revealed: false, rating: null };
 
   function loadProgress() {
     try {
@@ -915,6 +1048,15 @@
   }
   function saveMcqStats() {
     try { localStorage.setItem(MCQ_STATS_KEY, JSON.stringify(mcqStats)); } catch (e) {}
+  }
+  function loadColdReadStats() {
+    try {
+      var raw = localStorage.getItem(COLDREAD_STATS_KEY);
+      return raw ? JSON.parse(raw) : { attempts: 0, nailed: 0, partial: 0, missed: 0 };
+    } catch (e) { return { attempts: 0, nailed: 0, partial: 0, missed: 0 }; }
+  }
+  function saveColdReadStats() {
+    try { localStorage.setItem(COLDREAD_STATS_KEY, JSON.stringify(crStats)); } catch (e) {}
   }
   function topicStatus(id) {
     var s = state[id];
@@ -1238,7 +1380,7 @@
         '</div>' +
         (wpState.revealed ?
           '<div class="reveal-block">' +
-            '<div class="callout"><span class="callout-label">Model answer<span class="he"> · תשובת מופת</span></span><blockquote>"' + w.model + '"</blockquote></div>' +
+            '<div class="callout"><span class="callout-label">Model answer · <span class="he">תשובת מופת</span></span><blockquote>"' + w.model + '"</blockquote></div>' +
             '<ul class="rubric-list">' + rubricHtml + '</ul>' +
             '<div class="lost-to-row"><span class="lost-to-label">Marks likely lost to<span class="he">נקודות שאבדו בגלל</span></span><div class="pill-group">' + lostOptions + '</div></div>' +
             '<div class="written-actions"><button class="btn primary" id="wpSave" ' + (wpState.lostTo ? "" : "disabled") + '>Save to my log<span class="he">שמור ביומן שלי</span></button></div>' +
@@ -1495,11 +1637,113 @@
     });
   }
 
+  /* ============ RENDER: COLD READ PRACTICE ============ */
+
+  function pickRandomCase() {
+    var candidates = COLD_READ;
+    if (crState.current && COLD_READ.length > 1) {
+      candidates = COLD_READ.filter(function (c) { return c.id !== crState.current.id; });
+    }
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  function renderColdRead() {
+    var main = document.getElementById("main");
+    if (!crState.current) crState.current = pickRandomCase();
+    var c = crState.current;
+
+    var cluesHtml = c.clues.map(function (clue) { return '<li>' + clue + '</li>'; }).join("");
+
+    var chainHtml = "";
+    var answerBlock = "";
+    if (crState.revealed) {
+      chainHtml = '<ul class="chain-list">' + c.chain.map(function (step, i) {
+        return '<li class="chain-step"><span class="cs-label">' + CHAIN_LABELS[i].en + '<span class="he">' + CHAIN_LABELS[i].he + '</span></span><span>' + step + '</span></li>';
+      }).join("") + '</ul>';
+
+      var pairNote = "";
+      if (c.pairsWith) {
+        var paired = COLD_READ.find(function (p) { return p.id === c.pairsWith; });
+        if (paired) {
+          pairNote = '<div class="callout cr-pair-note"><span class="callout-label">Compare · <span class="he">השוו</span></span>' +
+            'This region reaches a similar climatic outcome to <strong>' + paired.answer + '</strong> — by a completely different mechanism. Read that case next to see the contrast.</div>';
+        }
+      }
+
+      var ratingOptions = [
+        ["nailed", "Nailed it", "קלעתי בול"],
+        ["partial", "Partially", "חלקית"],
+        ["missed", "Missed it", "פספסתי"]
+      ].map(function (o) {
+        return '<button class="pill-btn' + (crState.rating === o[0] ? " active" : "") + '" data-rating="' + o[0] + '">' + o[1] + ' · ' + o[2] + '</button>';
+      }).join("");
+
+      answerBlock = '<div class="cr-answer">' + c.answer + '<span class="source">' + c.source + '</span></div>' +
+        chainHtml + pairNote +
+        '<div class="lost-to-row"><span class="lost-to-label">How did your prediction hold up?<span class="he">איך הניחוש שלך הסתדר?</span></span><div class="pill-group">' + ratingOptions + '</div></div>';
+    }
+
+    var statsHtml = '<div class="cr-stats-row"><span>Attempts: ' + crStats.attempts + '</span><span>Nailed: ' + crStats.nailed + '</span><span>Partial: ' + crStats.partial + '</span><span>Missed: ' + crStats.missed + '</span></div>';
+
+    main.innerHTML =
+      '<div class="practice-hero">' +
+        '<h2>Cold Read</h2>' +
+        '<div class="he-line">קריאה קרה — נחשו את האזור מהרמזים בלבד, לפני שתגלו את התשובה</div>' +
+        '<p class="sub">No region name. Just bare geographic facts. Run the chain — location, climate type, ripening implication, soil as modifier, grape/style — before you reveal the answer. This is the reverse-engineering framework from <code>00_toolkit/reverse_engineering_framework.md</code>, as a drill.</p>' +
+      '</div>' +
+      statsHtml +
+      '<div class="written-card">' +
+        '<span class="mcq-topic-tag">The clues</span>' +
+        '<ul class="clue-list">' + cluesHtml + '</ul>' +
+        (crState.revealed ?
+          '' :
+          '<div class="written-actions"><button class="btn primary" id="crReveal">Reveal the chain<span class="he">הצג את השרשרת</span></button></div>'
+        ) +
+        answerBlock +
+        (crState.revealed ? '<div class="written-actions"><button class="btn primary" id="crNext">Next region<span class="he">אזור הבא</span></button></div>' : "") +
+      '</div>';
+
+    wireColdRead();
+  }
+
+  function wireColdRead() {
+    var main = document.getElementById("main");
+    var revealBtn = main.querySelector("#crReveal");
+    if (revealBtn) revealBtn.addEventListener("click", function () {
+      crState.revealed = true;
+      renderColdRead();
+    });
+    var nextBtn = main.querySelector("#crNext");
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      crState.current = pickRandomCase();
+      crState.revealed = false;
+      crState.rating = null;
+      renderColdRead();
+    });
+    main.querySelectorAll("[data-rating]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var rating = btn.getAttribute("data-rating");
+        if (crState.rating === null) {
+          crStats.attempts++;
+          crStats[rating]++;
+          saveColdReadStats();
+        } else if (crState.rating !== rating) {
+          crStats[crState.rating]--;
+          crStats[rating]++;
+          saveColdReadStats();
+        }
+        crState.rating = rating;
+        renderColdRead();
+      });
+    });
+  }
+
   /* ============ NAVIGATION ============ */
 
   function renderCurrentView() {
     if (currentView === "written-practice") { renderWrittenPractice(); return; }
     if (currentView === "mcq-practice") { renderMcqPractice(); return; }
+    if (currentView === "cold-read") { renderColdRead(); return; }
     var topic = TOPICS.find(function (t) { return t.id === currentView; });
     if (topic) renderTopic(topic); else renderHome();
   }
@@ -1528,11 +1772,14 @@
       state = {};
       writtenLog = [];
       mcqStats = { best: 0, lastScore: null, lastTotal: null };
+      crStats = { attempts: 0, nailed: 0, partial: 0, missed: 0 };
       saveProgress();
       saveWrittenLog();
       saveMcqStats();
+      saveColdReadStats();
       wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
       mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
+      crState = { current: null, revealed: false, rating: null };
       renderSidebar();
       renderCurrentView();
     }
