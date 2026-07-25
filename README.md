@@ -6,14 +6,28 @@ Goal: pass efficiently as a non-native English speaker, with strong written-answ
 ## How this repo is organized
 
 ```
-00_toolkit/          Command words, sentence templates, vocab — use these EVERY session
+00_toolkit/          Command words, sentence templates, vocab, question patterns,
+                      the reverse-engineering framework — use these EVERY session
 01_foundations/       Climate, viticulture, winemaking, oak — the reusable building blocks
 02_regions/           One file per region, consistent template
 03_sparkling/         Method comparison, dosage, Champagne
 04_fortified/         Port, Sherry, Madeira, VDN
 05_business/          Supply chain, pricing, distribution
-06_past_papers/       Practice answers + self-marking notes
+06_past_papers/       Real WSET sample paper + practice answers/self-marking notes
+07_training_video/    Script for a "how to answer" technique training video
+web/                  Field Sheets — interactive study + practice site (written self-
+                      marking trainer, multiple-choice drills), open web/index.html
 ```
+
+## The master lens: reverse-engineering
+
+Before studying any new region, read `00_toolkit/reverse_engineering_framework.md`. The
+core idea: climate/altitude sets the ceiling, soil modifies within it, everything else
+(grape choice, viticulture, style) follows logically. Master this chain and you can
+construct a plausible answer for a region you've never specifically studied — which is
+what the exam is actually testing. `00_toolkit/question_patterns.md` catalogs the real
+question archetypes and mark logic, built directly from the sample paper in
+`06_past_papers/`.
 
 ## The rule for every new topic
 1. Cover content with Claude using the region/topic template (see `00_toolkit/region_template.md`)
@@ -52,6 +66,14 @@ Goal: pass efficiently as a non-native English speaker, with strong written-answ
 - [ ] Rhône, Loire, Champagne — remaining France priority regions
 - [ ] Italy, Spain, Germany, USA, Australia/NZ, other remaining regions
 - [ ] Sparkling (03), Fortified (04), Business (05)
+- [ ] Practical/service knowledge (storage, decanting, serving) — a real exam category,
+      not yet covered anywhere in this repo (identified from the sample paper)
+
+## Real exam material on file
+- [x] WSET Level 3 Sample Short Written Answer Paper, Oct 2017 (`06_past_papers/wset_l3_sample_paper_oct2017.pdf`)
+- [x] Reverse-engineering framework, built from that paper (`00_toolkit/reverse_engineering_framework.md`)
+- [x] Question-pattern taxonomy + mark logic, built from that paper (`00_toolkit/question_patterns.md`)
+- [x] Video training script — command words, marks logic, Golden Thread technique (`07_training_video/script.md`)
 
 ## Core exam facts to keep in view
 - Pass: 55% | Distinction: 80%
