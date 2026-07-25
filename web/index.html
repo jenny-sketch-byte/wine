@@ -305,17 +305,9 @@
 
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  /* ---------- Bilingual chrome ---------- */
-  .he { direction: rtl; unicode-bidi: embed; }
-  .nav-label-he { font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 0.5em; color: var(--faint); }
-  .nav-item-he { display: block; font-size: 0.72rem; color: var(--faint); margin-top: 0.05rem; font-weight: 400; }
-  .btn .he, .filter-chip .he { font-size: 0.85em; opacity: 0.85; margin-left: 0.4em; }
-  .callout-label .he { text-transform: none; letter-spacing: 0; }
-
   /* ---------- Practice hero / filters ---------- */
   .practice-hero { margin-bottom: 1.5rem; }
   .practice-hero h2 { font-size: 2rem; }
-  .practice-hero .he-line { color: var(--muted); font-size: 1rem; margin-top: 0.25rem; }
   .practice-hero p.sub { color: var(--muted); max-width: 62ch; margin-top: 0.7rem; }
 
   .filter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
@@ -391,8 +383,8 @@
   .chain-step:first-child { border-top: none; }
   .chain-step .cs-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clay); }
   .chain-step .cs-label .he { display: block; text-transform: none; letter-spacing: 0; font-size: 1.05em; margin-top: 0.15em; }
-  .cr-answer { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--line); font-family: var(--font-display); font-size: 1.3rem; }
-  .cr-answer .source { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); margin-top: 0.3rem; text-transform: none; }
+  .cr-answer { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.1rem; }
+  .cr-answer .source { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); margin-top: 0.3rem; }
   .cr-pair-note { margin-top: 0.9rem; }
   .cr-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
 </style>
@@ -973,7 +965,7 @@
       clues: [
         "Sits at the edge of a large bay, in a generally warm wine-producing state.",
         "Regular fog and wind roll in from the water.",
-        "Latitude alone would suggest a warm climate here — the actual climate is much cooler."
+        "Marine fog and wind from the bay cool this generally warm California region well below its latitude's typical temperature."
       ],
       chain: [
         "Adjacent to a large bay, within a state whose latitude is generally warm for wine growing.",
@@ -1078,14 +1070,14 @@
       groupWrap.className = "nav-group";
       var label = document.createElement("div");
       label.className = "nav-label";
-      label.innerHTML = GROUP_LABELS[group].en + '<span class="nav-label-he">' + GROUP_LABELS[group].he + '</span>';
+      label.textContent = GROUP_LABELS[group].en;
       groupWrap.appendChild(label);
 
       if (group === "practice") {
         PRACTICE_ITEMS.forEach(function (p) {
           var btn = document.createElement("button");
           btn.className = "nav-item" + (currentView === p.id ? " active" : "");
-          btn.innerHTML = '<span class="nav-item-title">' + p.title + '<span class="nav-item-he">' + p.titleHe + '</span></span>';
+          btn.innerHTML = '<span class="nav-item-title">' + p.title + '</span>';
           btn.addEventListener("click", function () { navigate(p.id); });
           groupWrap.appendChild(btn);
         });
@@ -1301,10 +1293,10 @@
 
   function renderGlossary() {
     var rows = COMMAND_GLOSSARY.map(function (c) {
-      return '<div class="glossary-row"><div class="gw">' + c.en + '<span class="he">' + c.he + '</span></div>' +
-        '<div>' + c.want + '<div class="he" style="margin-top:0.25em;">' + c.wantHe + '</div></div></div>';
+      return '<div class="glossary-row"><div class="gw">' + c.en + '</div>' +
+        '<div>' + c.want + '</div></div>';
     }).join("");
-    return '<details class="glossary"><summary>Command words — know these cold <span class="he">מילות פעולה — תדעו בעל פה</span></summary>' +
+    return '<details class="glossary"><summary>Command words — know these cold</summary>' +
       '<div class="glossary-body">' + rows + '</div></details>';
   }
 
@@ -1344,9 +1336,9 @@
     if (!wpState.current) wpState.current = pickRandomPrompt(wpState.filter);
     var entry = wpState.current;
 
-    var filterLabels = { all: ["All", "הכל"], foundations: ["Foundations", "יסודות"], regions: ["Regions", "אזורים"] };
+    var filterLabels = { all: "All", foundations: "Foundations", regions: "Regions" };
     var filterChips = ["all", "foundations", "regions"].map(function (f) {
-      return '<button class="filter-chip' + (wpState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f][0] + ' · ' + filterLabels[f][1] + '</button>';
+      return '<button class="filter-chip' + (wpState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f] + '</button>';
     }).join("");
 
     var cardHtml;
@@ -1356,34 +1348,34 @@
         var checked = !!wpState.checkedRubric[ri];
         return '<li class="rubric-item' + (checked ? " checked" : "") + '" data-ri="' + ri + '">' +
           '<input type="checkbox" ' + (checked ? "checked" : "") + ' />' +
-          '<span>' + r.en + '<span class="he">' + r.he + '</span></span></li>';
+          '<span>' + r.en + '</span></li>';
       }).join("");
 
       var lostOptions = [
-        ["content", "Content gap", "פער בתוכן"],
-        ["command", "Misread command word", "פירוש שגוי של מילת הפעולה"],
-        ["vocab", "Vocabulary", "אוצר מילים"],
-        ["structure", "Structure", "מבנה התשובה"],
-        ["none", "Solid answer", "תשובה טובה"]
+        ["content", "Content gap"],
+        ["command", "Misread command word"],
+        ["vocab", "Vocabulary"],
+        ["structure", "Structure"],
+        ["none", "Solid answer"]
       ].map(function (o) {
-        return '<button class="pill-btn' + (wpState.lostTo === o[0] ? " active" : "") + '" data-lost="' + o[0] + '">' + o[1] + ' · ' + o[2] + '</button>';
+        return '<button class="pill-btn' + (wpState.lostTo === o[0] ? " active" : "") + '" data-lost="' + o[0] + '">' + o[1] + '</button>';
       }).join("");
 
       cardHtml = '<div class="written-card">' +
-        '<div class="written-command">' + w.command + '<span class="he">' + w.commandHe + '</span></div>' +
+        '<div class="written-command">' + w.command + '</div>' +
         '<span class="mcq-topic-tag">' + entry.groupLabel + ' — ' + entry.topicTitle + '</span>' +
         '<div class="written-q">' + w.q + '</div>' +
-        '<textarea class="written-textarea" id="wpAnswer" placeholder="Write your answer here… / כתוב את התשובה שלך כאן">' + escapeHtml(wpState.userAnswer || "") + '</textarea>' +
+        '<textarea class="written-textarea" id="wpAnswer" placeholder="Write your answer here…">' + escapeHtml(wpState.userAnswer || "") + '</textarea>' +
         '<div class="written-actions">' +
-          '<button class="btn primary" id="wpReveal">Reveal model answer &amp; rubric<span class="he">הצג תשובת מופת</span></button>' +
-          '<button class="btn" id="wpNew">New question<span class="he">שאלה חדשה</span></button>' +
+          '<button class="btn primary" id="wpReveal">Reveal model answer &amp; rubric</button>' +
+          '<button class="btn" id="wpNew">New question</button>' +
         '</div>' +
         (wpState.revealed ?
           '<div class="reveal-block">' +
-            '<div class="callout"><span class="callout-label">Model answer · <span class="he">תשובת מופת</span></span><blockquote>"' + w.model + '"</blockquote></div>' +
+            '<div class="callout"><span class="callout-label">Model answer</span><blockquote>"' + w.model + '"</blockquote></div>' +
             '<ul class="rubric-list">' + rubricHtml + '</ul>' +
-            '<div class="lost-to-row"><span class="lost-to-label">Marks likely lost to<span class="he">נקודות שאבדו בגלל</span></span><div class="pill-group">' + lostOptions + '</div></div>' +
-            '<div class="written-actions"><button class="btn primary" id="wpSave" ' + (wpState.lostTo ? "" : "disabled") + '>Save to my log<span class="he">שמור ביומן שלי</span></button></div>' +
+            '<div class="lost-to-row"><span class="lost-to-label">Marks likely lost to</span><div class="pill-group">' + lostOptions + '</div></div>' +
+            '<div class="written-actions"><button class="btn primary" id="wpSave" ' + (wpState.lostTo ? "" : "disabled") + '>Save to my log</button></div>' +
           '</div>'
         : "") +
       '</div>';
@@ -1394,7 +1386,6 @@
     main.innerHTML =
       '<div class="practice-hero">' +
         '<h2>Written Practice</h2>' +
-        '<div class="he-line">תרגול כתיבה — כתבו תשובה, גלו תשובת מופת, ודרגו את עצמכם</div>' +
         '<p class="sub">Pick a question, write your answer under real exam conditions, then reveal a model answer and self-mark against the checklist — the same process from <code>06_past_papers/log.md</code>, now interactive.</p>' +
       '</div>' +
       '<div class="filter-row">' + filterChips + '</div>' +
@@ -1407,14 +1398,14 @@
 
   function renderWrittenLog() {
     if (!writtenLog.length) {
-      return '<div class="log-section"><h3>My log <span style="font-weight:400;color:var(--muted);">· היומן שלי</span></h3>' +
-        '<div class="log-table-wrap"><div class="log-empty">No saved answers yet — save your first self-marked answer above.<br>עדיין אין תשובות שמורות — שמרו את התשובה הראשונה שלכם למעלה.</div></div></div>';
+      return '<div class="log-section"><h3>My log</h3>' +
+        '<div class="log-table-wrap"><div class="log-empty">No saved answers yet — save your first self-marked answer above.</div></div></div>';
     }
     var lostLabels = { content: "Content gap", command: "Command word", vocab: "Vocabulary", structure: "Structure", none: "Solid answer" };
     var rows = writtenLog.map(function (e, i) {
       return '<tr><td>' + e.date + '</td><td>' + e.topicTitle + '</td><td>' + e.command + '</td><td>' + e.rubricChecked + ' / ' + e.rubricTotal + '</td><td>' + (lostLabels[e.lostTo] || e.lostTo) + '</td><td><button class="log-del" data-logidx="' + i + '">remove</button></td></tr>';
     }).join("");
-    return '<div class="log-section"><h3>My log <span style="font-weight:400;color:var(--muted);">· היומן שלי</span></h3>' +
+    return '<div class="log-section"><h3>My log</h3>' +
       '<div class="log-table-wrap"><table class="log"><tr><th>Date</th><th>Topic</th><th>Command</th><th>Self-check</th><th>Marks lost to</th><th></th></tr>' + rows + '</table></div></div>';
   }
 
@@ -1524,21 +1515,20 @@
   }
 
   function renderMcqSetup() {
-    var filterLabels = { all: ["All topics", "כל הנושאים"], foundations: ["Foundations", "יסודות"], regions: ["Regions", "אזורים"] };
+    var filterLabels = { all: "All topics", foundations: "Foundations", regions: "Regions" };
     var filterChips = ["all", "foundations", "regions"].map(function (f) {
-      return '<button class="filter-chip' + (mcqState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f][0] + ' · ' + filterLabels[f][1] + '</button>';
+      return '<button class="filter-chip' + (mcqState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f] + '</button>';
     }).join("");
     var poolSize = allMcqQuestions(mcqState.filter).length;
     var statsHtml = '<div class="mcq-stats-row"><span>Best score: ' + (mcqStats.best || 0) + '</span>' +
       (mcqStats.lastScore !== null ? '<span>Last attempt: ' + mcqStats.lastScore + ' / ' + mcqStats.lastTotal + '</span>' : '') + '</div>';
     return '<div class="practice-hero">' +
         '<h2>Multiple Choice Practice</h2>' +
-        '<div class="he-line">שאלות אמריקאיות — תרגול עם הסבר לכל תשובה</div>' +
         '<p class="sub">A shuffled set pulled from every topic\'s quick check. Answer, see the explanation immediately, then move on — this is drilling recall, not first-time learning.</p>' +
       '</div>' +
       '<div class="filter-row">' + filterChips + '</div>' +
       statsHtml +
-      '<div class="written-actions" style="margin-top:1.2rem;"><button class="btn primary" id="mcqStart" ' + (poolSize ? "" : "disabled") + '>Start practice set (' + poolSize + ' questions)<span class="he">התחל תרגול</span></button></div>';
+      '<div class="written-actions" style="margin-top:1.2rem;"><button class="btn primary" id="mcqStart" ' + (poolSize ? "" : "disabled") + '>Start practice set (' + poolSize + ' questions)</button></div>';
   }
 
   function renderMcqRunning() {
@@ -1566,7 +1556,7 @@
         (answered !== null ? '<div class="quiz-explain show"><b>Why: </b>' + q.explain + '</div>' : '') +
       '</div>' +
       (answered !== null ?
-        '<div class="written-actions"><button class="btn primary" id="mcqNext">' + (isLast ? "See results" : "Next question") + '<span class="he">' + (isLast ? "לתוצאות" : "לשאלה הבאה") + '</span></button></div>'
+        '<div class="written-actions"><button class="btn primary" id="mcqNext">' + (isLast ? "See results" : "Next question") + '</button></div>'
         : "");
   }
 
@@ -1575,12 +1565,12 @@
     var itemsHtml = mcqState.results.map(function (r) {
       return '<li class="mcq-summary-item ' + (r.correct ? "right" : "wrong") + '"><strong>' + r.topicTitle + ':</strong> ' + r.q + '<br><span style="color:var(--muted);">' + r.explain + '</span></li>';
     }).join("");
-    return '<div class="practice-hero"><h2>Results</h2><div class="he-line">תוצאות</div></div>' +
+    return '<div class="practice-hero"><h2>Results</h2></div>' +
       '<div class="written-card"><div style="font-size:2rem;font-family:var(--font-display);">' + mcqState.score + ' / ' + total + '</div>' +
-      (mcqState.isNewBest ? '<div style="color:var(--good);font-family:var(--font-mono);font-size:0.85rem;margin-top:0.3rem;">New best score! · שיא חדש</div>' : '') +
+      (mcqState.isNewBest ? '<div style="color:var(--good);font-family:var(--font-mono);font-size:0.85rem;margin-top:0.3rem;">New best score!</div>' : '') +
       '</div>' +
       '<ul class="mcq-summary-list">' + itemsHtml + '</ul>' +
-      '<div class="written-actions" style="margin-top:1.5rem;"><button class="btn primary" id="mcqAgain">Practice again<span class="he">תרגול נוסף</span></button></div>';
+      '<div class="written-actions" style="margin-top:1.5rem;"><button class="btn primary" id="mcqAgain">Practice again</button></div>';
   }
 
   function wireMcqPractice() {
@@ -1658,29 +1648,28 @@
     var answerBlock = "";
     if (crState.revealed) {
       chainHtml = '<ul class="chain-list">' + c.chain.map(function (step, i) {
-        return '<li class="chain-step"><span class="cs-label">' + CHAIN_LABELS[i].en + '<span class="he">' + CHAIN_LABELS[i].he + '</span></span><span>' + step + '</span></li>';
+        return '<li class="chain-step"><span class="cs-label">' + CHAIN_LABELS[i].en + '</span><span>' + step + '</span></li>';
       }).join("") + '</ul>';
 
       var pairNote = "";
       if (c.pairsWith) {
         var paired = COLD_READ.find(function (p) { return p.id === c.pairsWith; });
         if (paired) {
-          pairNote = '<div class="callout cr-pair-note"><span class="callout-label">Compare · <span class="he">השוו</span></span>' +
+          pairNote = '<div class="callout cr-pair-note"><span class="callout-label">Compare</span>' +
             'This region reaches a similar climatic outcome to <strong>' + paired.answer + '</strong> — by a completely different mechanism. Read that case next to see the contrast.</div>';
         }
       }
 
       var ratingOptions = [
-        ["nailed", "Nailed it", "קלעתי בול"],
-        ["partial", "Partially", "חלקית"],
-        ["missed", "Missed it", "פספסתי"]
+        ["nailed", "Nailed it"],
+        ["partial", "Partially"],
+        ["missed", "Missed it"]
       ].map(function (o) {
-        return '<button class="pill-btn' + (crState.rating === o[0] ? " active" : "") + '" data-rating="' + o[0] + '">' + o[1] + ' · ' + o[2] + '</button>';
+        return '<button class="pill-btn' + (crState.rating === o[0] ? " active" : "") + '" data-rating="' + o[0] + '">' + o[1] + '</button>';
       }).join("");
 
-      answerBlock = '<div class="cr-answer">' + c.answer + '<span class="source">' + c.source + '</span></div>' +
-        chainHtml + pairNote +
-        '<div class="lost-to-row"><span class="lost-to-label">How did your prediction hold up?<span class="he">איך הניחוש שלך הסתדר?</span></span><div class="pill-group">' + ratingOptions + '</div></div>';
+      answerBlock = chainHtml + pairNote +
+        '<div class="lost-to-row"><span class="lost-to-label">How well did your reasoning match?</span><div class="pill-group">' + ratingOptions + '</div></div>';
     }
 
     var statsHtml = '<div class="cr-stats-row"><span>Attempts: ' + crStats.attempts + '</span><span>Nailed: ' + crStats.nailed + '</span><span>Partial: ' + crStats.partial + '</span><span>Missed: ' + crStats.missed + '</span></div>';
@@ -1688,19 +1677,20 @@
     main.innerHTML =
       '<div class="practice-hero">' +
         '<h2>Cold Read</h2>' +
-        '<div class="he-line">קריאה קרה — נחשו את האזור מהרמזים בלבד, לפני שתגלו את התשובה</div>' +
-        '<p class="sub">No region name. Just bare geographic facts. Run the chain — location, climate type, ripening implication, soil as modifier, grape/style — before you reveal the answer. This is the reverse-engineering framework from <code>00_toolkit/reverse_engineering_framework.md</code>, as a drill.</p>' +
+        '<p class="sub">A region, named upfront, plus the bare climate facts behind it. Work through the chain yourself — climate type, ripening implication, soil as modifier, grape/style — before you check your reasoning against the model chain below. This is the reverse-engineering framework from <code>00_toolkit/reverse_engineering_framework.md</code>, as a drill.</p>' +
       '</div>' +
       statsHtml +
       '<div class="written-card">' +
-        '<span class="mcq-topic-tag">The clues</span>' +
+        '<span class="mcq-topic-tag">Region</span>' +
+        '<div class="cr-answer">' + c.answer + '<span class="source">' + c.source + '</span></div>' +
+        '<span class="mcq-topic-tag">Known factors</span>' +
         '<ul class="clue-list">' + cluesHtml + '</ul>' +
         (crState.revealed ?
           '' :
-          '<div class="written-actions"><button class="btn primary" id="crReveal">Reveal the chain<span class="he">הצג את השרשרת</span></button></div>'
+          '<div class="written-actions"><button class="btn primary" id="crReveal">Check my reasoning</button></div>'
         ) +
         answerBlock +
-        (crState.revealed ? '<div class="written-actions"><button class="btn primary" id="crNext">Next region<span class="he">אזור הבא</span></button></div>' : "") +
+        (crState.revealed ? '<div class="written-actions"><button class="btn primary" id="crNext">Next region</button></div>' : "") +
       '</div>';
 
     wireColdRead();
@@ -1768,7 +1758,7 @@
   /* ============ RESET ============ */
 
   document.getElementById("resetBtn").addEventListener("click", function () {
-    if (window.confirm("Clear all progress, saved written answers, and quiz stats on this device?\nלמחוק את כל ההתקדמות, התשובות השמורות וניקוד השאלון במכשיר הזה?")) {
+    if (window.confirm("Clear all progress, saved written answers, and quiz stats on this device?")) {
       state = {};
       writtenLog = [];
       mcqStats = { best: 0, lastScore: null, lastTotal: null };
