@@ -389,6 +389,15 @@
   .mcq-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem; }
   .mcq-progress { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
   .mcq-topic-tag { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clay); margin-bottom: 0.5rem; display: block; }
+  .theme-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.03em;
+    color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 999px; padding: 0.15rem 0.6rem; margin-bottom: 0.6rem;
+  }
+  .written-anchor {
+    font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem; border-bottom: 1px dashed var(--line);
+  }
   .mcq-summary-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
   .mcq-summary-item { padding: 0.7rem 0.9rem; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 0.86rem; line-height: 1.5; }
   .mcq-summary-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
@@ -514,10 +523,10 @@
           </table></div>` }
       ],
       quiz: [
-        { q: "Which climate type is land-locked with a wide annual temperature range and settled summers?", options: ["Maritime", "Continental", "Mediterranean", "Alpine"], correct: 1, explain: "Continental climates (Burgundy, Mendoza) lack a moderating water body, so summers and winters diverge sharply." },
-        { q: "A rain shadow is caused by:", options: ["Cold ocean currents", "Mountains blocking moisture-bearing winds", "Cold air sinking to valley floors", "High altitude alone"], correct: 1, explain: "A mountain range (Vosges, Andes) intercepts prevailing moisture-bearing winds, leaving the leeward side dry." },
-        { q: "A large diurnal range typically produces grapes with:", options: ["Low sugar, low acid", "High sugar, low acid", "High sugar while retaining acidity", "Low sugar, high acid"], correct: 2, explain: "Warm days build sugar; cool nights slow acid degradation: the combination prized in high-altitude and continental sites." },
-        { q: "Which vintage-variation risk is most associated with maritime climates at harvest time?", options: ["Spring frost", "Rain causing dilution or rot", "Extreme heat", "Wind during flowering"], correct: 1, explain: "Maritime climates spread rainfall through the year, so a wet spell right at harvest is the classic maritime vintage risk." }
+        { theme: "Climate types", q: "Which climate type is land-locked with a wide annual temperature range and settled summers?", options: ["Maritime", "Continental", "Mediterranean", "Alpine"], correct: 1, explain: "Continental climates (Burgundy, Mendoza) lack a moderating water body, so summers and winters diverge sharply." },
+        { theme: "Rain shadow", q: "A rain shadow is caused by:", options: ["Cold ocean currents", "Mountains blocking moisture-bearing winds", "Cold air sinking to valley floors", "High altitude alone"], correct: 1, explain: "A mountain range (Vosges, Andes) intercepts prevailing moisture-bearing winds, leaving the leeward side dry." },
+        { theme: "Diurnal range", q: "A large diurnal range typically produces grapes with:", options: ["Low sugar, low acid", "High sugar, low acid", "High sugar while retaining acidity", "Low sugar, high acid"], correct: 2, explain: "Warm days build sugar; cool nights slow acid degradation: the combination prized in high-altitude and continental sites." },
+        { theme: "Vintage variation", q: "Which vintage-variation risk is most associated with maritime climates at harvest time?", options: ["Spring frost", "Rain causing dilution or rot", "Extreme heat", "Wind during flowering"], correct: 1, explain: "Maritime climates spread rainfall through the year, so a wet spell right at harvest is the classic maritime vintage risk." }
       ]
     },
     {
@@ -555,10 +564,10 @@
           </table></div>` }
       ],
       quiz: [
-        { q: "What is the primary lever for controlling a vine's yield?", options: ["Irrigation timing", "Winter pruning (bud number)", "Leaf removal", "Harvest date"], correct: 1, explain: "Pruning sets the maximum number of buds/shoots: the main yield control decision, made months before the growing season starts." },
-        { q: "Deficit irrigation is best described as:", options: ["Watering as much as possible for maximum yield", "Withholding water at controlled points to limit berry size and concentrate flavour", "An emergency response to drought", "A method only used in flood irrigation"], correct: 1, explain: "It's a deliberate, precise quality tool, not a survival measure, used where irrigation is legal and available." },
-        { q: "Grey rot and noble rot are:", options: ["Different fungi entirely", "The same fungus (Botrytis cinerea) under different conditions", "Only found in Sauternes", "Unrelated to humidity"], correct: 1, explain: "Botrytis cinerea causes spoilage (grey rot) in wet/humid conditions, but deliberately concentrates sugar (noble rot) when morning mist is followed by drying afternoon sun." },
-        { q: "Phylloxera was historically controlled by:", options: ["Fungicide spraying", "Grafting vinifera onto resistant rootstock", "Switching to machine harvest", "Deficit irrigation"], correct: 1, explain: "Grafting European vinifera onto phylloxera-resistant American rootstock is standard practice today, aside from rare sandy-soil exceptions." }
+        { theme: "Yield control", q: "What is the primary lever for controlling a vine's yield?", options: ["Irrigation timing", "Winter pruning (bud number)", "Leaf removal", "Harvest date"], correct: 1, explain: "Pruning sets the maximum number of buds/shoots: the main yield control decision, made months before the growing season starts." },
+        { theme: "Irrigation as quality tool", q: "Deficit irrigation is best described as:", options: ["Watering as much as possible for maximum yield", "Withholding water at controlled points to limit berry size and concentrate flavour", "An emergency response to drought", "A method only used in flood irrigation"], correct: 1, explain: "It's a deliberate, precise quality tool, not a survival measure, used where irrigation is legal and available." },
+        { theme: "Noble rot", q: "Grey rot and noble rot are:", options: ["Different fungi entirely", "The same fungus (Botrytis cinerea) under different conditions", "Only found in Sauternes", "Unrelated to humidity"], correct: 1, explain: "Botrytis cinerea causes spoilage (grey rot) in wet/humid conditions, but deliberately concentrates sugar (noble rot) when morning mist is followed by drying afternoon sun." },
+        { theme: "Phylloxera & rootstock", q: "Phylloxera was historically controlled by:", options: ["Fungicide spraying", "Grafting vinifera onto resistant rootstock", "Switching to machine harvest", "Deficit irrigation"], correct: 1, explain: "Grafting European vinifera onto phylloxera-resistant American rootstock is standard practice today, aside from rare sandy-soil exceptions." }
       ]
     },
     {
@@ -591,10 +600,10 @@
           <p>Late harvest (extended hang time), noble rot (Sauternes, Alsace SGN, Tokaji), and fortification (see <strong>04_fortified</strong>) all retain sugar by different mechanisms. Chaptalization adds sugar <em>before</em> fermentation to raise potential alcohol: it is not a sweetening technique, since that sugar ferments fully to alcohol.</p>` }
       ],
       quiz: [
-        { q: "Malolactic conversion changes:", options: ["Tartaric acid into malic acid", "Malic acid into softer lactic acid", "Sugar into alcohol", "Tannin into colour"], correct: 1, explain: "MLC softens a wine's perceived acidity and can add buttery diacetyl character: used for fuller styles, avoided for aromatic/high-acid whites." },
-        { q: "Which rosé method involves bleeding off juice early from a red wine fermentation?", options: ["Direct pressing", "Short maceration", "Saignée", "Carbonic maceration"], correct: 2, explain: "Saignée concentrates the remaining red wine while producing rosé as a secondary product." },
-        { q: "What is the defining structural difference between red and white winemaking?", options: ["Reds always use more oak", "Reds ferment with skins/seeds in contact with the juice", "Whites always use wild yeast", "Reds are always chaptalized"], correct: 1, explain: "Fermenting on the skins is what extracts colour and tannin: the core mechanism separating red from white winemaking." },
-        { q: "Chaptalization is best described as:", options: ["Adding sugar to sweeten the finished wine", "Adding acid to a warm-climate must", "Adding sugar before/during fermentation to raise potential alcohol", "A method of fortification"], correct: 2, explain: "The added sugar ferments fully to alcohol: it corrects under-ripeness, it does not add residual sweetness." }
+        { theme: "Malolactic conversion", q: "Malolactic conversion changes:", options: ["Tartaric acid into malic acid", "Malic acid into softer lactic acid", "Sugar into alcohol", "Tannin into colour"], correct: 1, explain: "MLC softens a wine's perceived acidity and can add buttery diacetyl character: used for fuller styles, avoided for aromatic/high-acid whites." },
+        { theme: "Rosé methods", q: "Which rosé method involves bleeding off juice early from a red wine fermentation?", options: ["Direct pressing", "Short maceration", "Saignée", "Carbonic maceration"], correct: 2, explain: "Saignée concentrates the remaining red wine while producing rosé as a secondary product." },
+        { theme: "Red vs white winemaking", q: "What is the defining structural difference between red and white winemaking?", options: ["Reds always use more oak", "Reds ferment with skins/seeds in contact with the juice", "Whites always use wild yeast", "Reds are always chaptalized"], correct: 1, explain: "Fermenting on the skins is what extracts colour and tannin: the core mechanism separating red from white winemaking." },
+        { theme: "Chaptalization", q: "Chaptalization is best described as:", options: ["Adding sugar to sweeten the finished wine", "Adding acid to a warm-climate must", "Adding sugar before/during fermentation to raise potential alcohol", "A method of fortification"], correct: 2, explain: "The added sugar ferments fully to alcohol: it corrects under-ripeness, it does not add residual sweetness." }
       ]
     },
     {
@@ -623,10 +632,10 @@
           <p>Oak chips/staves in inert vessels add flavour cheaply but skip the micro-oxygenation/structural benefit: a real cost/quality marker. Oak is minimised or avoided for aromatic whites (Riesling, most Sauvignon Blanc, Muscat) where varietal aromatics are the point.</p>` }
       ],
       quiz: [
-        { q: "Which of these is NOT one of oak's three effects on wine?", options: ["Flavour compounds", "Micro-oxygenation", "Malolactic conversion", "Tannin/structure"], correct: 2, explain: "Malolactic conversion is a bacterial process unrelated to the oak vessel itself: a common point of confusion." },
-        { q: "Compared to a barrique, a large foudre gives:", options: ["More oak flavour, no oxygenation", "Less relative oak flavour, but still some micro-oxygenation", "Identical influence, just holds more wine", "No oxygenation and no flavour"], correct: 1, explain: "Foudres have a much lower surface-area-to-volume ratio, so oak flavour is muted, but the wine still ages via oxygen ingress through the wood." },
-        { q: "Oak chips/staves in a steel tank provide:", options: ["Flavour and micro-oxygenation", "Flavour compounds but no micro-oxygenation benefit", "Micro-oxygenation only", "Tannin removal"], correct: 1, explain: "Chips add flavour cheaply but an inert steel tank doesn't allow the slow oxygen ingress a real barrel does." },
-        { q: "Why is oak typically avoided for Riesling?", options: ["Riesling can't survive barrel ageing", "Oak would mask its delicate varietal aromatics and freshness", "Riesling has too much tannin already", "It's a legal restriction in all Riesling regions"], correct: 1, explain: "Aromatic, high-acid whites are valued for freshness and varietal character, which oak flavour would overwhelm." }
+        { theme: "Oak's three effects", q: "Which of these is NOT one of oak's three effects on wine?", options: ["Flavour compounds", "Micro-oxygenation", "Malolactic conversion", "Tannin/structure"], correct: 2, explain: "Malolactic conversion is a bacterial process unrelated to the oak vessel itself: a common point of confusion." },
+        { theme: "Oak vessel size", q: "Compared to a barrique, a large foudre gives:", options: ["More oak flavour, no oxygenation", "Less relative oak flavour, but still some micro-oxygenation", "Identical influence, just holds more wine", "No oxygenation and no flavour"], correct: 1, explain: "Foudres have a much lower surface-area-to-volume ratio, so oak flavour is muted, but the wine still ages via oxygen ingress through the wood." },
+        { theme: "Oak alternatives", q: "Oak chips/staves in a steel tank provide:", options: ["Flavour and micro-oxygenation", "Flavour compounds but no micro-oxygenation benefit", "Micro-oxygenation only", "Tannin removal"], correct: 1, explain: "Chips add flavour cheaply but an inert steel tank doesn't allow the slow oxygen ingress a real barrel does." },
+        { theme: "Oak & aromatic whites", q: "Why is oak typically avoided for Riesling?", options: ["Riesling can't survive barrel ageing", "Oak would mask its delicate varietal aromatics and freshness", "Riesling has too much tannin already", "It's a legal restriction in all Riesling regions"], correct: 1, explain: "Aromatic, high-acid whites are valued for freshness and varietal character, which oak flavour would overwhelm." }
       ]
     },
     {
@@ -650,10 +659,10 @@
         { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain how climate allows both dry and sweet styles</span><blockquote>"Alsace is protected by the Vosges Mountains, causing a rain shadow that results in low rainfall and reduced disease pressure. This means grapes can safely hang on the vine well past normal ripeness. Combined with a large diurnal range, sugar accumulates gradually while acidity is preserved, allowing producers to pick at different points: from dry, to late harvest, to botrytized Sélection de Grains Nobles in the right vintages."</blockquote></div>` }
       ],
       quiz: [
-        { q: "What creates Alsace's rain shadow?", options: ["The Rhine river", "The Vosges Mountains blocking Atlantic weather", "The Mediterranean Sea", "High latitude alone"], correct: 1, explain: "The Vosges sit west of Alsace, intercepting Atlantic moisture before it reaches the vineyards." },
-        { q: "Why are Alsace wines almost always labelled by grape variety?", options: ["EU law requires it everywhere", "It's a regional convention, unusual for France", "Blending is banned", "There is only one appellation"], correct: 1, explain: "Varietal labelling is a distinctive Alsace convention: most of France labels by place, not grape." },
-        { q: "What is required to make a Sélection de Grains Nobles?", options: ["Extended maceration", "Noble rot from morning mist plus afternoon sun", "Chaptalization", "Machine harvesting"], correct: 1, explain: "SGN needs botrytis, which requires humidity to establish the fungus and sun to dry the grapes and concentrate them without spoilage." },
-        { q: "Alsace's large diurnal range primarily helps produce:", options: ["High-tannin reds", "Sugar accumulation with preserved acidity", "Fortified wine", "Heavy oak character"], correct: 1, explain: "Warm days and cool nights let sugar build while retaining the acid backbone that defines Alsace's aromatic whites." }
+        { theme: "Rain shadow", q: "What creates Alsace's rain shadow?", options: ["The Rhine river", "The Vosges Mountains blocking Atlantic weather", "The Mediterranean Sea", "High latitude alone"], correct: 1, explain: "The Vosges sit west of Alsace, intercepting Atlantic moisture before it reaches the vineyards." },
+        { theme: "Varietal labelling", q: "Why are Alsace wines almost always labelled by grape variety?", options: ["EU law requires it everywhere", "It's a regional convention, unusual for France", "Blending is banned", "There is only one appellation"], correct: 1, explain: "Varietal labelling is a distinctive Alsace convention: most of France labels by place, not grape." },
+        { theme: "Noble rot", q: "What is required to make a Sélection de Grains Nobles?", options: ["Extended maceration", "Noble rot from morning mist plus afternoon sun", "Chaptalization", "Machine harvesting"], correct: 1, explain: "SGN needs botrytis, which requires humidity to establish the fungus and sun to dry the grapes and concentrate them without spoilage." },
+        { theme: "Diurnal range", q: "Alsace's large diurnal range primarily helps produce:", options: ["High-tannin reds", "Sugar accumulation with preserved acidity", "Fortified wine", "Heavy oak character"], correct: 1, explain: "Warm days and cool nights let sugar build while retaining the acid backbone that defines Alsace's aromatic whites." }
       ]
     },
     {
@@ -670,10 +679,10 @@
         { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain why irrigation is necessary and how it affects quality</span><blockquote>"Mendoza sits in the rain shadow of the Andes, receiving only around 200mm of rainfall per year, insufficient for vine growth. This means irrigation using Andean snowmelt is essential for survival. Because rainfall is minimal, growers can precisely control water application through deficit irrigation, withholding water at key growth stages to concentrate flavour and reduce berry size, resulting in more concentrated, higher-quality fruit than under natural rainfall alone."</blockquote></div>` }
       ],
       quiz: [
-        { q: "Mendoza's rain shadow is caused by which mountain range?", options: ["The Alps", "The Andes", "The Rockies", "The Vosges"], correct: 1, explain: "The Andes block Pacific moisture-bearing winds from reaching Mendoza." },
-        { q: "Deficit irrigation is used to:", options: ["Maximise yield at all costs", "Withhold water at key points to concentrate flavour and control berry size", "Replace the need for snowmelt", "Prevent frost"], correct: 1, explain: "It's a deliberate quality-control tool available precisely because rainfall (and therefore uncontrolled water input) is so low." },
-        { q: "Higher-altitude Mendoza vineyards (e.g. Uco Valley) are associated with:", options: ["Lower UV, smaller diurnal range", "Higher UV and a larger diurnal range", "Higher rainfall", "No irrigation needed"], correct: 1, explain: "Altitude increases UV exposure and widens the day/night temperature swing: a quality factor tied to freshness and aromatics." },
-        { q: "Compared to drip irrigation, flood irrigation tends to:", options: ["Be more precise and reduce yields", "Be cheap but imprecise, encouraging vigour and dilution", "Only be legal for premium wine", "Eliminate the need for snowmelt"], correct: 1, explain: "Flood/furrow systems apply water broadly and imprecisely, which can overwater vines and dilute concentration compared to targeted drip." }
+        { theme: "Rain shadow", q: "Mendoza's rain shadow is caused by which mountain range?", options: ["The Alps", "The Andes", "The Rockies", "The Vosges"], correct: 1, explain: "The Andes block Pacific moisture-bearing winds from reaching Mendoza." },
+        { theme: "Irrigation as quality tool", q: "Deficit irrigation is used to:", options: ["Maximise yield at all costs", "Withhold water at key points to concentrate flavour and control berry size", "Replace the need for snowmelt", "Prevent frost"], correct: 1, explain: "It's a deliberate quality-control tool available precisely because rainfall (and therefore uncontrolled water input) is so low." },
+        { theme: "Diurnal range", q: "Higher-altitude Mendoza vineyards (e.g. Uco Valley) are associated with:", options: ["Lower UV, smaller diurnal range", "Higher UV and a larger diurnal range", "Higher rainfall", "No irrigation needed"], correct: 1, explain: "Altitude increases UV exposure and widens the day/night temperature swing: a quality factor tied to freshness and aromatics." },
+        { theme: "Irrigation as quality tool", q: "Compared to drip irrigation, flood irrigation tends to:", options: ["Be more precise and reduce yields", "Be cheap but imprecise, encouraging vigour and dilution", "Only be legal for premium wine", "Eliminate the need for snowmelt"], correct: 1, explain: "Flood/furrow systems apply water broadly and imprecisely, which can overwater vines and dilute concentration compared to targeted drip." }
       ]
     },
     {
@@ -695,10 +704,10 @@
         { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain the Left Bank / Right Bank grape split</span><blockquote>"The Left Bank has well-drained gravel soils that retain daytime heat, suiting the late-ripening, vigorous Cabernet Sauvignon, which needs a long warm season. The Right Bank has cooler, water-retentive clay and limestone, suiting the earlier-ripening Merlot, more prone to drought stress. This means the two banks favour different grapes based on how well each variety's ripening needs match the soil's drainage and heat-retention properties."</blockquote></div>` }
       ],
       quiz: [
-        { q: "Why does the Left Bank favour Cabernet Sauvignon?", options: ["Clay soils retain water for it", "Gravel drains well and retains daytime heat, suiting a late-ripening variety", "It's cooler there", "Cabernet needs high rainfall"], correct: 1, explain: "Cabernet Sauvignon ripens late and needs sustained warmth: gravel's drainage and heat retention supply exactly that." },
-        { q: "What is the primary vintage risk in Bordeaux's maritime climate?", options: ["Extreme drought", "Rain at flowering or harvest causing poor fruit set, dilution, or rot", "Permanent frost", "Excessive UV"], correct: 1, explain: "Maritime climates spread rain through the year, so poorly timed rain at flowering or harvest is the classic Bordeaux vintage risk." },
-        { q: "Which Bordeaux sub-region has no official producer classification?", options: ["Médoc", "Sauternes", "Pomerol", "St-Émilion"], correct: 2, explain: "Pomerol relies entirely on reputation and market price to signal quality tier, unlike the 1855 or St-Émilion systems." },
-        { q: "Bordeaux wines are typically produced as:", options: ["Single-varietal wines", "Blends, allowing balance across vintage variation", "100% whole-bunch ferments", "Unoaked exclusively"], correct: 1, explain: "Blending multiple grapes (e.g. more Merlot in a cool year) lets producers hedge against vintage-to-vintage weather variation." }
+        { theme: "Soil-grape matching", q: "Why does the Left Bank favour Cabernet Sauvignon?", options: ["Clay soils retain water for it", "Gravel drains well and retains daytime heat, suiting a late-ripening variety", "It's cooler there", "Cabernet needs high rainfall"], correct: 1, explain: "Cabernet Sauvignon ripens late and needs sustained warmth: gravel's drainage and heat retention supply exactly that." },
+        { theme: "Vintage variation", q: "What is the primary vintage risk in Bordeaux's maritime climate?", options: ["Extreme drought", "Rain at flowering or harvest causing poor fruit set, dilution, or rot", "Permanent frost", "Excessive UV"], correct: 1, explain: "Maritime climates spread rain through the year, so poorly timed rain at flowering or harvest is the classic Bordeaux vintage risk." },
+        { theme: "Bordeaux classification", q: "Which Bordeaux sub-region has no official producer classification?", options: ["Médoc", "Sauternes", "Pomerol", "St-Émilion"], correct: 2, explain: "Pomerol relies entirely on reputation and market price to signal quality tier, unlike the 1855 or St-Émilion systems." },
+        { theme: "Blending rationale", q: "Bordeaux wines are typically produced as:", options: ["Single-varietal wines", "Blends, allowing balance across vintage variation", "100% whole-bunch ferments", "Unoaked exclusively"], correct: 1, explain: "Blending multiple grapes (e.g. more Merlot in a cool year) lets producers hedge against vintage-to-vintage weather variation." }
       ]
     },
     {
@@ -722,10 +731,10 @@
         { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain how the hierarchy reflects vineyard quality</span><blockquote>"Burgundy's appellation system is based on a hierarchy of vineyard sites, from broad regional appellations up to tightly delimited Grand Cru parcels. This is due to centuries of observation of how soil, drainage, and aspect vary even within a single slope on the Côte d'Or, meaning the narrowest, most historically consistent sites were identified as Grand Cru. This results in wines from higher tiers commanding significantly higher prices, reflecting both scarcity and more consistent quality."</blockquote></div>` }
       ],
       quiz: [
-        { q: "What is a 'climat' in Burgundy?", options: ["A weather pattern", "A named vineyard parcel with distinct soil/aspect/drainage", "A classification of producer", "A style of Chardonnay"], correct: 1, explain: "Climats are the historically mapped, individually named vineyard parcels that underpin Burgundy's entire quality hierarchy." },
-        { q: "Roughly what share of Burgundy's production is Grand Cru?", options: ["~50%", "~35%", "~10%", "~1–2%"], correct: 3, explain: "Grand Cru sites are tiny in area and production, which is a major driver of their price relative to Village or Regional wine." },
-        { q: "Why is Pinot Noir considered highly terroir-expressive?", options: ["It is thick-skinned and neutral", "It is thin-skinned and sensitive to subtle site differences", "It is always heavily oaked", "It only grows in warm climates"], correct: 1, explain: "Pinot Noir's thin skin and sensitivity make it a clear lens onto small differences in soil, aspect, and microclimate." },
-        { q: "Which best describes Burgundy's climate risk profile?", options: ["Very low vintage variation, like a desert climate", "Significant vintage variation from frost, flowering, and harvest-time rain", "No frost risk at all", "Only hail is a concern"], correct: 1, explain: "As a cool continental, marginal-ripening climate, Burgundy sees real year-to-year swings driven by frost, poor fruit set, and harvest weather." }
+        { theme: "Terroir fragmentation", q: "What is a 'climat' in Burgundy?", options: ["A weather pattern", "A named vineyard parcel with distinct soil/aspect/drainage", "A classification of producer", "A style of Chardonnay"], correct: 1, explain: "Climats are the historically mapped, individually named vineyard parcels that underpin Burgundy's entire quality hierarchy." },
+        { theme: "Appellation hierarchy", q: "Roughly what share of Burgundy's production is Grand Cru?", options: ["~50%", "~35%", "~10%", "~1–2%"], correct: 3, explain: "Grand Cru sites are tiny in area and production, which is a major driver of their price relative to Village or Regional wine." },
+        { theme: "Terroir fragmentation", q: "Why is Pinot Noir considered highly terroir-expressive?", options: ["It is thick-skinned and neutral", "It is thin-skinned and sensitive to subtle site differences", "It is always heavily oaked", "It only grows in warm climates"], correct: 1, explain: "Pinot Noir's thin skin and sensitivity make it a clear lens onto small differences in soil, aspect, and microclimate." },
+        { theme: "Vintage variation", q: "Which best describes Burgundy's climate risk profile?", options: ["Very low vintage variation, like a desert climate", "Significant vintage variation from frost, flowering, and harvest-time rain", "No frost risk at all", "Only hail is a concern"], correct: 1, explain: "As a cool continental, marginal-ripening climate, Burgundy sees real year-to-year swings driven by frost, poor fruit set, and harvest weather." }
       ]
     }
   ];
@@ -743,8 +752,10 @@
     climate: [
       {
         command: "Explain", commandHe: "הסבר",
-        q: "Explain how climate can affect vintage variation in a maritime region.",
-        model: "Maritime regions are moderated by nearby oceans, giving a narrower annual temperature range, but rainfall is spread across the year. This means poorly timed rain, at flowering or at harvest, is a real risk in any given year, causing poor fruit set or diluted, rot-affected fruit. As a result, maritime regions such as Bordeaux see greater vintage-to-vintage quality variation than climates with more settled, dry summers.",
+        anchor: "Bordeaux, France · maritime climate",
+        theme: "Vintage variation",
+        q: "Explain how the maritime climate here affects vintage variation.",
+        model: "Bordeaux is moderated by the nearby Atlantic Ocean, giving a narrower annual temperature range, but rainfall is spread across the year. This means poorly timed rain, at flowering or at harvest, is a real risk in any given year, causing poor fruit set or diluted, rot-affected fruit. As a result, Bordeaux sees greater vintage-to-vintage quality variation than climates with more settled, dry summers.",
         rubric: [
           { en: "Names the factor (ocean proximity / rain spread through the year)", he: "מזהה את הגורם (קרבה לים / גשם לאורך השנה)" },
           { en: "States the mechanism (poorly timed rain at flowering/harvest)", he: "מסביר את המנגנון (גשם בזמן לא נכון בפריחה/בבציר)" },
@@ -754,8 +765,10 @@
       },
       {
         command: "Describe", commandHe: "תאר",
-        q: "Describe the difference between a maritime and a continental climate.",
-        model: "A maritime climate is moderated by a nearby ocean, giving a narrow annual temperature range and rainfall spread throughout the year. A continental climate is land-locked, giving a wide annual temperature range with hot summers and cold winters, and generally more settled, drier summers than a maritime climate.",
+        anchor: "Bordeaux (maritime) vs Burgundy (continental), both France",
+        theme: "Climate types",
+        q: "Describe the difference in climate between these two regions.",
+        model: "Bordeaux has a maritime climate, moderated by the nearby Atlantic Ocean, giving a narrow annual temperature range and rainfall spread throughout the year. Burgundy has a continental climate, land-locked and far from the coast, giving a wide annual temperature range with hot summers and cold winters, and generally more settled, drier summers than Bordeaux.",
         rubric: [
           { en: "States both climate types' key features (not just one)", he: "מציין את המאפיינים של שני סוגי האקלים (לא רק אחד)" },
           { en: "Mentions annual temperature range for each", he: "מזכיר את טווח הטמפרטורות השנתי של כל אחד" },
@@ -767,8 +780,10 @@
     viticulture: [
       {
         command: "Explain", commandHe: "הסבר",
-        q: "Explain how canopy management can affect grape ripening and wine quality.",
-        model: "Leaf removal in the fruit zone increases sun exposure and airflow around the bunches, which improves ripening and reduces the risk of fungal disease in humid conditions. This allows growers to harvest riper, cleaner fruit, resulting in wines with better flavour concentration and fewer green or under-ripe characteristics.",
+        anchor: "Burgundy, France · cool, marginal ripening climate",
+        theme: "Canopy management",
+        q: "Explain how canopy management can affect grape ripening and wine quality here.",
+        model: "In a marginal climate like Burgundy, leaf removal in the fruit zone increases sun exposure and airflow around the bunches, which improves ripening and reduces the risk of fungal disease in humid conditions. This allows growers to harvest riper, cleaner fruit, resulting in wines with better flavour concentration and fewer green or under-ripe characteristics.",
         rubric: [
           { en: "Names the technique (leaf removal / canopy management)", he: "מזהה את הטכניקה (הסרת עלים / ניהול הנוף)" },
           { en: "States the mechanism (more sun exposure and airflow)", he: "מסביר את המנגנון (יותר חשיפה לשמש ואוורור)" },
@@ -778,8 +793,10 @@
       },
       {
         command: "Compare", commandHe: "השווה",
-        q: "Compare hand harvesting and machine harvesting.",
-        model: "Hand harvesting is selective, allowing pickers to leave unripe or diseased bunches behind, and is essential on steep slopes or for methods requiring whole bunches, but it is significantly more expensive. Machine harvesting is faster and cheaper, and can take place at night to keep fruit cool, but it is non-selective and only viable on relatively flat, accessible terrain. The choice reflects a trade-off between cost and selectivity, with premium producers often favouring hand harvesting despite the cost.",
+        anchor: "Mosel, Germany · steep slate slopes",
+        theme: "Harvest method trade-off",
+        q: "Compare hand harvesting and machine harvesting for a vineyard like this.",
+        model: "Hand harvesting is selective, allowing pickers to leave unripe or diseased bunches behind, and is essential on the Mosel's steep slopes, but it is significantly more expensive. Machine harvesting is faster and cheaper, and can take place at night to keep fruit cool, but it is non-selective and only viable on relatively flat, accessible terrain, which rules it out here. The choice reflects a trade-off between cost and selectivity, with premium steep-slope producers favouring hand harvesting despite the cost.",
         rubric: [
           { en: "Addresses hand harvesting (selectivity, cost, terrain)", he: "מתייחס לבציר ידני (סלקטיביות, עלות, שטח)" },
           { en: "Addresses machine harvesting (speed, cost, terrain, night picking)", he: "מתייחס לבציר מכני (מהירות, עלות, שטח, בציר לילי)" },
@@ -791,8 +808,10 @@
     winemaking: [
       {
         command: "Explain", commandHe: "הסבר",
-        q: "Explain how maceration techniques affect the style of a red wine.",
-        model: "Extended maceration keeps the must in contact with grape skins for longer after fermentation, which extracts more tannin and colour compounds. This results in a wine with greater structure and ageing potential, suited to premium, age-worthy styles rather than wines intended for early drinking.",
+        anchor: "Left Bank Bordeaux, France · Cabernet Sauvignon blend",
+        theme: "Maceration & cap management",
+        q: "Explain how maceration techniques affect the style of a red wine like this.",
+        model: "Extended maceration keeps the must in contact with grape skins for longer after fermentation, which extracts more tannin and colour compounds. This results in a wine with greater structure and ageing potential, suited to premium, age-worthy Left Bank styles rather than wines intended for early drinking.",
         rubric: [
           { en: "Names the technique (extended maceration / cap management)", he: "מזהה את הטכניקה (מיצוי ממושך / ניהול הכובע)" },
           { en: "States the mechanism (skin contact extracts tannin/colour)", he: "מסביר את המנגנון (מגע עם הקליפות מפיק טאנין/צבע)" },
@@ -802,6 +821,7 @@
       },
       {
         command: "Describe", commandHe: "תאר",
+        theme: "Rosé methods",
         q: "Describe how a rosé wine can be made using the saignée method.",
         model: "In the saignée method, juice is 'bled off' early from a red wine fermentation that is still in contact with the skins. This bled-off juice, now lightly coloured, is fermented separately as rosé, while the remaining must becomes a more concentrated red wine due to a higher skin-to-juice ratio.",
         rubric: [
@@ -815,7 +835,9 @@
     oak: [
       {
         command: "Explain", commandHe: "הסבר",
-        q: "Explain how the choice of oak vessel affects the style of a wine.",
+        anchor: "Left Bank Bordeaux, France · new French oak tradition",
+        theme: "Oak vessel size",
+        q: "Explain how the choice of oak vessel affects the style of a wine like this.",
         model: "Ageing in a new, small barrique gives a high surface-area-to-volume ratio, extracting pronounced vanilla, toast, and tannin from the wood, while allowing slow oxygen ingress that softens the wine's structure over time. This results in a wine with greater richness, spice character, and ageing potential compared to one aged in neutral, large-format oak or stainless steel.",
         rubric: [
           { en: "Names the vessel variable (size / new vs old)", he: "מזהה את משתנה הכלי (גודל / חדש מול ישן)" },
@@ -826,8 +848,10 @@
       },
       {
         command: "Compare", commandHe: "השווה",
-        q: "Compare the effect of French oak and American oak on a wine's style.",
-        model: "French oak has a tighter grain, giving a more subtle contribution of spice, cedar, and fine tannin, and is generally more expensive due to the need to split rather than saw the wood. American oak has a looser grain, contributing bolder vanilla, coconut, and dill notes, and is cheaper to produce. Both can add structure and flavour complexity, but a producer's choice reflects the intensity of oak character and cost they want for a given style: traditional Rioja, for example, has historically favoured American oak.",
+        anchor: "Rioja, Spain · traditional American oak use",
+        theme: "French vs American oak",
+        q: "Compare the effect of French oak and American oak on a wine's style, using this region as your reference point.",
+        model: "French oak has a tighter grain, giving a more subtle contribution of spice, cedar, and fine tannin, and is generally more expensive due to the need to split rather than saw the wood. American oak has a looser grain, contributing bolder vanilla, coconut, and dill notes, and is cheaper to produce. Both can add structure and flavour complexity, but Rioja's traditional style has historically favoured American oak for its bolder, sweeter character.",
         rubric: [
           { en: "Addresses French oak (grain, flavour, cost)", he: "מתייחס לאלון צרפתי (מרקם, טעם, עלות)" },
           { en: "Addresses American oak (grain, flavour, cost)", he: "מתייחס לאלון אמריקאי (מרקם, טעם, עלות)" },
@@ -839,6 +863,7 @@
     alsace: [
       {
         command: "Explain", commandHe: "הסבר",
+        theme: "Rain shadow",
         q: "Explain how climatic conditions in Alsace allow Riesling to be made in both dry and sweet styles.",
         model: "Alsace is protected by the Vosges Mountains, causing a rain shadow that results in low rainfall and reduced disease pressure. This means grapes can safely hang on the vine well past normal ripeness. Combined with a large diurnal range, sugar accumulates gradually while acidity is preserved, allowing producers to pick at different points: from dry, to late harvest, to botrytized Sélection de Grains Nobles in the right vintages.",
         rubric: [
@@ -850,6 +875,7 @@
       },
       {
         command: "Describe", commandHe: "תאר",
+        theme: "Varietal labelling",
         q: "Describe the range of grape varieties grown in Alsace and their characteristics.",
         model: "Alsace's key varieties are Riesling, which retains high acidity and ages well; Gewurztraminer, which is highly aromatic with low acidity; Pinot Gris, which is full-bodied and can be made dry or sweet; and Muscat, which is aromatic and usually made dry. Wines are typically labelled by grape variety rather than by place.",
         rubric: [
@@ -863,6 +889,7 @@
     argentina: [
       {
         command: "Explain", commandHe: "הסבר",
+        theme: "Irrigation as quality tool",
         q: "Explain why irrigation is necessary in Mendoza and how it can be used to affect wine quality.",
         model: "Mendoza sits in the rain shadow of the Andes, receiving only around 200mm of rainfall per year, insufficient for vine growth. This means irrigation using Andean snowmelt is essential for survival. Because rainfall is minimal, growers can precisely control water application through deficit irrigation, withholding water at key growth stages to concentrate flavour and reduce berry size, resulting in more concentrated, higher-quality fruit than under natural rainfall alone.",
         rubric: [
@@ -874,6 +901,7 @@
       },
       {
         command: "Discuss", commandHe: "דון",
+        theme: "Diurnal range",
         q: "Discuss how altitude affects wine quality in Mendoza.",
         model: "Altitude affects Mendoza's wine quality in several ways. Higher-altitude sites, such as those in the Uco Valley at 1,500m or more, receive greater UV exposure, which can concentrate phenolic compounds in grape skins. Altitude also widens the diurnal temperature range, allowing sugar to build during warm days while acidity is preserved during cool nights. In addition, higher sites often have more reliable access to Andean snowmelt for irrigation. Taken together, these factors mean altitude is now a significant quality marker in Mendoza, with many premium producers specifically seeking out high-altitude vineyard sites.",
         rubric: [
@@ -887,6 +915,7 @@
     bordeaux: [
       {
         command: "Explain", commandHe: "הסבר",
+        theme: "Soil-grape matching",
         q: "Explain why Cabernet Sauvignon dominates the Left Bank while Merlot dominates the Right Bank.",
         model: "The Left Bank has well-drained gravel soils that retain daytime heat, suiting the late-ripening, vigorous Cabernet Sauvignon, which needs a long warm season. The Right Bank has cooler, water-retentive clay and limestone, suiting the earlier-ripening Merlot, more prone to drought stress. This means the two banks favour different grapes based on how well each variety's ripening needs match the soil's drainage and heat-retention properties.",
         rubric: [
@@ -898,6 +927,7 @@
       },
       {
         command: "Compare", commandHe: "השווה",
+        theme: "Bordeaux classification",
         q: "Compare the 1855 Classification and the Saint-Émilion Classification.",
         model: "The 1855 Classification ranks Left Bank châteaux (plus Sauternes) into five tiers and has been revised only once since its creation, making it a largely fixed historical ranking. The Saint-Émilion Classification, by contrast, is revised roughly every ten years, allowing producers to be promoted or demoted based on current quality. Both systems rank individual producers or estates rather than the appellation as a whole, but the Saint-Émilion system responds to change over time while the 1855 Classification largely reflects nineteenth-century reputation.",
         rubric: [
@@ -911,6 +941,7 @@
     burgundy: [
       {
         command: "Explain", commandHe: "הסבר",
+        theme: "Appellation hierarchy",
         q: "Explain how Burgundy's appellation hierarchy reflects differences in vineyard quality.",
         model: "Burgundy's appellation system is based on a hierarchy of vineyard sites, from broad regional appellations up to tightly delimited Grand Cru parcels. This is due to centuries of observation of how soil, drainage, and aspect vary even within a single slope on the Côte d'Or, meaning the narrowest, most historically consistent sites were identified as Grand Cru. This results in wines from higher tiers commanding significantly higher prices, reflecting both scarcity and more consistent quality.",
         rubric: [
@@ -922,6 +953,7 @@
       },
       {
         command: "Describe", commandHe: "תאר",
+        theme: "Appellation hierarchy",
         q: "Describe the differences between Village, Premier Cru, and Grand Cru Burgundy.",
         model: "Village-level wine is sourced from vineyards within a specific commune, such as Gevrey-Chambertin, and makes up roughly 35% of production. Premier Cru wine comes from named, higher-quality vineyard parcels within a village, at around 10% of production. Grand Cru wine comes from the very top vineyard sites, which have their own appellation separate from the village name, and make up only around 1–2% of production.",
         rubric: [
@@ -1446,6 +1478,7 @@
           '<span class="opt-letter">' + letter + '</span><span>' + opt + '</span></button>';
       }).join("");
       return '<div class="quiz-card" data-qi="' + qi + '">' +
+        (q.theme ? '<span class="theme-tag">' + q.theme + '</span>' : "") +
         '<div class="quiz-q">' + (qi + 1) + '. ' + q.q + '</div>' +
         '<div class="quiz-options">' + options + '</div>' +
         '<div class="quiz-explain' + (savedAnswer !== undefined ? " show" : "") + '"><b>Why: </b>' + q.explain + '</div>' +
@@ -1624,6 +1657,8 @@
       cardHtml = '<div class="written-card">' +
         '<div class="written-command">' + w.command + '</div>' +
         '<span class="mcq-topic-tag">' + entry.groupLabel + ' · ' + entry.topicTitle + '</span>' +
+        (w.theme ? '<span class="theme-tag">' + w.theme + '</span>' : "") +
+        (w.anchor ? '<div class="written-anchor">' + w.anchor + '</div>' : "") +
         '<div class="written-q">' + w.q + '</div>' +
         '<textarea class="written-textarea" id="wpAnswer" placeholder="Write your answer here…">' + escapeHtml(wpState.userAnswer || "") + '</textarea>' +
         '<div class="written-actions">' +
@@ -1827,6 +1862,7 @@
     return '<div class="mcq-progress">Question ' + (mcqState.index + 1) + ' / ' + total + ' · Score ' + mcqState.score + '</div>' +
       '<div class="quiz-card">' +
         '<span class="mcq-topic-tag">' + item.groupLabel + ' · ' + item.topicTitle + '</span>' +
+        (q.theme ? '<span class="theme-tag">' + q.theme + '</span>' : "") +
         '<div class="quiz-q">' + q.q + '</div>' +
         '<div class="quiz-options">' + optionsHtml + '</div>' +
         (answered !== null ? '<div class="quiz-explain show"><b>Why: </b>' + q.explain + '</div>' : '') +
