@@ -387,6 +387,39 @@
   .cr-answer .source { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); margin-top: 0.3rem; }
   .cr-pair-note { margin-top: 0.9rem; }
   .cr-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+  /* ---------- Match game ---------- */
+  .match-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .match-col-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.6rem; }
+  .match-col { display: flex; flex-direction: column; gap: 0.55rem; }
+  .match-tile {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.7rem 0.9rem; cursor: pointer; text-align: left; font-size: 0.92rem;
+    color: var(--ink); width: 100%;
+  }
+  .match-tile:hover:not(:disabled) { border-color: var(--accent); }
+  .match-tile.selected { border-color: var(--accent); background: var(--accent-soft); }
+  .match-tile.matched { border-color: var(--good); background: var(--good-soft); color: var(--good); cursor: default; opacity: 0.75; }
+  .match-tile.wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .match-tile:disabled { cursor: default; }
+
+  .match-flash {
+    background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.2rem;
+  }
+  .match-flash .mf-pair { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.7rem; }
+  .match-flash .mf-pair .arrow { color: var(--accent); margin: 0 0.5rem; }
+  .match-flash .mf-side { font-size: 0.88rem; margin-bottom: 0.5rem; }
+  .match-flash .mf-side:last-child { margin-bottom: 0; }
+  .match-flash .mf-side b { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay); display: block; margin-bottom: 0.15rem; }
+
+  .match-history { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .match-history-item {
+    display: flex; justify-content: space-between; gap: 1rem; font-size: 0.84rem;
+    padding: 0.5rem 0.7rem; background: var(--surface); border: 1px solid var(--line); border-radius: 7px; color: var(--muted);
+  }
+  .match-history-item strong { color: var(--ink); }
 </style>
 
 <div class="app">
@@ -871,6 +904,25 @@
     ]
   };
 
+  var MATCH_PAIRS = [
+    { grape: "Malbec", grapeInfo: "Red · deep colour, firm tannin, dark plum and blackberry fruit.", region: "Cahors, France", regionInfo: "Moderate continental climate along the Lot river valley — historically called the region of \"black wine\" for Malbec's deep colour and structure here." },
+    { grape: "Torrontés", grapeInfo: "White · highly aromatic, floral, moderate-high acidity, usually dry.", region: "Mendoza, Argentina", regionInfo: "Semi-arid, high-altitude continental climate — Argentina's signature aromatic white, grown alongside Malbec." },
+    { grape: "Monastrell", grapeInfo: "Red · high tannin, high alcohol, dark fruit, rustic character.", region: "Jumilla, Spain", regionInfo: "Warm, dry Mediterranean-continental climate inland from Spain's southeast coast — old, low-yielding bush vines suit the heat and drought." },
+    { grape: "Tempranillo", grapeInfo: "Red · medium-high tannin, red fruit, savoury and leather notes with age.", region: "Rioja, Spain", regionInfo: "Continental climate with Atlantic and Mediterranean influences — Spain's most important quality red wine region." },
+    { grape: "Nebbiolo", grapeInfo: "Red · pale colour but high tannin and high acidity, rose and tar aromas.", region: "Barolo, Italy", regionInfo: "Cool continental climate with morning fog (\"nebbia\") — the fog that gives Nebbiolo its name." },
+    { grape: "Sangiovese", grapeInfo: "Red · high acidity, medium tannin, red cherry fruit.", region: "Chianti, Italy", regionInfo: "Warm Mediterranean climate moderated by altitude and hillside sites in Tuscany." },
+    { grape: "Riesling", grapeInfo: "White · high acidity, aromatic, ranges from bone dry to lusciously sweet.", region: "Mosel, Germany", regionInfo: "Cool continental climate, steep slate slopes along the Mosel river." },
+    { grape: "Gewürztraminer", grapeInfo: "White · highly aromatic (lychee, rose), low acidity, often off-dry.", region: "Alsace, France", regionInfo: "Cool continental, dry rain-shadow climate behind the Vosges Mountains." },
+    { grape: "Pinot Noir", grapeInfo: "Red · light colour, low tannin, high acidity, red fruit.", region: "Burgundy, France", regionInfo: "Cool continental, marginal ripening climate, extreme soil variation on the Côte d'Or." },
+    { grape: "Cabernet Sauvignon", grapeInfo: "Red · high tannin, high acidity, blackcurrant fruit, ages well.", region: "Left Bank Bordeaux, France", regionInfo: "Maritime climate, well-drained gravel soils that retain daytime heat." },
+    { grape: "Chardonnay", grapeInfo: "White · a neutral grape that expresses winemaking and terroir, lean to rich.", region: "Chablis, France", regionInfo: "Cool continental climate, Kimmeridgian limestone soil — the leanest, most mineral expression of the grape." },
+    { grape: "Sauvignon Blanc", grapeInfo: "White · high acidity, pungent green and tropical aromatics.", region: "Marlborough, New Zealand", regionInfo: "Cool maritime climate, long sunny days, high diurnal range." },
+    { grape: "Syrah", grapeInfo: "Red · full body, high tannin, dark fruit, black pepper spice.", region: "Barossa Valley, Australia", regionInfo: "Warm to hot climate, old bush vines, minimal maritime influence." },
+    { grape: "Zinfandel", grapeInfo: "Red · high alcohol, jammy dark fruit, medium-high tannin.", region: "Lodi, California, USA", regionInfo: "Warm Mediterranean climate moderated by delta breeze off San Francisco Bay." },
+    { grape: "Chenin Blanc", grapeInfo: "White · high acidity, ranges from dry to sweet to sparkling.", region: "Vouvray, France", regionInfo: "Cool continental climate with maritime influence, tuffeau limestone soils in the Loire Valley." },
+    { grape: "Grüner Veltliner", grapeInfo: "White · peppery spice, medium-high acidity, medium body.", region: "Wachau, Austria", regionInfo: "Cool continental climate moderated by the Danube river, terraced vineyards." }
+  ];
+
   var GROUP_ORDER = ["practice", "foundations", "regions"];
   var GROUP_LABELS = {
     practice: { en: "Practice", he: "תרגול" },
@@ -878,6 +930,7 @@
     regions: { en: "Regions", he: "אזורים" }
   };
   var PRACTICE_ITEMS = [
+    { id: "match-game", title: "Grape ↔ Region Match", titleHe: "" },
     { id: "cold-read", title: "Cold Read", titleHe: "קריאה קרה" },
     { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
     { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
@@ -1004,15 +1057,19 @@
   var WRITTEN_LOG_KEY = "fieldsheets-written-log-v1";
   var MCQ_STATS_KEY = "fieldsheets-mcq-stats-v1";
   var COLDREAD_STATS_KEY = "fieldsheets-coldread-stats-v1";
+  var MATCH_STATS_KEY = "fieldsheets-match-stats-v1";
   var state = loadProgress();
   var writtenLog = loadWrittenLog();
   var mcqStats = loadMcqStats();
   var crStats = loadColdReadStats();
-  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "cold-read"
+  var matchStats = loadMatchStats();
+  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "cold-read" / "match-game"
 
   var wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
   var mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
   var crState = { current: null, revealed: false, rating: null };
+  var ROUND_SIZE = 6;
+  var matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
 
   function loadProgress() {
     try {
@@ -1049,6 +1106,15 @@
   }
   function saveColdReadStats() {
     try { localStorage.setItem(COLDREAD_STATS_KEY, JSON.stringify(crStats)); } catch (e) {}
+  }
+  function loadMatchStats() {
+    try {
+      var raw = localStorage.getItem(MATCH_STATS_KEY);
+      return raw ? JSON.parse(raw) : { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
+    } catch (e) { return { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 }; }
+  }
+  function saveMatchStats() {
+    try { localStorage.setItem(MATCH_STATS_KEY, JSON.stringify(matchStats)); } catch (e) {}
   }
   function topicStatus(id) {
     var s = state[id];
@@ -1728,12 +1794,149 @@
     });
   }
 
+  /* ============ RENDER: MATCH GAME ============ */
+
+  function startMatchRound() {
+    var pool = MATCH_PAIRS.map(function (p, i) { return i; });
+    var picked = shuffleArr(pool).slice(0, Math.min(ROUND_SIZE, pool.length));
+    matchState.roundPairs = picked;
+    matchState.grapeOrder = shuffleArr(picked);
+    matchState.regionOrder = shuffleArr(picked);
+    matchState.matched = {};
+    matchState.selectedGrape = null;
+    matchState.selectedRegion = null;
+    matchState.wrongPair = null;
+    matchState.mistakes = 0;
+    matchState.history = [];
+  }
+
+  function renderMatchGame() {
+    var main = document.getElementById("main");
+    if (!matchState.roundPairs.length) startMatchRound();
+
+    var allMatched = matchState.roundPairs.length > 0 &&
+      matchState.roundPairs.every(function (i) { return matchState.matched[i]; });
+
+    var grapeTiles = matchState.grapeOrder.map(function (idx) {
+      var pair = MATCH_PAIRS[idx];
+      var cls = "match-tile";
+      if (matchState.matched[idx]) cls += " matched";
+      else if (matchState.selectedGrape === idx) cls += " selected";
+      else if (matchState.wrongPair && matchState.wrongPair.grape === idx) cls += " wrong";
+      return '<button class="' + cls + '" data-grape="' + idx + '" ' + (matchState.matched[idx] ? "disabled" : "") + '>' + pair.grape + '</button>';
+    }).join("");
+
+    var regionTiles = matchState.regionOrder.map(function (idx) {
+      var pair = MATCH_PAIRS[idx];
+      var cls = "match-tile";
+      if (matchState.matched[idx]) cls += " matched";
+      else if (matchState.selectedRegion === idx) cls += " selected";
+      else if (matchState.wrongPair && matchState.wrongPair.region === idx) cls += " wrong";
+      return '<button class="' + cls + '" data-region="' + idx + '" ' + (matchState.matched[idx] ? "disabled" : "") + '>' + pair.region + '</button>';
+    }).join("");
+
+    var flashHtml = "";
+    if (matchState.history.length) {
+      var latest = MATCH_PAIRS[matchState.history[matchState.history.length - 1]];
+      flashHtml = '<div class="match-flash">' +
+        '<div class="mf-pair">' + latest.grape + '<span class="arrow">&harr;</span>' + latest.region + '</div>' +
+        '<div class="mf-side"><b>Grape</b>' + latest.grapeInfo + '</div>' +
+        '<div class="mf-side"><b>Region climate</b>' + latest.regionInfo + '</div>' +
+      '</div>';
+    }
+
+    var historyHtml = "";
+    if (matchState.history.length) {
+      historyHtml = '<div class="match-history">' + matchState.history.map(function (idx) {
+        var p = MATCH_PAIRS[idx];
+        return '<div class="match-history-item"><span><strong>' + p.grape + '</strong> &harr; ' + p.region + '</span></div>';
+      }).reverse().join("") + '</div>';
+    }
+
+    var statsHtml = '<div class="match-stats-row"><span>Rounds played: ' + matchStats.roundsPlayed + '</span><span>Correct: ' + matchStats.totalCorrect + '</span><span>Mistakes: ' + matchStats.totalWrong + '</span></div>';
+
+    var actionHtml = allMatched
+      ? '<div class="written-actions"><button class="btn primary" id="matchNext">New round (' + matchState.mistakes + ' mistake' + (matchState.mistakes === 1 ? "" : "s") + ' this round)</button></div>'
+      : '<div class="mcq-progress">' + Object.keys(matchState.matched).length + ' / ' + matchState.roundPairs.length + ' matched · ' + matchState.mistakes + ' mistake' + (matchState.mistakes === 1 ? "" : "s") + ' this round</div>';
+
+    main.innerHTML =
+      '<div class="practice-hero">' +
+        '<h2>Grape &harr; Region Match</h2>' +
+        '<p class="sub">Click a grape, then click its region. Every correct match flashes the grape\'s colour and style next to the region\'s climate — the repetition is the point. Wrong guesses just bounce back, no penalty beyond the count.</p>' +
+      '</div>' +
+      statsHtml +
+      (allMatched ? "" : '<div class="mcq-progress" style="margin-bottom:0.6rem;">' + Object.keys(matchState.matched).length + ' / ' + matchState.roundPairs.length + ' matched · ' + matchState.mistakes + ' mistake' + (matchState.mistakes === 1 ? "" : "s") + ' this round</div>') +
+      '<div class="match-grid">' +
+        '<div><div class="match-col-label">Grape</div><div class="match-col">' + grapeTiles + '</div></div>' +
+        '<div><div class="match-col-label">Region</div><div class="match-col">' + regionTiles + '</div></div>' +
+      '</div>' +
+      (allMatched ? '<div class="written-actions" style="margin-bottom:1.5rem;"><button class="btn primary" id="matchNext">New round</button></div>' : "") +
+      flashHtml +
+      historyHtml;
+
+    wireMatchGame();
+  }
+
+  function wireMatchGame() {
+    var main = document.getElementById("main");
+    main.querySelectorAll("[data-grape]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        matchState.selectedGrape = parseInt(btn.getAttribute("data-grape"), 10);
+        matchState.wrongPair = null;
+        attemptMatch();
+      });
+    });
+    main.querySelectorAll("[data-region]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        matchState.selectedRegion = parseInt(btn.getAttribute("data-region"), 10);
+        matchState.wrongPair = null;
+        attemptMatch();
+      });
+    });
+    var nextBtn = main.querySelector("#matchNext");
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      matchStats.roundsPlayed++;
+      saveMatchStats();
+      startMatchRound();
+      renderMatchGame();
+    });
+  }
+
+  function attemptMatch() {
+    if (matchState.selectedGrape === null || matchState.selectedRegion === null) {
+      renderMatchGame();
+      return;
+    }
+    if (matchState.selectedGrape === matchState.selectedRegion) {
+      matchState.matched[matchState.selectedGrape] = true;
+      matchState.history.push(matchState.selectedGrape);
+      matchStats.totalCorrect++;
+      matchState.selectedGrape = null;
+      matchState.selectedRegion = null;
+      saveMatchStats();
+      renderMatchGame();
+    } else {
+      matchState.mistakes++;
+      matchStats.totalWrong++;
+      matchState.wrongPair = { grape: matchState.selectedGrape, region: matchState.selectedRegion };
+      saveMatchStats();
+      renderMatchGame();
+      setTimeout(function () {
+        matchState.selectedGrape = null;
+        matchState.selectedRegion = null;
+        matchState.wrongPair = null;
+        renderMatchGame();
+      }, 650);
+    }
+  }
+
   /* ============ NAVIGATION ============ */
 
   function renderCurrentView() {
     if (currentView === "written-practice") { renderWrittenPractice(); return; }
     if (currentView === "mcq-practice") { renderMcqPractice(); return; }
     if (currentView === "cold-read") { renderColdRead(); return; }
+    if (currentView === "match-game") { renderMatchGame(); return; }
     var topic = TOPICS.find(function (t) { return t.id === currentView; });
     if (topic) renderTopic(topic); else renderHome();
   }
@@ -1763,13 +1966,16 @@
       writtenLog = [];
       mcqStats = { best: 0, lastScore: null, lastTotal: null };
       crStats = { attempts: 0, nailed: 0, partial: 0, missed: 0 };
+      matchStats = { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
       saveProgress();
       saveWrittenLog();
       saveMcqStats();
       saveColdReadStats();
+      saveMatchStats();
       wpState = { filter: "all", current: null, userAnswer: "", revealed: false, checkedRubric: {}, lostTo: null };
       mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
       crState = { current: null, revealed: false, rating: null };
+      matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
       renderSidebar();
       renderCurrentView();
     }
