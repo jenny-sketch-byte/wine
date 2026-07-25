@@ -1,4 +1,4 @@
-# Climate — Foundations
+# Climate: Foundations
 
 ## Macroclimate factors (why a region is the temperature it is)
 | Factor | Effect |
@@ -20,7 +20,7 @@
 - **Slope/elevation**: better drainage, frost avoidance (cold air sinks to valley floors), variable sun exposure.
 - **Soil colour/type**: dark soils (schist, slate) absorb and re-radiate heat overnight; reflective soils (galets in Châteauneuf-du-Pape) bounce heat up into the canopy.
 
-## Diurnal range — a recurring exam concept
+## Diurnal range: a recurring exam concept
 - Large diurnal range (big day/night temperature swing) = warm days build sugar/ripeness, cool nights preserve acidity and aromatics.
 - Common in high-altitude and continental sites (Mendoza, Marlborough, Barossa foothills).
 - Sentence template link: "The large diurnal range in [region] means grapes accumulate sugar during warm days while retaining acidity during cool nights, resulting in ripe fruit with a fresh, balanced structure."
@@ -30,14 +30,14 @@
 - Maritime and marginal cool climates show more vintage variation than Mediterranean/hot climates.
 - Vintage variation matters commercially (blending, pricing, vintage charts) and stylistically (how ripe/structured a wine is in a given year).
 
-## Climate hazards (the standard list — know the mechanism, not just the name)
+## Climate hazards (the standard list: know the mechanism, not just the name)
 | Hazard | Timing | Mechanism / impact |
 |---|---|---|
 | Spring frost | Bud burst | Ice forms in tissue, kills young shoots → reduced yield that year |
 | Hail | Growing season | Physically damages leaves/fruit, can trigger rot |
 | Drought | Growing season | Vine stress, small berries (can concentrate flavour if mild, or shut down ripening if severe) |
 | Fungal disease (powdery/downy mildew) | Warm humid conditions | Damages leaves/fruit, reduces yield and ripening capacity |
-| Rot (grey rot / bunch rot) | Near harvest, wet conditions | Botrytis cinerea in unfavourable conditions — spoils fruit (vs. noble rot in favourable conditions) |
+| Rot (grey rot / bunch rot) | Near harvest, wet conditions | Botrytis cinerea in unfavourable conditions: spoils fruit (vs. noble rot in favourable conditions) |
 
 ## Likely exam angles
 **"Explain how [factor, e.g. altitude/ocean current/mountain range] affects the climate of [region] and the resulting wine style."**
@@ -45,4 +45,4 @@
 Practice answer (template-based, using Marlborough as example):
 > "Marlborough's proximity to the ocean moderates temperature, giving a long, cool growing season with a large diurnal range from clear skies and dry autumns. This means Sauvignon Blanc ripens slowly, retaining high acidity while developing pronounced aromatic intensity, resulting in the vibrant, herbaceous, high-acid style the region is known for."
 
-*(Self-check: this is an "explain" answer — factor → mechanism → wine outcome. Good shape.)*
+*(Self-check: this is an "explain" answer: factor → mechanism → wine outcome. Good shape.)*

@@ -1,15 +1,15 @@
-# Command Words — Know These Cold
+# Command Words: Know These Cold
 
 Misreading the command word costs marks even when you know the content.
 These are ranked roughly by how much they demand.
 
 | Command word | What it wants | How much to write |
 |---|---|---|
-| **Identify / State / Name** | A fact, term, or item — no explanation needed | One word/phrase. Don't over-write; you won't get extra marks for reasoning here. |
-| **Describe** | What something IS or looks like — characteristics, not causes | 1–2 sentences. Facts, not "why." |
-| **Explain** | WHY or HOW something happens — cause → effect | 2–4 sentences. Must include a mechanism/link, not just a fact. This is where most marks live. |
+| **Identify / State / Name** | A fact, term, or item: no explanation needed | One word/phrase. Don't over-write; you won't get extra marks for reasoning here. |
+| **Describe** | What something IS or looks like: characteristics, not causes | 1–2 sentences. Facts, not "why." |
+| **Explain** | WHY or HOW something happens: cause → effect | 2–4 sentences. Must include a mechanism/link, not just a fact. This is where most marks live. |
 | **Outline** | A brief summary of several points | Short list or short sentences, breadth over depth. |
-| **Compare** | Similarities AND differences between two things | Must address both — one-sided answers lose marks. |
+| **Compare** | Similarities AND differences between two things | Must address both: one-sided answers lose marks. |
 | **Discuss** | Multiple angles or factors, weighed | Longer answer, show you understand complexity/tradeoffs. |
 
 ## The critical distinction: Describe vs Explain
