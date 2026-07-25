@@ -1,4 +1,4 @@
-# Sentence Templates — Fill-in-the-Blank Answer Writing
+# Sentence Templates: Fill-in-the-Blank Answer Writing
 
 Purpose: stop composing sentences from scratch under time pressure. Fill the blanks instead.
 These templates match how WSET markers expect written answers to be shaped (factor → effect → outcome).
@@ -36,7 +36,7 @@ Example (Alsace):
 
 > "[Factor, e.g. hand-harvesting/low yields/oak ageing/transport] increases the cost of production, which is reflected in the final price because [reason]."
 
-## Closing a "so what" — attach this to almost any factual statement
+## Closing a "so what": attach this to almost any factual statement
 > "...which matters for quality/style because ___."
 > "...meaning the winemaker can/must ___."
 > "...which explains why this region is suited to ___."
@@ -52,4 +52,4 @@ Example (Alsace):
 | "because of weather" | due to [specific factor: rainfall / diurnal range / sunshine hours / frost risk] |
 
 ## Drill routine
-For each new topic: write ONE answer using the core template within 5 minutes of finishing the content review. Speed over polish — this is muscle memory training, not final-draft writing.
+For each new topic: write ONE answer using the core template within 5 minutes of finishing the content review. Speed over polish: this is muscle memory training, not final-draft writing.
