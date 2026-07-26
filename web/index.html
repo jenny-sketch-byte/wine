@@ -1513,6 +1513,7 @@
       id: "pomerol-grape-soil",
       topicTitle: "Bordeaux, Right Bank",
       wine: "Grand Cru, Pomerol, 2009",
+      context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
       commandBadge: "Identify (2 × 2M)",
       marks: 4,
       q: "State the primary grape variety and the secondary grape variety likely to be found in these wines, plus the soil each one prefers.",
@@ -1542,6 +1543,7 @@
       id: "pomerol-vineyard",
       topicTitle: "Bordeaux, Right Bank",
       wine: "Grand Cru, Pomerol, 2009",
+      context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
       commandBadge: "Explain (4M)",
       marks: 4,
       q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the vineyard?",
@@ -1562,6 +1564,7 @@
       id: "pomerol-winery",
       topicTitle: "Bordeaux, Right Bank",
       wine: "Grand Cru, Pomerol, 2009",
+      context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
       commandBadge: "Explain (6M)",
       marks: 6,
       q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the winery?",
@@ -1582,6 +1585,7 @@
       id: "alsace-natural-factors",
       topicTitle: "Alsace, France",
       wine: "Vendange Tardive Riesling, Alsace",
+      context: "This is a late-harvest Riesling from Alsace, France.",
       commandBadge: "Describe + Explain (2 × 2M)",
       marks: 4,
       q: "Describe two key natural factors in Alsace and explain how each contributes to this wine's style.",
@@ -1611,6 +1615,7 @@
       id: "southern-rhone-blend-builder",
       topicTitle: "Southern Rhône",
       wine: "Red blend, Southern Rhône (GSM)",
+      context: "This is a red blend from the Southern Rhône, France.",
       commandBadge: "State (2 × 3M)",
       marks: 6,
       q: "State the stylistic and practical reasons why a winemaker here might choose to blend.",
@@ -2327,6 +2332,9 @@
       '</div>' +
       '<select class="rb-select" id="rbSelect">' + optionsHtml + '</select>' +
       '<div class="written-card">' +
+        '<span class="mcq-topic-tag">' + builder.topicTitle + '</span>' +
+        '<div class="scenario-wine">' + builder.wine + '</div>' +
+        '<div class="scenario-context">' + builder.context + '</div>' +
         '<div class="rb-badges"><span class="written-command">' + builder.commandBadge + '</span><span class="mcq-topic-tag rb-marks-badge">' + builder.marks + ' marks</span></div>' +
         '<div class="written-q">' + builder.q + '</div>' +
         '<div class="callout rb-tip"><span class="callout-label">Tip</span>' + builder.tip + '</div>' +
