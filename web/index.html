@@ -81,6 +81,45 @@
     grid-template-columns: 280px minmax(0, 1fr);
     min-height: 100vh;
   }
+  body:not(.unlocked) .app { display: none; }
+  body.unlocked .gate { display: none; }
+
+  .gate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .gate-box {
+    width: 100%;
+    max-width: 340px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    box-shadow: var(--shadow);
+  }
+  .gate-mark { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.3rem; }
+  .gate-sub { font-size: 0.88rem; color: var(--muted); margin: 0 0 1.3rem; }
+  .gate-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: var(--surface-2);
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+  .gate-error {
+    display: none;
+    font-size: 0.82rem;
+    color: var(--bad);
+    margin: -0.5rem 0 0.9rem;
+  }
+  .gate-error.show { display: block; }
 
   /* ---------- Sidebar ---------- */
   .sidebar {
@@ -443,6 +482,16 @@
   }
   .match-history-item strong { color: var(--ink); }
 </style>
+
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-mark">Field Sheets</div>
+    <p class="gate-sub">Enter the access code to continue.</p>
+    <input class="gate-input" type="password" id="gatePw" placeholder="Access code" autocomplete="off" />
+    <div class="gate-error" id="gateError">Wrong code, try again.</div>
+    <button class="btn primary" id="gateBtn" style="width:100%;">Enter</button>
+  </div>
+</div>
 
 <div class="app">
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><span class="bars"><i></i><i></i><i></i></span></button>
@@ -1386,7 +1435,7 @@
     main.innerHTML =
       '<div class="home-hero">' +
         '<h1>Field Sheets</h1>' +
-        '<p>A systematic wine primer built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here. For drilling exam technique directly, head to <strong>Practice</strong> at the top of the sidebar for written self-marking and shuffled multiple-choice sets.</p>' +
+        '<p>A systematic wine primer built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here. For drilling exam technique directly, head to <strong>Practice</strong> at the top of the sidebar for written practice and shuffled multiple-choice sets.</p>' +
       '</div>' +
       '<div class="home-table-wrap"><table class="ledger">' +
         '<tr><th>Section</th><th>Topic</th><th>Status</th></tr>' +
@@ -2133,6 +2182,33 @@
       renderCurrentView();
     }
   });
+
+  /* ============ ACCESS GATE ============ */
+  /* Client-side only: keeps the site off the open internet for casual visitors.
+     Not real security, since the source (including this password) is visible
+     to anyone who views page source. Change GATE_PASSWORD below to your own code. */
+
+  var GATE_KEY = "fieldsheets-unlocked-v1";
+  var GATE_PASSWORD = "wset3";
+
+  function tryUnlock() {
+    var input = document.getElementById("gatePw");
+    var err = document.getElementById("gateError");
+    if (input.value === GATE_PASSWORD) {
+      try { localStorage.setItem(GATE_KEY, "1"); } catch (e) {}
+      document.body.classList.add("unlocked");
+      err.classList.remove("show");
+    } else {
+      err.classList.add("show");
+    }
+  }
+  document.getElementById("gateBtn").addEventListener("click", tryUnlock);
+  document.getElementById("gatePw").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") tryUnlock();
+  });
+  var alreadyUnlocked = false;
+  try { alreadyUnlocked = localStorage.getItem(GATE_KEY) === "1"; } catch (e) {}
+  if (alreadyUnlocked) document.body.classList.add("unlocked");
 
   /* ============ INIT ============ */
 
