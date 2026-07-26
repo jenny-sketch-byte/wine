@@ -457,7 +457,6 @@
     color: var(--clay); background: var(--clay-soft); border-radius: 999px; padding: 0.2rem 0.6rem; white-space: nowrap;
     margin: 0 0 1rem calc(26px + 0.7rem);
   }
-  .rb-instruction { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
   .rb-options { display: flex; flex-direction: column; gap: 0.6rem; }
   .rb-option {
     border: 1px solid var(--line); border-radius: 8px; padding: 0.8rem 1rem; cursor: pointer;
@@ -481,7 +480,27 @@
     font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--good); margin-bottom: 0.4rem; display: block;
   }
-  .rb-complete-list { list-style: none; margin: 0.7rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.92rem; }
+
+  .rb-full-question { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .rb-full-question li {
+    display: flex; gap: 0.6rem; font-size: 0.92rem; color: var(--muted); padding: 0.15rem 0;
+    border-left: 2px solid var(--line); padding-inline-start: 0.7rem;
+  }
+  .rb-full-question li.current { color: var(--ink); border-left-color: var(--accent); font-weight: 600; }
+  .rb-full-question li.done { color: var(--good); border-left-color: var(--good); }
+  .rb-full-question li.done em, .rb-full-question li.current em { color: inherit; }
+  .rb-full-question em { font-style: normal; color: var(--faint); white-space: nowrap; }
+  .rb-fq-letter { font-family: var(--font-mono); flex-shrink: 0; }
+
+  .rb-steps-stack { display: flex; flex-direction: column; gap: 0.9rem; }
+  .rb-step-locked { opacity: 0.5; }
+  .rb-step-locked .rb-step-num { background: var(--surface-2); color: var(--faint); border: 1px solid var(--line); }
+  .rb-step-done { border-color: color-mix(in srgb, var(--good) 35%, var(--line)); }
+  .rb-step-num.done { background: var(--good); }
+  .rb-locked-answer {
+    background: var(--good-soft); border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+    border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.92rem; margin-inline-start: calc(26px + 0.7rem);
+  }
 
   /* ---------- Match game ---------- */
   .match-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
@@ -2405,6 +2424,7 @@
     var total = builder.steps.length;
     var totalMarks = builder.steps.reduce(function (sum, s) { return sum + s.marks; }, 0);
     var solvedCount = rbState.selections.filter(function (s) { return s && s.solved; }).length;
+    var allSolved = solvedCount >= total;
 
     var progressPct = total ? Math.round((solvedCount / total) * 100) : 0;
     var progressHtml =
@@ -2414,60 +2434,71 @@
         '<button class="rb-reset-btn" id="rbReset">&#8635; Reset</button>' +
       '</div>';
 
-    var bodyHtml;
-    if (solvedCount >= total) {
-      var summaryHtml = builder.steps.map(function (step, i) {
+    // The full question, printed exactly as it would appear on the exam paper, up front.
+    var fullQuestionHtml = '<ol class="rb-full-question">' + builder.steps.map(function (step, i) {
+      var doneClass = i < rbState.stepIndex || allSolved ? " done" : (i === rbState.stepIndex ? " current" : "");
+      return '<li class="' + doneClass.trim() + '"><span class="rb-fq-letter">' + String.fromCharCode(97 + i) + '</span>' +
+        '<span>' + step.instruction + ' <em>(' + step.marks + (step.marks === 1 ? " mark)" : " marks)") + '</em></span></li>';
+    }).join("") + '</ol>';
+
+    var stepsHtml = builder.steps.map(function (step, i) {
+      var sel = rbState.selections[i];
+      if (i < rbState.stepIndex) {
+        // already answered: show the locked-in correct answer only
         var correctOpt = step.options.find(function (o) { return o.correct; });
-        return '<li><strong>' + step.label + ':</strong> ' + correctOpt.text + '</li>';
-      }).join("");
-      bodyHtml =
-        '<div class="rb-complete">' +
-          '<div class="callout-label">Full answer, built step by step</div>' +
-          '<ul class="rb-complete-list">' + summaryHtml + '</ul>' +
-        '</div>' +
-        '<div class="written-actions"><button class="btn primary" id="rbNextQuestion">New question</button></div>';
-    } else {
-      var stepIndex = rbState.stepIndex;
-      var step = builder.steps[stepIndex];
-      var sel = rbState.selections[stepIndex];
+        return '<div class="rb-step-card rb-step-done">' +
+          '<div class="rb-step-head"><span class="rb-step-num done">&#10003;</span><h3>' + step.label + '</h3></div>' +
+          '<div class="rb-locked-answer">' + correctOpt.text + '</div>' +
+        '</div>';
+      }
+      if (i !== rbState.stepIndex) {
+        // upcoming: locked, not yet reached
+        return '<div class="rb-step-card rb-step-locked">' +
+          '<div class="rb-step-head"><span class="rb-step-num locked">' + (i + 1) + '</span><h3>' + step.label + '</h3></div>' +
+        '</div>';
+      }
+      // current, interactive step
       var optionsListHtml = step.options.map(function (opt, oi) {
         var isChosen = sel && sel.chosenIndex === oi;
         var stateClass = isChosen ? (opt.correct ? " correct" : " incorrect") : "";
         var feedbackHtml = isChosen ?
           '<div class="rb-option-feedback">' + (opt.correct ? "&#10003; " : "&#10007; ") + opt.feedback + '</div>' : "";
-        return '<div class="rb-option' + stateClass + '" data-step="' + stepIndex + '" data-opt="' + oi + '">' +
+        return '<div class="rb-option' + stateClass + '" data-step="' + i + '" data-opt="' + oi + '">' +
           '<span class="rb-option-mark"></span><span class="rb-option-text">' + opt.text + '</span>' +
           feedbackHtml +
         '</div>';
       }).join("");
+      return '<div class="rb-step-card">' +
+        '<div class="rb-step-head"><span class="rb-step-num">' + (i + 1) + '</span><h3>' + step.label + '</h3></div>' +
+        '<span class="rb-step-badge">' + step.command + ' &middot; ' + step.marks + (step.marks === 1 ? " mark" : " marks") + '</span>' +
+        '<div class="rb-options">' + optionsListHtml + '</div>' +
+        (sel && sel.solved ?
+          '<div class="written-actions"><button class="btn primary" id="rbNextStep">' +
+          (i + 1 < total ? "Next part" : "Finish") + '</button></div>' : "") +
+      '</div>';
+    }).join("");
 
-      bodyHtml =
-        '<div class="rb-step-card">' +
-          '<div class="rb-step-head"><span class="rb-step-num">' + (stepIndex + 1) + '</span><h3>' + step.label + '</h3></div>' +
-          '<span class="rb-step-badge">' + step.command + ' &middot; ' + step.marks + (step.marks === 1 ? " mark" : " marks") + '</span>' +
-          '<p class="rb-instruction">' + step.instruction + '</p>' +
-          '<div class="rb-options">' + optionsListHtml + '</div>' +
-          (sel && sel.solved ?
-            '<div class="written-actions"><button class="btn primary" id="rbNextStep">' +
-            (stepIndex + 1 < total ? "Next step" : "Finish") + '</button></div>' : "") +
-        '</div>';
-    }
+    var completeHtml = allSolved ?
+      '<div class="rb-complete"><div class="callout-label">Full answer built</div>Every part above is answered and mark-earning. Try a new question to keep the repetition going.</div>' +
+      '<div class="written-actions"><button class="btn primary" id="rbNextQuestion">New question</button></div>' : "";
 
     main.innerHTML =
       '<div class="practice-hero">' +
         '<h2>Response Builder</h2>' +
-        '<p class="sub">Build a full-mark answer one step at a time. At each step, pick the option that actually earns the mark, and see exactly why the others don\'t. Cause to effect, in plain English.</p>' +
+        '<p class="sub">The full question, exactly as it would appear on the paper. Work through it part by part below: pick the option that actually earns the mark, and see exactly why the others don\'t.</p>' +
       '</div>' +
       '<div class="written-card">' +
         '<span class="mcq-topic-tag">' + builder.topicTitle + '</span>' +
         '<div class="scenario-wine">' + builder.wine + '</div>' +
         '<div class="scenario-context">' + builder.context + '</div>' +
         '<div class="rb-badges"><span class="mcq-topic-tag rb-marks-badge">' + totalMarks + ' marks total &middot; ' + total + ' parts</span></div>' +
+        fullQuestionHtml +
         '<div class="callout rb-tip"><span class="callout-label">Tip</span>' + builder.tip + '</div>' +
         '<div class="written-actions"><button class="btn" id="rbSkip">New question</button></div>' +
       '</div>' +
       progressHtml +
-      bodyHtml;
+      '<div class="rb-steps-stack">' + stepsHtml + '</div>' +
+      completeHtml;
 
     wireResponseBuilder();
   }
