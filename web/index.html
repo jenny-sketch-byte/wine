@@ -18,9 +18,9 @@
     --good-soft: #DCE9DF;
     --bad: #A6392B;
     --bad-soft: #F3DEDA;
-    --font-display: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", "Roboto Mono", Consolas, "Liberation Mono", monospace;
+    --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", monospace;
+    --font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --shadow: 0 1px 2px rgba(36,39,42,0.06), 0 6px 20px rgba(36,39,42,0.07);
   }
   @media (prefers-color-scheme: dark) {
@@ -699,6 +699,66 @@
       ]
     },
     {
+      id: "sparkling",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Sparkling Wine",
+      tagline: "How bubbles get in, and where bready, biscuity flavour comes from.",
+      sections: [
+        { h: "The traditional method: why low-sugar grapes first", body: `
+          <p>Grapes for traditional-method sparkling wine are picked earlier than for a still wine, at low sugar and high acid. The goal is a base (still) wine of only around 10 to 11% abv: the second fermentation, which happens inside the bottle, adds roughly a further 1.2 to 1.3% abv from its own sugar and yeast addition. Starting riper would push finished alcohol too high. The high acidity that comes with low sugar is also what gives sparkling wine its characteristic refreshing style.</p>` },
+        { h: "Yeast autolysis: where bread and biscuit come from", body: `
+          <p>Once the second fermentation (in the sealed bottle) finishes, the yeast dies and settles as sediment (lees) inside the bottle. Left in contact with the wine, these dead yeast cells slowly break down and release compounds into the wine: the source of bready, biscuity, toasty flavour. The longer the wine spends on the lees, the more pronounced this character becomes.</p>` },
+        { h: "Three production methods", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Method</th><th>Where 2nd fermentation happens</th><th>Style result</th></tr>
+            <tr><td>Traditional</td><td>In the bottle; lees stay in contact for extended ageing</td><td>Bready/biscuit complexity, fine persistent bubbles (Champagne, Cava, English sparkling)</td></tr>
+            <tr><td>Tank (Charmat)</td><td>In a large pressurised tank</td><td>Fresh, fruity, less lees character; bottled quickly under pressure (Prosecco)</td></tr>
+            <tr><td>Transfer</td><td>In the bottle, then transferred to tank for filtering/blending before rebottling</td><td>Traditional-method character, without hand-riddling each bottle</td></tr>
+          </table></div>` },
+        { h: "Two ways to make sparkling wine sweet", body: `
+          <p><strong>Dosage (liqueur d'expédition):</strong> after disgorgement, a small wine-and-sugar solution is added; the amount of sugar sets the final sweetness level, from Brut Nature (none added) up through Brut, Extra Dry, Dry/Sec, Demi-Sec, to Doux (sweetest).</p>
+          <p><strong>Stopping fermentation early (tank/Asti method):</strong> fermentation is chilled to a stop before all the sugar converts, then the wine is filtered to remove the yeast and bottled immediately under pressure: no dosage needed, since residual sugar is already present.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain why low-sugar grapes are needed for the traditional method</span><blockquote>"Producers aim for a base wine of around 10 to 11% abv, since the second fermentation in the bottle adds a further 1.2 to 1.3% abv. Starting from riper, higher-sugar grapes would push the finished wine's alcohol too high. The high acidity associated with lower sugar levels is also required for the refreshing style traditional-method sparkling wine is built around."</blockquote></div>` }
+      ],
+      quiz: [
+        { theme: "Base wine sugar/acid", q: "Why does the traditional method require grapes with relatively low sugar levels?", options: ["Low-sugar grapes are cheaper", "The base wine needs to stay around 10 to 11% abv before the 2nd fermentation adds more alcohol", "High sugar prevents fermentation from starting", "It has no effect on the finished wine"], correct: 1, explain: "The second fermentation itself adds roughly 1.2 to 1.3% abv, so starting riper would push finished alcohol too high." },
+        { theme: "Yeast autolysis", q: "Bready, biscuity flavours in traditional-method sparkling wine come from:", options: ["New oak barrels", "Yeast autolysis: dead yeast cells breaking down in contact with the wine", "Malolactic conversion", "The dosage"], correct: 1, explain: "After the second fermentation, dead yeast cells (lees) slowly release compounds into the wine: longer lees contact means more pronounced bready character." },
+        { theme: "Production method comparison", q: "Compared to the traditional method, the tank (Charmat) method typically produces:", options: ["More bready, biscuity complexity", "Fresher, fruitier wine with less lees character", "Higher alcohol", "No bubbles at all"], correct: 1, explain: "Tank-method second fermentation happens in bulk with less extended lees contact, favouring fresh fruit character over autolytic complexity: the Prosecco style." },
+        { theme: "Sweetening methods", q: "Adding a liqueur d'expédition after disgorgement is an example of:", options: ["Stopping fermentation early", "Dosage: a wine-and-sugar solution that sets the final sweetness level", "Chaptalization", "Racking"], correct: 1, explain: "Dosage is added after the second fermentation and disgorgement; the sugar amount in the solution determines the wine's final sweetness category." }
+      ]
+    },
+    {
+      id: "fortified",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Fortified Wine",
+      tagline: "One decision, timing the fortification, sets whether the wine ends up sweet or dry.",
+      sections: [
+        { h: "The core mechanism: fortification timing decides sweetness", body: `
+          <p>Fortification means adding high-strength grape spirit to a wine, which raises alcohol and kills the yeast, stopping fermentation. <strong>When</strong> this happens is the key decision: fortify early, while most of the grape's natural sugar hasn't yet fermented, and that sugar remains as sweetness in the finished wine (most Port, most Vins Doux Naturels). Fortify only once fermentation has run to completion (a dry base wine), and there is little or no sugar left to preserve, giving a dry fortified wine (most Sherry styles).</p>` },
+        { h: "Sherry: flor vs oxidative ageing", body: `
+          <p>Made from Palomino grapes (Pedro Ximénez is used for a separate, very sweet, raisined style). After fermentation to dryness, wines are fortified and aged in a <strong>solera</strong> system, a fractional blending system across many barrels of different ages, giving a consistent house style year to year. Two main paths: <strong>Fino/Manzanilla</strong>, aged under a living layer of yeast (flor) that protects the wine from oxygen, giving a pale, fresh, tangy style; <strong>Oloroso</strong>, fortified to a higher strength that kills off flor, ageing oxidatively instead, giving a darker, nuttier, richer style.</p>` },
+        { h: "Port: timing plus ageing style", body: `
+          <p>Made in the Douro, Portugal. Fermentation is stopped early by fortification, while substantial grape sugar remains, giving a sweet, full-bodied red base style. From there, ageing choices diverge: <strong>Ruby</strong>-style Ports age briefly, in tank or large neutral vessels, preserving fresh, fruity character; <strong>Tawny</strong>-style Ports age for years in smaller old oak, developing nutty, dried-fruit, oxidative complexity. <strong>Vintage Port</strong> is bottled young then ages for decades in bottle, forming heavy sediment: see the <strong>Service &amp; Storage</strong> topic for how to decant it.</p>` },
+        { h: "Two contrasting fortified Muscat styles", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th></th><th>Fresh, fruity style</th><th>Oxidative, raisined style</th></tr>
+            <tr><td>Grapes</td><td>Ripe, unraisined</td><td>Allowed to raisin on the vine</td></tr>
+            <tr><td>Fermentation</td><td>Cool, in an inert vessel, brief skin contact</td><td>On skins; fortified very early, often once only ~2% abv has been reached, preserving most of the sugar</td></tr>
+            <tr><td>Ageing</td><td>Inert vessel, protected from oxygen</td><td>Old, large-format oak; warm conditions; oxidative</td></tr>
+            <tr><td>Style result</td><td>Grapey, floral, primary fruit character</td><td>Deep colour, dried fruit, toffee, complex, oxidative notes</td></tr>
+          </table></div>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Explain why fortification timing determines a fortified wine's sweetness</span><blockquote>"Fortifying a wine while fermentation is still incomplete stops the yeast before all the grape sugar converts to alcohol, leaving that sugar behind as sweetness, the mechanism behind sweet styles like most Port. Fortifying only after fermentation has run to dryness leaves little or no sugar to preserve, giving a dry style instead, the mechanism behind most Sherry."</blockquote></div>` }
+      ],
+      quiz: [
+        { theme: "Fortification timing", q: "What determines whether a fortified wine ends up sweet or dry?", options: ["The grape variety alone", "When fortification happens relative to fermentation", "The colour of the grape", "The region it's made in"], correct: 1, explain: "Fortifying before fermentation completes preserves grape sugar as sweetness; fortifying after a dry fermentation leaves little sugar behind." },
+        { theme: "Sherry: flor vs oxidative", q: "What distinguishes Fino/Manzanilla Sherry from Oloroso?", options: ["Fino is fortified higher", "Fino ages under flor (protected from oxygen); Oloroso is fortified higher, killing flor, and ages oxidatively", "Oloroso is unfortified", "There is no real difference"], correct: 1, explain: "The fortification strength decides whether flor survives: that single choice sends the wine down a fresh, flor-aged path or a darker, oxidative one." },
+        { theme: "Port ageing styles", q: "What mainly distinguishes Tawny Port from Ruby Port?", options: ["Tawny is unfortified", "Tawny ages for years in small old oak, developing oxidative, nutty character; Ruby ages briefly, preserving fruit", "Ruby is always sweeter", "Tawny is made from white grapes only"], correct: 1, explain: "Both start from the same early-fortified, sweet base; the ageing vessel and duration decide fresh-fruit Ruby versus oxidative, nutty Tawny." },
+        { theme: "Fortified Muscat contrast", q: "A fortified Muscat that is raisined, fermented on skins, and aged oxidatively in old oak will show:", options: ["Pale colour and delicate primary fruit", "Deep colour, dried fruit, and toffee-like oxidative complexity", "No sweetness at all", "Heavy new-oak vanilla character"], correct: 1, explain: "Raisining concentrates sugar and flavour, early fortification preserves most of it as sweetness, and oxidative ageing in old oak adds dried-fruit, toffee complexity." }
+      ]
+    },
+    {
       id: "alsace",
       group: "regions",
       groupLabel: "Regions",
@@ -795,6 +855,84 @@
         { theme: "Appellation hierarchy", q: "Roughly what share of Burgundy's production is Grand Cru?", options: ["~50%", "~35%", "~10%", "~1–2%"], correct: 3, explain: "Grand Cru sites are tiny in area and production, which is a major driver of their price relative to Village or Regional wine." },
         { theme: "Terroir fragmentation", q: "Why is Pinot Noir considered highly terroir-expressive?", options: ["It is thick-skinned and neutral", "It is thin-skinned and sensitive to subtle site differences", "It is always heavily oaked", "It only grows in warm climates"], correct: 1, explain: "Pinot Noir's thin skin and sensitivity make it a clear lens onto small differences in soil, aspect, and microclimate." },
         { theme: "Vintage variation", q: "Which best describes Burgundy's climate risk profile?", options: ["Very low vintage variation, like a desert climate", "Significant vintage variation from frost, flowering, and harvest-time rain", "No frost risk at all", "Only hail is a concern"], correct: 1, explain: "As a cool continental, marginal-ripening climate, Burgundy sees real year-to-year swings driven by frost, poor fruit set, and harvest weather." }
+      ]
+    },
+    {
+      id: "southern-rhone",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Southern Rhône",
+      tagline: "Grenache-led blends, built around wind and heat rather than rain.",
+      signature: { low: 42, high: 84, rainfall: 0.32, note: "warm Mediterranean · the Mistral · low rain risk, real wind risk" },
+      sections: [
+        { h: "Climate", body: `<p><strong>Warm, Mediterranean.</strong> The Mistral, a strong, dry wind funnelling down the Rhône valley, reduces disease pressure but can physically damage vines and cause coulure (poor fruit set) at flowering. Drought is a real risk; rain at harvest generally is not, unlike Bordeaux or Burgundy.</p>` },
+        { h: "Soils & key grapes", body: `<p>Famous <em>galets roulés</em> (large rounded stones) in Châteauneuf-du-Pape absorb daytime heat and radiate it back at night. <strong>Grenache</strong> is the backbone: thick-skinned, drought-resistant, high alcohol, red fruit and spice, but pale colour and low tannin, and prone to coulure in cool, windy flowering conditions. <strong>Syrah</strong> adds colour and tannin; <strong>Mourvèdre</strong> adds structure and gamey notes. Together: GSM.</p>` },
+        { h: "Appellation hierarchy", body: `<p>Côtes du Rhône (regional, the bulk of production) → Côtes du Rhône Villages → named Villages (Vacqueyras, Gigondas) → Châteauneuf-du-Pape, its own appellation permitting up to 13 grape varieties.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">State the stylistic and practical reasons for blending here</span><blockquote>"Grenache gives alcohol, fruit, and spice but little structure, so Syrah and Mourvèdre are blended in for colour, tannin, and complexity, continuing a long regional tradition. Practically, Grenache's vulnerability to coulure in windy, cool flowering conditions, combined with the Mistral's own vintage-to-vintage variation, means blending spreads risk across varieties that don't all fail in the same year."</blockquote></div>` }
+      ],
+      quiz: [
+        { theme: "Blending rationale", q: "Why is Grenache usually blended rather than used alone in the Southern Rhône?", options: ["It is illegal to bottle Grenache alone", "It gives alcohol, fruit, and spice but little colour, tannin, or reliability", "It has too much tannin on its own", "It only grows well at high altitude"], correct: 1, explain: "Grenache is prone to coulure and gives a pale, low-tannin wine on its own: Syrah and Mourvèdre fill the structural gap." },
+        { theme: "Wind as a climate factor", q: "The Mistral's main effect on Southern Rhône viticulture is:", options: ["It brings rain at harvest", "It cools and dries the canopy, reducing disease but risking coulure and vine damage", "It has no real viticultural effect", "It only affects white grapes"], correct: 1, explain: "Unlike Bordeaux's rain-driven vintage risk, the Southern Rhône's main variability driver is a strong, dry wind." },
+        { theme: "Appellation hierarchy", q: "How many grape varieties are permitted in Châteauneuf-du-Pape?", options: ["4", "13", "27"], correct: 1, explain: "Up to 13 varieties are permitted, a real practical reason producers have room to blend for both style and insurance." },
+        { theme: "Heat-retaining soil", q: "What is the role of the galets roulés (large rounded stones) found in Châteauneuf-du-Pape?", options: ["They retain water for drought protection", "They absorb daytime heat and radiate it back at night, aiding ripening", "They block the Mistral wind", "They lower soil pH"], correct: 1, explain: "Like other heat-retaining stony soils, they extend the warmth available to the vine into the night, aiding ripening in an already warm climate." }
+      ]
+    },
+    {
+      id: "germany",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Germany",
+      tagline: "One grape, ripeness-graded into a six-step sweetness ladder.",
+      signature: { low: 28, high: 66, rainfall: 0.5, note: "cool continental · steep river-valley slopes · marginal ripening" },
+      sections: [
+        { h: "Climate", body: `<p><strong>Cool continental</strong>, among the coolest wine-producing countries with major fine wine production. Steep, south-facing valley slopes (the Mosel especially) maximise sun exposure at this latitude; rivers moderate temperature and can reflect extra heat onto the slopes. Frost and poor ripening in weak vintages are real risks.</p>` },
+        { h: "Soils & key grape", body: `<p>Mosel: slate, which retains and radiates heat and drains well on steep slopes. <strong>Riesling</strong> is the signature grape: high acid retention, aromatic, capable of the full sweetness range from bone dry to lusciously sweet.</p>` },
+        { h: "Prädikatswein: ripeness at harvest, not finished sweetness", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Category</th><th>Style / sweetness</th></tr>
+            <tr><td>Kabinett</td><td>Lightest tier; dry to medium-sweet</td></tr>
+            <tr><td>Spätlese</td><td>"Late harvest," riper than Kabinett; dry to medium-sweet</td></tr>
+            <tr><td>Auslese</td><td>Selected, riper bunches; dry to sweet, can show botrytis</td></tr>
+            <tr><td>Beerenauslese</td><td>Individually selected botrytis berries; sweet only</td></tr>
+            <tr><td>Trockenbeerenauslese</td><td>Shrivelled, botrytis-concentrated berries; intensely sweet only</td></tr>
+            <tr><td>Eiswein</td><td>Grapes frozen naturally on the vine; sweet only, no botrytis</td></tr>
+          </table></div>
+          <p>Each category is a minimum ripeness (sugar) level at harvest: a Kabinett or even an Auslese can be fermented fully dry. Independent labelling terms <strong>trocken</strong> (dry) and <strong>halbtrocken</strong> (off-dry) describe the finished wine's actual sweetness.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Describe the process and style of Eiswein</span><blockquote>"Healthy grapes are left on the vine into winter and freeze naturally. They are picked and pressed while still frozen, so the water content stays behind as ice and the juice that runs off is highly concentrated. Fermentation starts and stops naturally before all the sugar converts, given the high starting sugar level, resulting in low alcohol and high residual sugar. Oak and malolactic conversion are avoided to preserve pure, high-acid varietal character."</blockquote></div>` }
+      ],
+      quiz: [
+        { theme: "Prädikat ripeness ladder", q: "The six Prädikat categories (Kabinett through Eiswein) rank wines by:", options: ["Finished sweetness in the bottle", "Minimum grape ripeness (sugar level) at harvest", "Vineyard site quality", "Oak ageing time"], correct: 1, explain: "A Kabinett or Auslese can be fermented dry: the Prädikat measures ripeness at picking, not the final wine's sweetness." },
+        { theme: "Eiswein production", q: "Eiswein achieves its concentration because:", options: ["Grapes are dried on straw mats", "Grapes freeze on the vine and are pressed while frozen, leaving water behind as ice", "It is fortified with spirit", "It undergoes extended oak ageing"], correct: 1, explain: "Pressing frozen grapes leaves the water content behind as ice crystals, concentrating sugar and acid in the juice that runs off." },
+        { theme: "Sweetness terminology", q: "What does 'halbtrocken' mean on a German wine label?", options: ["Fully dry", "Off-dry to medium", "Intensely sweet", "Sparkling"], correct: 1, explain: "Trocken (dry) and halbtrocken (off-dry/half-dry) describe the finished wine's actual sweetness, separate from the Prädikat ripeness category." },
+        { theme: "Steep-slope viticulture", q: "Why are steep, south-facing slopes important on the Mosel?", options: ["They allow machine harvesting", "They maximise sun exposure at this cool, high-latitude location", "They reduce frost risk to zero", "They are required by law"], correct: 1, explain: "At this latitude, slope angle and aspect make the difference between ripening a crop and not: hence the region's steep, terraced vineyards." }
+      ]
+    },
+    {
+      id: "hungary",
+      group: "regions",
+      groupLabel: "Regions",
+      title: "Hungary (Tokaj)",
+      tagline: "Noble rot, engineered through hand-selected berries and a base-wine maceration.",
+      signature: { low: 30, high: 76, rainfall: 0.42, note: "continental · Bodrog/Tisza river mists · a noble-rot climate" },
+      sections: [
+        { h: "Climate", body: `<p><strong>Continental</strong>, with warm, sunny autumns essential for reliable noble rot. The Bodrog and Tisza rivers create morning mists (humidity for botrytis to establish) followed by dry, sunny afternoons (to dry the grapes and concentrate them without spoiling): the same mechanism behind every noble-rot region, just a different river.</p>` },
+        { h: "Key grape", body: `<p><strong>Furmint</strong>: thin-skinned and susceptible to botrytis, with high natural acidity that balances the finished wine's sweetness and supports long ageing. Hárslevelű and a little Muscat are also used.</p>` },
+        { h: "Winemaking: how Aszú is made", body: `
+          <ol>
+            <li>A base (dry) wine is made first, from healthy, normally-ripened grapes.</li>
+            <li>Aszú berries, individually selected botrytis-affected, shrivelled grapes, are hand-harvested across multiple passes (<em>tries</em>), since botrytis doesn't affect every berry at once.</li>
+            <li>The Aszú berries are macerated in the finished base wine.</li>
+            <li>The mixture is pressed to separate liquid from solids.</li>
+            <li>Fermentation proceeds slowly, given the high sugar concentration, then the wine is aged in oak, often for years.</li>
+          </ol>
+          <p><strong>Eszencia</strong>: wine made from just the free-run juice of Aszú berries, with no pressing at all: exceptionally rare and concentrated.</p>` },
+        { h: "Likely exam angle", body: `<div class="callout"><span class="callout-label">Describe the growing conditions and harvesting for this style</span><blockquote>"Tokaj has a continental climate with warm, sunny autumns that encourage noble rot. The Bodrog and Tisza rivers create morning mists, essential for Botrytis cinerea to develop, followed by dry afternoons that prevent undesirable rot. Aszú berries are harvested by hand, often in multiple passes, to select only berries affected by noble rot: a long, labour-intensive process."</blockquote></div>` }
+      ],
+      quiz: [
+        { theme: "Noble rot mechanism", q: "What creates the humidity Tokaj needs for noble rot to develop?", options: ["Coastal fog", "Morning mists from the Bodrog and Tisza rivers", "Irrigation", "High rainfall year-round"], correct: 1, explain: "Same mechanism as every noble-rot region: morning humidity to establish botrytis, followed by dry afternoons to concentrate without spoiling." },
+        { theme: "Aszú production", q: "What is macerated in the base wine during Tokaji Aszú production?", options: ["Fresh, healthy grapes", "Individually selected, botrytis-affected Aszú berries", "Oak chips", "Pressed skins from an earlier vintage"], correct: 1, explain: "The base wine is made first; Aszú berries are then macerated in it before pressing." },
+        { theme: "Eszencia", q: "Eszencia is best described as:", options: ["A dry Furmint style", "Wine made from just the free-run juice of Aszú berries, unpressed", "A fortified style of Tokaji", "The base wine used before Aszú berries are added"], correct: 1, explain: "Eszencia skips pressing entirely, using only the free-run juice: the rarest, most concentrated Tokaji style." },
+        { theme: "Hand harvesting in tries", q: "Why are Aszú berries picked in multiple passes (tries) rather than all at once?", options: ["To reduce labour cost", "Botrytis doesn't affect every berry at the same time", "It is a legal requirement unrelated to ripeness", "To separate red and white grapes"], correct: 1, explain: "Multiple passes let pickers select only berries that have reached the right stage of noble rot, rather than harvesting unevenly-affected bunches all at once." }
       ]
     }
   ];
@@ -943,6 +1081,35 @@
         model: "Move the bottle from the rack to the decanting position without agitating it, ideally standing it upright for a day beforehand so sediment settles to the bottom. Remove the capsule and clean the neck and shoulder. Ease the cork out gently, since old corks can be fragile and crumble. Hold the bottle in front of a light source as you pour steadily into the decanter, and stop the moment sediment reaches the neck, leaving the last of the wine behind with the deposit."
       }
     ],
+    sparkling: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        theme: "Base wine sugar/acid",
+        q: "Explain why a producer of traditional-method sparkling wine requires grapes with relatively low sugar levels.",
+        model: "Producers aim to produce a base dry wine of around 10 to 11% abv, since the second fermentation in the bottle adds a further 1.2 to 1.3% abv. Starting from riper, higher-sugar grapes would push the finished wine's alcohol too high. The high acidity associated with low sugar levels is also required for the fresh, refreshing style traditional-method sparkling wine is built around."
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        theme: "Sweetening methods",
+        q: "Identify and describe two ways of making a sparkling wine sweet.",
+        model: "The first method is dosage: after disgorgement, a small wine-and-sugar solution (liqueur d'expédition) is added, and the amount of sugar in it determines the finished sweetness level, from Brut Nature through to Doux. The second method is stopping fermentation early, used in the tank or Asti method: fermentation is chilled to a stop before all the sugar converts to alcohol, then the wine is filtered to remove the yeast and bottled immediately, with no dosage needed since residual sugar is already present."
+      }
+    ],
+    fortified: [
+      {
+        command: "Explain", commandHe: "הסבר",
+        theme: "Fortification timing",
+        q: "Explain how the timing of fortification determines whether a fortified wine is sweet or dry.",
+        model: "Fortification adds high-strength grape spirit to a wine, raising alcohol and killing the yeast, which stops fermentation. Fortifying early, before most of the grape's sugar has fermented, leaves that sugar behind as sweetness, the mechanism behind most Port and Vins Doux Naturels. Fortifying only once fermentation has run to a dry finish leaves little or no sugar to preserve, giving a dry style instead, the mechanism behind most Sherry."
+      },
+      {
+        command: "Compare", commandHe: "השווה",
+        anchor: "Two fortified Muscat wines: one fresh and unraisined, one raisined and oxidatively aged",
+        theme: "Fortified Muscat contrast",
+        q: "Compare how these two wines are made.",
+        model: "The fresh style is made from ripe, unraisined grapes, crushed with brief skin contact, then cool-fermented in an inert vessel before fortification with high-strength spirit, and aged in an inert vessel protected from oxygen: this preserves pale colour and grapey, floral, primary fruit character. The oxidative style is made from grapes allowed to raisin on the vine, fermented on their skins, and fortified very early, often once only around 2% abv has been reached, preserving most of the natural sugar. It is then aged oxidatively in old, large-format oak under warm conditions, developing deep colour and dried fruit, toffee, and nutty complexity before blending."
+      }
+    ],
     alsace: [
       {
         command: "Explain", commandHe: "הסבר",
@@ -1045,6 +1212,50 @@
           { en: "Notes that Grand Cru has its own appellation name", he: "מציין שלגרנד קרו יש שם מינוח משלו" },
           { en: "Purely descriptive facts, ordered broad to narrow", he: "עובדות תיאוריות בלבד, מסודרות מהרחב לצר" }
         ]
+      }
+    ],
+    "southern-rhone": [
+      {
+        command: "State", commandHe: "ציין",
+        theme: "Blending rationale",
+        q: "State the stylistic and practical reasons why a winemaker might choose to blend grapes here.",
+        model: "Stylistically, Grenache gives alcohol, ripe fruit, and spice but little colour or tannin, so Syrah and Mourvèdre are blended in for structure and complexity, continuing a long regional tradition. Practically, Grenache's vulnerability to coulure in cool, windy flowering conditions, combined with the Mistral's own vintage-to-vintage variation, means blending spreads risk across varieties that don't all struggle in the same year."
+      },
+      {
+        command: "Compare", commandHe: "השווה",
+        theme: "Blending rationale",
+        q: "Compare the reasons for blending here with the reasons for blending in Bordeaux.",
+        model: "Both regions blend for a similar structural reason: no single grape supplies everything the wine needs, so producers combine varieties with complementary strengths. The practical risk differs, though: in Bordeaux, the main vintage threat is rain at flowering or harvest, so producers lean on whichever grape suits the wetter or drier year. In the Southern Rhône, the main risk is wind, since the Mistral can cause coulure in Grenache at flowering, so Syrah and Mourvèdre provide insurance against a poor Grenache year rather than against rain."
+      }
+    ],
+    germany: [
+      {
+        command: "Describe", commandHe: "תאר",
+        theme: "Prädikat ripeness ladder",
+        q: "Describe how the six Prädikat categories relate to a German wine's finished sweetness.",
+        model: "The six Prädikat categories, Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, and Eiswein, rank wines by minimum grape ripeness (sugar level) at harvest, not by the sweetness of the finished wine. Kabinett through Auslese can each be fermented anywhere from dry to sweet, depending on how far fermentation is taken; only Beerenauslese, Trockenbeerenauslese, and Eiswein are sweet only, since their sugar levels are too high to ferment fully dry."
+      },
+      {
+        command: "Explain", commandHe: "הסבר",
+        anchor: "Mosel, Germany · Eiswein",
+        theme: "Eiswein production",
+        q: "Explain how Eiswein is produced and how this affects its style.",
+        model: "Healthy grapes are left on the vine into winter and allowed to freeze naturally. They are picked and pressed while still frozen, so the water content stays behind as ice and the juice that runs off is highly concentrated in sugar and acid. Fermentation starts and stops naturally, well before all the sugar converts, given the very high starting sugar level, resulting in low alcohol and high residual sugar. Oak and malolactic conversion are avoided to preserve pure, high-acid varietal character."
+      }
+    ],
+    hungary: [
+      {
+        command: "Describe", commandHe: "תאר",
+        anchor: "Tokaj, Hungary · Aszú",
+        theme: "Noble rot mechanism",
+        q: "Describe the growing conditions and harvesting of grapes for this style of wine.",
+        model: "Tokaj has a continental climate with warm, sunny autumns that encourage noble rot. The Bodrog and Tisza rivers create morning mists, essential for Botrytis cinerea to develop, followed by dry afternoons that prevent undesirable rot. Grapes are harvested by hand, often in multiple passes (tries), to select only the Aszú berries affected by noble rot: a long, labour-intensive process needed to ensure optimal ripeness and concentration."
+      },
+      {
+        command: "Describe", commandHe: "תאר",
+        theme: "Aszú production",
+        q: "The production of Tokaji Aszú starts with a base wine made from healthy grapes. Describe the winemaking process from this point.",
+        model: "Aszú berries, individually selected botrytis-affected grapes, are macerated in the finished base wine. The mixture is then pressed to separate the liquid from the solids. Fermentation proceeds slowly, given the high sugar concentration, and the wine is aged in oak, often for several years, contributing further complexity."
       }
     ]
   };
