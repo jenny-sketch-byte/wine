@@ -240,13 +240,6 @@
   .topic-header h2 { font-size: 2.15rem; margin-bottom: 0.35rem; }
   .topic-tagline { color: var(--muted); font-size: 1.02rem; max-width: 62ch; }
 
-  .signature-wrap { margin: 1.1rem 0 0.3rem; }
-  .signature-wrap canvas { display: block; width: 100%; height: 46px; border-radius: 6px; }
-  .signature-caption {
-    font-family: var(--font-mono); font-size: 0.68rem; color: var(--faint);
-    display: flex; justify-content: space-between; margin-top: 0.3rem;
-  }
-
   .content-block { margin-bottom: 1.9rem; }
   .content-block h3 {
     font-size: 1.05rem; margin-bottom: 0.65rem; padding-bottom: 0.4rem;
@@ -549,7 +542,6 @@
       groupLabel: "Foundations",
       title: "Climate",
       tagline: "The macro and site-level factors that set every region's baseline: the concept every region sheet builds on.",
-      signature: { low: 35, high: 68, rainfall: 0.6, note: "illustrative: the general pattern, not one place" },
       sections: [
         { h: "Macroclimate factors", body: `
           <div class="table-wrap"><table class="data">
@@ -791,7 +783,6 @@
       groupLabel: "Regions",
       title: "Alsace",
       tagline: "One grape, a full range of sweetness: enabled entirely by climate.",
-      signature: { low: 30, high: 78, rainfall: 0.22, note: "cool continental · Vosges rain shadow · ~500mm/yr" },
       sections: [
         { h: "Climate", body: `<p><strong>Cool continental.</strong> The Vosges Mountains to the west block Atlantic weather, creating a rain shadow: warm dry summers, cold winters, ~500mm rainfall/year (one of France's driest regions), and a large diurnal range. Hazards are generally low, since dry autumns cut rot risk, aside from winter frost.</p>` },
         { h: "Soils & key grapes", body: `<p>Highly varied (granite, limestone, marl, sandstone) across a narrow strip: the basis of Grand Cru site distinctions. <strong>Riesling</strong> (high acid retention, ages well), <strong>Gewurztraminer</strong> (aromatic, low acid), <strong>Pinot Gris</strong> (full-bodied), <strong>Muscat</strong> (aromatic, usually dry). Wines are almost always varietally labelled, unusual for France, and little to no oak is used, to preserve aromatics.</p>` },
@@ -818,7 +809,6 @@
       groupLabel: "Regions",
       title: "Argentina (Mendoza)",
       tagline: "Irrigation as both survival necessity and precision quality tool.",
-      signature: { low: 18, high: 88, rainfall: 0.08, note: "semi-arid · Andes rain shadow · ~200mm/yr" },
       sections: [
         { h: "Climate & why irrigation is necessary", body: `<p><strong>Semi-arid to desert, continental.</strong> The Andes block Pacific moisture, leaving Mendoza with only ~200mm rainfall/year: far below vine requirements. Altitude is a key modifier: Uco Valley vineyards reach 1,500m+, giving high UV and a large diurnal range. Without irrigation using Andean snowmelt, vines would suffer severe drought stress: poor canopy, unripe fruit, stuck ripening.</p>` },
         { h: "Irrigation as a quality tool, not just survival", body: `<p>Because rainfall is near zero, growers control water timing/quantity precisely: unlike rain-dependent regions where vintage is largely out of their hands. <strong>Deficit irrigation</strong> deliberately withholds water at key points (e.g. post-fruit-set) to concentrate flavour and control berry size/yield. Flood irrigation is cheap but imprecise and encourages vigour/dilution; drip is precise and improves concentration.</p>` },
@@ -838,7 +828,6 @@
       groupLabel: "Regions",
       title: "Bordeaux",
       tagline: "The Left Bank / Right Bank divide: soil dictates the grape.",
-      signature: { low: 42, high: 66, rainfall: 0.75, note: "maritime · significant vintage variation" },
       sections: [
         { h: "Climate", body: `<p><strong>Maritime.</strong> The Atlantic and the Gironde estuary moderate temperature and reduce spring frost risk. The growing season is long and mild, but vintage variation is significant: rain at flowering (poor fruit set) or at harvest (dilution/rot) is the main risk.</p>` },
         { h: "Soils: the core divide", body: `
@@ -863,7 +852,6 @@
       groupLabel: "Regions",
       title: "Burgundy",
       tagline: "Extreme parcel fragmentation and a strict vineyard-quality pyramid.",
-      signature: { low: 32, high: 72, rainfall: 0.5, note: "cool continental · marginal ripening climate" },
       sections: [
         { h: "Climate & soils", body: `<p><strong>Cool continental</strong>: inland, no major moderating water body, so vintage variation is significant (frost, poor flowering, harvest rain are all real risks). <strong>Kimmeridgian limestone and marl</strong> dominate the Côte d'Or, with extreme parcel fragmentation: dozens of distinct <em>climats</em> on the same slope, historically mapped by monks, each with subtly different soil, aspect, and drainage.</p>` },
         { h: "Key grapes", body: `<p><strong>Pinot Noir</strong>: thin-skinned, early-budding (frost risk), highly terroir-expressive. <strong>Chardonnay</strong>: adaptable, expresses both terroir and winemaking choice, from lean/mineral (Chablis) to rich/buttery (Meursault). Plus Gamay (Beaujolais) and Aligoté.</p>` },
@@ -890,7 +878,6 @@
       groupLabel: "Regions",
       title: "Southern Rhône",
       tagline: "Grenache-led blends, built around wind and heat rather than rain.",
-      signature: { low: 42, high: 84, rainfall: 0.32, note: "warm Mediterranean · the Mistral · low rain risk, real wind risk" },
       sections: [
         { h: "Climate", body: `<p><strong>Warm, Mediterranean.</strong> The Mistral, a strong, dry wind funnelling down the Rhône valley, reduces disease pressure but can physically damage vines and cause coulure (poor fruit set) at flowering. Drought is a real risk; rain at harvest generally is not, unlike Bordeaux or Burgundy.</p>` },
         { h: "Soils & key grapes", body: `<p>Famous <em>galets roulés</em> (large rounded stones) in Châteauneuf-du-Pape absorb daytime heat and radiate it back at night. <strong>Grenache</strong> is the backbone: thick-skinned, drought-resistant, high alcohol, red fruit and spice, but pale colour and low tannin, and prone to coulure in cool, windy flowering conditions. <strong>Syrah</strong> adds colour and tannin; <strong>Mourvèdre</strong> adds structure and gamey notes. Together: GSM.</p>` },
@@ -910,7 +897,6 @@
       groupLabel: "Regions",
       title: "Germany",
       tagline: "One grape, ripeness-graded into a six-step sweetness ladder.",
-      signature: { low: 28, high: 66, rainfall: 0.5, note: "cool continental · steep river-valley slopes · marginal ripening" },
       sections: [
         { h: "Climate", body: `<p><strong>Cool continental</strong>, among the coolest wine-producing countries with major fine wine production. Steep, south-facing valley slopes (the Mosel especially) maximise sun exposure at this latitude; rivers moderate temperature and can reflect extra heat onto the slopes. Frost and poor ripening in weak vintages are real risks.</p>` },
         { h: "Soils & key grape", body: `<p>Mosel: slate, which retains and radiates heat and drains well on steep slopes. <strong>Riesling</strong> is the signature grape: high acid retention, aromatic, capable of the full sweetness range from bone dry to lusciously sweet.</p>` },
@@ -940,7 +926,6 @@
       groupLabel: "Regions",
       title: "Hungary (Tokaj)",
       tagline: "Noble rot, engineered through hand-selected berries and a base-wine maceration.",
-      signature: { low: 30, high: 76, rainfall: 0.42, note: "continental · Bodrog/Tisza river mists · a noble-rot climate" },
       sections: [
         { h: "Climate", body: `<p><strong>Continental</strong>, with warm, sunny autumns essential for reliable noble rot. The Bodrog and Tisza rivers create morning mists (humidity for botrytis to establish) followed by dry, sunny afternoons (to dry the grapes and concentrate them without spoiling): the same mechanism behind every noble-rot region, just a different river.</p>` },
         { h: "Key grape", body: `<p><strong>Furmint</strong>: thin-skinned and susceptible to botrytis, with high natural acidity that balances the finished wine's sweetness and supports long ageing. Hárslevelű and a little Muscat are also used.</p>` },
@@ -1710,63 +1695,6 @@
     document.getElementById("progressLine").textContent = masteredCount + " / " + TOPICS.length + " topics mastered";
   }
 
-  /* ============ RENDER: CLIMATE SIGNATURE CANVAS ============ */
-
-  function drawSignature(canvas, sig) {
-    var dpr = window.devicePixelRatio || 1;
-    var rect = canvas.getBoundingClientRect();
-    var w = Math.max(rect.width, 300);
-    var h = 46;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    var ctx = canvas.getContext("2d");
-    ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, w, h);
-
-    var trackY = 26, trackH = 10;
-    // track background
-    ctx.fillStyle = "rgba(128,128,128,0.15)";
-    roundRect(ctx, 0, trackY, w, trackH, 5);
-    ctx.fill();
-
-    // gradient bar for diurnal range (night color -> day color)
-    var x0 = (sig.low / 100) * w;
-    var x1 = (sig.high / 100) * w;
-    var grad = ctx.createLinearGradient(x0, 0, x1, 0);
-    grad.addColorStop(0, "#5B6FA8");
-    grad.addColorStop(1, "#D9A441");
-    ctx.fillStyle = grad;
-    roundRect(ctx, x0, trackY, Math.max(x1 - x0, 4), trackH, 5);
-    ctx.fill();
-
-    // low/high markers
-    ctx.fillStyle = "#5B6FA8";
-    ctx.beginPath(); ctx.arc(x0, trackY + trackH / 2, 4, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = "#D9A441";
-    ctx.beginPath(); ctx.arc(x1, trackY + trackH / 2, 4, 0, Math.PI * 2); ctx.fill();
-
-    // rainfall dots above
-    var dotCount = 14;
-    var activeDots = Math.round(dotCount * sig.rainfall);
-    for (var i = 0; i < dotCount; i++) {
-      var dx = (w / dotCount) * (i + 0.5);
-      ctx.beginPath();
-      ctx.arc(dx, 8, 2.3, 0, Math.PI * 2);
-      ctx.fillStyle = i < activeDots ? "rgba(124,33,66,0.55)" : "rgba(128,128,128,0.18)";
-      ctx.fill();
-    }
-  }
-
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
-  }
-
   /* ============ RENDER: HOME ============ */
 
   function renderHome() {
@@ -1805,28 +1733,15 @@
       return '<div class="content-block"><h3>' + s.h + '</h3>' + s.body + '</div>';
     }).join("");
 
-    var signatureHtml = "";
-    if (topic.signature) {
-      signatureHtml =
-        '<div class="signature-wrap"><canvas id="sigCanvas"></canvas>' +
-        '<div class="signature-caption"><span>night</span><span>' + topic.signature.note + '</span><span>day</span></div></div>';
-    }
-
     main.innerHTML =
       '<div class="topic-header">' +
         '<div class="eyebrow">' + topic.groupLabel + '</div>' +
         '<h2>' + topic.title + '</h2>' +
         '<p class="topic-tagline">' + topic.tagline + '</p>' +
-        signatureHtml +
       '</div>' +
       sectionsHtml +
       renderQuizSection(topic) +
       renderTopicNav(topic);
-
-    if (topic.signature) {
-      var canvas = main.querySelector("#sigCanvas");
-      requestAnimationFrame(function () { drawSignature(canvas, topic.signature); });
-    }
 
     wireQuiz(topic);
     wireTopicNav(topic);
