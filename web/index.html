@@ -396,6 +396,9 @@
   /* ---------- MCQ practice ---------- */
   .mcq-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem; }
   .mcq-progress { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+  .clue-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .clue-list li { background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 0.6rem 0.8rem; font-size: 0.92rem; }
+  .clue-list li::before { content: "?"; font-family: var(--font-mono); color: var(--clay); margin-inline-end: 0.5rem; font-weight: 700; }
   .mcq-topic-tag { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clay); margin-bottom: 0.5rem; display: block; }
   .theme-tag {
     display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.03em;
@@ -1365,6 +1368,162 @@
       climate: ["Warm and humid", "Early picking is a deliberate choice to counter the heat"] }
   ];
 
+  var SOIL_PAIRS = [
+    { soil: "Gravel",
+      profile: ["Free-draining", "Retains daytime heat", "Low natural fertility"],
+      chars: ["Poor water retention forces deep roots", "Warms quickly, holds heat into the evening"],
+      region: "Left Bank Bordeaux (Cabernet Sauvignon)",
+      climate: ["Maritime", "Long, mild growing season", "Needs the extra warmth for a late-ripening variety"] },
+    { soil: "Clay & limestone",
+      profile: ["Water-retentive", "Cooler than gravel", "Higher natural fertility"],
+      chars: ["Holds moisture through dry spells", "Suits an earlier-ripening, drought-sensitive variety"],
+      region: "Pomerol, Right Bank Bordeaux (Merlot)",
+      climate: ["Maritime", "Slightly cooler mesoclimate than the Left Bank"] },
+    { soil: "Kimmeridgian limestone & marl",
+      profile: ["Well-drained", "Mineral character", "Varies sharply over short distances"],
+      chars: ["Fine-grained site-to-site variation", "Basis of an extreme vineyard hierarchy"],
+      region: "Burgundy, Côte d'Or (Pinot Noir, Chardonnay)",
+      climate: ["Cool continental", "Marginal ripening climate: soil variation matters more here"] },
+    { soil: "Slate",
+      profile: ["Stores daytime heat", "Radiates it back at night", "Drains well on steep slopes"],
+      chars: ["Extends the growing season at a marginal, high-latitude site"],
+      region: "Mosel, Germany (Riesling)",
+      climate: ["Cool continental", "Extremely steep, south-facing river valley slopes"] },
+    { soil: "Galets roulés (large rounded stones)",
+      profile: ["Absorb daytime heat", "Release it back overnight", "Free-draining"],
+      chars: ["Pushes ripening further in an already warm climate"],
+      region: "Châteauneuf-du-Pape, Southern Rhône (Grenache)",
+      climate: ["Warm Mediterranean", "The Mistral wind adds further drying/cooling"] },
+    { soil: "Volcanic soil",
+      profile: ["Well-draining", "Moderate fertility", "Secondary to climate here"],
+      chars: ["Climate (river mists, dry autumns) does the real work; soil is a smaller factor"],
+      region: "Tokaj, Hungary (Furmint)",
+      climate: ["Continental", "Morning mist plus dry afternoons: the noble-rot mechanism"] },
+    { soil: "Alluvial & rocky soil, high altitude",
+      profile: ["Free-draining", "Low fertility", "UV exposure increases with altitude"],
+      chars: ["Altitude widens the diurnal range, adding freshness to a hot, dry base climate"],
+      region: "Uco Valley, Mendoza (Malbec)",
+      climate: ["Semi-arid, continental", "Irrigation from Andean snowmelt is essential"] },
+    { soil: "Granite, marl, and sandstone (varied)",
+      profile: ["Highly varied across a narrow strip", "Drainage differs site to site"],
+      chars: ["The basis of Grand Cru site distinctions, though climate is the bigger story overall"],
+      region: "Alsace (Riesling, Gewurztraminer)",
+      climate: ["Cool continental", "Vosges Mountains rain shadow"] },
+    { soil: "Terra rossa (red clay-loam over limestone)",
+      profile: ["Well-drained", "Moderate vigour", "Distinctive red colour from iron oxide"],
+      chars: ["A famous, geologically unusual band of soil"],
+      region: "Coonawarra, Australia (Cabernet Sauvignon)",
+      climate: ["Warm and dry", "Cooled a little by ocean proximity"] },
+    { soil: "Chalk",
+      profile: ["Excellent drainage", "Retains some moisture in dry spells", "Reflects light and heat"],
+      chars: ["Supports high natural acidity: a key structural component in sparkling wine"],
+      region: "Champagne, France (Chardonnay, Pinot Noir, Meunier)",
+      climate: ["Cool continental/maritime edge", "Grapes are picked early to preserve acidity for the traditional method"] },
+    { soil: "Schist",
+      profile: ["Retains heat", "Fractures vertically, aiding drainage on steep slopes"],
+      chars: ["Forces roots deep in search of water during dry summers"],
+      region: "Douro, Portugal (Touriga Nacional)",
+      climate: ["Hot, dry summers", "Extremely steep, terraced valley slopes"] },
+    { soil: "Decomposed granite",
+      profile: ["Good drainage", "Low fertility", "Warms quickly in spring"],
+      chars: ["Suits an early-ripening, fruit-forward style"],
+      region: "Beaujolais, France (Gamay)",
+      climate: ["Semi-continental", "Warmer, more granite-rich sites are the Cru Beaujolais"] }
+  ];
+
+  var CLIMATE_GUESS = [
+    {
+      clues: [
+        "Cool continental climate, sheltered from a major ocean by a mountain range immediately to its west.",
+        "One of the driest wine regions in its home country: around 500mm of rain per year.",
+        "Large day-to-night temperature swing for a generally cool climate."
+      ],
+      answer: "Alsace, France",
+      distractors: ["Burgundy, France", "Germany (Mosel)", "Central Otago, New Zealand"],
+      explain: "The rain shadow and resulting dryness are the giveaway. Burgundy and the Mosel are also cool continental, but neither sits in a mountain rain shadow this pronounced."
+    },
+    {
+      clues: [
+        "Semi-arid to desert climate, sitting in the rain shadow of a major mountain range.",
+        "Around 200mm of rainfall a year: far below what a vine needs unassisted.",
+        "Vineyards range from the valley floor up to 1,500 metres or more."
+      ],
+      answer: "Mendoza, Argentina",
+      distractors: ["Southern Rhône, France", "Central Otago, New Zealand", "Hungary (Tokaj)"],
+      explain: "The Andes rain shadow plus irrigation dependence at real altitude is specific to Mendoza. The Southern Rhône is dry too, but not irrigation-dependent, and lacks Mendoza's altitude range."
+    },
+    {
+      clues: [
+        "A large estuary runs through the middle of the region, moderating temperature.",
+        "Long, mild growing season, but real year-to-year variation in quality.",
+        "Two sides of the same estuary, with very different soils just a few kilometres apart."
+      ],
+      answer: "Bordeaux, France",
+      distractors: ["Burgundy, France", "Germany (Mosel)", "Southern Rhône, France"],
+      explain: "The estuary and the Left Bank/Right Bank soil split are unique to Bordeaux. Burgundy is inland and continental, with no estuary."
+    },
+    {
+      clues: [
+        "Inland, with no major body of water nearby to moderate temperature.",
+        "A single narrow escarpment where soil and aspect change dramatically over a few hundred metres.",
+        "Real frost risk at bud burst, real risk of poor fruit set, real risk of rain at harvest."
+      ],
+      answer: "Burgundy, France",
+      distractors: ["Bordeaux, France", "Germany (Mosel)", "Alsace, France"],
+      explain: "The narrow escarpment with dramatic parcel-to-parcel variation is the Côte d'Or's signature. Bordeaux and Alsace don't have this fine-grained a hierarchy."
+    },
+    {
+      clues: [
+        "Sits at the edge of a large bay, in a generally warm wine-producing state.",
+        "Regular morning fog and afternoon wind roll in from the water.",
+        "Cooled well below what its latitude alone would predict."
+      ],
+      answer: "Los Carneros, California, USA",
+      distractors: ["Central Otago, New Zealand", "Mendoza, Argentina", "Southern Rhône, France"],
+      explain: "Bay-driven fog and wind cooling is specific to Los Carneros. Central Otago reaches a similarly cool result, but by altitude and distance from the coast, not fog."
+    },
+    {
+      clues: [
+        "The most southerly wine region in its country.",
+        "Unusually high altitude and inland for its country's wine regions, which are normally coastal.",
+        "Wide day-to-night temperature swing; more settled, sunnier summers than its coastal neighbours."
+      ],
+      answer: "Central Otago, New Zealand",
+      distractors: ["Los Carneros, California, USA", "Mendoza, Argentina", "Germany (Mosel)"],
+      explain: "Inland and high-altitude for an otherwise coastal, maritime country is the Central Otago signature. Los Carneros reaches a similar outcome by the opposite mechanism: coastal fog, not distance from the coast."
+    },
+    {
+      clues: [
+        "Warm, dry Mediterranean climate.",
+        "A strong, dry wind funnels down the valley, cooling and drying the canopy but risking damage at flowering.",
+        "Large, rounded stones in some vineyards absorb heat by day and release it at night."
+      ],
+      answer: "Southern Rhône, France",
+      distractors: ["Mendoza, Argentina", "Bordeaux, France", "Hungary (Tokaj)"],
+      explain: "The named wind (the Mistral) and galets roulés stones are specific to the Southern Rhône. Mendoza is also warm and dry, but its defining factor is irrigation, not a named wind."
+    },
+    {
+      clues: [
+        "Cool continental climate, among the coolest wine-producing areas with major fine-wine production.",
+        "Extremely steep, south-facing slopes along a river valley.",
+        "Slate soil that stores daytime heat and radiates it back."
+      ],
+      answer: "Germany (Mosel)",
+      distractors: ["Alsace, France", "Burgundy, France", "Central Otago, New Zealand"],
+      explain: "The extreme slope angle combined with heat-storing slate is the Mosel's signature. Alsace is also cool continental, but flatter and drier, without this steep-slope, slate combination."
+    },
+    {
+      clues: [
+        "Continental climate with warm, sunny autumns.",
+        "Two rivers create morning mists, followed by dry, sunny afternoons.",
+        "Grapes are picked in multiple hand-selected passes through the vineyard."
+      ],
+      answer: "Hungary (Tokaj)",
+      distractors: ["Alsace, France", "Southern Rhône, France", "Bordeaux, France"],
+      explain: "The morning-mist-then-dry-afternoon pattern enabling noble rot, plus multi-pass hand harvesting, is specific to Tokaji Aszú production. Alsace makes a noble-rot wine too (SGN), but via a rain-shadow-driven dry climate, not river mists."
+    }
+  ];
+
   var SCENARIOS = [
     {
       id: "pomerol-2009",
@@ -1488,6 +1647,8 @@
   };
   var PRACTICE_ITEMS = [
     { id: "match-game", title: "Grape ↔ Region Match", titleHe: "" },
+    { id: "soil-match", title: "Soil ↔ Region Match", titleHe: "" },
+    { id: "climate-guess", title: "Climate Guess", titleHe: "" },
     { id: "response-builder", title: "Response Builder", titleHe: "" },
     { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
     { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
@@ -1608,10 +1769,14 @@
   var STORAGE_KEY = "fieldsheets-progress-v1";
   var MCQ_STATS_KEY = "fieldsheets-mcq-stats-v1";
   var MATCH_STATS_KEY = "fieldsheets-match-stats-v1";
+  var SOIL_STATS_KEY = "fieldsheets-soil-stats-v1";
+  var CLIMATE_STATS_KEY = "fieldsheets-climate-stats-v1";
   var state = loadProgress();
   var mcqStats = loadMcqStats();
   var matchStats = loadMatchStats();
-  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "response-builder" / "match-game"
+  var soilStats = loadSoilStats();
+  var climateStats = loadClimateStats();
+  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "response-builder" / "match-game" / "soil-match" / "climate-guess"
 
   var wpState = { filter: "all", current: null, userAnswer: "", revealed: false };
   var scState = { current: null, revealed: false };
@@ -1619,6 +1784,9 @@
   var rbState = { current: null, stepIndex: 0, selections: [] };
   var ROUND_SIZE = 6;
   var matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
+  var SOIL_ROUND_SIZE = 6;
+  var soilState = { roundPairs: [], soilOrder: [], regionOrder: [], matched: {}, selectedSoil: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
+  var cgState = { phase: "running", pool: [], index: 0, score: 0, answered: null, options: [], isNewBest: false };
 
   function loadProgress() {
     try {
@@ -1646,6 +1814,24 @@
   }
   function saveMatchStats() {
     try { localStorage.setItem(MATCH_STATS_KEY, JSON.stringify(matchStats)); } catch (e) {}
+  }
+  function loadSoilStats() {
+    try {
+      var raw = localStorage.getItem(SOIL_STATS_KEY);
+      return raw ? JSON.parse(raw) : { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
+    } catch (e) { return { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 }; }
+  }
+  function saveSoilStats() {
+    try { localStorage.setItem(SOIL_STATS_KEY, JSON.stringify(soilStats)); } catch (e) {}
+  }
+  function loadClimateStats() {
+    try {
+      var raw = localStorage.getItem(CLIMATE_STATS_KEY);
+      return raw ? JSON.parse(raw) : { best: 0, lastScore: null, lastTotal: null };
+    } catch (e) { return { best: 0, lastScore: null, lastTotal: null }; }
+  }
+  function saveClimateStats() {
+    try { localStorage.setItem(CLIMATE_STATS_KEY, JSON.stringify(climateStats)); } catch (e) {}
   }
   function topicStatus(id) {
     var s = state[id];
@@ -2424,6 +2610,256 @@
     }
   }
 
+
+  /* ============ RENDER: SOIL MATCH ============ */
+
+  function startSoilRound() {
+    var pool = shuffleArr(SOIL_PAIRS.map(function (p, i) { return i; }));
+    var picked = [];
+    var usedSoils = {};
+    var usedRegions = {};
+    pool.forEach(function (idx) {
+      if (picked.length >= SOIL_ROUND_SIZE) return;
+      var p = SOIL_PAIRS[idx];
+      if (usedSoils[p.soil] || usedRegions[p.region]) return;
+      picked.push(idx);
+      usedSoils[p.soil] = true;
+      usedRegions[p.region] = true;
+    });
+    soilState.roundPairs = picked;
+    soilState.soilOrder = shuffleArr(picked);
+    soilState.regionOrder = shuffleArr(picked);
+    soilState.matched = {};
+    soilState.selectedSoil = null;
+    soilState.selectedRegion = null;
+    soilState.wrongPair = null;
+    soilState.mistakes = 0;
+    soilState.history = [];
+  }
+
+  function renderSoilMatch() {
+    var main = document.getElementById("main");
+    if (!soilState.roundPairs.length) startSoilRound();
+
+    var allMatched = soilState.roundPairs.length > 0 &&
+      soilState.roundPairs.every(function (i) { return soilState.matched[i]; });
+
+    var soilTiles = soilState.soilOrder.map(function (idx) {
+      var pair = SOIL_PAIRS[idx];
+      var cls = "match-tile";
+      if (soilState.matched[idx]) cls += " matched";
+      else if (soilState.selectedSoil === idx) cls += " selected";
+      else if (soilState.wrongPair && soilState.wrongPair.soil === idx) cls += " wrong";
+      return '<button class="' + cls + '" data-soil="' + idx + '" ' + (soilState.matched[idx] ? "disabled" : "") + '>' + pair.soil + '</button>';
+    }).join("");
+
+    var regionTiles = soilState.regionOrder.map(function (idx) {
+      var pair = SOIL_PAIRS[idx];
+      var cls = "match-tile";
+      if (soilState.matched[idx]) cls += " matched";
+      else if (soilState.selectedRegion === idx) cls += " selected";
+      else if (soilState.wrongPair && soilState.wrongPair.region === idx) cls += " wrong";
+      return '<button class="' + cls + '" data-soilregion="' + idx + '" ' + (soilState.matched[idx] ? "disabled" : "") + '>' + pair.region + '</button>';
+    }).join("");
+
+    var flashHtml = "";
+    if (soilState.history.length) {
+      var latest = SOIL_PAIRS[soilState.history[soilState.history.length - 1]];
+      var listify = function (items) { return '<ul class="mf-list">' + items.map(function (t) { return '<li>' + t + '</li>'; }).join("") + '</ul>'; };
+      flashHtml = '<div class="match-flash">' +
+        '<div class="mf-pair">' + latest.soil + '<span class="arrow">&harr;</span>' + latest.region + '</div>' +
+        '<div class="mf-cols">' +
+          '<div><div class="mf-side"><b>Soil properties</b>' + listify(latest.profile) + '</div>' +
+          '<div class="mf-side"><b>Why it matters here</b>' + listify(latest.chars) + '</div></div>' +
+          '<div class="mf-side"><b>Region climate</b>' + listify(latest.climate) + '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    var historyHtml = "";
+    if (soilState.history.length) {
+      historyHtml = '<div class="match-history">' + soilState.history.map(function (idx) {
+        var p = SOIL_PAIRS[idx];
+        return '<div class="match-history-item"><span><strong>' + p.soil + '</strong> &harr; ' + p.region + '</span></div>';
+      }).reverse().join("") + '</div>';
+    }
+
+    var statsHtml = '<div class="match-stats-row"><span>Rounds played: ' + soilStats.roundsPlayed + '</span><span>Correct: ' + soilStats.totalCorrect + '</span><span>Mistakes: ' + soilStats.totalWrong + '</span></div>';
+
+    main.innerHTML =
+      '<div class="practice-hero">' +
+        '<h2>Soil &harr; Region Match</h2>' +
+        '<p class="sub">Click a soil type, then click the region and grape it suits. Every correct match flashes the soil\'s properties next to the region\'s climate: same repetition, this time for the soil-as-modifier part of the chain.</p>' +
+      '</div>' +
+      statsHtml +
+      (allMatched ? "" : '<div class="mcq-progress" style="margin-bottom:0.6rem;">' + Object.keys(soilState.matched).length + ' / ' + soilState.roundPairs.length + ' matched · ' + soilState.mistakes + ' mistake' + (soilState.mistakes === 1 ? "" : "s") + ' this round</div>') +
+      '<div class="match-grid">' +
+        '<div><div class="match-col-label">Soil</div><div class="match-col">' + soilTiles + '</div></div>' +
+        '<div><div class="match-col-label">Region &amp; grape</div><div class="match-col">' + regionTiles + '</div></div>' +
+      '</div>' +
+      (allMatched ? '<div class="written-actions" style="margin-bottom:1.5rem;"><button class="btn primary" id="soilNext">New round</button></div>' : "") +
+      flashHtml +
+      historyHtml;
+
+    wireSoilMatch();
+  }
+
+  function wireSoilMatch() {
+    var main = document.getElementById("main");
+    main.querySelectorAll("[data-soil]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        soilState.selectedSoil = parseInt(btn.getAttribute("data-soil"), 10);
+        soilState.wrongPair = null;
+        attemptSoilMatch();
+      });
+    });
+    main.querySelectorAll("[data-soilregion]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        soilState.selectedRegion = parseInt(btn.getAttribute("data-soilregion"), 10);
+        soilState.wrongPair = null;
+        attemptSoilMatch();
+      });
+    });
+    var nextBtn = main.querySelector("#soilNext");
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      soilStats.roundsPlayed++;
+      saveSoilStats();
+      startSoilRound();
+      renderSoilMatch();
+    });
+  }
+
+  function attemptSoilMatch() {
+    if (soilState.selectedSoil === null || soilState.selectedRegion === null) {
+      renderSoilMatch();
+      return;
+    }
+    if (soilState.selectedSoil === soilState.selectedRegion) {
+      soilState.matched[soilState.selectedSoil] = true;
+      soilState.history.push(soilState.selectedSoil);
+      soilStats.totalCorrect++;
+      soilState.selectedSoil = null;
+      soilState.selectedRegion = null;
+      saveSoilStats();
+      renderSoilMatch();
+    } else {
+      soilState.mistakes++;
+      soilStats.totalWrong++;
+      soilState.wrongPair = { soil: soilState.selectedSoil, region: soilState.selectedRegion };
+      saveSoilStats();
+      renderSoilMatch();
+      setTimeout(function () {
+        soilState.selectedSoil = null;
+        soilState.selectedRegion = null;
+        soilState.wrongPair = null;
+        renderSoilMatch();
+      }, 650);
+    }
+  }
+
+  /* ============ RENDER: CLIMATE GUESS ============ */
+
+  function startClimateRun() {
+    cgState.pool = shuffleArr(CLIMATE_GUESS.map(function (c, i) { return i; }));
+    cgState.index = 0;
+    cgState.score = 0;
+    cgState.answered = null;
+    cgState.isNewBest = false;
+    cgState.options = shuffleArr(CLIMATE_GUESS[cgState.pool[0]].distractors.concat([CLIMATE_GUESS[cgState.pool[0]].answer]));
+  }
+
+  function renderClimateGuess() {
+    var main = document.getElementById("main");
+    if (!cgState.pool.length) startClimateRun();
+
+    if (cgState.phase === "summary") {
+      main.innerHTML =
+        '<div class="practice-hero"><h2>Climate Guess: Results</h2></div>' +
+        '<div class="written-card"><div style="font-size:2rem;font-family:var(--font-display);">' + cgState.score + ' / ' + cgState.pool.length + '</div>' +
+        (cgState.isNewBest ? '<div style="color:var(--good);font-family:var(--font-mono);font-size:0.85rem;margin-top:0.3rem;">New best score!</div>' : '') +
+        '</div>' +
+        '<div class="written-actions" style="margin-top:1.5rem;"><button class="btn primary" id="cgAgain">Play again</button></div>';
+      wireClimateGuess();
+      return;
+    }
+
+    var caseData = CLIMATE_GUESS[cgState.pool[cgState.index]];
+    var cluesHtml = caseData.clues.map(function (c) { return '<li>' + c + '</li>'; }).join("");
+    var optionsHtml = cgState.options.map(function (opt, oi) {
+      var cls = "quiz-option";
+      var letter = String.fromCharCode(65 + oi);
+      if (cgState.answered !== null) {
+        if (opt === caseData.answer) cls += " correct";
+        else if (oi === cgState.answered) cls += " incorrect";
+        else cls += " dimmed";
+      }
+      return '<button class="' + cls + '" data-cgi="' + oi + '" ' + (cgState.answered !== null ? "disabled" : "") + '>' +
+        '<span class="opt-letter">' + letter + '</span><span>' + opt + '</span></button>';
+    }).join("");
+    var isLast = cgState.index + 1 >= cgState.pool.length;
+
+    var statsHtml = '<div class="mcq-stats-row"><span>Best score: ' + (climateStats.best || 0) + '</span>' +
+      (climateStats.lastScore !== null ? '<span>Last attempt: ' + climateStats.lastScore + ' / ' + climateStats.lastTotal + '</span>' : '') + '</div>';
+
+    main.innerHTML =
+      '<div class="practice-hero">' +
+        '<h2>Climate Guess</h2>' +
+        '<p class="sub">Three climate clues, no name attached. Guess the region before you check: this drills the climate side of the chain fast, without the slower step-by-step reasoning walkthrough.</p>' +
+      '</div>' +
+      statsHtml +
+      '<div class="mcq-progress">Round ' + (cgState.index + 1) + ' / ' + cgState.pool.length + ' · Score ' + cgState.score + '</div>' +
+      '<div class="quiz-card">' +
+        '<span class="mcq-topic-tag">Known climate factors</span>' +
+        '<ul class="clue-list">' + cluesHtml + '</ul>' +
+        '<div class="quiz-q">Which region is this?</div>' +
+        '<div class="quiz-options">' + optionsHtml + '</div>' +
+        (cgState.answered !== null ? '<div class="quiz-explain show"><b>Why: </b>' + caseData.explain + '</div>' : '') +
+      '</div>' +
+      (cgState.answered !== null ?
+        '<div class="written-actions"><button class="btn primary" id="cgNext">' + (isLast ? "See results" : "Next round") + '</button></div>'
+        : "");
+
+    wireClimateGuess();
+  }
+
+  function wireClimateGuess() {
+    var main = document.getElementById("main");
+    main.querySelectorAll("[data-cgi]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var oi = parseInt(btn.getAttribute("data-cgi"), 10);
+        var caseData = CLIMATE_GUESS[cgState.pool[cgState.index]];
+        cgState.answered = oi;
+        if (cgState.options[oi] === caseData.answer) cgState.score++;
+        renderClimateGuess();
+      });
+    });
+    var nextBtn = main.querySelector("#cgNext");
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      if (cgState.index + 1 < cgState.pool.length) {
+        cgState.index++;
+        cgState.answered = null;
+        var nextCase = CLIMATE_GUESS[cgState.pool[cgState.index]];
+        cgState.options = shuffleArr(nextCase.distractors.concat([nextCase.answer]));
+        renderClimateGuess();
+      } else {
+        var prevBest = climateStats.best || 0;
+        climateStats.lastScore = cgState.score;
+        climateStats.lastTotal = cgState.pool.length;
+        cgState.isNewBest = cgState.score > prevBest && cgState.pool.length > 0;
+        if (cgState.isNewBest) climateStats.best = cgState.score;
+        saveClimateStats();
+        cgState.phase = "summary";
+        renderClimateGuess();
+      }
+    });
+    var againBtn = main.querySelector("#cgAgain");
+    if (againBtn) againBtn.addEventListener("click", function () {
+      cgState.phase = "running";
+      startClimateRun();
+      renderClimateGuess();
+    });
+  }
+
   /* ============ NAVIGATION ============ */
 
   function renderCurrentView() {
@@ -2431,6 +2867,8 @@
     if (currentView === "mcq-practice") { renderMcqPractice(); return; }
     if (currentView === "response-builder") { renderResponseBuilder(); return; }
     if (currentView === "match-game") { renderMatchGame(); return; }
+    if (currentView === "soil-match") { renderSoilMatch(); return; }
+    if (currentView === "climate-guess") { renderClimateGuess(); return; }
     var topic = TOPICS.find(function (t) { return t.id === currentView; });
     if (topic) renderTopic(topic); else renderHome();
   }
@@ -2459,13 +2897,19 @@
       state = {};
       mcqStats = { best: 0, lastScore: null, lastTotal: null };
       matchStats = { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
+      soilStats = { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
+      climateStats = { best: 0, lastScore: null, lastTotal: null };
       saveProgress();
       saveMcqStats();
       saveMatchStats();
+      saveSoilStats();
+      saveClimateStats();
       wpState = { filter: "all", current: null, userAnswer: "", revealed: false };
       mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
       rbState = { current: null, stepIndex: 0, selections: [] };
       matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
+      soilState = { roundPairs: [], soilOrder: [], regionOrder: [], matched: {}, selectedSoil: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
+      cgState = { phase: "running", pool: [], index: 0, score: 0, answered: null, options: [], isNewBest: false };
       renderSidebar();
       renderCurrentView();
     }
