@@ -63,14 +63,19 @@ question archetypes and mark logic, built directly from the sample paper in
 - [x] Foundations: oak (`01_foundations/oak.md`)
 - [x] Bordeaux: Left/Right Bank soils & grapes (`02_regions/france/bordeaux.md`)
 - [x] Burgundy: appellation hierarchy & terroir fragmentation (`02_regions/france/burgundy.md`)
-- [ ] Rhône, Loire, Champagne: remaining France priority regions
-- [ ] Italy, Spain, Germany, USA, Australia/NZ, other remaining regions
-- [ ] Sparkling (03), Fortified (04), Business (05)
-- [ ] Practical/service knowledge (storage, decanting, serving): a real exam category,
-      not yet covered anywhere in this repo (identified from the sample paper)
+- [x] Southern Rhône: blending rationale, GSM (`02_regions/france/southern_rhone.md`)
+- [x] Germany: Prädikatswein ladder, Eiswein (`02_regions/other/germany.md`)
+- [x] Hungary (Tokaj): Aszú, noble rot, Eszencia (`02_regions/other/hungary.md`)
+- [x] Practical/service knowledge: storage, decanting (`web/index.html`, Service & Storage topic)
+- [x] Sparkling wine: traditional method, autolysis, sweetening methods (`web/index.html`, Sparkling Wine topic)
+- [x] Fortified wine: fortification timing, Sherry, Port, Muscat contrast (`web/index.html`, Fortified Wine topic)
+- [ ] Loire, Champagne: remaining France priority regions
+- [ ] Italy, Spain (Rioja, Sherry detail), USA, Australia/NZ, other remaining regions
+- [ ] Business (05): supply chain, pricing, distribution
 
 ## Real exam material on file
 - [x] WSET Level 3 Sample Short Written Answer Paper, Oct 2017 (`06_past_papers/wset_l3_sample_paper_oct2017.pdf`)
+- [x] Full mock theory exam: 50 MCQs + 4 written questions with model answers (`06_past_papers/mock_exam_full_theory_qa.pdf`): source for the Tokaji, German Prädikatswein/Eiswein, Chardonnay MLF, sparkling, fortified, and Vintage Port content now in `web/index.html`
 - [x] Reverse-engineering framework, built from that paper (`00_toolkit/reverse_engineering_framework.md`)
 - [x] Question-pattern taxonomy + mark logic, built from that paper (`00_toolkit/question_patterns.md`)
 - [x] Video training script: command words, marks logic, Golden Thread technique (`07_training_video/script.md`)
