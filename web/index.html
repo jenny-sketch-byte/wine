@@ -419,14 +419,9 @@
   .mcq-summary-item.right { border-color: var(--good); background: var(--good-soft); }
 
   /* ---------- Response Builder ---------- */
-  .rb-select {
-    width: 100%; font-family: inherit; font-size: 0.95rem; padding: 0.6rem 0.75rem;
-    border: 1px solid var(--line); border-radius: 7px; background: var(--surface-2); color: var(--ink);
-    margin-bottom: 1rem;
-  }
-  .rb-badges { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.7rem; }
+  .rb-badges { display: flex; gap: 0.6rem; align-items: center; margin: 0.9rem 0; }
   .rb-marks-badge { margin-bottom: 0; }
-  .rb-tip { margin-top: 1rem; }
+  .rb-tip { margin-bottom: 1rem; }
   .rb-progress-wrap { display: flex; align-items: center; gap: 0.9rem; margin: 1.3rem 0; }
   .rb-progress-bar { flex: 1; height: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
   .rb-progress-fill { height: 100%; background: var(--accent); transition: width 0.25s ease; }
@@ -434,12 +429,17 @@
   .rb-reset-btn { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 0.82rem; text-decoration: underline; white-space: nowrap; }
   .rb-reset-btn:hover { color: var(--ink); }
   .rb-step-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem 1.5rem; }
-  .rb-step-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem; }
+  .rb-step-head { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.6rem; }
   .rb-step-num {
     display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%;
-    background: var(--accent); color: var(--accent-ink); font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+    background: var(--accent); color: var(--accent-ink); font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem;
   }
-  .rb-step-head h3 { font-size: 1.1rem; }
+  .rb-step-head h3 { font-size: 1.1rem; flex: 1; min-width: 0; }
+  .rb-step-badge {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--clay); background: var(--clay-soft); border-radius: 999px; padding: 0.2rem 0.6rem; white-space: nowrap;
+    margin: 0 0 1rem calc(26px + 0.7rem);
+  }
   .rb-instruction { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
   .rb-options { display: flex; flex-direction: column; gap: 0.6rem; }
   .rb-option {
@@ -1510,18 +1510,16 @@
 
   var RESPONSE_BUILDERS = [
     {
-      id: "pomerol-grape-soil",
+      id: "pomerol-2009",
       topicTitle: "Bordeaux, Right Bank",
       wine: "Grand Cru, Pomerol, 2009",
       context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
-      commandBadge: "Identify (2 × 2M)",
-      marks: 4,
-      q: "State the primary grape variety and the secondary grape variety likely to be found in these wines, plus the soil each one prefers.",
-      tip: "Start with the primary grape and its soil, then do the same for the secondary grape.",
+      tip: "This is one question with three parts about the same wine: grape and soil, then vineyard technique, then winery technique. Keep each part's answer separate rather than blending them together.",
       steps: [
         {
           label: "Primary variety + soil",
-          instruction: "Name the primary grape and the soil it's grown on.",
+          command: "Identify", marks: 2,
+          instruction: "State the primary grape variety likely to be found in this wine, and the soil it's grown on.",
           options: [
             { text: "The primary variety is Merlot, grown on clay and limestone.", correct: true, feedback: "Correct: earns 2 marks. Merlot is right, and clay/limestone is Pomerol's defining soil, which retains moisture and suits Merlot's earlier ripening." },
             { text: "The primary variety is Cabernet Sauvignon, grown on gravel.", correct: false, feedback: "That's the Left Bank profile, not Pomerol. Cabernet Sauvignon and gravel belong to appellations like Margaux and Pauillac." },
@@ -1530,49 +1528,28 @@
         },
         {
           label: "Secondary variety + soil",
-          instruction: "Name the secondary grape and the soil it prefers.",
+          command: "Identify", marks: 2,
+          instruction: "State the secondary grape variety likely to be found in this wine, and the soil it prefers.",
           options: [
             { text: "The secondary variety is Cabernet Franc, which prefers well-drained, warmer soil like gravel.", correct: true, feedback: "Correct: earns 2 marks." },
             { text: "The secondary variety is Cabernet Sauvignon, which prefers clay.", correct: false, feedback: "Cabernet Sauvignon needs more sustained warmth than most Right Bank sites give it, and its preferred soil is gravel, not clay." },
             { text: "The secondary variety is Petit Verdot, which prefers heavy clay.", correct: false, feedback: "Petit Verdot isn't a defining Pomerol variety, and it actually prefers warm, well-drained soil, not heavy clay." }
           ]
-        }
-      ]
-    },
-    {
-      id: "pomerol-vineyard",
-      topicTitle: "Bordeaux, Right Bank",
-      wine: "Grand Cru, Pomerol, 2009",
-      context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
-      commandBadge: "Explain (4M)",
-      marks: 4,
-      q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the vineyard?",
-      tip: "Think about the vineyard decision that maximises ripeness and concentration, not winery technique.",
-      steps: [
+        },
         {
           label: "Vineyard technique",
-          instruction: "Choose the vineyard-side explanation for this style.",
+          command: "Explain", marks: 4,
+          instruction: "This wine is often complex, powerful, and intense, with a deep colour. How is this style achieved in the vineyard?",
           options: [
             { text: "Merlot is harvested as late as possible, with yields kept low, giving maximum colour and concentrated fruit and tannin.", correct: true, feedback: "Correct: late harvest plus low yield is the vineyard-side answer for intensity and concentration." },
             { text: "Merlot is picked early to preserve high acidity and a lighter style.", correct: false, feedback: "That would give a lighter, less concentrated wine, the opposite of what this question describes. Early picking is the Hunter Valley Semillon answer, not a Pomerol one." },
             { text: "Yields are increased to maximise juice volume.", correct: false, feedback: "Higher yields dilute concentration: the opposite of what an intense, powerful wine needs." }
           ]
-        }
-      ]
-    },
-    {
-      id: "pomerol-winery",
-      topicTitle: "Bordeaux, Right Bank",
-      wine: "Grand Cru, Pomerol, 2009",
-      context: "This is a red wine from Pomerol, on Bordeaux's Right Bank, 2009.",
-      commandBadge: "Explain (6M)",
-      marks: 6,
-      q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the winery?",
-      tip: "This is a three-part chain: extraction, then cap management, then oak. Try to include all three in a real exam answer.",
-      steps: [
+        },
         {
           label: "Winery technique",
-          instruction: "Choose the winery-side explanation for this style.",
+          command: "Explain", marks: 6,
+          instruction: "This wine is often complex, powerful, and intense, with a deep colour. How is this style achieved in the winery?",
           options: [
             { text: "A pre-fermentation cold soak extracts colour and flavour, careful cap management builds further colour and tannin, and new oak ageing (12 to 18 months) adds complexity.", correct: true, feedback: "Correct: this extraction-to-cap-management-to-oak chain is the standard winery-side template for any intense red, not just Merlot." },
             { text: "The wine ferments briefly in stainless steel with no skin contact.", correct: false, feedback: "That's a white-winemaking approach: it would strip out the colour and tannin this style depends on." },
@@ -1586,14 +1563,12 @@
       topicTitle: "Alsace, France",
       wine: "Vendange Tardive Riesling, Alsace",
       context: "This is a late-harvest Riesling from Alsace, France.",
-      commandBadge: "Describe + Explain (2 × 2M)",
-      marks: 4,
-      q: "Describe two key natural factors in Alsace and explain how each contributes to this wine's style.",
       tip: "Natural factors are geography, not weather: mountains, rivers, altitude. Name the factor, then explain its mechanism.",
       steps: [
         {
           label: "Factor 1: the Vosges Mountains",
-          instruction: "Choose the correct factor-plus-mechanism pair.",
+          command: "Describe + Explain", marks: 2,
+          instruction: "Describe one key natural factor here and explain how it contributes to this wine's style.",
           options: [
             { text: "The Vosges Mountains block Atlantic weather, creating a rain shadow that lowers disease pressure and allows extended hang time.", correct: true, feedback: "Correct: this is the single biggest factor behind Alsace's whole sweetness range." },
             { text: "The Vosges Mountains trap humid air, increasing rot risk.", correct: false, feedback: "The opposite is true: the Vosges block moisture, giving Alsace one of France's driest, lowest-rot climates." },
@@ -1602,7 +1577,8 @@
         },
         {
           label: "Factor 2: diurnal range",
-          instruction: "Choose the correct factor-plus-mechanism pair.",
+          command: "Describe + Explain", marks: 2,
+          instruction: "Describe a second key natural factor here and explain how it contributes to this wine's style.",
           options: [
             { text: "A large diurnal range lets sugar build during warm days while acidity is preserved during cool nights.", correct: true, feedback: "Correct: this is what lets a Vendange Tardive concentrate sugar without losing the acid backbone." },
             { text: "A large diurnal range mainly increases tannin.", correct: false, feedback: "Diurnal range is a white-wine, sugar/acid story here, not a tannin one: Alsace's key grapes aren't grown for tannin." },
@@ -1616,14 +1592,12 @@
       topicTitle: "Southern Rhône",
       wine: "Red blend, Southern Rhône (GSM)",
       context: "This is a red blend from the Southern Rhône, France.",
-      commandBadge: "State (2 × 3M)",
-      marks: 6,
-      q: "State the stylistic and practical reasons why a winemaker here might choose to blend.",
       tip: "Split your answer into two visibly separate buckets: stylistic first, then practical. Don't merge them into one list.",
       steps: [
         {
           label: "Stylistic reasons",
-          instruction: "Choose the correct stylistic reasoning.",
+          command: "State", marks: 3,
+          instruction: "State the stylistic reasons why a winemaker here might choose to blend.",
           options: [
             { text: "Grenache gives alcohol, fruit, and spice but little colour or tannin, so Syrah and Mourvèdre are added for structure and complexity, continuing a long regional tradition.", correct: true, feedback: "Correct: names what Grenache lacks, what the other grapes add, and ties it to tradition." },
             { text: "Grenache is blended purely because it is the cheapest grape available.", correct: false, feedback: "Cost isn't the stylistic reason tested here: the exam wants the flavour/structure logic, not economics." },
@@ -1632,7 +1606,8 @@
         },
         {
           label: "Practical reasons",
-          instruction: "Choose the correct practical reasoning.",
+          command: "State", marks: 3,
+          instruction: "State the practical reasons why a winemaker here might choose to blend.",
           options: [
             { text: "Grenache is vulnerable to coulure in cool, windy flowering conditions, so blending with Syrah and Mourvèdre spreads risk across varieties that don't all fail in the same year.", correct: true, feedback: "Correct: names the specific risk (coulure from the Mistral) and the insurance logic." },
             { text: "Blending is required because irrigation is banned in the region.", correct: false, feedback: "Irrigation rules aren't the practical driver of blending here: vintage risk from wind and coulure is." },
@@ -2257,8 +2232,16 @@
 
   /* ============ RENDER: RESPONSE BUILDER ============ */
 
+  function pickRandomBuilder() {
+    var candidates = RESPONSE_BUILDERS;
+    if (rbState.current && RESPONSE_BUILDERS.length > 1) {
+      candidates = RESPONSE_BUILDERS.filter(function (b) { return b.id !== rbState.current; });
+    }
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
   function currentBuilder() {
-    if (!rbState.current) rbState.current = RESPONSE_BUILDERS[0].id;
+    if (!rbState.current) rbState.current = pickRandomBuilder().id;
     return RESPONSE_BUILDERS.find(function (b) { return b.id === rbState.current; }) || RESPONSE_BUILDERS[0];
   }
 
@@ -2271,12 +2254,8 @@
     var main = document.getElementById("main");
     var builder = currentBuilder();
     var total = builder.steps.length;
+    var totalMarks = builder.steps.reduce(function (sum, s) { return sum + s.marks; }, 0);
     var solvedCount = rbState.selections.filter(function (s) { return s && s.solved; }).length;
-
-    var optionsHtml = RESPONSE_BUILDERS.map(function (b) {
-      return '<option value="' + b.id + '"' + (b.id === builder.id ? " selected" : "") + '>' +
-        b.topicTitle + ' — ' + b.wine + '</option>';
-    }).join("");
 
     var progressPct = total ? Math.round((solvedCount / total) * 100) : 0;
     var progressHtml =
@@ -2289,7 +2268,6 @@
     var bodyHtml;
     if (solvedCount >= total) {
       var summaryHtml = builder.steps.map(function (step, i) {
-        var sel = rbState.selections[i];
         var correctOpt = step.options.find(function (o) { return o.correct; });
         return '<li><strong>' + step.label + ':</strong> ' + correctOpt.text + '</li>';
       }).join("");
@@ -2298,7 +2276,7 @@
           '<div class="callout-label">Full answer, built step by step</div>' +
           '<ul class="rb-complete-list">' + summaryHtml + '</ul>' +
         '</div>' +
-        '<div class="written-actions"><button class="btn primary" id="rbNextQuestion">Try another question</button></div>';
+        '<div class="written-actions"><button class="btn primary" id="rbNextQuestion">New question</button></div>';
     } else {
       var stepIndex = rbState.stepIndex;
       var step = builder.steps[stepIndex];
@@ -2317,6 +2295,7 @@
       bodyHtml =
         '<div class="rb-step-card">' +
           '<div class="rb-step-head"><span class="rb-step-num">' + (stepIndex + 1) + '</span><h3>' + step.label + '</h3></div>' +
+          '<span class="rb-step-badge">' + step.command + ' &middot; ' + step.marks + (step.marks === 1 ? " mark" : " marks") + '</span>' +
           '<p class="rb-instruction">' + step.instruction + '</p>' +
           '<div class="rb-options">' + optionsListHtml + '</div>' +
           (sel && sel.solved ?
@@ -2330,14 +2309,13 @@
         '<h2>Response Builder</h2>' +
         '<p class="sub">Build a full-mark answer one step at a time. At each step, pick the option that actually earns the mark, and see exactly why the others don\'t. Cause to effect, in plain English.</p>' +
       '</div>' +
-      '<select class="rb-select" id="rbSelect">' + optionsHtml + '</select>' +
       '<div class="written-card">' +
         '<span class="mcq-topic-tag">' + builder.topicTitle + '</span>' +
         '<div class="scenario-wine">' + builder.wine + '</div>' +
         '<div class="scenario-context">' + builder.context + '</div>' +
-        '<div class="rb-badges"><span class="written-command">' + builder.commandBadge + '</span><span class="mcq-topic-tag rb-marks-badge">' + builder.marks + ' marks</span></div>' +
-        '<div class="written-q">' + builder.q + '</div>' +
+        '<div class="rb-badges"><span class="mcq-topic-tag rb-marks-badge">' + totalMarks + ' marks total &middot; ' + total + ' parts</span></div>' +
         '<div class="callout rb-tip"><span class="callout-label">Tip</span>' + builder.tip + '</div>' +
+        '<div class="written-actions"><button class="btn" id="rbSkip">New question</button></div>' +
       '</div>' +
       progressHtml +
       bodyHtml;
@@ -2347,12 +2325,6 @@
 
   function wireResponseBuilder() {
     var main = document.getElementById("main");
-    var select = main.querySelector("#rbSelect");
-    if (select) select.addEventListener("change", function () {
-      rbState.current = select.value;
-      resetBuilderProgress();
-      renderResponseBuilder();
-    });
     var resetBtn = main.querySelector("#rbReset");
     if (resetBtn) resetBtn.addEventListener("click", function () {
       resetBuilderProgress();
@@ -2373,13 +2345,15 @@
       rbState.stepIndex++;
       renderResponseBuilder();
     });
-    var nextQBtn = main.querySelector("#rbNextQuestion");
-    if (nextQBtn) nextQBtn.addEventListener("click", function () {
-      var idx = RESPONSE_BUILDERS.findIndex(function (b) { return b.id === rbState.current; });
-      rbState.current = RESPONSE_BUILDERS[(idx + 1) % RESPONSE_BUILDERS.length].id;
+    function pickNewQuestion() {
+      rbState.current = pickRandomBuilder().id;
       resetBuilderProgress();
       renderResponseBuilder();
-    });
+    }
+    var nextQBtn = main.querySelector("#rbNextQuestion");
+    if (nextQBtn) nextQBtn.addEventListener("click", pickNewQuestion);
+    var skipBtn = main.querySelector("#rbSkip");
+    if (skipBtn) skipBtn.addEventListener("click", pickNewQuestion);
   }
 
   /* ============ RENDER: MATCH GAME ============ */
