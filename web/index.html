@@ -216,6 +216,26 @@
   .home-hero h1 { font-size: 2.4rem; }
   .home-hero p { color: var(--muted); font-size: 1rem; max-width: 58ch; }
 
+  .home-section-label {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--faint); margin: 0 0 0.9rem;
+  }
+  .practice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-bottom: 2.5rem; }
+  .practice-card {
+    display: flex; flex-direction: column; gap: 0.5rem; text-align: left; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.25rem;
+    width: 100%; color: inherit; font: inherit;
+  }
+  .practice-card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); background: var(--surface-2); }
+  .practice-card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; }
+  .practice-card-glyph {
+    display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent); font-size: 1.1rem; flex-shrink: 0;
+  }
+  .practice-card-arrow { color: var(--faint); font-size: 1.1rem; }
+  .practice-card h3 { font-size: 1.02rem; }
+  .practice-card p { color: var(--muted); font-size: 0.86rem; margin: 0; }
+
   .home-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
   table.ledger { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
   table.ledger th {
@@ -333,6 +353,7 @@
     main { padding: 4.5rem 1.25rem 4rem; }
     .home-hero h1 { font-size: 1.8rem; }
     .topic-header h2 { font-size: 1.6rem; }
+    .practice-grid { grid-template-columns: 1fr; }
   }
 
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -1883,8 +1904,29 @@
 
   /* ============ RENDER: HOME ============ */
 
+  var HOME_PRACTICE_CARDS = [
+    { id: "match-game", glyph: "G/R", title: "Grape &harr; Region Match", desc: "Match grape varieties to the regions that define them, with an instant flash of profile and climate on every hit." },
+    { id: "soil-match", glyph: "S/R", title: "Soil &harr; Region Match", desc: "Match soil types to the region and grape they suit: the soil-as-modifier half of the reasoning chain." },
+    { id: "climate-guess", glyph: "CG", title: "Climate Guess", desc: "Three climate clues, no name attached. Guess the region, fast." },
+    { id: "response-builder", glyph: "RB", title: "Response Builder", desc: "Build a full-mark answer one step at a time, with feedback on exactly why each choice earns the mark." },
+    { id: "written-practice", glyph: "WP", title: "Written Practice", desc: "Write a real exam answer under real conditions, then reveal a model answer to check your work." },
+    { id: "mcq-practice", glyph: "MC", title: "Multiple Choice", desc: "A shuffled set pulled from every topic's quick check: drill recall fast." }
+  ];
+
   function renderHome() {
     var main = document.getElementById("main");
+
+    var cardsHtml = HOME_PRACTICE_CARDS.map(function (c) {
+      return '<button class="practice-card" data-id="' + c.id + '">' +
+        '<div class="practice-card-head">' +
+          '<span class="practice-card-glyph">' + c.glyph + '</span>' +
+          '<span class="practice-card-arrow">&rarr;</span>' +
+        '</div>' +
+        '<h3>' + c.title + '</h3>' +
+        '<p>' + c.desc + '</p>' +
+      '</button>';
+    }).join("");
+
     var rows = TOPICS.map(function (t) {
       var status = topicStatus(t.id);
       var pillColor = status === "mastered" ? "var(--good)" : status === "started" ? "var(--clay)" : "var(--faint)";
@@ -1899,13 +1941,19 @@
     main.innerHTML =
       '<div class="home-hero">' +
         '<h1>Wine With Jenny</h1>' +
-        '<p>Prepare for the WSET Level 3 theory exam, built the way you\'d prep for a technical exam: climate and craft first, then region by region, each ending in a quick check. Pick a topic from the left, or start here. For drilling exam technique directly, head to <strong>Practice</strong> at the top of the sidebar for written practice and shuffled multiple-choice sets.</p>' +
+        '<p>Prepare for the WSET Level 3 theory exam: climate and craft first, then region by region, each ending in a quick check. Jump straight into a practice mode below, or browse topics further down.</p>' +
       '</div>' +
+      '<div class="home-section-label">Practice</div>' +
+      '<div class="practice-grid">' + cardsHtml + '</div>' +
+      '<div class="home-section-label">Topics</div>' +
       '<div class="home-table-wrap"><table class="ledger">' +
         '<tr><th>Section</th><th>Topic</th><th>Status</th></tr>' +
         rows +
       '</table></div>';
 
+    main.querySelectorAll(".practice-card").forEach(function (card) {
+      card.addEventListener("click", function () { navigate(card.getAttribute("data-id")); });
+    });
     main.querySelectorAll("tr[data-id]").forEach(function (row) {
       row.addEventListener("click", function () { navigate(row.getAttribute("data-id")); });
     });
