@@ -15,8 +15,8 @@ Goal: pass efficiently as a non-native English speaker, with strong written-answ
 05_business/          Supply chain, pricing, distribution
 06_past_papers/       Real WSET sample paper + practice answers/self-marking notes
 07_training_video/    Script for a "how to answer" technique training video
-web/                  Field Sheets: interactive study + practice site (written self-
-                      marking trainer, multiple-choice drills), open web/index.html
+web/                  Wine With Jenny: interactive study + practice site (written
+                      practice, multiple-choice drills, matching games), open web/index.html
 ```
 
 ## The master lens: reverse-engineering

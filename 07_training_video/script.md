@@ -2,7 +2,7 @@
 
 A recordable script for a training video teaching WSET Level 3 written-answer technique:
 reading command words correctly and understanding how marks are actually awarded.
-Companion tool: the **Field Sheets** site (`web/index.html`): specifically Written Practice.
+Companion tool: the **Wine With Jenny** site (`web/index.html`): specifically Written Practice.
 
 Target length: ~13 minutes. Format: voiceover over screen recording: no on-camera talent
 required. Every line below is written to be read aloud as-is; `[VISUAL: ...]` cues tell
@@ -13,7 +13,7 @@ slightly slower than natural pace, pause after key terms, avoid idioms and contr
 in the narration (already applied in the script below). Don't add Hebrew narration: the
 real exam is in English, so this video should model the English they'll actually need. If
 you want on-screen support, add short Hebrew text captions under key terms (mirroring the
-bilingual style already used on the Field Sheets site) rather than dubbing.
+bilingual style already used on the Wine With Jenny site) rather than dubbing.
 
 **Attribution note:** the central technique in Segment 3 ("keep asking so what until you
 reach the glass") is adapted from a teaching device Napa Valley Wine Academy calls the
@@ -29,11 +29,11 @@ is a widely taught idea, but the name and framing are theirs.
 |---|---|---|
 | 0:00–0:45 | Cold open: the real problem | Text-only, high contrast |
 | 0:45–2:00 | Why Level 3 is different from Level 2 | Split screen: MCQ vs written answer |
-| 2:00–5:00 | The six command words | Field Sheets glossary panel |
+| 2:00–5:00 | The six command words | Wine With Jenny glossary panel |
 | 5:00–8:30 | The Golden Thread technique | Whiteboard-style text builds |
-| 8:30–12:00 | Worked example: Explain | Field Sheets Written Practice, live |
+| 8:30–12:00 | Worked example: Explain | Wine With Jenny Written Practice, live |
 | 12:00–13:30 | Worked example: Compare (contrast) | Same, second question |
-| 13:30–14:30 | How to practice this yourself | Field Sheets Practice sidebar |
+| 13:30–14:30 | How to practice this yourself | Wine With Jenny Practice sidebar |
 | 14:30–15:00 | Recap + close | Text summary card |
 
 Total: ~15 minutes as scripted. Trim Segment 6 (second worked example) to hit 13 minutes
@@ -84,7 +84,7 @@ method.
 
 ## Segment 3: The six command words (2:00–5:00)
 
-`[VISUAL: Screen recording: open the Field Sheets Written Practice page, click open the "Command words" glossary panel]`
+`[VISUAL: Screen recording: open the Wine With Jenny Written Practice page, click open the "Command words" glossary panel]`
 
 > Before you write a single word in the exam, you do one thing: you find the command word
 > in the question, and you underline it. This single habit prevents more lost marks than
@@ -173,7 +173,7 @@ method.
 
 ## Segment 5: Worked example: Explain (8:30–12:00)
 
-`[VISUAL: Screen recording: Field Sheets, Written Practice, filtered to "Regions," landed on the Bordeaux Explain question]`
+`[VISUAL: Screen recording: Wine With Jenny, Written Practice, filtered to "Regions," landed on the Bordeaux Explain question]`
 
 > Let's do this for real, using a genuine WSET-style question. Here it is:
 >
@@ -224,7 +224,7 @@ method.
 
 ## Segment 6: Worked example: Compare (12:00–13:30)
 
-`[VISUAL: Field Sheets, Written Practice, filtered to "Foundations," Viticulture, Compare question]`
+`[VISUAL: Wine With Jenny, Written Practice, filtered to "Foundations," Viticulture, Compare question]`
 
 > One more, because Compare deserves its own example: it fails in a different way than
 > Explain does.
@@ -253,7 +253,7 @@ method.
 
 ## Segment 7: How to practice this (13:30–14:30)
 
-`[VISUAL: Field Sheets sidebar, hover over "Practice" group, click into Written Practice]`
+`[VISUAL: Wine With Jenny sidebar, hover over "Practice" group, click into Written Practice]`
 
 > You cannot learn this by reading about it. You learn it by doing it, badly, on purpose,
 > and then checking your own work.
@@ -286,13 +286,13 @@ method.
 >
 > Go practice. The questions are waiting for you.
 
-`[VISUAL: End card: "Field Sheets" logo mark, link/QR code to the site]`
+`[VISUAL: End card: "Wine With Jenny" logo mark, link/QR code to the site]`
 
 ---
 
 ## Notes for whoever records this
 
-- Segments 5 and 6 are screen-recorded live inside Field Sheets' Written Practice: you
+- Segments 5 and 6 are screen-recorded live inside Wine With Jenny's Written Practice: you
   can literally type the weak/strong answers into the textarea on camera, or build them as
   text overlays if you prefer a cleaner look.
 - If you trim for time, cut Segment 6 first (it reinforces Segment 5's method on a
