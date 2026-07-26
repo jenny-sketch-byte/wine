@@ -380,13 +380,6 @@
 
   .reveal-block { margin-top: 1.3rem; padding-top: 1.1rem; border-top: 2px solid var(--line); }
 
-  .lost-to-row { margin-top: 1.2rem; }
-  .lost-to-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 0.5rem; display: block; }
-  .lost-to-label .he { text-transform: none; letter-spacing: 0; margin-left: 0.5em; }
-  .pill-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .pill-btn { font-size: 0.82rem; padding: 0.4rem 0.75rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; color: var(--ink); }
-  .pill-btn.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-
   /* ---------- Scenario questions ---------- */
   .scenario-wine { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.3rem; }
   .scenario-context { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.4rem; }
@@ -425,19 +418,53 @@
   .mcq-summary-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
   .mcq-summary-item.right { border-color: var(--good); background: var(--good-soft); }
 
-  /* ---------- Cold Read practice ---------- */
-  .clue-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-  .clue-list li { background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 0.6rem 0.8rem; font-size: 0.92rem; }
-  .clue-list li::before { content: "?"; font-family: var(--font-mono); color: var(--clay); margin-inline-end: 0.5rem; font-weight: 700; }
-  .chain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
-  .chain-step { display: grid; grid-template-columns: 150px 1fr; gap: 0.8rem; padding: 0.55rem 0; border-top: 1px dashed var(--line); font-size: 0.9rem; }
-  .chain-step:first-child { border-top: none; }
-  .chain-step .cs-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clay); }
-  .chain-step .cs-label .he { display: block; text-transform: none; letter-spacing: 0; font-size: 1.05em; margin-top: 0.15em; }
-  .cr-answer { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.1rem; }
-  .cr-answer .source { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); margin-top: 0.3rem; }
-  .cr-pair-note { margin-top: 0.9rem; }
-  .cr-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+  /* ---------- Response Builder ---------- */
+  .rb-select {
+    width: 100%; font-family: inherit; font-size: 0.95rem; padding: 0.6rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 7px; background: var(--surface-2); color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .rb-badges { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.7rem; }
+  .rb-marks-badge { margin-bottom: 0; }
+  .rb-tip { margin-top: 1rem; }
+  .rb-progress-wrap { display: flex; align-items: center; gap: 0.9rem; margin: 1.3rem 0; }
+  .rb-progress-bar { flex: 1; height: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .rb-progress-fill { height: 100%; background: var(--accent); transition: width 0.25s ease; }
+  .rb-progress-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+  .rb-reset-btn { background: none; border: none; color: var(--faint); cursor: pointer; font-size: 0.82rem; text-decoration: underline; white-space: nowrap; }
+  .rb-reset-btn:hover { color: var(--ink); }
+  .rb-step-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem 1.5rem; }
+  .rb-step-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem; }
+  .rb-step-num {
+    display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-ink); font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+  }
+  .rb-step-head h3 { font-size: 1.1rem; }
+  .rb-instruction { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+  .rb-options { display: flex; flex-direction: column; gap: 0.6rem; }
+  .rb-option {
+    border: 1px solid var(--line); border-radius: 8px; padding: 0.8rem 1rem; cursor: pointer;
+    background: var(--surface-2); display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.7rem;
+  }
+  .rb-option:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+  .rb-option-mark {
+    width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--faint); flex-shrink: 0; margin-top: 0.15rem;
+  }
+  .rb-option-text { flex: 1; min-width: 200px; font-size: 0.94rem; }
+  .rb-option.correct { border-color: var(--good); background: var(--good-soft); }
+  .rb-option.correct .rb-option-mark { border-color: var(--good); background: var(--good); }
+  .rb-option.incorrect { border-color: var(--bad); background: var(--bad-soft); }
+  .rb-option.incorrect .rb-option-mark { border-color: var(--bad); }
+  .rb-option-feedback { flex-basis: 100%; width: 100%; margin-inline-start: calc(16px + 0.7rem); font-size: 0.86rem; margin-top: 0.5rem; color: var(--muted); }
+  .rb-complete {
+    background: var(--good-soft); border: 1px solid color-mix(in srgb, var(--good) 40%, transparent);
+    border-radius: 10px; padding: 1.2rem 1.4rem;
+  }
+  .rb-complete .callout-label {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--good); margin-bottom: 0.4rem; display: block;
+  }
+  .rb-complete-list { list-style: none; margin: 0.7rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.92rem; }
 
   /* ---------- Match game ---------- */
   .match-stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
@@ -1476,123 +1503,138 @@
   };
   var PRACTICE_ITEMS = [
     { id: "match-game", title: "Grape ↔ Region Match", titleHe: "" },
-    { id: "cold-read", title: "Cold Read", titleHe: "קריאה קרה" },
+    { id: "response-builder", title: "Response Builder", titleHe: "" },
     { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
     { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
   ];
 
-  var CHAIN_LABELS = [
-    { en: "Location", he: "מיקום" },
-    { en: "Climate type", he: "סוג אקלים" },
-    { en: "Ripening implication", he: "השלכה על ההבשלה" },
-    { en: "Soil: modifier", he: "קרקע: גורם משנה" },
-    { en: "Grape / style", he: "זן / סגנון" }
-  ];
-
-  var COLD_READ = [
+  var RESPONSE_BUILDERS = [
     {
-      id: "case-alsace",
-      clues: [
-        "Cool continental climate, protected from a major ocean by a mountain range immediately to its west.",
-        "One of the driest wine regions in its home country: around 500mm of rain per year.",
-        "Large day-to-night temperature swing for a generally cool climate."
-      ],
-      chain: [
-        "Inland, continental Western Europe, with a substantial mountain range directly on the windward side.",
-        "Cool continental, but noticeably drier than a maritime neighbour at the same latitude would be. Something is blocking rainfall.",
-        "A rain shadow keeps rainfall low and disease pressure down, meaning grapes can safely hang on the vine well past normal ripeness without rotting.",
-        "Soils are highly varied (granite, limestone, marl, sandstone), creating site-to-site variation, but the climate is what makes extended hang time possible in the first place.",
-        "Aromatic white grapes suited to high acid retention, capable of the full range from bone dry to intensely sweet, botrytized styles: all from the same variety, depending on how long it hangs."
-      ],
-      answer: "Alsace, France",
-      source: "02_regions/france/alsace.md"
+      id: "pomerol-grape-soil",
+      topicTitle: "Bordeaux, Right Bank",
+      wine: "Grand Cru, Pomerol, 2009",
+      commandBadge: "Identify (2 × 2M)",
+      marks: 4,
+      q: "State the primary grape variety and the secondary grape variety likely to be found in these wines, plus the soil each one prefers.",
+      tip: "Start with the primary grape and its soil, then do the same for the secondary grape.",
+      steps: [
+        {
+          label: "Primary variety + soil",
+          instruction: "Name the primary grape and the soil it's grown on.",
+          options: [
+            { text: "The primary variety is Merlot, grown on clay and limestone.", correct: true, feedback: "Correct: earns 2 marks. Merlot is right, and clay/limestone is Pomerol's defining soil, which retains moisture and suits Merlot's earlier ripening." },
+            { text: "The primary variety is Cabernet Sauvignon, grown on gravel.", correct: false, feedback: "That's the Left Bank profile, not Pomerol. Cabernet Sauvignon and gravel belong to appellations like Margaux and Pauillac." },
+            { text: "The primary variety is Merlot, grown on gravel.", correct: false, feedback: "The grape is right, but the soil isn't: gravel is the Left Bank's defining soil. Pomerol's clay and limestone is what actually suits Merlot here." }
+          ]
+        },
+        {
+          label: "Secondary variety + soil",
+          instruction: "Name the secondary grape and the soil it prefers.",
+          options: [
+            { text: "The secondary variety is Cabernet Franc, which prefers well-drained, warmer soil like gravel.", correct: true, feedback: "Correct: earns 2 marks." },
+            { text: "The secondary variety is Cabernet Sauvignon, which prefers clay.", correct: false, feedback: "Cabernet Sauvignon needs more sustained warmth than most Right Bank sites give it, and its preferred soil is gravel, not clay." },
+            { text: "The secondary variety is Petit Verdot, which prefers heavy clay.", correct: false, feedback: "Petit Verdot isn't a defining Pomerol variety, and it actually prefers warm, well-drained soil, not heavy clay." }
+          ]
+        }
+      ]
     },
     {
-      id: "case-mendoza",
-      clues: [
-        "Semi-arid to desert climate, sitting in the rain shadow of a major mountain range.",
-        "Around 200mm of rainfall a year: far below what a vine needs unassisted.",
-        "Vineyards range from the valley floor up to 1,500 metres or more."
-      ],
-      chain: [
-        "High-altitude sites at the base of a major mountain range, far from any ocean's moderating influence.",
-        "Continental, semi-arid to desert.",
-        "Near-zero natural rainfall means vines cannot survive without irrigation, but it also means growers have precise control over water timing, unlike anywhere with real rainfall.",
-        "Not the headline factor here: altitude and deliberate water management (deficit irrigation) do more of the explanatory work than soil type alone.",
-        "A dark-skinned signature variety, concentrated by controlled water stress, with altitude-driven freshness from a wide diurnal range despite the hot, dry base climate."
-      ],
-      answer: "Mendoza, Argentina",
-      source: "02_regions/other/argentina.md"
+      id: "pomerol-vineyard",
+      topicTitle: "Bordeaux, Right Bank",
+      wine: "Grand Cru, Pomerol, 2009",
+      commandBadge: "Explain (4M)",
+      marks: 4,
+      q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the vineyard?",
+      tip: "Think about the vineyard decision that maximises ripeness and concentration, not winery technique.",
+      steps: [
+        {
+          label: "Vineyard technique",
+          instruction: "Choose the vineyard-side explanation for this style.",
+          options: [
+            { text: "Merlot is harvested as late as possible, with yields kept low, giving maximum colour and concentrated fruit and tannin.", correct: true, feedback: "Correct: late harvest plus low yield is the vineyard-side answer for intensity and concentration." },
+            { text: "Merlot is picked early to preserve high acidity and a lighter style.", correct: false, feedback: "That would give a lighter, less concentrated wine, the opposite of what this question describes. Early picking is the Hunter Valley Semillon answer, not a Pomerol one." },
+            { text: "Yields are increased to maximise juice volume.", correct: false, feedback: "Higher yields dilute concentration: the opposite of what an intense, powerful wine needs." }
+          ]
+        }
+      ]
     },
     {
-      id: "case-bordeaux",
-      clues: [
-        "A large estuary runs through the middle of the region, moderating temperature.",
-        "Long, mild growing season, but real year-to-year variation in quality.",
-        "Two sides of the same estuary, with very different soils just a few kilometres apart."
-      ],
-      chain: [
-        "Coastal / estuary-moderated, temperate Western Europe.",
-        "Maritime: narrow annual temperature range, rainfall spread through the year (a real risk at flowering and at harvest).",
-        "Mild enough overall to ripen multiple varieties reliably, but rainfall timing from year to year is the main quality swing factor.",
-        "This is where the story splits: one side has well-drained, heat-retaining gravel; the other has cooler, water-retentive clay and limestone. Same base climate, two different local answers to it.",
-        "A late-ripening, structured variety dominates the gravel side; an earlier-ripening, softer variety dominates the clay side: blended reds built around that split."
-      ],
-      answer: "Bordeaux, France (Left Bank / Right Bank)",
-      source: "02_regions/france/bordeaux.md"
+      id: "pomerol-winery",
+      topicTitle: "Bordeaux, Right Bank",
+      wine: "Grand Cru, Pomerol, 2009",
+      commandBadge: "Explain (6M)",
+      marks: 6,
+      q: "These premium wines are often complex, powerful, and intense, with a deep colour. How is this style achieved in the winery?",
+      tip: "This is a three-part chain: extraction, then cap management, then oak. Try to include all three in a real exam answer.",
+      steps: [
+        {
+          label: "Winery technique",
+          instruction: "Choose the winery-side explanation for this style.",
+          options: [
+            { text: "A pre-fermentation cold soak extracts colour and flavour, careful cap management builds further colour and tannin, and new oak ageing (12 to 18 months) adds complexity.", correct: true, feedback: "Correct: this extraction-to-cap-management-to-oak chain is the standard winery-side template for any intense red, not just Merlot." },
+            { text: "The wine ferments briefly in stainless steel with no skin contact.", correct: false, feedback: "That's a white-winemaking approach: it would strip out the colour and tannin this style depends on." },
+            { text: "The wine undergoes carbonic maceration for a fruity, low-tannin style.", correct: false, feedback: "Carbonic maceration (the Beaujolais approach) produces light, low-tannin wine: the opposite of Pomerol's intense, structured style." }
+          ]
+        }
+      ]
     },
     {
-      id: "case-burgundy",
-      clues: [
-        "Inland, with no major body of water nearby to moderate temperature.",
-        "A single narrow escarpment where soil and aspect change dramatically over a few hundred metres.",
-        "Real frost risk at bud burst, real risk of poor fruit set, real risk of rain at harvest."
-      ],
-      chain: [
-        "Inland, continental Western Europe.",
-        "Cool continental, marginal for ripening: meaning vintage variation is a constant, real risk (frost, flowering, harvest rain).",
-        "A thin-skinned, early-budding variety is viable here specifically because summers get warm enough, but the margin for error is thin.",
-        "For once, soil IS the headline factor: centuries of observation of subtle limestone/marl and aspect differences on one narrow slope produced an extremely fine-grained vineyard hierarchy.",
-        "Highly terroir-expressive, site-driven wines, where the name of the vineyard matters more than almost anywhere else in the wine world."
-      ],
-      answer: "Burgundy (Côte d'Or), France",
-      source: "02_regions/france/burgundy.md"
+      id: "alsace-natural-factors",
+      topicTitle: "Alsace, France",
+      wine: "Vendange Tardive Riesling, Alsace",
+      commandBadge: "Describe + Explain (2 × 2M)",
+      marks: 4,
+      q: "Describe two key natural factors in Alsace and explain how each contributes to this wine's style.",
+      tip: "Natural factors are geography, not weather: mountains, rivers, altitude. Name the factor, then explain its mechanism.",
+      steps: [
+        {
+          label: "Factor 1: the Vosges Mountains",
+          instruction: "Choose the correct factor-plus-mechanism pair.",
+          options: [
+            { text: "The Vosges Mountains block Atlantic weather, creating a rain shadow that lowers disease pressure and allows extended hang time.", correct: true, feedback: "Correct: this is the single biggest factor behind Alsace's whole sweetness range." },
+            { text: "The Vosges Mountains trap humid air, increasing rot risk.", correct: false, feedback: "The opposite is true: the Vosges block moisture, giving Alsace one of France's driest, lowest-rot climates." },
+            { text: "The Vosges Mountains have no real effect on climate.", correct: false, feedback: "They're the defining natural factor here: without them, Alsace would be a wetter, more Atlantic-influenced climate." }
+          ]
+        },
+        {
+          label: "Factor 2: diurnal range",
+          instruction: "Choose the correct factor-plus-mechanism pair.",
+          options: [
+            { text: "A large diurnal range lets sugar build during warm days while acidity is preserved during cool nights.", correct: true, feedback: "Correct: this is what lets a Vendange Tardive concentrate sugar without losing the acid backbone." },
+            { text: "A large diurnal range mainly increases tannin.", correct: false, feedback: "Diurnal range is a white-wine, sugar/acid story here, not a tannin one: Alsace's key grapes aren't grown for tannin." },
+            { text: "A large diurnal range has no link to sweetness style.", correct: false, feedback: "It's directly responsible for the sugar accumulation that makes late-harvest and SGN styles possible." }
+          ]
+        }
+      ]
     },
     {
-      id: "case-los-carneros",
-      clues: [
-        "Sits at the edge of a large bay, in a generally warm wine-producing state.",
-        "Regular fog and wind roll in from the water.",
-        "Marine fog and wind from the bay cool this generally warm California region well below its latitude's typical temperature."
-      ],
-      chain: [
-        "Adjacent to a large bay, within a state whose latitude is generally warm for wine growing.",
-        "Cooled well below what latitude predicts, by marine fog and wind.",
-        "Cooling fog plus drying wind together lower temperature and reduce disease pressure at the same time.",
-        "Secondary here: the bay's cooling effect is doing the heavy lifting, not the soil.",
-        "Suited to a thin-skinned, early-budding, cool-climate-loving variety, despite sitting inside a generally warm state."
-      ],
-      answer: "Los Carneros, California, USA",
-      source: "WSET sample paper, Question 3b",
-      pairsWith: "case-central-otago"
-    },
-    {
-      id: "case-central-otago",
-      clues: [
-        "The most southerly wine region in its country.",
-        "Unusually high altitude and inland for its country's wine regions, which are normally coastal.",
-        "Wide day-to-night temperature swing; more settled, sunnier summers than its coastal neighbours."
-      ],
-      chain: [
-        "High altitude, inland, at an extreme latitude for its hemisphere.",
-        "Continental rather than the maritime climate typical of the rest of its country: altitude and distance from the coast both push it this way.",
-        "A wide diurnal range lets sugar build on sunny days while acid is preserved on cold nights.",
-        "Secondary to the altitude/continentality story here.",
-        "Again a thin-skinned, cool-climate variety: arriving at the same answer as a bay-cooled site, by a completely different mechanism."
-      ],
-      answer: "Central Otago, New Zealand",
-      source: "WSET sample paper, Question 3b",
-      pairsWith: "case-los-carneros"
+      id: "southern-rhone-blend-builder",
+      topicTitle: "Southern Rhône",
+      wine: "Red blend, Southern Rhône (GSM)",
+      commandBadge: "State (2 × 3M)",
+      marks: 6,
+      q: "State the stylistic and practical reasons why a winemaker here might choose to blend.",
+      tip: "Split your answer into two visibly separate buckets: stylistic first, then practical. Don't merge them into one list.",
+      steps: [
+        {
+          label: "Stylistic reasons",
+          instruction: "Choose the correct stylistic reasoning.",
+          options: [
+            { text: "Grenache gives alcohol, fruit, and spice but little colour or tannin, so Syrah and Mourvèdre are added for structure and complexity, continuing a long regional tradition.", correct: true, feedback: "Correct: names what Grenache lacks, what the other grapes add, and ties it to tradition." },
+            { text: "Grenache is blended purely because it is the cheapest grape available.", correct: false, feedback: "Cost isn't the stylistic reason tested here: the exam wants the flavour/structure logic, not economics." },
+            { text: "Blending is only done to hide faults in poor-quality fruit.", correct: false, feedback: "This isn't why premium Southern Rhône producers blend: it's a deliberate style choice, not damage control." }
+          ]
+        },
+        {
+          label: "Practical reasons",
+          instruction: "Choose the correct practical reasoning.",
+          options: [
+            { text: "Grenache is vulnerable to coulure in cool, windy flowering conditions, so blending with Syrah and Mourvèdre spreads risk across varieties that don't all fail in the same year.", correct: true, feedback: "Correct: names the specific risk (coulure from the Mistral) and the insurance logic." },
+            { text: "Blending is required because irrigation is banned in the region.", correct: false, feedback: "Irrigation rules aren't the practical driver of blending here: vintage risk from wind and coulure is." },
+            { text: "Grenache ripens too early, so later grapes are needed to fill out the harvest season.", correct: false, feedback: "Grenache actually needs a lot of heat and ripens relatively late: this isn't the real practical reason producers blend." }
+          ]
+        }
+      ]
     }
   ];
 
@@ -1600,18 +1642,16 @@
 
   var STORAGE_KEY = "fieldsheets-progress-v1";
   var MCQ_STATS_KEY = "fieldsheets-mcq-stats-v1";
-  var COLDREAD_STATS_KEY = "fieldsheets-coldread-stats-v1";
   var MATCH_STATS_KEY = "fieldsheets-match-stats-v1";
   var state = loadProgress();
   var mcqStats = loadMcqStats();
-  var crStats = loadColdReadStats();
   var matchStats = loadMatchStats();
-  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "cold-read" / "match-game"
+  var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "response-builder" / "match-game"
 
   var wpState = { filter: "all", current: null, userAnswer: "", revealed: false };
   var scState = { current: null, revealed: false };
   var mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
-  var crState = { current: null, revealed: false, rating: null };
+  var rbState = { current: null, stepIndex: 0, selections: [] };
   var ROUND_SIZE = 6;
   var matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
 
@@ -1632,15 +1672,6 @@
   }
   function saveMcqStats() {
     try { localStorage.setItem(MCQ_STATS_KEY, JSON.stringify(mcqStats)); } catch (e) {}
-  }
-  function loadColdReadStats() {
-    try {
-      var raw = localStorage.getItem(COLDREAD_STATS_KEY);
-      return raw ? JSON.parse(raw) : { attempts: 0, nailed: 0, partial: 0, missed: 0 };
-    } catch (e) { return { attempts: 0, nailed: 0, partial: 0, missed: 0 }; }
-  }
-  function saveColdReadStats() {
-    try { localStorage.setItem(COLDREAD_STATS_KEY, JSON.stringify(crStats)); } catch (e) {}
   }
   function loadMatchStats() {
     try {
@@ -2219,104 +2250,127 @@
     });
   }
 
-  /* ============ RENDER: COLD READ PRACTICE ============ */
+  /* ============ RENDER: RESPONSE BUILDER ============ */
 
-  function pickRandomCase() {
-    var candidates = COLD_READ;
-    if (crState.current && COLD_READ.length > 1) {
-      candidates = COLD_READ.filter(function (c) { return c.id !== crState.current.id; });
-    }
-    return candidates[Math.floor(Math.random() * candidates.length)];
+  function currentBuilder() {
+    if (!rbState.current) rbState.current = RESPONSE_BUILDERS[0].id;
+    return RESPONSE_BUILDERS.find(function (b) { return b.id === rbState.current; }) || RESPONSE_BUILDERS[0];
   }
 
-  function renderColdRead() {
+  function resetBuilderProgress() {
+    rbState.stepIndex = 0;
+    rbState.selections = [];
+  }
+
+  function renderResponseBuilder() {
     var main = document.getElementById("main");
-    if (!crState.current) crState.current = pickRandomCase();
-    var c = crState.current;
+    var builder = currentBuilder();
+    var total = builder.steps.length;
+    var solvedCount = rbState.selections.filter(function (s) { return s && s.solved; }).length;
 
-    var cluesHtml = c.clues.map(function (clue) { return '<li>' + clue + '</li>'; }).join("");
+    var optionsHtml = RESPONSE_BUILDERS.map(function (b) {
+      return '<option value="' + b.id + '"' + (b.id === builder.id ? " selected" : "") + '>' +
+        b.topicTitle + ' — ' + b.wine + '</option>';
+    }).join("");
 
-    var chainHtml = "";
-    var answerBlock = "";
-    if (crState.revealed) {
-      chainHtml = '<ul class="chain-list">' + c.chain.map(function (step, i) {
-        return '<li class="chain-step"><span class="cs-label">' + CHAIN_LABELS[i].en + '</span><span>' + step + '</span></li>';
-      }).join("") + '</ul>';
+    var progressPct = total ? Math.round((solvedCount / total) * 100) : 0;
+    var progressHtml =
+      '<div class="rb-progress-wrap">' +
+        '<div class="rb-progress-bar"><div class="rb-progress-fill" style="width:' + progressPct + '%"></div></div>' +
+        '<span class="rb-progress-label">' + solvedCount + '/' + total + ' steps</span>' +
+        '<button class="rb-reset-btn" id="rbReset">&#8635; Reset</button>' +
+      '</div>';
 
-      var pairNote = "";
-      if (c.pairsWith) {
-        var paired = COLD_READ.find(function (p) { return p.id === c.pairsWith; });
-        if (paired) {
-          pairNote = '<div class="callout cr-pair-note"><span class="callout-label">Compare</span>' +
-            'This region reaches a similar climatic outcome to <strong>' + paired.answer + '</strong>, by a completely different mechanism. Read that case next to see the contrast.</div>';
-        }
-      }
-
-      var ratingOptions = [
-        ["nailed", "Nailed it"],
-        ["partial", "Partially"],
-        ["missed", "Missed it"]
-      ].map(function (o) {
-        return '<button class="pill-btn' + (crState.rating === o[0] ? " active" : "") + '" data-rating="' + o[0] + '">' + o[1] + '</button>';
+    var bodyHtml;
+    if (solvedCount >= total) {
+      var summaryHtml = builder.steps.map(function (step, i) {
+        var sel = rbState.selections[i];
+        var correctOpt = step.options.find(function (o) { return o.correct; });
+        return '<li><strong>' + step.label + ':</strong> ' + correctOpt.text + '</li>';
+      }).join("");
+      bodyHtml =
+        '<div class="rb-complete">' +
+          '<div class="callout-label">Full answer, built step by step</div>' +
+          '<ul class="rb-complete-list">' + summaryHtml + '</ul>' +
+        '</div>' +
+        '<div class="written-actions"><button class="btn primary" id="rbNextQuestion">Try another question</button></div>';
+    } else {
+      var stepIndex = rbState.stepIndex;
+      var step = builder.steps[stepIndex];
+      var sel = rbState.selections[stepIndex];
+      var optionsListHtml = step.options.map(function (opt, oi) {
+        var isChosen = sel && sel.chosenIndex === oi;
+        var stateClass = isChosen ? (opt.correct ? " correct" : " incorrect") : "";
+        var feedbackHtml = isChosen ?
+          '<div class="rb-option-feedback">' + (opt.correct ? "&#10003; " : "&#10007; ") + opt.feedback + '</div>' : "";
+        return '<div class="rb-option' + stateClass + '" data-step="' + stepIndex + '" data-opt="' + oi + '">' +
+          '<span class="rb-option-mark"></span><span class="rb-option-text">' + opt.text + '</span>' +
+          feedbackHtml +
+        '</div>';
       }).join("");
 
-      answerBlock = chainHtml + pairNote +
-        '<div class="lost-to-row"><span class="lost-to-label">How well did your reasoning match?</span><div class="pill-group">' + ratingOptions + '</div></div>';
+      bodyHtml =
+        '<div class="rb-step-card">' +
+          '<div class="rb-step-head"><span class="rb-step-num">' + (stepIndex + 1) + '</span><h3>' + step.label + '</h3></div>' +
+          '<p class="rb-instruction">' + step.instruction + '</p>' +
+          '<div class="rb-options">' + optionsListHtml + '</div>' +
+          (sel && sel.solved ?
+            '<div class="written-actions"><button class="btn primary" id="rbNextStep">' +
+            (stepIndex + 1 < total ? "Next step" : "Finish") + '</button></div>' : "") +
+        '</div>';
     }
-
-    var statsHtml = '<div class="cr-stats-row"><span>Attempts: ' + crStats.attempts + '</span><span>Nailed: ' + crStats.nailed + '</span><span>Partial: ' + crStats.partial + '</span><span>Missed: ' + crStats.missed + '</span></div>';
 
     main.innerHTML =
       '<div class="practice-hero">' +
-        '<h2>Cold Read</h2>' +
-        '<p class="sub">A region, named upfront, plus the bare climate facts behind it. Work through the chain yourself (climate type, ripening implication, soil as modifier, grape/style) before you check your reasoning against the model chain below. This is the reverse-engineering framework from <code>00_toolkit/reverse_engineering_framework.md</code>, as a drill.</p>' +
+        '<h2>Response Builder</h2>' +
+        '<p class="sub">Build a full-mark answer one step at a time. At each step, pick the option that actually earns the mark, and see exactly why the others don\'t. Cause to effect, in plain English.</p>' +
       '</div>' +
-      statsHtml +
+      '<select class="rb-select" id="rbSelect">' + optionsHtml + '</select>' +
       '<div class="written-card">' +
-        '<span class="mcq-topic-tag">Region</span>' +
-        '<div class="cr-answer">' + c.answer + '<span class="source">' + c.source + '</span></div>' +
-        '<span class="mcq-topic-tag">Known factors</span>' +
-        '<ul class="clue-list">' + cluesHtml + '</ul>' +
-        (crState.revealed ?
-          '' :
-          '<div class="written-actions"><button class="btn primary" id="crReveal">Check my reasoning</button></div>'
-        ) +
-        answerBlock +
-        (crState.revealed ? '<div class="written-actions"><button class="btn primary" id="crNext">Next region</button></div>' : "") +
-      '</div>';
+        '<div class="rb-badges"><span class="written-command">' + builder.commandBadge + '</span><span class="mcq-topic-tag rb-marks-badge">' + builder.marks + ' marks</span></div>' +
+        '<div class="written-q">' + builder.q + '</div>' +
+        '<div class="callout rb-tip"><span class="callout-label">Tip</span>' + builder.tip + '</div>' +
+      '</div>' +
+      progressHtml +
+      bodyHtml;
 
-    wireColdRead();
+    wireResponseBuilder();
   }
 
-  function wireColdRead() {
+  function wireResponseBuilder() {
     var main = document.getElementById("main");
-    var revealBtn = main.querySelector("#crReveal");
-    if (revealBtn) revealBtn.addEventListener("click", function () {
-      crState.revealed = true;
-      renderColdRead();
+    var select = main.querySelector("#rbSelect");
+    if (select) select.addEventListener("change", function () {
+      rbState.current = select.value;
+      resetBuilderProgress();
+      renderResponseBuilder();
     });
-    var nextBtn = main.querySelector("#crNext");
-    if (nextBtn) nextBtn.addEventListener("click", function () {
-      crState.current = pickRandomCase();
-      crState.revealed = false;
-      crState.rating = null;
-      renderColdRead();
+    var resetBtn = main.querySelector("#rbReset");
+    if (resetBtn) resetBtn.addEventListener("click", function () {
+      resetBuilderProgress();
+      renderResponseBuilder();
     });
-    main.querySelectorAll("[data-rating]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var rating = btn.getAttribute("data-rating");
-        if (crState.rating === null) {
-          crStats.attempts++;
-          crStats[rating]++;
-          saveColdReadStats();
-        } else if (crState.rating !== rating) {
-          crStats[crState.rating]--;
-          crStats[rating]++;
-          saveColdReadStats();
-        }
-        crState.rating = rating;
-        renderColdRead();
+    main.querySelectorAll(".rb-option").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var stepIndex = parseInt(el.getAttribute("data-step"), 10);
+        var optIndex = parseInt(el.getAttribute("data-opt"), 10);
+        var builder = currentBuilder();
+        var opt = builder.steps[stepIndex].options[optIndex];
+        rbState.selections[stepIndex] = { chosenIndex: optIndex, solved: !!opt.correct };
+        renderResponseBuilder();
       });
+    });
+    var nextStepBtn = main.querySelector("#rbNextStep");
+    if (nextStepBtn) nextStepBtn.addEventListener("click", function () {
+      rbState.stepIndex++;
+      renderResponseBuilder();
+    });
+    var nextQBtn = main.querySelector("#rbNextQuestion");
+    if (nextQBtn) nextQBtn.addEventListener("click", function () {
+      var idx = RESPONSE_BUILDERS.findIndex(function (b) { return b.id === rbState.current; });
+      rbState.current = RESPONSE_BUILDERS[(idx + 1) % RESPONSE_BUILDERS.length].id;
+      resetBuilderProgress();
+      renderResponseBuilder();
     });
   }
 
@@ -2478,7 +2532,7 @@
   function renderCurrentView() {
     if (currentView === "written-practice") { renderWrittenPractice(); return; }
     if (currentView === "mcq-practice") { renderMcqPractice(); return; }
-    if (currentView === "cold-read") { renderColdRead(); return; }
+    if (currentView === "response-builder") { renderResponseBuilder(); return; }
     if (currentView === "match-game") { renderMatchGame(); return; }
     var topic = TOPICS.find(function (t) { return t.id === currentView; });
     if (topic) renderTopic(topic); else renderHome();
@@ -2507,15 +2561,13 @@
     if (window.confirm("Clear all progress and quiz stats on this device?")) {
       state = {};
       mcqStats = { best: 0, lastScore: null, lastTotal: null };
-      crStats = { attempts: 0, nailed: 0, partial: 0, missed: 0 };
       matchStats = { roundsPlayed: 0, totalCorrect: 0, totalWrong: 0 };
       saveProgress();
       saveMcqStats();
-      saveColdReadStats();
       saveMatchStats();
       wpState = { filter: "all", current: null, userAnswer: "", revealed: false };
       mcqState = { phase: "setup", filter: "all", pool: [], index: 0, score: 0, answered: null, results: [], isNewBest: false };
-      crState = { current: null, revealed: false, rating: null };
+      rbState = { current: null, stepIndex: 0, selections: [] };
       matchState = { roundPairs: [], grapeOrder: [], regionOrder: [], matched: {}, selectedGrape: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
       renderSidebar();
       renderCurrentView();
