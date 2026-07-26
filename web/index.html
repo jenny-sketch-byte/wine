@@ -671,6 +671,32 @@
       ]
     },
     {
+      id: "service",
+      group: "foundations",
+      groupLabel: "Foundations",
+      title: "Service & Storage",
+      tagline: "Cellar conditions and decanting: practical exam knowledge the climate/soil chain doesn't cover.",
+      sections: [
+        { h: "Storing wine for long-term ageing", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Condition</th><th>Why it matters</th></tr>
+            <tr><td>Lying on its side (cork-sealed)</td><td>Keeps the cork moist and swollen, preventing air ingress</td></tr>
+            <tr><td>Cool, constant temperature</td><td>Fluctuations expand/contract the wine and cork, pushing air in and accelerating ageing</td></tr>
+            <tr><td>Dark</td><td>Strong light, especially UV, can cause off-flavours (light-strike)</td></tr>
+            <tr><td>Moderate humidity</td><td>Too dry and the cork shrinks and lets air in; the target is steady, not maximal</td></tr>
+            <tr><td>Away from vibration</td><td>Constant disturbance stresses the wine and unsettles sediment over years of storage</td></tr>
+          </table></div>` },
+        { h: "Decanting: two different purposes", body: `
+          <p>Decanting an <strong>old, fragile wine with sediment</strong> is about separation: pour slowly and steadily in one motion, stopping before sediment reaches the neck. Decanting a <strong>young, tannic wine</strong> is about aeration: a more vigorous pour (or a longer time in the decanter) softens tannin and opens up aromas. Same action, opposite technique, because the goal is different.</p>` }
+      ],
+      quiz: [
+        { theme: "Cork & storage position", q: "Why is a cork-sealed bottle stored on its side for long-term ageing?", options: ["To save space", "To keep the cork moist, preventing air ingress", "To settle sediment faster", "It has no real effect"], correct: 1, explain: "A dried-out cork shrinks and lets air in; keeping it in contact with the wine keeps it sealed." },
+        { theme: "Temperature stability", q: "Why are temperature swings more damaging to stored wine than a slightly warm but constant temperature?", options: ["Swings have no real effect", "Expansion and contraction can push the cork and accelerate ageing", "Constant warmth always ruins wine faster", "Only light exposure matters"], correct: 1, explain: "Repeated expansion/contraction stresses the cork seal and speeds up oxidative ageing: stability matters as much as the exact temperature." },
+        { theme: "Decanting purpose", q: "Decanting an old, fragile red wine with visible sediment is primarily done to:", options: ["Aerate it vigorously", "Separate the clear wine from the sediment", "Warm it up quickly", "Strip out tannin"], correct: 1, explain: "A slow, steady pour keeps the sediment behind in the bottle: the goal is separation, not aeration, which could blow off a fragile old wine's aromas." },
+        { theme: "Decanting purpose", q: "Decanting a young, tannic red wine is primarily done to:", options: ["Remove sediment", "Aerate it, softening tannin and opening up aromas", "Chill it faster", "Remove cork taint"], correct: 1, explain: "Young wines rarely have sediment worth removing: here decanting is about oxygen exposure, softening the wine's structure." }
+      ]
+    },
+    {
       id: "alsace",
       group: "regions",
       groupLabel: "Regions",
@@ -890,6 +916,15 @@
           { en: "States a similarity (both add flavour/structure)", he: "מציין דמיון (שניהם מוסיפים טעם/מבנה)" },
           { en: "Gives a real style example", he: "נותן דוגמה אמיתית לסגנון יין" }
         ]
+      }
+    ],
+    service: [
+      {
+        command: "Outline", commandHe: "הצג בקווים כלליים",
+        anchor: "A premium red wine, sealed with natural cork, intended for long-term ageing",
+        theme: "Wine storage",
+        q: "Outline the storage conditions you would recommend for the long-term ageing of a cork-sealed wine like this.",
+        model: "Store the bottle lying on its side, so the wine stays in contact with the cork and keeps it moist, preventing air ingress. Keep it at a cool, constant temperature, since fluctuations can stress the cork seal and accelerate ageing. Keep it in a dark place away from strong light, which can cause off-flavours over time. Maintain moderate humidity, since a too-dry environment can dry out and shrink the cork. Keep the bottle still, away from vibration."
       }
     ],
     alsace: [
@@ -1124,6 +1159,83 @@
             "Oak, often new oak, is used for fermentation and/or ageing, commonly 12 to 18 months, adding complexity."
           ],
           notes: "Notice how this answer differs from the vineyard question before it. This winery-side answer, pre-fermentation soaking, cap management, oak, applies to almost any intense red wine, not just Merlot. Remember it and you can reuse it for Cabernet, Tempranillo, or a top-quality Pinot Noir too."
+        }
+      ]
+    },
+    {
+      id: "southern-rhone-blend",
+      topicTitle: "Southern Rhône",
+      wine: "Red blend, Southern Rhône (Grenache, Syrah, Mourvèdre)",
+      context: "Red wines from the southern Rhône are typically a blend led by Grenache.",
+      parts: [
+        {
+          q: "State the stylistic reasons why a winemaker might choose to blend grapes in this region.",
+          marks: 3,
+          model: [
+            "Grenache contributes high alcohol, ripe red fruit, and spice, but relatively pale colour and low tannin.",
+            "Syrah and Mourvèdre add colour, tannin, and darker fruit, giving the blend more structure and complexity than Grenache alone.",
+            "The Grenache-Syrah-Mourvèdre blend reflects long local tradition: producers continue an established regional style."
+          ]
+        },
+        {
+          q: "State the practical reasons why a winemaker might choose to blend grapes in this region.",
+          marks: 3,
+          model: [
+            "Grenache is prone to coulure (poor fruit set) in cool, windy conditions at flowering, so its yield can vary sharply from year to year.",
+            "The Mistral wind and risk of drought add further vintage variation: blending spreads that risk across varieties that don't all struggle in the same year.",
+            "Appellation rules in Châteauneuf-du-Pape permit up to 13 varieties, giving producers legal room to blend for both style and insurance."
+          ],
+          notes: "This is the same three-part shape as any blending question: stylistic reasons (tradition, complementary characteristics), practical reasons (vintage-to-vintage insurance), and sometimes a third reason around what the appellation actually permits. Swap in Bordeaux and the answer becomes Cabernet Sauvignon and Merlot balancing tannin against drought sensitivity instead of Grenache, Syrah, and Mourvèdre, but the shape barely changes. Learn the shape, not just one region's grapes."
+        }
+      ]
+    },
+    {
+      id: "hunter-valley-semillon",
+      topicTitle: "Hunter Valley, Australia",
+      wine: "Unwooded Semillon, Hunter Valley",
+      context: "A dry, unoaked white wine made from Semillon, associated with a distinctive early-harvest style.",
+      parts: [
+        {
+          q: "Identify one human influence in the vineyard that contributes to this wine's distinctive characteristics, and explain its effect.",
+          marks: 3,
+          model: [
+            "Grapes are picked very early in the season, well before the region's hot, humid late summer.",
+            "This preserves high natural acidity and keeps sugar levels low, producing a wine with modest alcohol, often around 11%, and a lean, high-acid structure on release."
+          ]
+        },
+        {
+          q: "Identify one human influence in the winery that contributes to this wine's distinctive characteristics, and explain its effect.",
+          marks: 3,
+          model: [
+            "The wine is fermented and matured in stainless steel, with no oak contact and typically no malolactic conversion.",
+            "This keeps the wine neutral and plain on release, so the toasty, honeyed complexity it eventually shows comes entirely from bottle ageing, not from any winemaking input."
+          ],
+          notes: "This is a genuinely unusual wine: it's made to taste unexciting young on purpose. The distinctive character only shows after ten or more years in bottle, once the wine's high acidity lets it slowly develop toast, honey, and marmalade notes with no oak involved. If a question pairs 'unoaked Semillon' with 'Hunter Valley,' this ageing paradox is almost certainly what it's testing."
+        }
+      ]
+    },
+    {
+      id: "pinot-noir-two-climates",
+      topicTitle: "Pinot Noir: two climates",
+      wine: "Pinot Noir, Los Carneros (California) and Central Otago (New Zealand)",
+      context: "Two regions capable of ripening Pinot Noir successfully, despite sitting in generally warm countries for wine growing.",
+      parts: [
+        {
+          q: "For Los Carneros, identify two natural factors and explain how each moderates the climate.",
+          marks: 6,
+          model: [
+            "Proximity to San Pablo Bay: cool marine air and regular morning fog roll in off the bay, lowering temperatures well below what the region's latitude alone would suggest.",
+            "Afternoon wind off the bay: dries the canopy as it cools it, moderating heat while also reducing disease pressure."
+          ]
+        },
+        {
+          q: "For Central Otago, identify two natural factors and explain how each moderates the climate.",
+          marks: 6,
+          model: [
+            "Inland, high-altitude position: removed from the maritime moderation most New Zealand regions rely on, giving a more continental climate with settled, sunnier summers.",
+            "A wide diurnal temperature range: sugar accumulates during warm, sunny days while acidity is preserved during cold nights."
+          ],
+          notes: "Same grape, same outcome, a moderate temperature with enough acid-preserving cool nights for Pinot Noir, reached by opposite mechanisms: Los Carneros is cooled by the ocean, Central Otago is cooled by being far from it. Saying that explicitly is usually worth its own mark. See Cold Read for the full reasoning chain behind each region."
         }
       ]
     }
