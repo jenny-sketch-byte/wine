@@ -38,6 +38,37 @@ The six Prädikat categories are ordered by *minimum grape ripeness (sugar level
 ## Quality/price factors
 - Higher Prädikat tiers (rarer, riper, more labour-intensive to pick) command higher prices; Eiswein and TBA are the most expensive due to the risk and low yield involved in producing them.
 
+## The regions beyond the Mosel
+The Mosel is the archetype, but the Specification names six other regions and they
+differ mainly in **how warm they are** and therefore what they can ripen.
+
+| Region | Character | Notes |
+|---|---|---|
+| **Mosel** | Coolest and lightest | Slate, extremely steep south-facing slopes above the river. Riesling with low alcohol, piercing acidity, often with residual sugar to balance it. Sub-villages: *Bernkastel*, *Wehlen*, *Piesport*. |
+| **Nahe** | Between Mosel and Rheingau in style | Varied soils; Riesling with both fruit weight and acidity. *Schlossböckelheim*. |
+| **Rheingau** | Warmer, fuller, more structured | A rare **south-facing stretch of the Rhine**, sheltered by the Taunus hills. Historically the home of dry Riesling and of German botrytis wine. *Rüdesheim*, *Johannisberg*. |
+| **Rheinhessen** | Germany's largest region | Huge range: bulk wine from flat land, but serious Riesling from the steep *Rheinterrasse* slopes. *Nierstein*. |
+| **Pfalz** | Warm and dry | Sheltered by the Haardt mountains. The most reliably ripe Riesling, fuller-bodied and often dry, plus significant Spätburgunder. *Forst*, *Deidesheim*. |
+| **Baden** | **Germany's warmest region** | Far south. The one region where **Spätburgunder (Pinot Noir)** is the headline wine rather than Riesling. |
+| **Franken** | Continental, frost-prone | Known for **Silvaner** and for the flat *Bocksbeutel* bottle. |
+
+**Why the Rhine and Mosel matter so much:** at this latitude the vine is at the
+edge of what it can ripen. The rivers **reflect sunlight onto the steep slopes**,
+**store heat** and release it overnight, and reduce frost risk. Combined with a
+south-facing aspect and heat-retaining slate, this is what makes ripening possible
+at all — and it is the standard "explain the natural factors" answer for Germany.
+
+## Other law: the VDP classification
+Separate from the Prädikat system, the **VDP** is a private growers' association
+that operates a **vineyard-based** hierarchy modelled on Burgundy, addressing the
+fact that Prädikat measures ripeness rather than site quality:
+
+**Gutswein** (estate) → **Ortswein** (village) → **Erste Lage** (premier cru) →
+**Grosse Lage** (grand cru)
+
+A **dry** wine from a Grosse Lage vineyard is labelled **Grosses Gewächs (GG)** —
+the top tier of dry German Riesling and a likely MCQ term.
+
 ## Likely exam angles
 **"Describe the process by which Eiswein is produced, and how this affects its style."**
 
