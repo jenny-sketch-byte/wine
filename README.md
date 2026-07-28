@@ -14,6 +14,8 @@ Goal: pass efficiently as a non-native English speaker, with strong written-answ
 04_fortified/         Port, Sherry, Madeira, VDN
 05_business/          Supply chain, pricing, distribution
 06_past_papers/       Real WSET sample paper + practice answers/self-marking notes
+                      (06_past_papers/third_party_quizzes/: unofficial practice MCQs/mini-essays,
+                      quality varies — see that folder's README before trusting an answer)
 07_training_video/    Script for a "how to answer" technique training video
 web/                  Wine With Jenny: interactive study + practice site (written
                       practice, multiple-choice drills, matching games), open web/index.html
@@ -80,6 +82,12 @@ question archetypes and mark logic, built directly from the sample paper in
 - [x] Reverse-engineering framework, built from that paper (`00_toolkit/reverse_engineering_framework.md`)
 - [x] Question-pattern taxonomy + mark logic, built from that paper (`00_toolkit/question_patterns.md`)
 - [x] Video training script: command words, marks logic, Golden Thread technique (`07_training_video/script.md`)
+- [x] Third-party practice quizzes, consolidated from 36 screenshots, 2026-07-28 (`06_past_papers/third_party_quizzes/`):
+  185 MCQs total across 5 sources + 4 short-answer mini-essays with model answers. Only 2 of the
+  5 MCQ sets came with an answer key (60 questions); 3 sets (115 questions) are unanswered and
+  flagged as such — work them, then verify your own answers, don't trust a guess. One answer-key
+  entry (Chablis Grand Crus) and one internal inconsistency (vine growth cycle order) are flagged
+  as unresolved in the source material itself.
 
 ## Core exam facts to keep in view
 - Verified against the official WSET Level 3 Award in Wines Specification, Issue 2, May 2022 (`06_past_papers/`)
