@@ -12,12 +12,10 @@ b. Manual harvesting is essential for sparkling wine production.
 c. Grapes harvested by hand do not require destemming.
 **d. Machine harvesters are best suited for flat terrain.**
 
-**2. Casablanca Valley is a sub-region that:**
-a. experiences heavy rainfall. · b. is cooled by oceanic breezes. · **c. is located in Chile.** · d. is renowned for Merlot.
-
-> ⚠️ Per the source's own answer key the correct option is (c) "is located in Chile" — note
-> that (b) "is cooled by oceanic breezes" is also a true statement about Casablanca Valley; the
-> source evidently intends (c) as the single best answer. Not reconciled further here.
+**2. [Removed]** — the source keyed "(c) is located in Chile" as correct, but "(b) is cooled by
+oceanic breezes" is also a true statement about Casablanca Valley, so it isn't clear the key is
+picking the actually-intended best answer rather than just one of several true options. Removed
+rather than presenting it as a settled answer.
 
 **3. Which of the following regions are known for producing high-quality wines from Shiraz?**
 a. Napa and Sonoma · **b. Barossa and Eden Valley** · c. Rioja and Ribera del Duero · d. Tuscany and Lombardy

@@ -83,11 +83,11 @@ question archetypes and mark logic, built directly from the sample paper in
 - [x] Question-pattern taxonomy + mark logic, built from that paper (`00_toolkit/question_patterns.md`)
 - [x] Video training script: command words, marks logic, Golden Thread technique (`07_training_video/script.md`)
 - [x] Third-party practice quizzes, consolidated from 36 screenshots, 2026-07-28 (`06_past_papers/third_party_quizzes/`):
-  185 MCQs total across 5 sources + 4 short-answer mini-essays with model answers. Only 2 of the
-  5 MCQ sets came with an answer key (60 questions); 3 sets (115 questions) are unanswered and
-  flagged as such — work them, then verify your own answers, don't trust a guess. One answer-key
-  entry (Chablis Grand Crus) and one internal inconsistency (vine growth cycle order) are flagged
-  as unresolved in the source material itself.
+  165 MCQs total across 5 sources + 4 short-answer mini-essays with model answers. Only 2 of the
+  5 MCQ sets came with an answer key (57 verified-as-transcribed questions); 3 sets (105 questions)
+  are unanswered and flagged as such — work them, then verify your own answers, don't trust a
+  guess. 3 questions with internally inconsistent or unconfirmable source answers were removed
+  outright rather than kept with a caveat (see that folder's README).
 
 ## Core exam facts to keep in view
 - Verified against the official WSET Level 3 Award in Wines Specification, Issue 2, May 2022 (`06_past_papers/`)
