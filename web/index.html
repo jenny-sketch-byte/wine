@@ -1201,9 +1201,7 @@
     { en: "Identify / State / Name", he: "זהה / קבע / ציין", want: "A fact, term, or item: no explanation needed.", wantHe: "עובדה, מונח או פריט: בלי צורך בהסבר." },
     { en: "Describe", he: "תאר", want: "What something IS or looks like: characteristics, not causes.", wantHe: "מה משהו הוא או נראה: מאפיינים, לא סיבות." },
     { en: "Explain", he: "הסבר", want: "WHY or HOW something happens: cause → effect. Most marks live here.", wantHe: "למה או איך משהו קורה: סיבה ← תוצאה. כאן נמצא רוב הניקוד." },
-    { en: "Outline", he: "הצג בקווים כלליים", want: "A brief summary of several points: breadth over depth.", wantHe: "סיכום קצר של כמה נקודות: רוחב ולא עומק." },
-    { en: "Compare", he: "השווה", want: "Similarities AND differences: one-sided answers lose marks.", wantHe: "דמיון וגם הבדלים: תשובה חד-צדדית מפסידה נקודות." },
-    { en: "Discuss", he: "דון", want: "Multiple angles or factors, weighed against each other.", wantHe: "כמה זוויות או גורמים, הנשקלים זה מול זה." }
+    { en: "Compare", he: "השווה", want: "Similarities AND differences: one-sided answers lose marks.", wantHe: "דמיון וגם הבדלים: תשובה חד-צדדית מפסידה נקודות." }
   ];
 
   var WRITTEN = {
@@ -1327,10 +1325,10 @@
     ],
     service: [
       {
-        command: "Outline", commandHe: "הצג בקווים כלליים",
+        command: "Describe", commandHe: "תאר",
         anchor: "A premium red wine, sealed with natural cork, intended for long-term ageing",
         theme: "Wine storage",
-        q: "Outline the storage conditions you would recommend for the long-term ageing of a cork-sealed wine like this.",
+        q: "Describe the storage conditions you would recommend for the long-term ageing of a cork-sealed wine like this.",
         model: "Store the bottle lying on its side, so the wine stays in contact with the cork and keeps it moist, preventing air ingress. Keep it at a cool, constant temperature (around 10 to 15°C), since fluctuations can stress the cork seal and accelerate ageing. Keep it in a dark place away from strong light, which can cause off-flavours over time. Maintain high, steady humidity (around 70 to 80%), since a too-dry environment can dry out and shrink the cork. Keep the bottle still, away from vibration."
       },
       {
@@ -1424,9 +1422,9 @@
         ]
       },
       {
-        command: "Discuss", commandHe: "דון",
+        command: "Explain", commandHe: "הסבר",
         theme: "Diurnal range",
-        q: "Discuss how altitude affects wine quality in Mendoza.",
+        q: "Explain how altitude affects wine quality in Mendoza.",
         model: "Altitude affects Mendoza's wine quality in several ways. Higher-altitude sites, such as those in the Uco Valley at 1,500m or more, receive greater UV exposure, which can concentrate phenolic compounds in grape skins. Altitude also widens the diurnal temperature range, allowing sugar to build during warm days while acidity is preserved during cool nights. In addition, higher sites often have more reliable access to Andean snowmelt for irrigation. Taken together, these factors mean altitude is now a significant quality marker in Mendoza, with many premium producers specifically seeking out high-altitude vineyard sites.",
         rubric: [
           { en: "Covers more than one factor (UV, diurnal range, snowmelt access)", he: "מכסה יותר מגורם אחד (UV, טווח יום-לילה, גישה לשלג נמס)" },
