@@ -458,6 +458,21 @@
   .written-textarea { width: 100%; min-height: 150px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; padding: 0.8rem; resize: vertical; }
   .written-textarea:focus { border-color: var(--accent); }
   .written-actions { display: flex; gap: 0.7rem; margin-top: 0.9rem; flex-wrap: wrap; }
+
+  /* Mock exam */
+  .mock-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.6rem 0.9rem; margin-bottom: 1.1rem; flex-wrap: wrap;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--card, transparent);
+    position: sticky; top: 0; z-index: 5;
+  }
+  .mock-part { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .mock-timer { font-family: var(--font-mono); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+  .mock-timer.danger { color: var(--bad); font-weight: 700; }
+  .quiz-option.selected { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .mark-block { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px dashed var(--line); font-size: 0.92rem; }
+  .mark-row { display: flex; gap: 0.55rem; align-items: flex-start; margin-top: 0.5rem; cursor: pointer; line-height: 1.45; }
+  .mark-row input { margin-top: 0.25rem; flex-shrink: 0; }
   .btn { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; padding: 0.6rem 1.1rem; border-radius: 7px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer; }
   .btn:hover { border-color: var(--accent); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
@@ -1398,6 +1413,60 @@
         { theme: "Noble rot in the Layon", q: "Coteaux du Layon develops noble rot because the river valley provides:", options: ["Constant high humidity all day", "Autumn morning mists that then burn off in afternoon sunshine", "Very high summer rainfall", "Cold night-time air drainage"], correct: 1, explain: "Botrytis needs alternating humidity and dryness: morning mists encourage the rot, and afternoon sun checks it so it concentrates rather than spoiling." },
         { theme: "Central Vineyard soils", q: "Silex (flint) soils are particularly associated with which appellation and character?", options: ["Sancerre, and a creamy texture", "Pouilly-Fume, and a smoky character", "Vouvray, and high sweetness", "Muscadet, and a saline note"], correct: 1, explain: "Flint is traditionally credited with the smoky, gunflint character associated with Pouilly-Fume." }
       ]
+    },
+    {
+      id: "sat-grid",
+      group: "tasting",
+      groupLabel: "Tasting (Unit 2)",
+      title: "The SAT Grid",
+      tagline: "A separate exam, a separate 55%: describe the wine, then conclude from what you described.",
+      sections: [
+        { h: "What the tasting exam actually is", body: `<p>Unit 2 is assessed <strong>separately from the theory paper</strong>, and you must reach <strong>55% in both</strong> to gain the qualification &mdash; a strong theory mark cannot rescue a weak tasting mark. The exam is <strong>two still wines, tasted blind, in 30 minutes</strong>, with <strong>20 marks for the white</strong> and <strong>21 for the red</strong>. Marks are not deducted for wrong answers, so <strong>never leave a box blank</strong>.</p><p>The wines may be drawn from anywhere in the Specification's recommended tasting samples list, so you are not being asked to identify the wine. You are being asked to <strong>describe it accurately using the fixed vocabulary below, and then draw two conclusions that follow from your own description</strong>. That last point is where marks are most often lost: a conclusion that contradicts the notes above it cannot score.</p>` },
+        { h: "Appearance", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Clarity</th><td>clear &mdash; hazy (faulty?)</td></tr>
+            <tr><th>Intensity</th><td>pale &mdash; medium &mdash; deep</td></tr>
+            <tr><th>Colour (white)</th><td>lemon-green &mdash; lemon &mdash; gold &mdash; amber &mdash; brown</td></tr>
+            <tr><th>Colour (ros&eacute;)</th><td>pink &mdash; salmon &mdash; orange</td></tr>
+            <tr><th>Colour (red)</th><td>purple &mdash; ruby &mdash; garnet &mdash; tawny &mdash; brown</td></tr>
+            <tr><th>Other</th><td>legs/tears, deposit, p&eacute;tillance, bubbles</td></tr>
+          </table></div>` },
+        { h: "Nose", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Condition</th><td>clean &mdash; unclean (faulty?)</td></tr>
+            <tr><th>Intensity</th><td>light &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; pronounced</td></tr>
+            <tr><th>Aroma characteristics</th><td>primary, secondary, tertiary</td></tr>
+            <tr><th>Development</th><td>youthful &mdash; developing &mdash; fully developed &mdash; tired/past its best</td></tr>
+          </table></div>
+          <p><strong>Know which bucket an aroma belongs to.</strong> <em>Primary</em> comes from the grape and fermentation (fruit, floral, herbaceous). <em>Secondary</em> comes from winemaking after fermentation (oak vanilla and toast, lees-derived bread and biscuit, buttery notes from malolactic conversion). <em>Tertiary</em> comes from age, whether oxidative or from bottle development (dried fruit, honey, mushroom, leather, petrol).</p>` },
+        { h: "Palate", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Sweetness</th><td>dry &mdash; off-dry &mdash; medium-dry &mdash; medium-sweet &mdash; sweet &mdash; luscious</td></tr>
+            <tr><th>Acidity</th><td>low &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; high</td></tr>
+            <tr><th>Tannin</th><td>low &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; high</td></tr>
+            <tr><th>Alcohol</th><td>low &mdash; medium &mdash; high <em>(fortified: low &mdash; medium &mdash; high)</em></td></tr>
+            <tr><th>Body</th><td>light &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; full</td></tr>
+            <tr><th>Mousse</th><td>delicate &mdash; creamy &mdash; aggressive</td></tr>
+            <tr><th>Flavour intensity</th><td>light &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; pronounced</td></tr>
+            <tr><th>Flavour characteristics</th><td>primary, secondary, tertiary</td></tr>
+            <tr><th>Finish</th><td>short &mdash; medium(-) &mdash; medium &mdash; medium(+) &mdash; long</td></tr>
+          </table></div>` },
+        { h: "Conclusions: the part that carries the reasoning", body: `
+          <div class="table-wrap"><table class="data">
+            <tr><th>Quality level</th><td>faulty &mdash; poor &mdash; acceptable &mdash; good &mdash; very good &mdash; outstanding</td></tr>
+            <tr><th>Readiness for drinking</th><td>too young &mdash; can drink now, but has potential for ageing &mdash; drink now: not suitable for ageing or further ageing &mdash; too old</td></tr>
+          </table></div>
+          <p><strong>Both conclusions must be justified by your own notes.</strong> Quality is argued from <strong>balance, length, intensity and complexity</strong> &mdash; so if you called the finish short and the flavour intensity light, you cannot then claim the wine is outstanding. Readiness is argued from <strong>the structural components that preserve a wine</strong>: high acidity, high tannin and pronounced primary fruit point towards ageing potential, while tertiary aromas and a browning colour point towards a wine that is ready now or past its best.</p>` },
+        { h: "How to spend the 30 minutes", body: `<p>Two wines in half an hour is roughly <strong>12 minutes each with a few minutes spare</strong>. Work straight down the grid rather than jumping around, because the grid order is also the marking order. Fill in every single box: unanswered boxes score nothing and there is no penalty for a wrong one. Write the conclusions <strong>last</strong>, reading back up your own notes to make sure they support what you are about to claim.</p>` }
+      ],
+      quiz: [
+        { theme: "Exam structure", q: "The Level 3 tasting exam consists of:", options: ["One wine tasted blind in 15 minutes", "Two still wines tasted blind in 30 minutes", "Four wines including a fortified wine", "Two wines, but only if the theory paper is passed first"], correct: 1, explain: "Two still wines, blind, in 30 minutes, with 20 marks for the white and 21 for the red, assessed separately from the theory paper." },
+        { theme: "Pass requirement", q: "A candidate scoring 80% in theory and 50% in tasting will:", options: ["Pass, because the average is above 55%", "Fail, because 55% is required in each unit separately", "Pass the tasting on the theory result", "Receive the award with a lower grade"], correct: 1, explain: "Both units must independently reach 55%; a strong theory result cannot compensate for a tasting result below the threshold." },
+        { theme: "Aroma categories", q: "Bready, biscuity aromas from lees contact are classified as:", options: ["Primary", "Secondary", "Tertiary", "A fault"], correct: 1, explain: "Secondary aromas come from winemaking after fermentation, which includes lees autolysis, oak and malolactic conversion. Tertiary comes from age." },
+        { theme: "Quality conclusions", q: "Quality level in the SAT is argued primarily from:", options: ["The price of the wine", "Balance, length, intensity and complexity", "Correctly identifying the grape variety", "The colour intensity alone"], correct: 1, explain: "Quality must follow from your own description, using balance, length, intensity and complexity: a conclusion contradicting your notes cannot earn marks." },
+        { theme: "Readiness for drinking", q: "Which combination most suggests a wine with potential for further ageing?", options: ["Tertiary aromas, browning colour, low acidity", "High acidity, high tannin and pronounced primary fruit", "Short finish and light body", "Medium alcohol and a clean nose"], correct: 1, explain: "Acidity and tannin are preservative structural components, and pronounced primary fruit indicates the wine has not yet developed; browning and tertiary character indicate the opposite." },
+        { theme: "Exam technique", q: "If you are unsure of a box on the SAT grid, you should:", options: ["Leave it blank to avoid losing a mark", "Write your best judgement, since marks are not deducted for wrong answers", "Write two options and let the examiner choose", "Skip to the conclusions"], correct: 1, explain: "No marks are subtracted for incorrect answers, so a blank box can only score zero while an attempt might score." }
+      ]
     }
   ];
 
@@ -1532,13 +1601,25 @@
         command: "Explain", commandHe: "הסבר",
         theme: "Base wine sugar/acid",
         q: "Explain why a producer of traditional-method sparkling wine requires grapes with relatively low sugar levels.",
-        model: "Producers aim to produce a base dry wine of around 10 to 11% abv, since the second fermentation in the bottle adds a further 1.2 to 1.3% abv. Starting from riper, higher-sugar grapes would push the finished wine's alcohol too high. The high acidity associated with low sugar levels is also required for the fresh, refreshing style traditional-method sparkling wine is built around."
+        model: "Producers aim to produce a base dry wine of around 10 to 11% abv, since the second fermentation in the bottle adds a further 1.2 to 1.3% abv. Starting from riper, higher-sugar grapes would push the finished wine's alcohol too high. The high acidity associated with low sugar levels is also required for the fresh, refreshing style traditional-method sparkling wine is built around.",
+        rubric: [
+          { en: "States the target base wine strength (around 10 to 11% abv)", he: "מציין את חוזק יין הבסיס הרצוי (בערך 10 עד 11% אלכוהול)" },
+          { en: "Explains that the second fermentation itself adds roughly a further 1.2 to 1.3% abv", he: "מסביר שהתסיסה השנייה עצמה מוסיפה עוד כ-1.2 עד 1.3% אלכוהול" },
+          { en: "States the consequence of starting riper (finished alcohol too high)", he: "מציין את התוצאה של התחלה בענבים בשלים יותר (אלכוהול סופי גבוה מדי)" },
+          { en: "Links the low sugar to the high acidity the style requires", he: "מקשר בין הסוכר הנמוך לחומציות הגבוהה שהסגנון דורש" }
+        ]
       },
       {
         command: "Describe", commandHe: "תאר",
         theme: "Sweetening methods",
         q: "Identify and describe two ways of making a sparkling wine sweet.",
-        model: "The first method is dosage: after disgorgement, a small wine-and-sugar solution (liqueur d'expédition) is added, and the amount of sugar in it determines the finished sweetness level, from Brut Nature through to Doux. The second method is stopping fermentation early, used in the tank or Asti method: fermentation is chilled to a stop before all the sugar converts to alcohol, then the wine is filtered to remove the yeast and bottled immediately, with no dosage needed since residual sugar is already present."
+        model: "The first method is dosage: after disgorgement, a small wine-and-sugar solution (liqueur d'expédition) is added, and the amount of sugar in it determines the finished sweetness level, from Brut Nature through to Doux. The second method is stopping fermentation early, used in the tank or Asti method: fermentation is chilled to a stop before all the sugar converts to alcohol, then the wine is filtered to remove the yeast and bottled immediately, with no dosage needed since residual sugar is already present.",
+        rubric: [
+          { en: "Identifies dosage (liqueur d'expédition) as one method", he: "מזהה דוסאז' (ליקר אקספדיסיון) כשיטה אחת" },
+          { en: "Describes how dosage works: a wine-and-sugar solution added after disgorgement, its sugar level setting the final sweetness", he: "מתאר כיצד פועל הדוסאז': תמיסת יין וסוכר המתווספת לאחר הדיגורז'" },
+          { en: "Identifies a second method: stopping fermentation early, as in the Asti method", he: "מזהה שיטה שנייה: עצירת התסיסה מוקדם, כמו בשיטת אסטי" },
+          { en: "Describes how the second method works: chilling and filtration remove the yeast, leaving residual sugar", he: "מתאר כיצד פועלת השיטה השנייה: קירור וסינון מסירים את השמרים ומשאירים סוכר שיורי" }
+        ]
       }
     ],
     fortified: [
@@ -1546,14 +1627,26 @@
         command: "Explain", commandHe: "הסבר",
         theme: "Fortification timing",
         q: "Explain how the timing of fortification determines whether a fortified wine is sweet or dry.",
-        model: "Fortification adds high-strength grape spirit to a wine, raising alcohol and killing the yeast, which stops fermentation. Fortifying early, before most of the grape's sugar has fermented, leaves that sugar behind as sweetness, the mechanism behind most Port and Vins Doux Naturels. Fortifying only once fermentation has run to a dry finish leaves little or no sugar to preserve, giving a dry style instead, the mechanism behind most Sherry."
+        model: "Fortification adds high-strength grape spirit to a wine, raising alcohol and killing the yeast, which stops fermentation. Fortifying early, before most of the grape's sugar has fermented, leaves that sugar behind as sweetness, the mechanism behind most Port and Vins Doux Naturels. Fortifying only once fermentation has run to a dry finish leaves little or no sugar to preserve, giving a dry style instead, the mechanism behind most Sherry.",
+        rubric: [
+          { en: "States that fortification adds grape spirit, raising alcohol and killing the yeast", he: "מציין שהחיזוק מוסיף אלכוהול ענבים, מעלה את האלכוהול והורג את השמרים" },
+          { en: "Explains that fortifying before fermentation completes leaves unfermented grape sugar as sweetness", he: "מסביר שחיזוק לפני סיום התסיסה משאיר סוכר ענבים כמתיקות" },
+          { en: "Explains that fortifying after a dry fermentation leaves little or no sugar behind", he: "מסביר שחיזוק לאחר תסיסה יבשה משאיר מעט סוכר או כלל לא" },
+          { en: "Gives an example of each outcome (sweet: most Port; dry: most Sherry)", he: "נותן דוגמה לכל תוצאה (מתוק: רוב הפורט; יבש: רוב השרי)" }
+        ]
       },
       {
         command: "Compare", commandHe: "השווה",
         anchor: "Muscat de Beaumes-de-Venise, France, and Rutherglen Muscat, Australia",
         theme: "Fortified Muscat contrast",
         q: "Compare how these two wines are made.",
-        model: "Muscat de Beaumes-de-Venise is made from ripe, unraisined grapes, crushed with brief skin contact, then cool-fermented in an inert vessel before fortification with high-strength spirit, and aged in an inert vessel protected from oxygen: this preserves pale colour and grapey, floral, primary fruit character. Rutherglen Muscat is made from grapes allowed to raisin on the vine, fermented on their skins, and fortified very early, often once only around 2% abv has been reached, preserving most of the natural sugar. It is then aged oxidatively in old, large-format oak under warm conditions, developing deep colour and dried fruit, toffee, and nutty complexity before blending."
+        model: "Muscat de Beaumes-de-Venise is made from ripe, unraisined grapes, crushed with brief skin contact, then cool-fermented in an inert vessel before fortification with high-strength spirit, and aged in an inert vessel protected from oxygen: this preserves pale colour and grapey, floral, primary fruit character. Rutherglen Muscat is made from grapes allowed to raisin on the vine, fermented on their skins, and fortified very early, often once only around 2% abv has been reached, preserving most of the natural sugar. It is then aged oxidatively in old, large-format oak under warm conditions, developing deep colour and dried fruit, toffee, and nutty complexity before blending.",
+        rubric: [
+          { en: "Addresses both wines, not just one: this is Compare", he: "מתייחס לשני היינות, לא רק לאחד: זו שאלת השוואה" },
+          { en: "Contrasts the condition of the grapes (unraisined versus raisined on the vine)", he: "משווה את מצב הענבים (לא מצומקים מול מצומקים על הגפן)" },
+          { en: "Contrasts fermentation and fortification (cool, inert, brief skin contact versus on skins and fortified very early)", he: "משווה תסיסה וחיזוק (קר, אינרטי, מגע קליפות קצר מול על הקליפות וחיזוק מוקדם מאוד)" },
+          { en: "Contrasts the ageing and the resulting style (protected and grapey versus oxidative old oak, dried fruit and toffee)", he: "משווה את ההיישון ואת הסגנון הנובע" }
+        ]
       }
     ],
     service: [
@@ -1693,13 +1786,25 @@
         command: "State", commandHe: "ציין",
         theme: "Blending rationale",
         q: "State the stylistic and practical reasons why a winemaker might choose to blend grapes here.",
-        model: "Stylistically, Grenache gives alcohol, ripe fruit, and spice but little colour or tannin, so Syrah and Mourvèdre are blended in for structure and complexity, continuing a long regional tradition. Practically, Grenache's vulnerability to coulure in cool, windy flowering conditions, combined with the Mistral's own vintage-to-vintage variation, means blending spreads risk across varieties that don't all struggle in the same year."
+        model: "Stylistically, Grenache gives alcohol, ripe fruit, and spice but little colour or tannin, so Syrah and Mourvèdre are blended in for structure and complexity, continuing a long regional tradition. Practically, Grenache's vulnerability to coulure in cool, windy flowering conditions, combined with the Mistral's own vintage-to-vintage variation, means blending spreads risk across varieties that don't all struggle in the same year.",
+        rubric: [
+          { en: "States a stylistic reason: each variety contributes a different component", he: "מציין סיבה סגנונית: כל זן תורם מרכיב שונה" },
+          { en: "Names at least two varieties and what each contributes", he: "מציין לפחות שני זנים ואת תרומתו של כל אחד" },
+          { en: "States a practical reason: insurance against vintage variation and uneven ripening", he: "מציין סיבה מעשית: ביטוח מפני שונות בין בצירים והבשלה לא אחידה" },
+          { en: "Keeps the answer brief: this is State, not Explain", he: "שומר על תשובה קצרה: זו שאלת ציון עובדה, לא הסבר" }
+        ]
       },
       {
         command: "Compare", commandHe: "השווה",
         theme: "Blending rationale",
         q: "Compare the reasons for blending here with the reasons for blending in Bordeaux.",
-        model: "Both regions blend for a similar structural reason: no single grape supplies everything the wine needs, so producers combine varieties with complementary strengths. The practical risk differs, though: in Bordeaux, the main vintage threat is rain at flowering or harvest, so producers lean on whichever grape suits the wetter or drier year. In the Southern Rhône, the main risk is wind, since the Mistral can cause coulure in Grenache at flowering, so Syrah and Mourvèdre provide insurance against a poor Grenache year rather than against rain."
+        model: "Both regions blend for a similar structural reason: no single grape supplies everything the wine needs, so producers combine varieties with complementary strengths. The practical risk differs, though: in Bordeaux, the main vintage threat is rain at flowering or harvest, so producers lean on whichever grape suits the wetter or drier year. In the Southern Rhône, the main risk is wind, since the Mistral can cause coulure in Grenache at flowering, so Syrah and Mourvèdre provide insurance against a poor Grenache year rather than against rain.",
+        rubric: [
+          { en: "Addresses both regions, not just one: this is Compare", he: "מתייחס לשני האזורים, לא רק לאחד: זו שאלת השוואה" },
+          { en: "Gives the Southern Rhône rationale (many permitted varieties, each supplying a component in a hot, dry climate)", he: "נותן את ההיגיון של הרון הדרומי" },
+          { en: "Gives the Bordeaux rationale (maritime vintage variation, adjusting the proportion of earlier and later ripeners)", he: "נותן את ההיגיון של בורדו" },
+          { en: "Draws out what is shared (insurance against vintage) and what differs", he: "מבליט את המשותף ואת השונה" }
+        ]
       }
     ],
     germany: [
@@ -1707,14 +1812,26 @@
         command: "Describe", commandHe: "תאר",
         theme: "Prädikat ripeness ladder",
         q: "Describe how the six Prädikat categories relate to a German wine's finished sweetness.",
-        model: "The six Prädikat categories, Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, and Eiswein, rank wines by minimum grape ripeness (sugar level) at harvest, not by the sweetness of the finished wine. Kabinett through Auslese can each be fermented anywhere from dry to sweet, depending on how far fermentation is taken; only Beerenauslese, Trockenbeerenauslese, and Eiswein are sweet only, since their sugar levels are too high to ferment fully dry."
+        model: "The six Prädikat categories, Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, and Eiswein, rank wines by minimum grape ripeness (sugar level) at harvest, not by the sweetness of the finished wine. Kabinett through Auslese can each be fermented anywhere from dry to sweet, depending on how far fermentation is taken; only Beerenauslese, Trockenbeerenauslese, and Eiswein are sweet only, since their sugar levels are too high to ferment fully dry.",
+        rubric: [
+          { en: "States the categories rank minimum grape ripeness (must weight) at harvest", he: "מציין שהקטגוריות מדרגות בשלות מינימלית של הענבים בבציר" },
+          { en: "States that this is not the same as the sweetness of the finished wine", he: "מציין שזה אינו זהה למתיקות היין המוגמר" },
+          { en: "Gives an example of a category that may be fermented dry or sweet (Kabinett, Spätlese, Auslese)", he: "נותן דוגמה לקטגוריה שיכולה להיות יבשה או מתוקה" },
+          { en: "Names the categories that are always sweet (BA, TBA, Eiswein)", he: "מציין את הקטגוריות שתמיד מתוקות" }
+        ]
       },
       {
         command: "Explain", commandHe: "הסבר",
         anchor: "Mosel, Germany · Eiswein",
         theme: "Eiswein production",
         q: "Explain how Eiswein is produced and how this affects its style.",
-        model: "Healthy grapes are left on the vine into winter and allowed to freeze naturally. They are picked and pressed while still frozen, so the water content stays behind as ice and the juice that runs off is highly concentrated in sugar and acid. Fermentation starts and stops naturally, well before all the sugar converts, given the very high starting sugar level, resulting in low alcohol and high residual sugar. Oak and malolactic conversion are avoided to preserve pure, high-acid varietal character."
+        model: "Healthy grapes are left on the vine into winter and allowed to freeze naturally. They are picked and pressed while still frozen, so the water content stays behind as ice and the juice that runs off is highly concentrated in sugar and acid. Fermentation starts and stops naturally, well before all the sugar converts, given the very high starting sugar level, resulting in low alcohol and high residual sugar. Oak and malolactic conversion are avoided to preserve pure, high-acid varietal character.",
+        rubric: [
+          { en: "States that healthy grapes freeze naturally on the vine and are picked and pressed while frozen", he: "מציין שענבים בריאים קופאים על הגפן ונקטפים ונסחטים כשהם קפואים" },
+          { en: "Explains the mechanism: the water stays behind as ice, concentrating sugar and acid in the juice", he: "מסביר את המנגנון: המים נשארים כקרח ומרכזים סוכר וחומצה במיץ" },
+          { en: "States that fermentation stops early given the high sugar, giving low alcohol and high residual sugar", he: "מציין שהתסיסה נעצרת מוקדם, ומכאן אלכוהול נמוך וסוכר שיורי גבוה" },
+          { en: "Notes that botrytis is not involved, and that oak and malolactic conversion are avoided", he: "מציין שאין מעורבות בוטריטיס, ושנמנעים מעץ אלון ומהמרה מאלולקטית" }
+        ]
       }
     ],
     hungary: [
@@ -1723,13 +1840,25 @@
         anchor: "Tokaj, Hungary · Aszú",
         theme: "Noble rot mechanism",
         q: "Describe the growing conditions and harvesting of grapes for this style of wine.",
-        model: "Tokaj has a continental climate with warm, sunny autumns that encourage noble rot. The Bodrog and Tisza rivers create morning mists, essential for Botrytis cinerea to develop, followed by dry afternoons that prevent undesirable rot. Grapes are harvested by hand, often in multiple passes (tries), to select only the Aszú berries affected by noble rot: a long, labour-intensive process needed to ensure optimal ripeness and concentration."
+        model: "Tokaj has a continental climate with warm, sunny autumns that encourage noble rot. The Bodrog and Tisza rivers create morning mists, essential for Botrytis cinerea to develop, followed by dry afternoons that prevent undesirable rot. Grapes are harvested by hand, often in multiple passes (tries), to select only the Aszú berries affected by noble rot: a long, labour-intensive process needed to ensure optimal ripeness and concentration.",
+        rubric: [
+          { en: "Names the source of humidity (river mists) and the afternoon sunshine that follows", he: "מציין את מקור הלחות (ערפילי נהר) ואת שמש אחר הצהריים שבאה אחריה" },
+          { en: "States that this alternation encourages noble rot (Botrytis cinerea)", he: "מציין שהתחלופה הזו מעודדת ריקבון אציל" },
+          { en: "States that berries are affected unevenly across the vineyard", he: "מציין שהענבים נפגעים באופן לא אחיד" },
+          { en: "States that harvesting is done by hand in multiple passes (tries)", he: "מציין שהבציר נעשה ביד בכמה מעברים" }
+        ]
       },
       {
         command: "Describe", commandHe: "תאר",
         theme: "Aszú production",
         q: "The production of Tokaji Aszú starts with a base wine made from healthy grapes. Describe the winemaking process from this point.",
-        model: "Aszú berries, individually selected botrytis-affected grapes, are macerated in the finished base wine. The mixture is then pressed to separate the liquid from the solids. Fermentation proceeds slowly, given the high sugar concentration, and the wine is aged in oak, often for several years, contributing further complexity."
+        model: "Aszú berries, individually selected botrytis-affected grapes, are macerated in the finished base wine. The mixture is then pressed to separate the liquid from the solids. Fermentation proceeds slowly, given the high sugar concentration, and the wine is aged in oak, often for several years, contributing further complexity.",
+        rubric: [
+          { en: "States that selected Aszú berries are macerated in the finished base wine", he: "מציין שגרגרי אסו נבחרים משרים ביין הבסיס המוגמר" },
+          { en: "States that the mixture is then pressed to separate liquid from solids", he: "מציין שהתערובת נסחטת כדי להפריד נוזל ממוצקים" },
+          { en: "States that fermentation proceeds slowly because of the high sugar concentration", he: "מציין שהתסיסה מתקדמת לאט בשל ריכוז הסוכר הגבוה" },
+          { en: "States that the wine is aged in oak, often for several years", he: "מציין שהיין מיושן בחביות אלון, לעיתים כמה שנים" }
+        ]
       }
     ],
     chile: [
@@ -2386,11 +2515,76 @@
     }
   ];
 
-  var GROUP_ORDER = ["practice", "foundations", "regions"];
+  // Third-party practice questions transcribed from uploaded screenshots (see
+  // 06_past_papers/third_party_quizzes/). NOT official WSET material and not
+  // cross-checked like the spec, so this pool is opt-in rather than part of "All topics",
+  // and carries no Learning Outcome tag: the mock exam never draws from it.
+  var EXTERNAL_MCQ = [
+    { source: "Brainscape 50", num: 1, theme: "Brainscape 50 Q1", q: "The most commonly used yeast strain in winemaking is:", options: ["Brettanomyces bruxellensis","Saccharomyces cerevisiae","Trichloroanisole","Geotrichum candidum"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 2, theme: "Brainscape 50 Q2", q: "Which fault smells like nail polish remover?", options: ["Cork taint","Oxidation","Hydrogen sulfide","Volatile acidity"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 3, theme: "Brainscape 50 Q3", q: "Which of the following best describes a Tawny Port?", options: ["Pale in color, dry, with notes of fresh almonds and fresh yeast","Orange-brown in color, medium-sweet, with notes of dried fruits and toffee","Deep purple in color, sweet, with notes of plum and fig","Near-black in color, opaque, luscious, with notes of coffee and prunes"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 4, theme: "Brainscape 50 Q4", q: "What is the range for a medium-alcohol table wine?", options: ["Under 11%","11% – 13.9%","14% – 16%","Over 16%"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 5, theme: "Brainscape 50 Q5", q: "Acidity and alcohol can both have the following effect on your palate:", options: ["Dry out your mouth","Make your mouth water","Sharp or tingly sensation","All of the above"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 6, theme: "Brainscape 50 Q6", q: "Diacetyl is a compound derived from:", options: ["Cool climates","Malolactic conversion","Brettanomyces","Primary fermentation"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 7, theme: "Brainscape 50 Q7", q: "Which of the following pairs of food elements increase the perception of bitterness, tannin, and alcohol in wine?", options: ["Acidity and salt","Bitterness and sweetness","Chili heat and umami","Salt and sweetness"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 8, theme: "Brainscape 50 Q8", q: "How many buds are retained with cane pruning?", options: ["2 to 3","4 to 7","8 to 20","It depends on the vintage"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 9, theme: "Brainscape 50 Q9", q: "Bordeaux Mixture is the traditional treatment for:", options: ["Bacterial disease","Downy mildew","Nematodes","Phylloxera"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 10, theme: "Brainscape 50 Q10", q: "What is the name of the soil nutrient deficiency that affects a vine's ability to photosynthesize?", options: ["Chlorosis","Coulure","Millerandage","Véraison"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 11, theme: "Brainscape 50 Q11", q: "A Warm Climate has a temperature range of:", options: ["14.5°C – 16.5°C","16.5°C – 18.5°C","18.5°C – 21°C","Greater than 21°C"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 13, theme: "Brainscape 50 Q13", q: "After Champagne, what is the second largest centre for sparkling production in France?", options: ["Loire Valley","Alsace","Burgundy","Bordeaux"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 14, theme: "Brainscape 50 Q14", q: "How long must a Cava spend on its lees?", options: ["3 months","6 months","9 months","12 months"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 15, theme: "Brainscape 50 Q15", q: "Which style of wine dominates McLaren Vale?", options: ["Dry, light bodied whites based on Riesling","Dry, full bodied reds based on Shiraz","Dry, sparkling wines based on Chardonnay","Dry, medium bodied reds based on Pinot Noir"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 16, theme: "Brainscape 50 Q16", q: "What is the maximum strength of spirit that can be used for the fortification of Port?", options: ["40% abv","61% abv","77% abv","90% abv"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 17, theme: "Brainscape 50 Q17", q: "What goes into the liqueur d'expédition in producing a traditional method sparkling wine?", options: ["Wine, sugar, yeast, and a clarifying agent","Wine and sugar","Wine and a clarifying agent","Brandy"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 18, theme: "Brainscape 50 Q18", q: "What method of production is used for a Crémant sparkling wine?", options: ["Transfer","Tank","Traditional"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 19, theme: "Brainscape 50 Q19", q: "What is the main grape used in Sherry production?", options: ["Palomino","Garnacha","Glera","Muscat of Alexandria"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 20, theme: "Brainscape 50 Q20", q: "Which of the following is a type of must adjustment used to increase the potential alcohol of a still, light wine?", options: ["Chaptalization","Süssreserve","Neutral grape spirit","Dosage"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 21, theme: "Brainscape 50 Q21", q: "The local white variety found in Limoux is:", options: ["Clairette","Mauzac","Picpoul","Grenache Blanc"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 22, theme: "Brainscape 50 Q22", q: "Which of the following areas in the Loire Valley is prone to botrytis?", options: ["Chinon","Bonnezeaux","Menetou-Salon","Sancerre"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 23, theme: "Brainscape 50 Q23", q: "What grape are the Clare and Eden Valleys of Australia noted for?", options: ["Cabernet Sauvignon","Riesling","Semillon","Chardonnay"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 24, theme: "Brainscape 50 Q24", q: "What is the most widely planted grape in South Africa?", options: ["Pinotage","Chenin Blanc","Cabernet Sauvignon","Shiraz"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 25, theme: "Brainscape 50 Q25", q: "Sweet wines from Santorini are known as:", options: ["Ausbruch","Puttony","Vinsanto","Pantelleria"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 26, theme: "Brainscape 50 Q26", q: "Which of the following red grapes is the only one permitted in Alsace?", options: ["Gamay","Merlot","Pinot Noir","Cabernet Franc"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 27, theme: "Brainscape 50 Q27", q: "In which region of Germany can the village of Ürzig be found?", options: ["Rheingau","Mosel","Pfalz","Rheinhessen"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 28, theme: "Brainscape 50 Q28", q: "In Tokaj, dry wines aged under a film-forming yeast similar to flor are called:", options: ["Tokaji Aszú","Tokaji Eszencia","Tokaji Friulano","Tokaji Szamorodni"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 29, theme: "Brainscape 50 Q29", q: "What is the name of the mountain range that protects Mendoza?", options: ["Vosges","Andes","Cascades","Alps"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 30, theme: "Brainscape 50 Q30", q: "Which Northern Rhône appellation must be 100% Syrah?", options: ["Condrieu","Cornas","Côte-Rôtie","Crozes-Hermitage"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 31, theme: "Brainscape 50 Q31", q: "What lake sits between Lombardy and Veneto?", options: ["Lake Balaton","Lake Como","Lake Maggiore","Lake Garda"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 32, theme: "Brainscape 50 Q32", q: "In which region of Bordeaux would you find the Premier Grand Cru Classé A classification?", options: ["Haut-Médoc","Graves","Saint-Émilion","Pomerol"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 33, theme: "Brainscape 50 Q33", q: "What does Petit Verdot add to a blend?", options: ["Tannin and spicy notes","Tannin and red currant fruit character","Softness and richness","Alcohol and acidity"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 34, theme: "Brainscape 50 Q34", q: "What is the main soil type on which the Beaujolais Crus are grown?", options: ["Clay","Sand","Granite","Schist"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 35, theme: "Brainscape 50 Q35", q: "Where does the classification of Ausbruch fall in the Prädikat system in Austria?", options: ["Between Kabinett and Spätlese","Between Spätlese and Beerenauslese","Between Auslese and Beerenauslese","Between Beerenauslese and Trockenbeerenauslese"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 36, theme: "Brainscape 50 Q36", q: "Which white grape is predominantly found in Rías Baixas?", options: ["Viura","Macabeo","Albariño","Parellada"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 37, theme: "Brainscape 50 Q37", q: "Which commune in the Côte de Beaune produces red wines only?", options: ["Beaune","Meursault","Volnay","Puligny-Montrachet"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 38, theme: "Brainscape 50 Q38", q: "What is the predominant grape in Salice Salentino DOC?", options: ["Nero d'Avola","Negroamaro","Primitivo","Nebbiolo"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 39, theme: "Brainscape 50 Q39", q: "Which of the following grapes is considered to be of the highest quality in the Douro?", options: ["Tinta Roriz","Touriga Franca","Touriga Nacional","Tinta Cão"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 40, theme: "Brainscape 50 Q40", q: "Bairrada is known for this black grape:", options: ["Baga","Jaen","Alfrocheiro","Malvasia"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 41, theme: "Brainscape 50 Q41", q: "What is the predominant grape in Bierzo?", options: ["Tempranillo","Garnacha","Monastrell","Mencía"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 42, theme: "Brainscape 50 Q42", q: "Some of the highest elevation vineyards in the world are located in this South American region:", options: ["Mendoza","Salta","Bío Bío","Maule"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 43, theme: "Brainscape 50 Q43", q: "What is the white grape used in Soave DOC?", options: ["Cortese","Orvieto","Garganega","Verdicchio"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 44, theme: "Brainscape 50 Q44", q: "Which 2 AVAs in California are known for their sparkling wines?", options: ["Los Carneros AVA and Anderson Valley AVA","Knights Valley AVA and Santa Ynez AVA","Alexander Valley AVA and Willamette Valley AVA","Monterey AVA and Calistoga AVA"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 45, theme: "Brainscape 50 Q45", q: "In which town must Manzanilla Sherries be aged?", options: ["Cádiz","Sanlúcar de Barrameda","Jerez de la Frontera","Chiclana de la Frontera"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 47, theme: "Brainscape 50 Q47", q: "The Peloponnese is best known for this PDO:", options: ["Santorini","Nemea","Naoussa","Retsina"], correct: 1, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 48, theme: "Brainscape 50 Q48", q: "What is the most planted black grape in New Zealand?", options: ["Merlot","Cabernet Sauvignon","Cabernet Franc","Pinot Noir"], correct: 3, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 49, theme: "Brainscape 50 Q49", q: "What is the most important DVA (Designated Viticulture Area) in British Columbia, Canada?", options: ["Okanagan Valley","Niagara Peninsula","Rogue Valley"], correct: 0, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Brainscape 50", num: 50, theme: "Brainscape 50 Q50", q: "The Elqui Valley can be found in which region of Chile?", options: ["Aconcagua","Maipo","Coquimbo","Rapel"], correct: 2, explain: "From the Brainscape 50 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 1, theme: "Quiz 10 Q1", q: "Which one of the following statements is correct about grape harvesting?", options: ["The timing of the harvest is primarily influenced by the vineyard latitude.","Manual harvesting is essential for sparkling wine production.","Grapes harvested by hand do not require destemming.","Machine harvesters are best suited for flat terrain."], correct: 3, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 3, theme: "Quiz 10 Q3", q: "Which of the following regions are known for producing high-quality wines from Shiraz?", options: ["Napa and Sonoma","Barossa and Eden Valley","Rioja and Ribera del Duero","Tuscany and Lombardy"], correct: 1, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 4, theme: "Quiz 10 Q4", q: "Which of the following statements about Burgundy wine is accurate?", options: ["Wines from Chablis can be red or white.","The white wines of Puligny-Montrachet are often oak-aged.","Premier Cru vineyards in Burgundy are typically on hilltops.","Whole clusters are always used in Beaujolais winemaking."], correct: 1, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 5, theme: "Quiz 10 Q5", q: "Which winemaking technique is used to enhance the extraction of color and tannin in red wine?", options: ["Pumping over","Whole bunch fermentation","Open-top fermentation","Semi-carbonic maceration"], correct: 0, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 6, theme: "Quiz 10 Q6", q: "Which of the following statements about Valpolicella is accurate?", options: ["Recioto della Valpolicella is a dry wine made from fresh grapes.","Corvina is the dominant grape variety in Valpolicella.","Amarone della Valpolicella is a sweet wine.","Valpolicella Ripasso is made by adding unfermented grapes to a finished wine."], correct: 1, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 7, theme: "Quiz 10 Q7", q: "Which one of the following is closest in style to Pouilly-Fumé?", options: ["Sancerre","Saumur","Chinon","Quincy"], correct: 0, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 8, theme: "Quiz 10 Q8", q: "Wines made from Nebbiolo typically have the following characteristics: COLOUR INTENSITY, TANNIN", options: ["deep, low","deep, high","pale, high","medium, low"], correct: 2, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 9, theme: "Quiz 10 Q9", q: "Which of the following is a wine from Beaujolais?", options: ["Brouilly","Mercurey","Chablis","Cahors"], correct: 0, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." },
+    { source: "Quiz 10", num: 10, theme: "Quiz 10 Q10", q: "Grapes used in the production of late harvest wines typically have the following characteristics:", options: ["high sugar, high acid","low sugar, high acid","high sugar, low acid","low sugar, low acid"], correct: 0, explain: "From the Quiz 10 practice set. The source gave an answer key but no explanation, and this material is not official WSET content: if this one surprised you, verify it against the Specification before trusting it." }
+  ];
+
+  var GROUP_ORDER = ["practice", "foundations", "regions", "tasting"];
   var GROUP_LABELS = {
     practice: { en: "Practice", he: "תרגול" },
     foundations: { en: "Foundations", he: "יסודות" },
-    regions: { en: "Regions", he: "אזורים" }
+    regions: { en: "Regions", he: "אזורים" },
+    tasting: { en: "Tasting (Unit 2)", he: "טעימה (יחידה 2)" }
   };
   var PRACTICE_ITEMS = [
     { id: "match-game", title: "Grape ↔ Region Match", titleHe: "" },
@@ -2398,7 +2592,8 @@
     { id: "climate-guess", title: "Climate Guess", titleHe: "" },
     { id: "response-builder", title: "Response Builder", titleHe: "" },
     { id: "written-practice", title: "Written Practice", titleHe: "תרגול כתיבה" },
-    { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" }
+    { id: "mcq-practice", title: "Multiple Choice", titleHe: "שאלות אמריקאיות" },
+    { id: "mock-exam", title: "Mock Exam", titleHe: "מבחן דמה" }
   ];
 
   var RESPONSE_BUILDERS = [
@@ -2518,11 +2713,13 @@
   var MATCH_STATS_KEY = "fieldsheets-match-stats-v1";
   var SOIL_STATS_KEY = "fieldsheets-soil-stats-v1";
   var CLIMATE_STATS_KEY = "fieldsheets-climate-stats-v1";
+  var MOCK_STATS_KEY = "fieldsheets-mock-stats-v1";
   var state = loadProgress();
   var mcqStats = loadMcqStats();
   var matchStats = loadMatchStats();
   var soilStats = loadSoilStats();
   var climateStats = loadClimateStats();
+  var mockStats = loadMockStats();
   var currentView = null; // null = home, a topic id, or "written-practice" / "mcq-practice" / "response-builder" / "match-game" / "soil-match" / "climate-guess"
 
   var wpState = { filter: "all", current: null, userAnswer: "", revealed: false };
@@ -2534,6 +2731,7 @@
   var SOIL_ROUND_SIZE = 6;
   var soilState = { roundPairs: [], soilOrder: [], regionOrder: [], matched: {}, selectedSoil: null, selectedRegion: null, wrongPair: null, mistakes: 0, history: [] };
   var cgState = { phase: "running", pool: [], index: 0, score: 0, answered: null, options: [], isNewBest: false };
+  var mockState = { phase: "setup", mcqs: [], written: [], mcqAnswers: [], answers: [], marks: [], index: 0, endsAt: 0, result: null };
 
   function loadProgress() {
     try {
@@ -2579,6 +2777,15 @@
   }
   function saveClimateStats() {
     try { localStorage.setItem(CLIMATE_STATS_KEY, JSON.stringify(climateStats)); } catch (e) {}
+  }
+  function loadMockStats() {
+    try {
+      var raw = localStorage.getItem(MOCK_STATS_KEY);
+      return raw ? JSON.parse(raw) : { attempts: 0, passes: 0, last: null };
+    } catch (e) { return { attempts: 0, passes: 0, last: null }; }
+  }
+  function saveMockStats() {
+    try { localStorage.setItem(MOCK_STATS_KEY, JSON.stringify(mockStats)); } catch (e) {}
   }
   function topicStatus(id) {
     var s = state[id];
@@ -2636,7 +2843,8 @@
     { id: "climate-guess", glyph: "CG", title: "Climate Guess", desc: "Three climate clues, no name attached. Guess the region, fast." },
     { id: "response-builder", glyph: "RB", title: "Response Builder", desc: "Build a full-mark answer one step at a time, with feedback on exactly why each choice earns the mark." },
     { id: "written-practice", glyph: "WP", title: "Written Practice", desc: "Write a real exam answer under real conditions, then reveal a model answer to check your work." },
-    { id: "mcq-practice", glyph: "MC", title: "Multiple Choice", desc: "A shuffled set pulled from every topic's quick check: drill recall fast." }
+    { id: "mcq-practice", glyph: "MC", title: "Multiple Choice", desc: "A shuffled set pulled from every topic's quick check: drill recall fast." },
+    { id: "mock-exam", glyph: "ME", title: "Mock Exam", desc: "A full Unit 1 paper built to the Specification's own weighting: 50 MCQs, 4 written answers, two hours, 55% needed in both parts." }
   ];
 
   function renderHome() {
@@ -2963,15 +3171,35 @@
 
   /* ============ RENDER: MULTIPLE CHOICE PRACTICE ============ */
 
+  // Tasting is Unit 2 and is assessed separately, so it never enters the Unit 1 theory pool.
   function allMcqQuestions(filter) {
     var list = [];
     TOPICS.forEach(function (t) {
+      if (t.group === "tasting") return;
       if (filter !== "all" && t.group !== filter) return;
       t.quiz.forEach(function (q, idx) {
-        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: q });
+        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: q, lo: topicLO(t) });
       });
     });
     return list;
+  }
+
+  // "extra" is the opt-in third-party bank; every other filter draws on verified app content.
+  function mcqPool(filter) {
+    if (filter === "extra") {
+      return EXTERNAL_MCQ.map(function (q, i) {
+        return { topicId: null, topicTitle: q.source, groupLabel: "Extra bank", idx: i, data: q, lo: null };
+      });
+    }
+    return allMcqQuestions(filter);
+  }
+
+  // The Specification assigns every exam question to a Learning Outcome, and weights
+  // the paper by them. The app's topic ids map onto those outcomes directly.
+  var LO_BY_TOPIC = { climate: 1, viticulture: 1, winemaking: 1, oak: 1, sparkling: 3, fortified: 4, service: 5 };
+  function topicLO(t) {
+    if (LO_BY_TOPIC[t.id]) return LO_BY_TOPIC[t.id];
+    return t.group === "regions" ? 2 : null;
   }
 
   function shuffleArr(arr) {
@@ -2992,11 +3220,15 @@
   }
 
   function renderMcqSetup() {
-    var filterLabels = { all: "All topics", foundations: "Foundations", regions: "Regions" };
-    var filterChips = ["all", "foundations", "regions"].map(function (f) {
+    var filterLabels = { all: "All topics", foundations: "Foundations", regions: "Regions", extra: "Extra bank" };
+    var filterChips = ["all", "foundations", "regions", "extra"].map(function (f) {
       return '<button class="filter-chip' + (mcqState.filter === f ? " active" : "") + '" data-filter="' + f + '">' + filterLabels[f] + '</button>';
     }).join("");
-    var poolSize = allMcqQuestions(mcqState.filter).length;
+    var poolSize = mcqPool(mcqState.filter).length;
+    var extraNote = mcqState.filter === "extra"
+      ? '<div class="callout" style="margin-top:1rem;"><span class="callout-label">Where these came from</span>' +
+        '<p style="margin:0;">' + EXTERNAL_MCQ.length + ' questions transcribed from third-party practice sets, not official WSET material and not cross-checked against the Specification. Useful for extra drilling, but treat a surprising answer as something to verify rather than learn.</p></div>'
+      : "";
     var statsHtml = '<div class="mcq-stats-row"><span>Best score: ' + (mcqStats.best || 0) + '</span>' +
       (mcqStats.lastScore !== null ? '<span>Last attempt: ' + mcqStats.lastScore + ' / ' + mcqStats.lastTotal + '</span>' : '') + '</div>';
     return '<div class="practice-hero">' +
@@ -3004,6 +3236,7 @@
         '<p class="sub">A shuffled set pulled from every topic\'s quick check. Answer, see the explanation immediately, then move on: this is drilling recall, not first-time learning.</p>' +
       '</div>' +
       '<div class="filter-row">' + filterChips + '</div>' +
+      extraNote +
       statsHtml +
       '<div class="written-actions" style="margin-top:1.2rem;"><button class="btn primary" id="mcqStart" ' + (poolSize ? "" : "disabled") + '>Start practice set (' + poolSize + ' questions)</button></div>';
   }
@@ -3061,7 +3294,7 @@
     });
     var startBtn = main.querySelector("#mcqStart");
     if (startBtn) startBtn.addEventListener("click", function () {
-      mcqState.pool = shuffleArr(allMcqQuestions(mcqState.filter));
+      mcqState.pool = shuffleArr(mcqPool(mcqState.filter));
       mcqState.index = 0;
       mcqState.score = 0;
       mcqState.answered = null;
@@ -3646,10 +3879,280 @@
     });
   }
 
+  /* ============ MOCK EXAM ============ */
+
+  /* Models Unit 1 as the Specification defines it: 50 MCQs weighted by Learning
+     Outcome, then four written questions following the published question-to-outcome
+     map, in two hours, with 55% required in EACH part rather than on the average. */
+
+  var MOCK_MCQ_WEIGHTS = { 1: 8, 2: 28, 3: 5, 4: 5, 5: 4 };
+  var MOCK_DURATION_MS = 2 * 60 * 60 * 1000;
+  var mockTimerId = null;
+
+  function buildMockMcqs() {
+    var byLO = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+    allMcqQuestions("all").forEach(function (q) { if (q.lo) byLO[q.lo].push(q); });
+    var out = [];
+    Object.keys(MOCK_MCQ_WEIGHTS).forEach(function (lo) {
+      out = out.concat(shuffleArr(byLO[lo]).slice(0, MOCK_MCQ_WEIGHTS[lo]));
+    });
+    return shuffleArr(out);
+  }
+
+  function writtenTitleFor(key) {
+    var t = TOPICS.find(function (x) { return x.id === key; });
+    return t ? t.title : key;
+  }
+
+  // Only rubric-bearing questions are drawn, since Part 2 is scored by self-marking
+  // against the rubric and a question without one could not be marked.
+  function rubricQs(key) {
+    return (WRITTEN[key] || []).filter(function (q) { return q.rubric && q.rubric.length; });
+  }
+
+  function buildMockWritten() {
+    var regionKeys = TOPICS.filter(function (t) { return t.group === "regions"; })
+      .map(function (t) { return t.id; })
+      .filter(function (k) { return rubricQs(k).length; });
+    var picked = [];
+    var pool = shuffleArr(regionKeys);
+    var labels = ["LO1 & LO2", "LO1 & LO2", "LO1, LO2 & LO5"];
+    for (var i = 0; i < 3 && i < pool.length; i++) {
+      var qs = rubricQs(pool[i]);
+      picked.push({ label: labels[i], source: writtenTitleFor(pool[i]), q: shuffleArr(qs)[0] });
+    }
+    var q4pool = rubricQs("sparkling").concat(rubricQs("fortified"));
+    if (q4pool.length) {
+      picked.push({ label: "LO1, LO3, LO4 & LO5", source: "Sparkling / Fortified", q: shuffleArr(q4pool)[0] });
+    }
+    return picked;
+  }
+
+  function startMockTimer() {
+    stopMockTimer();
+    mockTimerId = setInterval(function () {
+      var el = document.getElementById("mockTimer");
+      if (!el) return;
+      var left = mockState.endsAt - Date.now();
+      if (left <= 0) { el.textContent = "Time up"; el.classList.add("danger"); stopMockTimer(); return; }
+      el.textContent = formatRemaining(left);
+      el.classList.toggle("danger", left < 10 * 60 * 1000);
+    }, 1000);
+  }
+  function stopMockTimer() {
+    if (mockTimerId) { clearInterval(mockTimerId); mockTimerId = null; }
+  }
+  function formatRemaining(ms) {
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return h + ":" + String(m).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+  }
+
+  function renderMockExam() {
+    var main = document.getElementById("main");
+    if (mockState.phase === "setup") { stopMockTimer(); main.innerHTML = renderMockSetup(); }
+    else if (mockState.phase === "part1") main.innerHTML = renderMockPart1();
+    else if (mockState.phase === "part2") main.innerHTML = renderMockPart2();
+    else if (mockState.phase === "marking") { stopMockTimer(); main.innerHTML = renderMockMarking(); }
+    else { stopMockTimer(); main.innerHTML = renderMockResults(); }
+    wireMockExam();
+  }
+
+  function renderMockSetup() {
+    var last = mockStats.last;
+    var histHtml = last
+      ? '<div class="mcq-stats-row"><span>Last attempt: Part 1 ' + last.p1pct + '% · Part 2 ' + last.p2pct + '%</span><span>' + (last.passed ? "Passed" : "Not yet passing") + '</span></div>'
+      : "";
+    return '<div class="practice-hero">' +
+        '<h2>Mock Exam · Unit 1</h2>' +
+        '<p class="sub">A full theory paper built to the Specification\'s own weighting. Two hours, both parts, no pausing once you start.</p>' +
+      '</div>' +
+      '<div class="written-card">' +
+        '<h3 style="font-family:var(--font-display);font-size:1.15rem;margin-bottom:0.6rem;">How this paper is built</h3>' +
+        '<div class="table-wrap"><table class="data">' +
+          '<tr><th>Part 1</th><td>50 multiple-choice questions, 1 mark each, drawn to the published weighting: 8 on vineyard and winery factors, 28 on regions, 5 sparkling, 5 fortified, 4 service and faults</td></tr>' +
+          '<tr><th>Part 2</th><td>4 written questions following the published question-to-outcome map: two regions, a third region question, and one sparkling or fortified question</td></tr>' +
+          '<tr><th>Time</th><td>2 hours for both parts combined</td></tr>' +
+          '<tr><th>To pass</th><td><strong>55% in each part separately</strong> &mdash; a strong Part 1 cannot rescue a weak Part 2</td></tr>' +
+        '</table></div>' +
+        '<p style="margin-top:0.9rem;color:var(--muted);font-size:0.92rem;">Part 1 is marked automatically. Part 2 you mark yourself against the rubric once time is up, which is the closest you can get to an examiner without one. Real written questions are multi-part and worth 25 marks each; these are single-part, so treat the Part 2 percentage as indicative rather than exact.</p>' +
+      '</div>' +
+      histHtml +
+      '<div class="written-actions" style="margin-top:1.2rem;"><button class="btn primary" id="mockStart">Start the paper</button></div>';
+  }
+
+  function mockTimerBar(label) {
+    return '<div class="mock-bar"><span class="mock-part">' + label + '</span>' +
+      '<span class="mock-timer" id="mockTimer">' + formatRemaining(mockState.endsAt - Date.now()) + '</span></div>';
+  }
+
+  function renderMockPart1() {
+    var total = mockState.mcqs.length;
+    var item = mockState.mcqs[mockState.index];
+    var q = item.data;
+    var answered = mockState.mcqAnswers[mockState.index];
+    var optionsHtml = q.options.map(function (opt, oi) {
+      var cls = "quiz-option" + (answered === oi ? " selected" : "");
+      return '<button class="' + cls + '" data-oi="' + oi + '">' +
+        '<span class="opt-letter">' + String.fromCharCode(65 + oi) + '</span><span>' + opt + '</span></button>';
+    }).join("");
+    var isLast = mockState.index + 1 >= total;
+    var answeredCount = mockState.mcqAnswers.filter(function (a) { return a !== null; }).length;
+    return mockTimerBar("Part 1 · Multiple choice") +
+      '<div class="mcq-progress">Question ' + (mockState.index + 1) + ' / ' + total + ' · ' + answeredCount + ' answered</div>' +
+      '<div class="quiz-card">' +
+        '<div class="quiz-q">' + q.q + '</div>' +
+        '<div class="quiz-options">' + optionsHtml + '</div>' +
+        '<p style="margin-top:0.8rem;color:var(--muted);font-size:0.85rem;">No feedback until the end, as in the real exam. Marks are not deducted for wrong answers, so answer every question.</p>' +
+      '</div>' +
+      '<div class="written-actions">' +
+        (mockState.index > 0 ? '<button class="btn" id="mockPrev">Previous</button>' : '') +
+        (isLast ? '<button class="btn primary" id="mockToPart2">Go to Part 2</button>'
+                : '<button class="btn primary" id="mockNext">Next question</button>') +
+      '</div>';
+  }
+
+  function renderMockPart2() {
+    var qsHtml = mockState.written.map(function (item, i) {
+      return '<div class="written-card" style="margin-bottom:1.2rem;">' +
+        '<span class="mcq-topic-tag">Question ' + (i + 1) + ' · ' + item.label + '</span>' +
+        (item.q.anchor ? '<div class="written-anchor">' + item.q.anchor + '</div>' : '') +
+        '<div class="quiz-q" style="margin-top:0.5rem;">' + item.q.q + '</div>' +
+        '<textarea class="written-textarea mock-answer" data-qi="' + i + '" rows="7" placeholder="Write your answer here…">' + escapeHtml(mockState.answers[i] || "") + '</textarea>' +
+      '</div>';
+    }).join("");
+    return mockTimerBar("Part 2 · Written answers") +
+      '<div class="practice-hero"><h2>Part 2</h2><p class="sub">Four questions. Answer all of them, then mark yourself against the rubric.</p></div>' +
+      qsHtml +
+      '<div class="written-actions">' +
+        '<button class="btn" id="mockBackPart1">Back to Part 1</button>' +
+        '<button class="btn primary" id="mockFinish">Finish and mark</button>' +
+      '</div>';
+  }
+
+  function renderMockMarking() {
+    var itemsHtml = mockState.written.map(function (item, i) {
+      var ticks = mockState.marks[i] || [];
+      var rubricHtml = item.q.rubric.map(function (r, ri) {
+        return '<label class="mark-row"><input type="checkbox" data-qi="' + i + '" data-ri="' + ri + '"' + (ticks[ri] ? " checked" : "") + '> <span>' + r.en + '</span></label>';
+      }).join("");
+      return '<div class="written-card" style="margin-bottom:1.2rem;">' +
+        '<span class="mcq-topic-tag">Question ' + (i + 1) + ' · ' + item.source + '</span>' +
+        (item.q.anchor ? '<div class="written-anchor">' + item.q.anchor + '</div>' : '') +
+        '<div class="quiz-q" style="margin-top:0.5rem;">' + item.q.q + '</div>' +
+        '<div class="reveal-block"><b>Your answer:</b><br>' + (mockState.answers[i] ? escapeHtml(mockState.answers[i]).replace(/\n/g, "<br>") : '<em style="color:var(--muted);">Left blank</em>') + '</div>' +
+        '<div class="reveal-block"><b>Model answer:</b> ' + item.q.model + '</div>' +
+        '<div class="mark-block"><b>Tick each point you actually made:</b>' + rubricHtml + '</div>' +
+      '</div>';
+    }).join("");
+    return '<div class="practice-hero"><h2>Mark your Part 2</h2>' +
+        '<p class="sub">Be honest with yourself: tick a point only if you actually made it. An inflated score here costs you nothing now and everything in the exam.</p></div>' +
+      itemsHtml +
+      '<div class="written-actions"><button class="btn primary" id="mockScore">See results</button></div>';
+  }
+
+  function renderMockResults() {
+    var r = mockState.result;
+    var badge = function (pct) {
+      return '<span style="font-family:var(--font-mono);color:' + (pct >= 55 ? "var(--good)" : "var(--bad, #b3261e)") + ';">' + (pct >= 55 ? "Pass" : "Below 55%") + '</span>';
+    };
+    var wrongHtml = mockState.mcqs.map(function (item, i) {
+      var given = mockState.mcqAnswers[i];
+      if (given === item.data.correct) return "";
+      return '<li class="mcq-summary-item wrong"><strong>' + (item.topicTitle || "") + ':</strong> ' + item.data.q +
+        '<br><span style="color:var(--muted);">Correct: ' + item.data.options[item.data.correct] + ' — ' + item.data.explain + '</span></li>';
+    }).join("");
+    return '<div class="practice-hero"><h2>Mock exam results</h2></div>' +
+      '<div class="written-card">' +
+        '<div class="table-wrap"><table class="data">' +
+          '<tr><th>Part 1 · Multiple choice</th><td>' + r.p1 + ' / ' + r.p1total + ' · <strong>' + r.p1pct + '%</strong> ' + badge(r.p1pct) + '</td></tr>' +
+          '<tr><th>Part 2 · Written</th><td>' + r.p2 + ' / ' + r.p2total + ' rubric points · <strong>' + r.p2pct + '%</strong> ' + badge(r.p2pct) + '</td></tr>' +
+          '<tr><th>Overall</th><td><strong>' + (r.passed ? "Pass" : "Not passing yet") + '</strong>' + (r.passed ? "" : " — you need 55% in both parts") + '</td></tr>' +
+        '</table></div>' +
+        (r.timedOut ? '<p style="margin-top:0.8rem;color:var(--muted);">You ran out of time on this attempt.</p>' : '') +
+      '</div>' +
+      (wrongHtml ? '<h3 style="font-family:var(--font-display);margin:1.5rem 0 0.8rem;">Part 1: what you missed</h3><ul class="mcq-summary-list">' + wrongHtml + '</ul>' : '') +
+      '<div class="written-actions" style="margin-top:1.5rem;"><button class="btn primary" id="mockAgain">Sit another paper</button></div>';
+  }
+
+  function wireMockExam() {
+    var main = document.getElementById("main");
+    var on = function (id, fn) { var el = main.querySelector("#" + id); if (el) el.addEventListener("click", fn); };
+
+    on("mockStart", function () {
+      mockState.mcqs = buildMockMcqs();
+      mockState.written = buildMockWritten();
+      mockState.mcqAnswers = mockState.mcqs.map(function () { return null; });
+      mockState.answers = mockState.written.map(function () { return ""; });
+      mockState.marks = mockState.written.map(function (w) { return w.q.rubric.map(function () { return false; }); });
+      mockState.index = 0;
+      mockState.endsAt = Date.now() + MOCK_DURATION_MS;
+      mockState.phase = "part1";
+      renderMockExam();
+      startMockTimer();
+    });
+
+    main.querySelectorAll(".quiz-option").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        mockState.mcqAnswers[mockState.index] = parseInt(btn.getAttribute("data-oi"), 10);
+        renderMockExam();
+      });
+    });
+    on("mockNext", function () { mockState.index++; renderMockExam(); });
+    on("mockPrev", function () { mockState.index--; renderMockExam(); });
+    on("mockToPart2", function () { mockState.phase = "part2"; renderMockExam(); });
+    on("mockBackPart1", function () { captureMockAnswers(); mockState.phase = "part1"; renderMockExam(); });
+    on("mockFinish", function () { captureMockAnswers(); mockState.phase = "marking"; renderMockExam(); });
+
+    main.querySelectorAll(".mock-answer").forEach(function (ta) {
+      ta.addEventListener("input", function () {
+        mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)] = ta.value;
+      });
+    });
+    main.querySelectorAll(".mark-block input[type=checkbox]").forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        var qi = parseInt(cb.getAttribute("data-qi"), 10), ri = parseInt(cb.getAttribute("data-ri"), 10);
+        mockState.marks[qi][ri] = cb.checked;
+      });
+    });
+
+    on("mockScore", function () { scoreMock(); mockState.phase = "results"; renderMockExam(); });
+    on("mockAgain", function () { mockState.phase = "setup"; renderMockExam(); });
+  }
+
+  function captureMockAnswers() {
+    document.querySelectorAll(".mock-answer").forEach(function (ta) {
+      mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)] = ta.value;
+    });
+  }
+
+  function scoreMock() {
+    var p1 = 0;
+    mockState.mcqs.forEach(function (item, i) { if (mockState.mcqAnswers[i] === item.data.correct) p1++; });
+    var p2 = 0, p2total = 0;
+    mockState.marks.forEach(function (row) {
+      row.forEach(function (t) { p2total++; if (t) p2++; });
+    });
+    var pct = function (a, b) { return b ? Math.round((a / b) * 100) : 0; };
+    var p1pct = pct(p1, mockState.mcqs.length), p2pct = pct(p2, p2total);
+    mockState.result = {
+      p1: p1, p1total: mockState.mcqs.length, p1pct: p1pct,
+      p2: p2, p2total: p2total, p2pct: p2pct,
+      passed: p1pct >= 55 && p2pct >= 55,
+      timedOut: Date.now() > mockState.endsAt
+    };
+    mockStats.last = { p1pct: p1pct, p2pct: p2pct, passed: mockState.result.passed, at: Date.now() };
+    mockStats.attempts = (mockStats.attempts || 0) + 1;
+    if (mockState.result.passed) mockStats.passes = (mockStats.passes || 0) + 1;
+    saveMockStats();
+  }
+
   /* ============ NAVIGATION ============ */
 
   function renderCurrentView() {
+    if (currentView !== "mock-exam") stopMockTimer();
     if (currentView === "written-practice") { renderWrittenPractice(); return; }
+    if (currentView === "mock-exam") { renderMockExam(); return; }
     if (currentView === "mcq-practice") { renderMcqPractice(); return; }
     if (currentView === "response-builder") { renderResponseBuilder(); return; }
     if (currentView === "match-game") { renderMatchGame(); return; }
