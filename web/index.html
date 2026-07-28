@@ -473,6 +473,11 @@
   .mark-block { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px dashed var(--line); font-size: 0.92rem; }
   .mark-row { display: flex; gap: 0.55rem; align-items: flex-start; margin-top: 0.5rem; cursor: pointer; line-height: 1.45; }
   .mark-row input { margin-top: 0.25rem; flex-shrink: 0; }
+  .mock-part-label {
+    font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--accent); margin-top: 0.9rem;
+  }
+  .mock-part-rule { border: 0; border-top: 1px dashed var(--line); margin: 1.4rem 0 0; }
   .btn { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; padding: 0.6rem 1.1rem; border-radius: 7px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer; }
   .btn:hover { border-color: var(--accent); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
@@ -1565,7 +1570,13 @@
         anchor: "Russian River Valley AVA, California · outstanding-quality Chardonnay",
         theme: "Malolactic conversion",
         q: "Explain why a producer of an outstanding-quality Chardonnay from this AVA might choose to use malolactic fermentation.",
-        model: "Malolactic fermentation softens Chardonnay's naturally sharp malic acid into rounder lactic acid, and produces buttery diacetyl compounds, giving a fuller, creamier mouthfeel. It also improves microbiological stability before bottling. Chardonnay's relatively neutral fruit character suits this treatment well, since the buttery, creamy notes it adds become a defining part of the wine's style rather than masking delicate primary aromatics the way it would on a more aromatic variety."
+        model: "Malolactic fermentation softens Chardonnay's naturally sharp malic acid into rounder lactic acid, and produces buttery diacetyl compounds, giving a fuller, creamier mouthfeel. It also improves microbiological stability before bottling. Chardonnay's relatively neutral fruit character suits this treatment well, since the buttery, creamy notes it adds become a defining part of the wine's style rather than masking delicate primary aromatics the way it would on a more aromatic variety.",
+        rubric: [
+          { en: "States the conversion: sharp malic acid is converted into softer lactic acid", he: "מציין את ההמרה: חומצה מאלית חדה הופכת לחומצה לקטית רכה יותר" },
+          { en: "Names the textural and flavour effect (diacetyl, buttery character, fuller creamier mouthfeel)", he: "מציין את ההשפעה על המרקם והטעם (דיאצטיל, אופי חמאתי, מרקם מלא וקרמי יותר)" },
+          { en: "Gives the practical benefit: improved microbiological stability before bottling", he: "נותן את היתרון המעשי: יציבות מיקרוביולוגית משופרת לפני הבקבוק" },
+          { en: "Links it to this wine specifically: Chardonnay's relatively neutral fruit suits the added complexity", he: "מקשר ליין הספציפי: הפרי הניטרלי יחסית של שרדונה מתאים למורכבות הנוספת" }
+        ]
       }
     ],
     oak: [
@@ -1655,26 +1666,50 @@
         anchor: "A premium red wine, sealed with natural cork, intended for long-term ageing",
         theme: "Wine storage",
         q: "Describe the storage conditions you would recommend for the long-term ageing of a cork-sealed wine like this.",
-        model: "Store the bottle lying on its side, so the wine stays in contact with the cork and keeps it moist, preventing air ingress. Keep it at a cool, constant temperature (around 10 to 15°C), since fluctuations can stress the cork seal and accelerate ageing. Keep it in a dark place away from strong light, which can cause off-flavours over time. Maintain high, steady humidity (around 70 to 80%), since a too-dry environment can dry out and shrink the cork. Keep the bottle still, away from vibration."
+        model: "Store the bottle lying on its side, so the wine stays in contact with the cork and keeps it moist, preventing air ingress. Keep it at a cool, constant temperature (around 10 to 15°C), since fluctuations can stress the cork seal and accelerate ageing. Keep it in a dark place away from strong light, which can cause off-flavours over time. Maintain high, steady humidity (around 70 to 80%), since a too-dry environment can dry out and shrink the cork. Keep the bottle still, away from vibration.",
+        rubric: [
+          { en: "Bottle stored on its side, keeping the cork moist so air cannot get in", he: "הבקבוק מאוחסן על צידו, כדי לשמור על הפקק לח כך שאוויר לא ייכנס" },
+          { en: "Cool and, above all, constant temperature (around 10 to 15°C)", he: "טמפרטורה קרירה ובעיקר קבועה (בערך 10 עד 15 מעלות)" },
+          { en: "Dark, away from strong light", he: "חשוך, הרחק מאור חזק" },
+          { en: "High, steady humidity (around 70 to 80%) and free from vibration", he: "לחות גבוהה ויציבה (בערך 70 עד 80 אחוז) וללא רעידות" }
+        ]
       },
       {
         command: "Describe", commandHe: "תאר",
         anchor: "A fully mature Vintage Port, aged in bottle with heavy natural sediment",
         theme: "Decanting old wine",
         q: "Describe the process of opening and decanting a fully mature bottle like this.",
-        model: "Move the bottle from the rack to the decanting position without agitating it, ideally standing it upright for a day beforehand so sediment settles to the bottom. Remove the capsule and clean the neck and shoulder. Ease the cork out gently, since old corks can be fragile and crumble. Hold the bottle in front of a light source as you pour steadily into the decanter, and stop the moment sediment reaches the neck, leaving the last of the wine behind with the deposit."
+        model: "Move the bottle from the rack to the decanting position without agitating it, ideally standing it upright for a day beforehand so sediment settles to the bottom. Remove the capsule and clean the neck and shoulder. Ease the cork out gently, since old corks can be fragile and crumble. Hold the bottle in front of a light source as you pour steadily into the decanter, and stop the moment sediment reaches the neck, leaving the last of the wine behind with the deposit.",
+        rubric: [
+          { en: "Moves the bottle without agitating it, ideally standing it upright beforehand so sediment settles", he: "מזיז את הבקבוק בלי לטלטל אותו, רצוי לאחר העמדה זקופה כדי שהמשקע ישקע" },
+          { en: "Removes the capsule, cleans the neck, and eases the fragile old cork out gently", he: "מסיר את הקפסולה, מנקה את הצוואר, ומוציא בעדינות את הפקק הישן והשביר" },
+          { en: "Pours steadily into the decanter while watching the neck against a light source", he: "מוזג בהתמדה לקנקן תוך התבוננות בצוואר מול מקור אור" },
+          { en: "Stops the moment sediment reaches the neck, leaving the deposit behind in the bottle", he: "עוצר ברגע שהמשקע מגיע לצוואר, ומשאיר את המשקע בבקבוק" }
+        ]
       },
       {
         command: "Explain", commandHe: "הסבר",
         theme: "Faults vs storage",
         q: "Explain how poor storage conditions can lead to a wine fault, and name the fault most likely to result.",
-        model: "Storing wine somewhere warm, with fluctuating temperature, or with a compromised cork exposes the wine to more oxygen than intended. Over time this pushes the wine into oxidation: the colour browns, fresh fruit character is lost, and the wine develops a flat, stewed or nutty character. A dried-out or damaged cork compounds the risk, since it can also let air in directly rather than only through gradual permeation."
+        model: "Storing wine somewhere warm, with fluctuating temperature, or with a compromised cork exposes the wine to more oxygen than intended. Over time this pushes the wine into oxidation: the colour browns, fresh fruit character is lost, and the wine develops a flat, stewed or nutty character. A dried-out or damaged cork compounds the risk, since it can also let air in directly rather than only through gradual permeation.",
+        rubric: [
+          { en: "Names the poor conditions (warmth, fluctuating temperature, or a dried-out cork)", he: "מציין את התנאים הגרועים (חום, טמפרטורה משתנה, או פקק שהתייבש)" },
+          { en: "Explains the mechanism: the wine is exposed to more oxygen than intended", he: "מסביר את המנגנון: היין נחשף ליותר חמצן מהמתוכנן" },
+          { en: "Names the fault: oxidation", he: "מציין את הפגם: חמצון" },
+          { en: "Describes the sensory result (browning colour, loss of fresh fruit, flat, stewed or nutty character)", he: "מתאר את התוצאה החושית (צבע משחים, אובדן פרי רענן, אופי שטוח, מבושל או אגוזי)" }
+        ]
       },
       {
         command: "Identify", commandHe: "זהה",
         theme: "Food and wine pairing",
         q: "Identify the key wine and food considerations you would weigh when recommending a pairing for a rich, creamy pasta dish.",
-        model: "On the wine side I would weigh acidity, since a rich, creamy dish needs enough wine acidity to cut through the fat and refresh the palate, along with body and alcohol level so the wine doesn't feel thin next to the dish. On the food side the key considerations are fat and flavour intensity, since a high-fat, creamy sauce can overwhelm a delicate wine, and salt, which can soften a wine's tannin if the dish is also well seasoned. I would recommend a fuller-bodied white with good acidity rather than a light, delicate style."
+        model: "On the wine side I would weigh acidity, since a rich, creamy dish needs enough wine acidity to cut through the fat and refresh the palate, along with body and alcohol level so the wine doesn't feel thin next to the dish. On the food side the key considerations are fat and flavour intensity, since a high-fat, creamy sauce can overwhelm a delicate wine, and salt, which can soften a wine's tannin if the dish is also well seasoned. I would recommend a fuller-bodied white with good acidity rather than a light, delicate style.",
+        rubric: [
+          { en: "Identifies the relevant wine considerations (acidity, body, alcohol level)", he: "מזהה את שיקולי היין הרלוונטיים (חומציות, גוף, רמת אלכוהול)" },
+          { en: "Identifies the relevant food considerations (fat and flavour intensity)", he: "מזהה את שיקולי המזון הרלוונטיים (שומן ועוצמת טעם)" },
+          { en: "Notes that acidity is needed to cut through the fat and refresh the palate", he: "מציין שנדרשת חומציות כדי לחתוך את השומן ולרענן את החך" },
+          { en: "Keeps the answer to identifying the considerations: this is Identify, not Explain", he: "שומר על תשובה שמזהה את השיקולים בלבד: זו שאלת זיהוי, לא הסבר" }
+        ]
       }
     ],
     alsace: [
@@ -2920,15 +2955,17 @@
     var answeredCount = Object.keys(st.answered || {}).length;
     var cards = topic.quiz.map(function (q, qi) {
       var savedAnswer = st.answered ? st.answered[qi] : undefined;
-      var options = q.options.map(function (opt, oi) {
+      var view = shuffledView(q, topic.id + ":" + qi);
+      var options = view.options.map(function (opt, di) {
+        var orig = view.order[di];
         var cls = "quiz-option";
-        var letter = String.fromCharCode(65 + oi);
+        var letter = String.fromCharCode(65 + di);
         if (savedAnswer !== undefined) {
-          if (oi === q.correct) cls += " correct";
-          else if (oi === savedAnswer) cls += " incorrect";
+          if (orig === q.correct) cls += " correct";
+          else if (orig === savedAnswer) cls += " incorrect";
           else cls += " dimmed";
         }
-        return '<button class="' + cls + '" data-qi="' + qi + '" data-oi="' + oi + '" ' + (savedAnswer !== undefined ? "disabled" : "") + '>' +
+        return '<button class="' + cls + '" data-qi="' + qi + '" data-oi="' + orig + '" ' + (savedAnswer !== undefined ? "disabled" : "") + '>' +
           '<span class="opt-letter">' + letter + '</span><span>' + opt + '</span></button>';
       }).join("");
       return '<div class="quiz-card" data-qi="' + qi + '">' +
@@ -3178,7 +3215,7 @@
       if (t.group === "tasting") return;
       if (filter !== "all" && t.group !== filter) return;
       t.quiz.forEach(function (q, idx) {
-        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: q, lo: topicLO(t) });
+        list.push({ topicId: t.id, topicTitle: t.title, groupLabel: t.groupLabel, idx: idx, data: q, lo: topicLO(t), view: shuffledView(q, t.id + ":" + idx) });
       });
     });
     return list;
@@ -3188,7 +3225,7 @@
   function mcqPool(filter) {
     if (filter === "extra") {
       return EXTERNAL_MCQ.map(function (q, i) {
-        return { topicId: null, topicTitle: q.source, groupLabel: "Extra bank", idx: i, data: q, lo: null };
+        return { topicId: null, topicTitle: q.source, groupLabel: "Extra bank", idx: i, data: q, lo: null, view: shuffledView(q, "ext:" + i) };
       });
     }
     return allMcqQuestions(filter);
@@ -3200,6 +3237,30 @@
   function topicLO(t) {
     if (LO_BY_TOPIC[t.id]) return LO_BY_TOPIC[t.id];
     return t.group === "regions" ? 2 : null;
+  }
+
+  /* The question bank was authored with the correct answer overwhelmingly in slot B,
+     which meant the whole MCQ drill could be passed by always picking the second
+     option. Options are therefore shuffled for display. The order is cached per
+     question so it stays put across re-renders, and saved progress continues to be
+     stored against the ORIGINAL option index. */
+  var optionOrderCache = {};
+  function optionOrder(key, n) {
+    if (!optionOrderCache[key]) {
+      var idx = [];
+      for (var i = 0; i < n; i++) idx.push(i);
+      optionOrderCache[key] = shuffleArr(idx);
+    }
+    return optionOrderCache[key];
+  }
+  // order[displayIndex] === originalIndex
+  function shuffledView(q, key) {
+    var order = optionOrder(key, q.options.length);
+    return {
+      options: order.map(function (i) { return q.options[i]; }),
+      correct: order.indexOf(q.correct),
+      order: order
+    };
   }
 
   function shuffleArr(arr) {
@@ -3246,11 +3307,11 @@
     var item = mcqState.pool[mcqState.index];
     var q = item.data;
     var answered = mcqState.answered;
-    var optionsHtml = q.options.map(function (opt, oi) {
+    var optionsHtml = item.view.options.map(function (opt, oi) {
       var cls = "quiz-option";
       var letter = String.fromCharCode(65 + oi);
       if (answered !== null) {
-        if (oi === q.correct) cls += " correct";
+        if (oi === item.view.correct) cls += " correct";
         else if (oi === answered) cls += " incorrect";
         else cls += " dimmed";
       }
@@ -3307,7 +3368,7 @@
       btn.addEventListener("click", function () {
         var oi = parseInt(btn.getAttribute("data-oi"), 10);
         var item = mcqState.pool[mcqState.index];
-        var isCorrect = oi === item.data.correct;
+        var isCorrect = oi === item.view.correct;
         mcqState.answered = oi;
         if (isCorrect) mcqState.score++;
         mcqState.results.push({ topicTitle: item.topicTitle, q: item.data.q, explain: item.data.explain, correct: isCorrect });
@@ -3910,22 +3971,33 @@
     return (WRITTEN[key] || []).filter(function (q) { return q.rubric && q.rubric.length; });
   }
 
+  /* Questions 3 and 4 carry LO5 in the published map, and in the real paper they are
+     multi-part. So those two get a service sub-question alongside the main one, which
+     is both closer to the real thing and what makes their LO labels honest. */
   function buildMockWritten() {
     var regionKeys = TOPICS.filter(function (t) { return t.group === "regions"; })
       .map(function (t) { return t.id; })
       .filter(function (k) { return rubricQs(k).length; });
-    var picked = [];
-    var pool = shuffleArr(regionKeys);
-    var labels = ["LO1 & LO2", "LO1 & LO2", "LO1, LO2 & LO5"];
-    for (var i = 0; i < 3 && i < pool.length; i++) {
-      var qs = rubricQs(pool[i]);
-      picked.push({ label: labels[i], source: writtenTitleFor(pool[i]), q: shuffleArr(qs)[0] });
+    var regions = shuffleArr(regionKeys);
+    var service = shuffleArr(rubricQs("service"));
+    var q4pool = shuffleArr(rubricQs("sparkling").concat(rubricQs("fortified")));
+    var part = function (key, q) { return { source: writtenTitleFor(key), q: q }; };
+    var regionPart = function (i) { return part(regions[i], shuffleArr(rubricQs(regions[i]))[0]); };
+
+    var paper = [];
+    if (regions.length > 0) paper.push({ label: "LO1 & LO2", parts: [regionPart(0)] });
+    if (regions.length > 1) paper.push({ label: "LO1 & LO2", parts: [regionPart(1)] });
+    if (regions.length > 2) {
+      var q3 = { label: "LO1, LO2 & LO5", parts: [regionPart(2)] };
+      if (service[0]) q3.parts.push({ source: "Service & recommendations", q: service[0] });
+      paper.push(q3);
     }
-    var q4pool = rubricQs("sparkling").concat(rubricQs("fortified"));
     if (q4pool.length) {
-      picked.push({ label: "LO1, LO3, LO4 & LO5", source: "Sparkling / Fortified", q: shuffleArr(q4pool)[0] });
+      var q4 = { label: "LO1, LO3, LO4 & LO5", parts: [{ source: "Sparkling / Fortified", q: q4pool[0] }] };
+      if (service[1]) q4.parts.push({ source: "Service & recommendations", q: service[1] });
+      paper.push(q4);
     }
-    return picked;
+    return paper;
   }
 
   function startMockTimer() {
@@ -3991,7 +4063,7 @@
     var item = mockState.mcqs[mockState.index];
     var q = item.data;
     var answered = mockState.mcqAnswers[mockState.index];
-    var optionsHtml = q.options.map(function (opt, oi) {
+    var optionsHtml = item.view.options.map(function (opt, oi) {
       var cls = "quiz-option" + (answered === oi ? " selected" : "");
       return '<button class="' + cls + '" data-oi="' + oi + '">' +
         '<span class="opt-letter">' + String.fromCharCode(65 + oi) + '</span><span>' + opt + '</span></button>';
@@ -4014,11 +4086,16 @@
 
   function renderMockPart2() {
     var qsHtml = mockState.written.map(function (item, i) {
+      var multi = item.parts.length > 1;
+      var partsHtml = item.parts.map(function (pt, pi) {
+        return (multi ? '<div class="mock-part-label">(' + "abcd"[pi] + ') ' + pt.source + '</div>' : '') +
+          (pt.q.anchor ? '<div class="written-anchor">' + pt.q.anchor + '</div>' : '') +
+          '<div class="quiz-q" style="margin-top:0.5rem;">' + pt.q.q + '</div>' +
+          '<textarea class="written-textarea mock-answer" data-qi="' + i + '" data-pi="' + pi + '" rows="' + (multi ? 5 : 7) + '" placeholder="Write your answer here…">' + escapeHtml((mockState.answers[i] || [])[pi] || "") + '</textarea>';
+      }).join('<hr class="mock-part-rule">');
       return '<div class="written-card" style="margin-bottom:1.2rem;">' +
         '<span class="mcq-topic-tag">Question ' + (i + 1) + ' · ' + item.label + '</span>' +
-        (item.q.anchor ? '<div class="written-anchor">' + item.q.anchor + '</div>' : '') +
-        '<div class="quiz-q" style="margin-top:0.5rem;">' + item.q.q + '</div>' +
-        '<textarea class="written-textarea mock-answer" data-qi="' + i + '" rows="7" placeholder="Write your answer here…">' + escapeHtml(mockState.answers[i] || "") + '</textarea>' +
+        partsHtml +
       '</div>';
     }).join("");
     return mockTimerBar("Part 2 · Written answers") +
@@ -4032,17 +4109,23 @@
 
   function renderMockMarking() {
     var itemsHtml = mockState.written.map(function (item, i) {
-      var ticks = mockState.marks[i] || [];
-      var rubricHtml = item.q.rubric.map(function (r, ri) {
-        return '<label class="mark-row"><input type="checkbox" data-qi="' + i + '" data-ri="' + ri + '"' + (ticks[ri] ? " checked" : "") + '> <span>' + r.en + '</span></label>';
-      }).join("");
+      var multi = item.parts.length > 1;
+      var partsHtml = item.parts.map(function (pt, pi) {
+        var ticks = (mockState.marks[i] || [])[pi] || [];
+        var given = (mockState.answers[i] || [])[pi];
+        var rubricHtml = pt.q.rubric.map(function (r, ri) {
+          return '<label class="mark-row"><input type="checkbox" data-qi="' + i + '" data-pi="' + pi + '" data-ri="' + ri + '"' + (ticks[ri] ? " checked" : "") + '> <span>' + r.en + '</span></label>';
+        }).join("");
+        return (multi ? '<div class="mock-part-label">(' + "abcd"[pi] + ') ' + pt.source + '</div>' : '') +
+          (pt.q.anchor ? '<div class="written-anchor">' + pt.q.anchor + '</div>' : '') +
+          '<div class="quiz-q" style="margin-top:0.5rem;">' + pt.q.q + '</div>' +
+          '<div class="reveal-block"><b>Your answer:</b><br>' + (given ? escapeHtml(given).replace(/\n/g, "<br>") : '<em style="color:var(--muted);">Left blank</em>') + '</div>' +
+          '<div class="reveal-block"><b>Model answer:</b> ' + pt.q.model + '</div>' +
+          '<div class="mark-block"><b>Tick each point you actually made:</b>' + rubricHtml + '</div>';
+      }).join('<hr class="mock-part-rule">');
       return '<div class="written-card" style="margin-bottom:1.2rem;">' +
-        '<span class="mcq-topic-tag">Question ' + (i + 1) + ' · ' + item.source + '</span>' +
-        (item.q.anchor ? '<div class="written-anchor">' + item.q.anchor + '</div>' : '') +
-        '<div class="quiz-q" style="margin-top:0.5rem;">' + item.q.q + '</div>' +
-        '<div class="reveal-block"><b>Your answer:</b><br>' + (mockState.answers[i] ? escapeHtml(mockState.answers[i]).replace(/\n/g, "<br>") : '<em style="color:var(--muted);">Left blank</em>') + '</div>' +
-        '<div class="reveal-block"><b>Model answer:</b> ' + item.q.model + '</div>' +
-        '<div class="mark-block"><b>Tick each point you actually made:</b>' + rubricHtml + '</div>' +
+        '<span class="mcq-topic-tag">Question ' + (i + 1) + ' · ' + item.label + '</span>' +
+        partsHtml +
       '</div>';
     }).join("");
     return '<div class="practice-hero"><h2>Mark your Part 2</h2>' +
@@ -4058,9 +4141,9 @@
     };
     var wrongHtml = mockState.mcqs.map(function (item, i) {
       var given = mockState.mcqAnswers[i];
-      if (given === item.data.correct) return "";
+      if (given === item.view.correct) return "";
       return '<li class="mcq-summary-item wrong"><strong>' + (item.topicTitle || "") + ':</strong> ' + item.data.q +
-        '<br><span style="color:var(--muted);">Correct: ' + item.data.options[item.data.correct] + ' — ' + item.data.explain + '</span></li>';
+        '<br><span style="color:var(--muted);">Correct: ' + item.view.options[item.view.correct] + ' — ' + item.data.explain + '</span></li>';
     }).join("");
     return '<div class="practice-hero"><h2>Mock exam results</h2></div>' +
       '<div class="written-card">' +
@@ -4083,8 +4166,10 @@
       mockState.mcqs = buildMockMcqs();
       mockState.written = buildMockWritten();
       mockState.mcqAnswers = mockState.mcqs.map(function () { return null; });
-      mockState.answers = mockState.written.map(function () { return ""; });
-      mockState.marks = mockState.written.map(function (w) { return w.q.rubric.map(function () { return false; }); });
+      mockState.answers = mockState.written.map(function (w) { return w.parts.map(function () { return ""; }); });
+      mockState.marks = mockState.written.map(function (w) {
+        return w.parts.map(function (pt) { return pt.q.rubric.map(function () { return false; }); });
+      });
       mockState.index = 0;
       mockState.endsAt = Date.now() + MOCK_DURATION_MS;
       mockState.phase = "part1";
@@ -4106,13 +4191,15 @@
 
     main.querySelectorAll(".mock-answer").forEach(function (ta) {
       ta.addEventListener("input", function () {
-        mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)] = ta.value;
+        mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)][parseInt(ta.getAttribute("data-pi"), 10)] = ta.value;
       });
     });
     main.querySelectorAll(".mark-block input[type=checkbox]").forEach(function (cb) {
       cb.addEventListener("change", function () {
-        var qi = parseInt(cb.getAttribute("data-qi"), 10), ri = parseInt(cb.getAttribute("data-ri"), 10);
-        mockState.marks[qi][ri] = cb.checked;
+        var qi = parseInt(cb.getAttribute("data-qi"), 10),
+            pi = parseInt(cb.getAttribute("data-pi"), 10),
+            ri = parseInt(cb.getAttribute("data-ri"), 10);
+        mockState.marks[qi][pi][ri] = cb.checked;
       });
     });
 
@@ -4122,16 +4209,18 @@
 
   function captureMockAnswers() {
     document.querySelectorAll(".mock-answer").forEach(function (ta) {
-      mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)] = ta.value;
+      mockState.answers[parseInt(ta.getAttribute("data-qi"), 10)][parseInt(ta.getAttribute("data-pi"), 10)] = ta.value;
     });
   }
 
   function scoreMock() {
     var p1 = 0;
-    mockState.mcqs.forEach(function (item, i) { if (mockState.mcqAnswers[i] === item.data.correct) p1++; });
+    mockState.mcqs.forEach(function (item, i) { if (mockState.mcqAnswers[i] === item.view.correct) p1++; });
     var p2 = 0, p2total = 0;
-    mockState.marks.forEach(function (row) {
-      row.forEach(function (t) { p2total++; if (t) p2++; });
+    mockState.marks.forEach(function (q) {
+      q.forEach(function (part) {
+        part.forEach(function (t) { p2total++; if (t) p2++; });
+      });
     });
     var pct = function (a, b) { return b ? Math.round((a / b) * 100) : 0; };
     var p1pct = pct(p1, mockState.mcqs.length), p2pct = pct(p2, p2total);
