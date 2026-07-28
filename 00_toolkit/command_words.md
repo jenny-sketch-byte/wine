@@ -8,9 +8,9 @@ These are ranked roughly by how much they demand.
 | **Identify / State / Name** | A fact, term, or item: no explanation needed | One word/phrase. Don't over-write; you won't get extra marks for reasoning here. |
 | **Describe** | What something IS or looks like: characteristics, not causes | 1–2 sentences. Facts, not "why." |
 | **Explain** | WHY or HOW something happens: cause → effect | 2–4 sentences. Must include a mechanism/link, not just a fact. This is where most marks live. |
-| **Outline** | A brief summary of several points | Short list or short sentences, breadth over depth. |
 | **Compare** | Similarities AND differences between two things | Must address both: one-sided answers lose marks. |
-| **Discuss** | Multiple angles or factors, weighed | Longer answer, show you understand complexity/tradeoffs. |
+
+Only these command words appear in the real WSET material on file (the sample paper and mock exam): Identify, State, Name, Describe, Explain, Compare. "Outline" and "Discuss" don't show up in either, so they've been dropped here rather than teaching a word you likely won't see.
 
 ## The critical distinction: Describe vs Explain
 
