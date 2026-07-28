@@ -42,17 +42,10 @@ a. Bacterial disease · **b. Downy mildew** · c. Nematodes · d. Phylloxera
 **11. A Warm Climate has a temperature range of:**
 a. 14.5°C – 16.5°C · b. 16.5°C – 18.5°C · **c. 18.5°C – 21°C** · d. Greater than 21°C
 
-**12. Put the following stages of a vine's annual growth cycle in chronological order:**
-> ⚠️ The question screen and the answer screen in the source give two different item lists for
-> this question — transcribed as-is, not reconciled.
->
-> *Question screen* (5 items): 1. Flowering and fruit set · 2. Budburst · 3. Shoot and leaf growth
-> · 4. Harvest · 5. Véraison and berry ripening — options: a. 2,3,1,4,5 · b. 3,2,1,5,4 · c. 1,3,2,4,5 · d. 2,3,1,5,4
->
-> *Answer screen* (6 items, "fruit set" split out from "flowering"): 1. Flowering · 2. Budburst ·
-> 3. Shoot and leaf growth · 4. Fruit set · 5. Harvest · 6. Véraison and berry ripening —
-> **given answer: b. 3,2,1,4,6,5** (i.e. Budburst → Shoot/leaf growth → Flowering → Fruit set →
-> Véraison/berry ripening → Harvest)
+**12. [Removed]** — the source's question screen and answer screen gave two different, incompatible
+item lists for this vine-growth-cycle-ordering question. Removed rather than guessing which one
+is right; if you want to rebuild it, get the vine cycle order from `01_foundations/viticulture.md`
+instead.
 
 **13. After Champagne, what is the second largest centre for sparkling production in France?**
 **a. Loire Valley** · b. Alsace · c. Burgundy · d. Bordeaux
@@ -156,12 +149,11 @@ c. Alexander Valley AVA and Willamette Valley AVA · d. Monterey AVA and Calisto
 **45. In which town must Manzanilla Sherries be aged?**
 a. Cádiz · **b. Sanlúcar de Barrameda** · c. Jerez de la Frontera · d. Chiclana de la Frontera
 
-**46. How many Grand Crus does Chablis have?**
-a. 7 · b. 5 · c. 9 · **d. 1**
-> ⚠️ Given answer is "d. 1" — this is presumably treating Chablis Grand Cru as a single AOC
-> subdivided into 7 climats, which is a defensible reading but not how the question ("how many
-> Grand Crus does Chablis have") is usually put. Verify against `wset_l3wines_specification_en_highres_may2022_issue2.pdf`
-> before relying on this one.
+**46. [Removed]** — the source's answer key marked "1" as correct for "how many Grand Crus does
+Chablis have," which conflicts with what's commonly taught (7 climats within one Grand Cru
+appellation) and couldn't be confirmed either way. Removed rather than keeping a possibly-wrong
+answer in the file; check `wset_l3wines_specification_en_highres_may2022_issue2.pdf` if you need
+the real number.
 
 **47. The Peloponnese is best known for this PDO:**
 a. Santorini · **b. Nemea** · c. Naoussa · d. Retsina
