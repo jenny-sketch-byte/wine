@@ -1,2 +1,5 @@
-.DS_Store
-*.tmp
+# Local-only material: personal-voice drafts and anything not for the public repo.
+# Keep working copies on disk; never track them.
+07_training_video/
+_local/
+*.local.md
