@@ -192,6 +192,78 @@
     text-underline-offset: 2px;
   }
   .reset-btn:hover { color: var(--bad); }
+  .exam-info-btn {
+    background: none; border: none; color: var(--accent); font-size: 0.78rem;
+    text-align: left; padding: 0; cursor: pointer; text-decoration: underline;
+    text-underline-offset: 2px; font-weight: 600;
+  }
+
+  /* ---------- Exam info sheet ---------- */
+  .exam-sheet-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 50;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3vh 1.25rem;
+    overflow-y: auto;
+  }
+  .exam-sheet-backdrop.show { display: flex; }
+  .exam-sheet {
+    position: relative;
+    width: 100%; max-width: 640px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 2rem 2rem 2.25rem;
+    box-shadow: var(--shadow);
+  }
+  .exam-sheet h2 { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.35rem; }
+  .exam-sheet-sub { margin: 0 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
+  .exam-sheet-h { font-size: 0.95rem; margin: 1.5rem 0 0.6rem; }
+  .exam-sheet-note { font-size: 0.82rem; color: var(--muted); margin: 0.5rem 0 0; }
+  .exam-sheet-close {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--line); background: var(--surface-2);
+    color: var(--ink); font-size: 1.1rem; line-height: 1; cursor: pointer;
+  }
+  .exam-sheet-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  .exam-unit-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .exam-unit-card {
+    flex: 1 1 220px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .exam-unit-current { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .exam-unit-card h3 { margin: 0.3rem 0 0.35rem; font-size: 0.98rem; }
+  .exam-unit-card p { margin: 0; font-size: 0.84rem; color: var(--muted); }
+  .exam-unit-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.65rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 0.15rem 0.5rem; border-radius: 999px;
+  }
+  .exam-unit-tag-muted { color: var(--faint); background: var(--surface); }
+
+  .exam-bar {
+    display: flex; width: 100%; height: 2.6rem;
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .exam-bar-seg {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-family: var(--font-mono);
+    color: var(--accent-ink);
+    white-space: nowrap; overflow: hidden;
+  }
+  .exam-bar-mcq { background: var(--clay); }
+  .exam-bar-written { background: var(--accent); }
+  .exam-bar-tasting { background: var(--faint); }
 
   .menu-toggle {
     display: none;
@@ -544,6 +616,11 @@
     padding: 0.5rem 0.7rem; background: var(--surface); border: 1px solid var(--line); border-radius: 7px; color: var(--muted);
   }
   .match-history-item strong { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .exam-sheet { padding: 1.5rem 1.25rem 1.75rem; }
+    .exam-bar-seg span { font-size: 0.62rem; }
+  }
 </style>
 
 <div class="gate" id="gate">
@@ -566,10 +643,69 @@
     <div id="navContainer"></div>
     <div class="sidebar-foot">
       <div class="progress-line" id="progressLine">0 / 0 topics mastered</div>
+      <button class="exam-info-btn" id="examInfoBtn">How is the exam marked?</button>
       <button class="reset-btn" id="resetBtn">Reset my progress</button>
     </div>
   </nav>
   <main id="main"></main>
+</div>
+
+<div class="exam-sheet-backdrop" id="examSheetBackdrop">
+  <div class="exam-sheet" role="dialog" aria-modal="true" aria-label="How the exam is marked">
+    <button class="exam-sheet-close" id="examSheetClose" aria-label="Close">&times;</button>
+    <h2>How the exam is marked</h2>
+    <p class="exam-sheet-sub">Quick glance: what's actually being tested, and how big a slice each part is.</p>
+
+    <div class="exam-unit-row">
+      <div class="exam-unit-card exam-unit-current">
+        <span class="exam-unit-tag">This app covers this</span>
+        <h3>Unit 1 · Theory</h3>
+        <p>Closed-book, 2 hours. 50 multiple-choice questions plus 4 written questions worth 25 marks each.</p>
+      </div>
+      <div class="exam-unit-card">
+        <span class="exam-unit-tag exam-unit-tag-muted">Not covered by this app</span>
+        <h3>Unit 2 · Tasting</h3>
+        <p>Two wines, blind, 30 minutes. Assessed on the WSET Systematic Approach to Tasting Wine.</p>
+      </div>
+    </div>
+    <p class="exam-sheet-note">Both units must be passed independently at 55% or above to earn the qualification. A candidate who passes one and fails the other must resit only the failed unit.</p>
+
+    <h3 class="exam-sheet-h">Theory: two parts, each pass mark stands alone</h3>
+    <div class="table-wrap"><table class="data">
+      <tr><th>Part</th><th>Format</th><th>Marks</th><th>Pass mark</th></tr>
+      <tr><td>Part 1: Multiple-choice</td><td>50 questions, 1 mark each, no negative marking</td><td>50</td><td>55%, on this part alone</td></tr>
+      <tr><td>Part 2: Short written answer</td><td>4 questions &times; 25 marks, no negative marking</td><td>100</td><td>55%, on this part alone</td></tr>
+    </table></div>
+
+    <h3 class="exam-sheet-h">Where the theory marks live, by Learning Outcome</h3>
+    <div class="table-wrap"><table class="data">
+      <tr><th>Learning Outcome</th><th>MCQ marks (of 50)</th><th>Written marks (of 100)</th></tr>
+      <tr><td>LO1: Vineyard &amp; winery factors</td><td>8</td><td>runs through all 4 written questions</td></tr>
+      <tr><td>LO2: Still wine regions of the world</td><td>28</td><td>70</td></tr>
+      <tr><td>LO3: Sparkling wine</td><td>5</td><td rowspan="2">20 (combined)</td></tr>
+      <tr><td>LO4: Fortified wine</td><td>5</td></tr>
+      <tr><td>LO5: Service, faults, recommendations</td><td>4</td><td>10</td></tr>
+    </table></div>
+    <p class="exam-sheet-note">LO2 (still wine regions) is by far the largest single share of the theory exam: more marks than sparkling, fortified, and service combined.</p>
+
+    <h3 class="exam-sheet-h">Tasting, as a share of the total exam</h3>
+    <div class="exam-bar">
+      <div class="exam-bar-seg exam-bar-mcq" style="width:26%"><span>MCQ 50</span></div>
+      <div class="exam-bar-seg exam-bar-written" style="width:52%"><span>Written 100</span></div>
+      <div class="exam-bar-seg exam-bar-tasting" style="width:22%"><span>Tasting 41</span></div>
+    </div>
+    <p class="exam-sheet-note">By raw marks across every paper (191 total), theory is roughly four-fifths of the exam and tasting roughly a fifth. This is a rough guide to scale, not an official blended weighting: each unit and part still needs its own 55% to pass.</p>
+
+    <h3 class="exam-sheet-h">Final grade bands</h3>
+    <div class="table-wrap"><table class="data">
+      <tr><th>Aggregate mark</th><th>Result</th></tr>
+      <tr><td>80% and above, with no individual paper below 65%</td><td>Pass with Distinction</td></tr>
+      <tr><td>65% to 79%</td><td>Pass with Merit</td></tr>
+      <tr><td>55% to 64%</td><td>Pass</td></tr>
+      <tr><td>45% to 54%</td><td>Fail</td></tr>
+      <tr><td>44% and below</td><td>Fail unclassified</td></tr>
+    </table></div>
+  </div>
 </div>
 
 <script>
@@ -3050,6 +3186,25 @@
   }
   document.getElementById("menuToggle").addEventListener("click", function () {
     document.getElementById("sidebar").classList.toggle("open");
+  });
+
+  /* ============ EXAM INFO SHEET ============ */
+
+  var examSheetBackdrop = document.getElementById("examSheetBackdrop");
+  function openExamSheet() {
+    examSheetBackdrop.classList.add("show");
+    closeSidebarMobile();
+  }
+  function closeExamSheet() {
+    examSheetBackdrop.classList.remove("show");
+  }
+  document.getElementById("examInfoBtn").addEventListener("click", openExamSheet);
+  document.getElementById("examSheetClose").addEventListener("click", closeExamSheet);
+  examSheetBackdrop.addEventListener("click", function (e) {
+    if (e.target === examSheetBackdrop) closeExamSheet();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && examSheetBackdrop.classList.contains("show")) closeExamSheet();
   });
 
   /* ============ RESET ============ */
