@@ -74,6 +74,7 @@ question archetypes and mark logic, built directly from the sample paper in
 - [ ] Business (05): supply chain, pricing, distribution
 
 ## Real exam material on file
+- [x] Official WSET Level 3 Award in Wines Specification, Issue 2, May 2022 (`06_past_papers/wset_l3wines_specification_en_highres_may2022_issue2.pdf`): the actual syllabus, ranges, exam structure, mark weighting, and grading thresholds. The authoritative source; everything else here is cross-checked against it.
 - [x] WSET Level 3 Sample Short Written Answer Paper, Oct 2017 (`06_past_papers/wset_l3_sample_paper_oct2017.pdf`)
 - [x] Full mock theory exam: 50 MCQs + 4 written questions with model answers (`06_past_papers/mock_exam_full_theory_qa.pdf`): source for the Tokaji, German Prädikatswein/Eiswein, Chardonnay MLF, sparkling, fortified, and Vintage Port content now in `web/index.html`
 - [x] Reverse-engineering framework, built from that paper (`00_toolkit/reverse_engineering_framework.md`)
@@ -81,7 +82,12 @@ question archetypes and mark logic, built directly from the sample paper in
 - [x] Video training script: command words, marks logic, Golden Thread technique (`07_training_video/script.md`)
 
 ## Core exam facts to keep in view
-- Pass: 55% | Distinction: 80%
-- Theory: 50 MCQ + short written answers
-- Tasting: 2 wines blind, 30 minutes, SAT structure
+- Verified against the official WSET Level 3 Award in Wines Specification, Issue 2, May 2022 (`06_past_papers/`)
+- Grading: Pass 55–64% | Merit 65–79% | Distinction 80%+ *and* no individual paper below 65%
+- Theory: 2 hours total. Part 1 = 50 MCQ (1 mark each, 55% pass mark on this part alone).
+  Part 2 = 4 written questions × 25 marks (55% pass mark on this part alone, separate from Part 1)
+- MCQ weighting by Learning Outcome: LO1 (vineyard/winery factors) 8 · LO2 (still wine regions) 28 ·
+  LO3 (sparkling) 5 · LO4 (fortified) 5 · LO5 (service/recommendations) 4 — LO2 dominates
+- Written weighting: LO2 70 marks · LO3+LO4 20 marks · LO5 10 marks (LO1 runs through all four questions)
+- Tasting: 2 wines blind, 30 minutes, SAT structure, 55% pass mark
 - Written section is where most marks are lost: practice writing, not just reading
