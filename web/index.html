@@ -2738,6 +2738,279 @@
           ]
         }
       ]
+    },
+    {
+      id: "mosel-riesling-natural-factors",
+      topicTitle: "Mosel, Germany",
+      wine: "Riesling Kabinett, Mosel",
+      context: "This is a Riesling from the Mosel, Germany.",
+      tip: "At this latitude the vine is at the very edge of what it can ripen. Name each factor, then explain the mechanism that rescues ripening. A factor without its mechanism is half an answer.",
+      steps: [
+        {
+          label: "Slope and aspect",
+          command: "Describe + Explain", marks: 3,
+          instruction: "Describe one natural factor that makes ripening possible here, and explain how it works.",
+          options: [
+            { text: "Extremely steep, south-facing slopes angle the vineyard towards the sun, maximising the sunlight and warmth intercepted at a latitude where ripening is otherwise marginal.", correct: true, feedback: "Correct: aspect plus steepness is the primary ripening factor in the Mosel, and the reason its best sites must be worked by hand." },
+            { text: "Flat valley-floor sites are preferred because they are easier to work by machine.", correct: false, feedback: "The Mosel's best sites are the steep slopes precisely because flat land does not intercept enough sun at this latitude. The steepness is a cost to be accepted, not avoided." },
+            { text: "North-facing slopes are chosen to protect the grapes from excessive heat.", correct: false, feedback: "Germany's problem is too little heat, not too much. A south-facing aspect is what makes ripening possible at all here." }
+          ]
+        },
+        {
+          label: "The river",
+          command: "Describe + Explain", marks: 3,
+          instruction: "Describe a second natural factor and explain how it contributes.",
+          options: [
+            { text: "The river reflects sunlight up onto the steep slopes and stores heat that it releases overnight, raising temperatures and reducing frost risk.", correct: true, feedback: "Correct: reflection, heat storage and frost reduction are three separate mechanisms and each is creditable." },
+            { text: "The river cools the vineyards, slowing ripening so that acidity is preserved.", correct: false, feedback: "That is the mechanism you would quote in a hot region. In the Mosel the river's value is warming: acidity is never in short supply here." },
+            { text: "The river raises humidity, which is desirable because every Mosel style depends on noble rot.", correct: false, feedback: "Botrytis matters for BA and TBA, but most Mosel Riesling is made without it. The river's general role is heat, not rot." }
+          ]
+        },
+        {
+          label: "Soil",
+          command: "Describe + Explain", marks: 2,
+          instruction: "Describe the characteristic soil and explain its effect.",
+          options: [
+            { text: "Slate retains and radiates heat back to the vines, and drains freely on the steep slopes.", correct: true, feedback: "Correct: heat retention plus free drainage. Both halves earn credit." },
+            { text: "Deep, fertile clay retains water and drives vigorous growth.", correct: false, feedback: "Fertile, water-retentive soil would add vigour and delay ripening, the opposite of what a marginal climate needs." },
+            { text: "Limestone directly raises the acidity of the finished wine.", correct: false, feedback: "Soil does not add acidity directly, and the Mosel's defining soil is slate. Acidity here comes from the cool climate." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "rioja-gran-reserva-ageing",
+      topicTitle: "Rioja, Spain",
+      wine: "Rioja Gran Reserva",
+      context: "This is a red Rioja labelled Gran Reserva.",
+      tip: "Ageing categories are legal minimums served before release. Quote the numbers exactly, then explain who carries the cost of that time.",
+      steps: [
+        {
+          label: "The legal minimum",
+          command: "State", marks: 2,
+          instruction: "State the ageing requirements this label guarantees.",
+          options: [
+            { text: "A minimum of five years' total ageing, of which at least two must be in oak.", correct: true, feedback: "Correct: five total, two in oak. Learn the table as three pairs and the marks are free." },
+            { text: "A minimum of three years' total ageing, of which at least one must be in oak.", correct: false, feedback: "Those are the Reserva figures. Gran Reserva is five years total with two in oak." },
+            { text: "A minimum of two years' total ageing, of which at least one must be in oak.", correct: false, feedback: "Those are the Crianza minimums, the entry tier of the system." }
+          ]
+        },
+        {
+          label: "Effect on flavour",
+          command: "Explain", marks: 3,
+          instruction: "Explain how this ageing affects the style of the wine.",
+          options: [
+            { text: "Traditional American oak contributes coconut, vanilla and sweet spice, while the extended ageing softens tannin and develops tertiary leather and dried-fruit character.", correct: true, feedback: "Correct: name the oak origin, the flavour markers, and the shift from primary to tertiary character." },
+            { text: "Oak ageing raises the wine's acidity and preserves its primary fruit aromas.", correct: false, feedback: "Extended oak ageing does the opposite: it softens the wine and moves it away from primary fruit towards tertiary character. Oak does not add acidity." },
+            { text: "French oak is the traditional choice in Rioja and gives the classic coconut note.", correct: false, feedback: "The coconut marker comes from American oak, which is the traditional choice here. French oak is the modern alternative and gives subtler toast and clove." }
+          ]
+        },
+        {
+          label: "Effect on price",
+          command: "Explain", marks: 2,
+          instruction: "Explain why this category commands a higher price.",
+          options: [
+            { text: "The producer must hold the wine in the winery for five years before it can be sold, tying up capital, stock and storage space, and that cost is passed on.", correct: true, feedback: "Correct: the categories are minimums before release, so the producer, not the buyer, carries the cost of holding stock." },
+            { text: "Gran Reserva grapes must by law come from the Rioja Alavesa sub-zone.", correct: false, feedback: "There is no such sub-zone requirement. The cost driver is the length of time the producer holds the wine." },
+            { text: "Gran Reserva is expensive mainly because yields are legally capped at very low levels.", correct: false, feedback: "The examinable cost driver for the ageing categories is the holding period before release, not a yield cap." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "amarone-appassimento",
+      topicTitle: "Valpolicella, Veneto",
+      wine: "Amarone della Valpolicella",
+      context: "This is a dry red Amarone della Valpolicella from the Veneto, Italy.",
+      tip: "Three parts about one technique: the process, the style it creates, and why it costs what it does. Keep the process strictly chronological and do not drift into the style until asked.",
+      steps: [
+        {
+          label: "The process",
+          command: "Describe", marks: 3,
+          instruction: "Describe how the grapes for this wine are treated before fermentation.",
+          options: [
+            { text: "Healthy grapes are laid out in single layers on racks or in crates in well-ventilated lofts and dried for around three to four months before fermentation.", correct: true, feedback: "Correct: appassimento. The detail that grapes must be completely healthy before drying is itself worth a mark." },
+            { text: "Grapes are left to raisin on the vine until they shrivel, then picked and fermented immediately.", correct: false, feedback: "That describes a late-harvest or on-vine passito approach. Appassimento dries picked grapes indoors after harvest." },
+            { text: "Grapes are frozen and pressed while still frozen, so the water is left behind as ice.", correct: false, feedback: "That is the Eiswein method in Germany. Appassimento removes water by evaporation, not by freezing." }
+          ]
+        },
+        {
+          label: "Effect on style",
+          command: "Explain", marks: 4,
+          instruction: "Explain how this affects the style of the finished wine.",
+          options: [
+            { text: "Water evaporates and concentrates sugar, acid and flavour, so the must is very high in sugar; fermented fully to dryness this gives a dry wine of 15% abv or more, full-bodied and concentrated with raisin and dried fig character.", correct: true, feedback: "Correct: the chain runs concentration to high sugar to high alcohol, with fermentation taken all the way to dryness." },
+            { text: "The concentrated sugar remains in the finished wine, leaving it sweet and low in alcohol.", correct: false, feedback: "That is Recioto, where fermentation is stopped early. Amarone is fermented to dryness, so the sugar becomes alcohol." },
+            { text: "Drying sharply reduces acidity, giving a soft, low-acid wine.", correct: false, feedback: "Drying concentrates acid along with sugar, and the grapes are picked slightly early precisely to retain it." }
+          ]
+        },
+        {
+          label: "Effect on cost",
+          command: "Explain", marks: 3,
+          instruction: "Explain why this wine is expensive to produce.",
+          options: [
+            { text: "Drying occupies months of dedicated space and handling, the fruit must be sorted for health beforehand, and weight loss of roughly a third means a given quantity of grapes yields far less wine.", correct: true, feedback: "Correct: space, time, labour and volume loss. Three separate cost arguments, all creditable." },
+            { text: "The cost is driven mainly by a legal requirement to age Amarone in new French oak.", correct: false, feedback: "The examinable cost driver is the drying process itself, not an oak requirement." },
+            { text: "Amarone is expensive because Corvina is a rare grape with very small plantings.", correct: false, feedback: "Corvina is the principal and widely planted variety of the region. The cost comes from appassimento." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "california-fog-sites",
+      topicTitle: "California, USA",
+      wine: "Pinot Noir, Los Carneros",
+      context: "This is a Pinot Noir from Los Carneros, at the cool southern end of Napa and Sonoma.",
+      tip: "The fog answer is a chain: inland heat, low pressure, cold air drawn in, through a gap. Give the whole chain. Saying only that it is near the sea will not score.",
+      steps: [
+        {
+          label: "The cooling mechanism",
+          command: "Explain", marks: 4,
+          instruction: "Explain how this site stays cool enough for Pinot Noir.",
+          options: [
+            { text: "Inland California heats strongly by day, creating low pressure that draws cold, foggy Pacific air inland, and that air penetrates through gaps in the Coastal Ranges to reach sites like Los Carneros.", correct: true, feedback: "Correct: the low-pressure draw plus the gap is the mechanism. Proximity to a gap matters more than straight-line distance to the ocean." },
+            { text: "Los Carneros is cool simply because it is the closest vineyard area to the Pacific in a straight line.", correct: false, feedback: "Distance to the sea alone does not explain it. Sites only a few miles away that sit behind unbroken hills are dramatically warmer." },
+            { text: "A cold current runs south down the coast and cools the vineyards by direct contact with the vines.", correct: false, feedback: "The California Current is the source of the cold, but the mechanism that carries it to the vineyard is the low-pressure draw through the gaps. State the chain." }
+          ]
+        },
+        {
+          label: "Effect on the wine",
+          command: "Explain", marks: 3,
+          instruction: "Explain how that cooling influences the style of the wine.",
+          options: [
+            { text: "Cool mornings slow ripening and extend the growing season, so the fruit retains acidity while developing flavour, which is why Pinot Noir succeeds at a latitude that would otherwise be too warm.", correct: true, feedback: "Correct: slower ripening, retained acidity, longer flavour development. Tie it back to why the variety works here at all." },
+            { text: "The fog raises daytime temperatures, accelerating sugar accumulation for a fuller-bodied style.", correct: false, feedback: "Fog lowers morning temperatures and slows ripening. It is a cooling influence, not a warming one." },
+            { text: "The fog persists all day, so the grapes never fully ripen and the wine stays lean and green.", correct: false, feedback: "Fog typically burns off by midday, giving cool mornings and warm afternoons. There is ample warmth to ripen fully." }
+          ]
+        },
+        {
+          label: "Hillside contrast",
+          command: "Explain", marks: 3,
+          instruction: "Explain how a hillside site such as Howell Mountain differs from the valley floor below.",
+          options: [
+            { text: "Hillside sites sit above the fog line, so they get more sunshine hours but lower temperatures than the valley floor, and their thin, free-draining soils restrict vigour and lower yields, giving more concentration and firmer tannin.", correct: true, feedback: "Correct: more sun but cooler, plus poorer soils. The apparent contradiction is exactly what the question is testing." },
+            { text: "Hillside sites are warmer than the valley floor because heat rises, giving riper, softer wines.", correct: false, feedback: "Sites above the fog line are cooler than the valley floor despite receiving more sunshine hours. It is the soils, not extra heat, that drive their concentration." },
+            { text: "Hillside sites have deeper, more fertile soils, raising yields and giving lighter wines.", correct: false, feedback: "The reverse: hillside soils are thinner and poorer, which is precisely why yields are low and the wines concentrated." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "mendoza-irrigation",
+      topicTitle: "Mendoza, Argentina",
+      wine: "Malbec, Uco Valley, Mendoza",
+      context: "This is a Malbec from the Uco Valley in Mendoza, Argentina.",
+      tip: "Two distinct halves: why irrigation is necessary at all, then how it is used deliberately to raise quality. Answering only the first half caps your marks no matter how well you write it.",
+      steps: [
+        {
+          label: "Why irrigation is necessary",
+          command: "Explain", marks: 3,
+          instruction: "Explain why irrigation is essential in this region.",
+          options: [
+            { text: "The Andes cast a rain shadow that blocks Pacific moisture, leaving Mendoza with only around 200mm of rain a year, far below the vine's needs, so irrigation from Andean snowmelt is essential.", correct: true, feedback: "Correct: name the rain shadow, quote the rainfall figure, and name snowmelt as the water source." },
+            { text: "Mendoza's soils are so free-draining that rainfall of over 700mm a year still fails to reach the roots.", correct: false, feedback: "The issue is how little rain falls, not drainage. Mendoza receives roughly 200mm, a semi-arid to desert figure." },
+            { text: "Irrigation is needed because the high altitude causes water to evaporate before it reaches the vines.", correct: false, feedback: "The rain shadow is why there is so little water to begin with. Altitude's examinable effects here are UV and diurnal range." }
+          ]
+        },
+        {
+          label: "Irrigation as a quality tool",
+          command: "Explain", marks: 4,
+          instruction: "Explain how irrigation can be used to improve quality, not merely to keep vines alive.",
+          options: [
+            { text: "Because natural rainfall is negligible, growers control water precisely: deficit irrigation withholds water after fruit set to restrict berry size and concentrate flavour, and drip replaces flood irrigation for greater precision and lower yields.", correct: true, feedback: "Correct: the control argument, the deficit technique, and the flood-to-drip shift are three separate creditable points." },
+            { text: "Growers irrigate as heavily as possible all season to maximise berry size and yield.", correct: false, feedback: "That raises volume and dilutes concentration. The quality argument is about restricting water at the right moment." },
+            { text: "Irrigation is applied only in drought years; in normal years the vines are dry-farmed.", correct: false, feedback: "At around 200mm a year every vintage requires irrigation in Mendoza. There is no dry-farmed normal year." }
+          ]
+        },
+        {
+          label: "Altitude",
+          command: "Explain", marks: 3,
+          instruction: "Explain how altitude contributes to the style of this wine.",
+          options: [
+            { text: "Vineyards up to 1,500m and above experience high UV and a large diurnal range, so warm days ripen the fruit fully while cold nights preserve acidity and colour.", correct: true, feedback: "Correct: UV and diurnal range are the two altitude mechanisms, and they pair naturally with the irrigation topic." },
+            { text: "Altitude raises average temperatures, which is why Malbec ripens so fully in the Uco Valley.", correct: false, feedback: "Altitude lowers temperatures. Full ripeness comes from intense sunshine and UV, while the cold nights retain acidity." },
+            { text: "Altitude reduces UV exposure, protecting grapes from sunburn and keeping tannins soft.", correct: false, feedback: "UV increases with altitude rather than decreasing, and it is one of the defining features of high-altitude Mendoza." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "cape-doctor-both-sides",
+      topicTitle: "Coastal Region, South Africa",
+      wine: "Cabernet Sauvignon, Stellenbosch",
+      context: "This is a Cabernet Sauvignon from Stellenbosch, in South Africa's Coastal Region.",
+      tip: "This question demands both sides. A one-sided answer, however well written, cannot reach full marks.",
+      steps: [
+        {
+          label: "The benefits",
+          command: "Explain", marks: 3,
+          instruction: "Explain how the Cape Doctor benefits grape growing here.",
+          options: [
+            { text: "It cools the vineyards, slowing ripening and helping retain acidity, and it dries the canopy and bunches, significantly reducing fungal disease pressure.", correct: true, feedback: "Correct: cooling and drying are two separate benefits and both earn marks." },
+            { text: "It warms the vineyards, helping Cabernet Sauvignon reach full ripeness in cooler years.", correct: false, feedback: "It is a cooling wind. Its value is moderating heat and drying the canopy, not adding warmth." },
+            { text: "It brings reliable summer rainfall, removing the need for irrigation.", correct: false, feedback: "South Africa's Mediterranean climate has dry summers, and the Cape Doctor is a drying wind, not a rain-bearing one." }
+          ]
+        },
+        {
+          label: "The drawbacks",
+          command: "Explain", marks: 3,
+          instruction: "Explain the drawbacks of the same wind.",
+          options: [
+            { text: "It can damage young shoots and disrupt flowering, causing poor fruit set and reduced yields, so growers may need sheltered sites or protective training systems.", correct: true, feedback: "Correct: shoot damage, disrupted flowering, lower yields, and the viticultural response." },
+            { text: "There is no real drawback; the Cape Doctor is a purely beneficial influence.", correct: false, feedback: "This is exactly the one-sided answer the question is designed to catch. Damage to shoots and flowering is part of the expected response." },
+            { text: "Its only drawback is that it makes hand-harvesting uncomfortable for pickers.", correct: false, feedback: "The examinable drawback is viticultural: shoot damage and disrupted flowering cutting yields." }
+          ]
+        },
+        {
+          label: "A second cooling influence",
+          command: "State", marks: 2,
+          instruction: "State another factor that allows cool-climate styles in this warm country.",
+          options: [
+            { text: "The cold Benguela Current flows north up the west coast, cooling the air above it so coastal and south-facing sites ripen more slowly and hold acidity.", correct: true, feedback: "Correct: the Benguela is the current to name, alongside altitude and aspect on the mountain foothills." },
+            { text: "The warm Agulhas Current on the east coast is the main cooling influence on Cape vineyards.", correct: false, feedback: "The Agulhas is a warm current. The cold Benguela on the west coast is the cooling one." },
+            { text: "Stellenbosch is cooled mainly by its very high latitude, close to the polar region.", correct: false, feedback: "The Cape sits at roughly 34 degrees south, a warm latitude. Cooling comes from the current, the wind, and altitude and aspect." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "tokaji-aszu-production",
+      topicTitle: "Tokaj, Hungary",
+      wine: "Tokaji Aszú",
+      context: "This is a sweet Tokaji Aszú from Tokaj, Hungary.",
+      tip: "Noble rot always needs the same two-part weather rhythm. Name both halves, then give the production steps strictly in order.",
+      steps: [
+        {
+          label: "Growing conditions",
+          command: "Describe + Explain", marks: 4,
+          instruction: "Describe the conditions that allow this style to be made, and explain why they matter.",
+          options: [
+            { text: "The Bodrog and Tisza rivers create morning mists that give botrytis the humidity it needs to establish, followed by warm, dry, sunny afternoons that dry the grapes and concentrate them without spoiling.", correct: true, feedback: "Correct: mist then sun. This same rhythm explains Sauternes and Alsace SGN too, so it is worth learning once and reusing." },
+            { text: "Persistent damp and humidity throughout the day lets botrytis spread quickly across the whole crop.", correct: false, feedback: "Unbroken humidity produces grey rot, which spoils the fruit. The afternoon drying is what keeps the rot noble." },
+            { text: "Cold, frosty autumn nights freeze the berries on the vine and concentrate the juice.", correct: false, feedback: "That is the Eiswein mechanism in Germany. Tokaji Aszú depends on botrytis, not on freezing." }
+          ]
+        },
+        {
+          label: "Harvesting",
+          command: "Describe", marks: 3,
+          instruction: "Describe how the grapes for this wine are harvested.",
+          options: [
+            { text: "Aszú berries are selected and picked by hand in multiple passes through the vineyard, since botrytis does not affect every berry at the same time.", correct: true, feedback: "Correct: hand selection across several tries. The labour involved is also the answer to any question about why the wine is expensive." },
+            { text: "The whole crop is machine-harvested in a single pass once botrytis appears in the vineyard.", correct: false, feedback: "Botrytis develops unevenly, so selection must be by hand over several passes. A machine cannot select berry by berry." },
+            { text: "Grapes are harvested early and healthy, then deliberately infected with botrytis in the winery.", correct: false, feedback: "Noble rot develops on the vine. A base wine is made separately from healthy grapes, but the Aszú berries are botrytised in the vineyard." }
+          ]
+        },
+        {
+          label: "Production method",
+          command: "Describe", marks: 4,
+          instruction: "Describe how the wine is then made.",
+          options: [
+            { text: "A dry base wine is made first from healthy grapes; the selected Aszú berries are macerated in that base wine, the mixture is pressed, and it ferments slowly because of the high sugar before ageing in oak.", correct: true, feedback: "Correct, and in the right order. The maceration of berries into a finished base wine is what makes Tokaji distinctive." },
+            { text: "The Aszú berries are pressed alone and the juice fermented, with no base wine involved.", correct: false, feedback: "That describes Eszencia, made from the free-run juice of Aszú berries. Aszú itself is macerated into a finished base wine." },
+            { text: "Botrytised and healthy grapes are pressed together at harvest and fermented as a single must.", correct: false, feedback: "The two are handled separately: the base wine is finished first, then the Aszú berries are macerated into it." }
+          ]
+        }
+      ]
     }
   ];
 
