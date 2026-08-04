@@ -3011,6 +3011,123 @@
           ]
         }
       ]
+    },
+    {
+      id: "fortification-timing-mechanism",
+      topicTitle: "Fortified Wine: the core mechanism",
+      wine: "Port vs Sherry",
+      context: "This pair contrasts a typically sweet fortified wine (Port) with a typically dry one (most Sherry styles).",
+      tip: "One decision explains almost every fortified-wine question you'll see: when did fortification happen, relative to fermentation? Answer that first, every time.",
+      steps: [
+        {
+          label: "The mechanism",
+          command: "Explain", marks: 3,
+          instruction: "Explain what fortification does, and why its timing is the key decision.",
+          options: [
+            { text: "Fortification adds high-strength grape spirit, raising alcohol and killing the yeast, so fermentation stops; when this happens decides how much of the grape's natural sugar remains in the finished wine.", correct: true, feedback: "Correct: definition, mechanism, and why timing is the variable that matters, all in one answer." },
+            { text: "Fortification adds sugar to the wine before bottling, increasing sweetness directly.", correct: false, feedback: "Fortification adds spirit, not sugar. Any sweetness comes from grape sugar left over when fermentation is stopped, not from an added sweetening step." },
+            { text: "Fortification is a style of oak ageing that concentrates flavour through evaporation.", correct: false, feedback: "That describes something closer to appassimento. Fortification is the addition of spirit to raise alcohol and stop fermentation." }
+          ]
+        },
+        {
+          label: "Applying it to Port",
+          command: "Explain", marks: 3,
+          instruction: "Explain why most Port is sweet.",
+          options: [
+            { text: "Port is fortified early, while substantial grape sugar remains unfermented, so that sugar stays in the finished wine as sweetness.", correct: true, feedback: "Correct: early fortification is the whole answer here." },
+            { text: "Port is fortified only after fermentation reaches dryness, then sweetened afterward.", correct: false, feedback: "That describes a dry fortified wine with sugar added back, not Port. Port's sweetness comes from stopping fermentation early, not from a later sweetening step." },
+            { text: "Port is sweet because it is made from an unusually sweet grape variety.", correct: false, feedback: "Grape variety isn't the mechanism being tested here. The sweetness comes from fortification timing, not the grape itself." }
+          ]
+        },
+        {
+          label: "Applying it to Sherry",
+          command: "Explain", marks: 3,
+          instruction: "Explain why most Sherry styles are dry.",
+          options: [
+            { text: "Sherry is fortified only once fermentation has already run to completion, so there is little or no sugar left to preserve.", correct: true, feedback: "Correct: late fortification, after a dry base wine, is why most Sherry is dry." },
+            { text: "Sherry is fortified early, like Port, but the sugar is later removed by filtration.", correct: false, feedback: "There's no filtration step removing sugar. Sherry's dryness comes from fortifying after fermentation is already complete, not from removing sugar afterward." },
+            { text: "Sherry grapes naturally contain very little sugar compared to Port grapes.", correct: false, feedback: "This isn't the tested mechanism. Palomino grapes ferment to a normal dry wine; the dryness comes from when fortification happens, not low starting sugar." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "sherry-flor-oxidative-fork",
+      topicTitle: "Sherry: the flor decision",
+      wine: "Fino, Amontillado and Oloroso Sherry",
+      context: "All three styles start as the same dry Palomino base wine, aged in a solera system.",
+      tip: "One number, fortification strength, decides the entire flor-vs-oxidative fork. Learn 15% and 17%+ precisely rather than vaguely.",
+      steps: [
+        {
+          label: "The starting point",
+          command: "State", marks: 2,
+          instruction: "State what Fino, Amontillado and Oloroso all have in common before they diverge in style.",
+          options: [
+            { text: "All three start as a dry base wine made from Palomino grapes, fermented to dryness before fortification.", correct: true, feedback: "Correct: same grape, same dry starting wine. Everything that follows is about what happens after this point." },
+            { text: "All three are fortified while fermentation is still incomplete, preserving natural sweetness.", correct: false, feedback: "That's the Port pattern. Sherry styles are fortified after the base wine has already fermented to dryness." },
+            { text: "All three use different grape varieties suited to their eventual style.", correct: false, feedback: "The shared grape is Palomino (Pedro Ximénez is a separate, distinct sweet style). The divergence between these three comes after fermentation, not from grape choice." }
+          ]
+        },
+        {
+          label: "Fino/Manzanilla",
+          command: "Explain", marks: 3,
+          instruction: "Explain how Fino/Manzanilla's style is produced from that shared starting point.",
+          options: [
+            { text: "Fortified to around 15% abv, a layer of living yeast called flor grows on the surface, protecting the wine from oxygen and giving a pale, fresh, tangy style.", correct: true, feedback: "Correct: the 15% figure and the flor mechanism are both doing the work here." },
+            { text: "Fortified to 17%+ abv, ageing oxidatively without any surface yeast layer.", correct: false, feedback: "That's the Oloroso path. Fino is fortified to the lower ~15% threshold specifically so flor can survive." },
+            { text: "Aged in new oak barrels to add vanilla and toast character.", correct: false, feedback: "Flor, not new oak, is what defines Fino's character. New oak isn't part of the traditional Sherry ageing process." }
+          ]
+        },
+        {
+          label: "Oloroso",
+          command: "Explain", marks: 3,
+          instruction: "Explain how Oloroso's style is produced, and how Amontillado differs from both.",
+          options: [
+            { text: "Oloroso is fortified to 17%+ abv from the start, which flor cannot survive, so it ages fully oxidatively into a darker, nuttier style; Amontillado starts under flor like a Fino, then loses it naturally or is refortified to 17%+, finishing oxidatively like an Oloroso.", correct: true, feedback: "Correct: Oloroso is oxidative from the start, Amontillado is a hybrid that passes through both stages." },
+            { text: "Oloroso and Amontillado are the same style sold under two different regional names.", correct: false, feedback: "They're genuinely different styles with different fortification and ageing paths, not a regional labelling difference." },
+            { text: "Amontillado is fortified higher than Oloroso, making it the darkest and richest of all Sherry styles.", correct: false, feedback: "Oloroso, fortified to 17%+ from the very start with no flor stage at all, is the darkest and richest. Amontillado is the hybrid that begins under flor." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "port-ageing-styles",
+      topicTitle: "Port: ageing style divergence",
+      wine: "Ruby, Tawny, LBV and Vintage Port",
+      context: "All made in the Douro, Portugal, fortified early so substantial grape sugar remains, giving a sweet, full-bodied red base style.",
+      tip: "Every Port style shares the same sweet, early-fortified base. The exam question is always about what happens next, in ageing, not about the base wine itself.",
+      steps: [
+        {
+          label: "Ruby vs Tawny",
+          command: "Explain", marks: 4,
+          instruction: "Explain the difference in ageing between Ruby and Tawny Port, and how it affects their style.",
+          options: [
+            { text: "Ruby ages briefly in tank or large neutral vessels, preserving fresh, fruity character; Tawny ages for years in smaller old oak, developing nutty, dried-fruit, oxidative complexity.", correct: true, feedback: "Correct: vessel size and ageing duration are the two variables driving the style difference." },
+            { text: "Ruby is unfortified, while Tawny is fortified to a higher strength.", correct: false, feedback: "Both are fortified the same way at the outset. The difference is entirely in what happens afterward, during ageing." },
+            { text: "Ruby ages for decades in bottle, while Tawny is sold immediately after fortification.", correct: false, feedback: "That describes Vintage Port, not Ruby. Ruby ages briefly in tank or large neutral vessels before release." }
+          ]
+        },
+        {
+          label: "Late Bottled Vintage",
+          command: "State", marks: 2,
+          instruction: "State what defines Late Bottled Vintage (LBV) Port and how it differs from Vintage Port.",
+          options: [
+            { text: "LBV comes from a single good year, like Vintage Port, but is aged longer in wood before bottling, so it is ready to drink sooner.", correct: true, feedback: "Correct: same single-vintage origin, different ageing location and readiness." },
+            { text: "LBV is a blend of several vintages aged briefly before release.", correct: false, feedback: "LBV comes from one single vintage, the same as Vintage Port. The blending of multiple vintages describes Ruby or Tawny instead." },
+            { text: "LBV is bottled young and then ages for decades in bottle, forming heavy sediment.", correct: false, feedback: "That describes Vintage Port. LBV's defining feature is extra time in wood before bottling, which is exactly what lets it skip decades of bottle age." }
+          ]
+        },
+        {
+          label: "Vintage Port and service",
+          command: "Explain", marks: 3,
+          instruction: "Explain what happens as Vintage Port ages, and why this matters for service.",
+          options: [
+            { text: "Vintage Port is bottled young and ages for decades in bottle, forming heavy sediment, which is why it needs decanting before serving.", correct: true, feedback: "Correct: bottle ageing and the resulting sediment are directly linked to the service requirement." },
+            { text: "Vintage Port ages in small oak barrels for decades and is filtered before bottling, so it never needs decanting.", correct: false, feedback: "The opposite is true: Vintage Port ages in bottle, not barrel, and its unfiltered ageing is exactly why it throws sediment and needs decanting." },
+            { text: "Vintage Port is ready to drink immediately after release and improves very little with further ageing.", correct: false, feedback: "Vintage Port is built for long-term bottle ageing; it is often at its best only after decades, unlike Ruby or LBV." }
+          ]
+        }
+      ]
     }
   ];
 
