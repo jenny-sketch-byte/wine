@@ -5,38 +5,35 @@ Add new items at the top of their section.
 
 ## Priority order (across all sections)
 
-1. Written Practice rubrics — repairs a feature that's currently broken
-   (see "Broken functionality" below)
-2. Burgundy + Loire Response Builder exercises — biggest content gaps
-   (5 and 3 topics in the app with zero practice)
-3. New Zealand Response Builder exercise — already scoped
-4. Design brief re-skin — biggest visible change, but needs decisions
+1. New Zealand Response Builder exercise — already scoped
+2. Design brief re-skin — biggest visible change, but needs decisions
    first (dark mode, serif choice) and is the largest single effort
 
-## Broken functionality
+## Corrections
 
-- **Written Practice has no rubrics.** All 9 parts across the 4 SCENARIOS
-  entries (Bordeaux Right Bank; Southern Rhône; Hunter Valley, Australia;
-  Pinot Noir: two climates — Los Carneros/Central Otago) are missing
-  `rubric`. The app's own code comment says answers are "scored by
-  self-marking," but there's currently nothing to self-mark against — the
-  user writes an answer and gets no model answer or mark scheme. Fix: add a
-  rubric (or model answer + mark breakdown, matching the Response Builder's
-  step-by-step style) to each part.
+- ~~"Written Practice has no rubrics"~~ — **false alarm, removed
+  2026-08-05.** Every `SCENARIOS` part already has a populated `model`
+  field, and the app has a working "Reveal model answer" / "Reveal
+  answers" UI (`web/index.html:3465-3467`, `3527-3533`). The original
+  finding checked for a field called `rubric`, which never existed in
+  this schema — the real field is `model`. No action needed here.
 
 ## App content — Response Builder gaps
 
-Region notes now cover 15 countries/regions (`02_regions/`), but
-RESPONSE_BUILDERS in `web/index.html` only covers 8. Regions with a written
-note and zero corresponding builder:
+Region notes cover 15 countries/regions (`02_regions/`). RESPONSE_BUILDERS
+in `web/index.html` covers 12 as of 2026-08-05 (added Burgundy × 2:
+terroir/appellation hierarchy, Chablis vs. Côte de Beaune; Loire × 3:
+Muscadet sur lie, Vouvray vintage-driven style, Sancerre/Pouilly-Fumé soil
+contrast — 18 builders total including the earlier Chile/Argentina/
+NZ-adjacent/fortified batches).
 
-- **Burgundy** — 5 topics in the app's TOPICS list, 0 builders. Biggest gap.
-- **Loire** — 3 topics, 0 builders.
-- **Northern Rhône** — has a region note, 0 builders.
+Regions with a written note and zero corresponding builder:
+
 - **New Zealand** — note added 2026-08-04. Candidate angle: Marlborough
   climate + winemaking → Sauvignon Blanc style (mirrors the Mosel/California
   pattern already in the app: natural factor, then winery/technique
   reinforcement).
+- **Northern Rhône** — has a region note, 0 builders.
 
 No region note AND no builder yet:
 - **Champagne**
