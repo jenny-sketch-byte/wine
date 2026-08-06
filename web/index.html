@@ -3323,6 +3323,45 @@
           ]
         }
       ]
+    },
+    {
+      id: "marlborough-sauvignon-blanc",
+      topicTitle: "Marlborough, New Zealand",
+      wine: "Sauvignon Blanc, Marlborough",
+      context: "This is a Sauvignon Blanc from Marlborough, at the north end of New Zealand's South Island.",
+      tip: "Three separate layers build this style: the general climate, which sub-zone the fruit is from, and what the winery deliberately does with it. Don't collapse them into one vague 'it's cool and aromatic' answer.",
+      steps: [
+        {
+          label: "The climate mechanism",
+          command: "Explain", marks: 3,
+          instruction: "Explain how Marlborough's climate shapes the base character of this wine.",
+          options: [
+            { text: "Marlborough's cool maritime climate, with high sunshine hours for its temperature, gives a long, slow ripening period that retains high acidity while allowing the thiol compounds behind the variety's aromatics to develop fully.", correct: true, feedback: "Correct: cool maritime plus high sunshine hours plus slow ripening is the mechanism, and naming thiols as the aromatic driver is what turns this into a full Explain answer rather than a vague 'cool and sunny.'" },
+            { text: "Marlborough's warm, dry inland climate concentrates sugar quickly, producing a fuller-bodied, lower-acid style.", correct: false, feedback: "Marlborough is cool maritime, not warm and inland; that description fits somewhere like Hawke's Bay. Marlborough's whole reputation rests on retained acidity from slow, cool ripening." },
+            { text: "Marlborough's climate has little influence on style; the aromatics come entirely from the yeast used in fermentation.", correct: false, feedback: "Yeast selection does matter later in the chain, but the climate is what builds the thiol precursors and acidity in the first place. Yeast can only express what the grape already has." }
+          ]
+        },
+        {
+          label: "The sub-zone contrast",
+          command: "Explain", marks: 3,
+          instruction: "Explain how Wairau Valley and Awatere Valley fruit differ in style within Marlborough.",
+          options: [
+            { text: "Wairau Valley, on free-draining stony soils, is relatively warmer within Marlborough and gives fuller, riper fruit; Awatere Valley, further south on clay-based soils and cooler and windier, gives a leaner, more herbaceous, more mineral style.", correct: true, feedback: "Correct: naming both sub-zones' soil and relative climate, and the resulting style each produces, is what separates this from treating Marlborough as one uniform style." },
+            { text: "Wairau and Awatere are simply two marketing names for the same vineyard area, with no real stylistic difference.", correct: false, feedback: "There is a genuine, examinable stylistic difference driven by soil and relative warmth, not just a naming distinction." },
+            { text: "Awatere Valley is the original, larger and warmer zone, while Wairau Valley is the cooler, windier newer area.", correct: false, feedback: "This reverses the two: Wairau is the original, larger and relatively warmer zone; Awatere is further south, cooler and windier." }
+          ]
+        },
+        {
+          label: "The winemaking reinforcement",
+          command: "Explain", marks: 3,
+          instruction: "Explain what the winery does, separate from climate, to build this wine's characteristic aromatics.",
+          options: [
+            { text: "Fermentation is carried out at cool, controlled temperatures to preserve delicate aromatics, and cultured yeast strains are specifically selected to maximise thiol release, producing the pungent passionfruit and gooseberry character the style is known for.", correct: true, feedback: "Correct: cool controlled fermentation plus deliberate yeast strain selection are the two winery-side levers, distinct from anything the climate alone provides." },
+            { text: "The wine is aged for several years in new oak barrels to build its characteristic aromatic intensity.", correct: false, feedback: "Extended new oak ageing would mute rather than build this style's fresh, pungent aromatics. Marlborough Sauvignon Blanc is built around preserving primary fruit, not oak character." },
+            { text: "Winemaking has essentially no influence on the finished aromatics; the style is fixed entirely by climate.", correct: false, feedback: "This is exactly the gap the question is testing: climate builds the raw material (acidity, thiol precursors), but deliberate winery choices, cool fermentation and yeast selection, are what turn that potential into the finished aromatic style." }
+          ]
+        }
+      ]
     }
   ];
 

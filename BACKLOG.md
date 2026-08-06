@@ -5,8 +5,7 @@ Add new items at the top of their section.
 
 ## Priority order (across all sections)
 
-1. New Zealand Response Builder exercise — already scoped
-2. Design brief re-skin — biggest visible change, but needs decisions
+1. Design brief re-skin — biggest visible change, but needs decisions
    first (dark mode, serif choice) and is the largest single effort
 
 ## Corrections
@@ -21,18 +20,13 @@ Add new items at the top of their section.
 ## App content — Response Builder gaps
 
 Region notes cover 15 countries/regions (`02_regions/`). RESPONSE_BUILDERS
-in `web/index.html` covers 12 as of 2026-08-05 (added Burgundy × 2:
-terroir/appellation hierarchy, Chablis vs. Côte de Beaune; Loire × 3:
-Muscadet sur lie, Vouvray vintage-driven style, Sancerre/Pouilly-Fumé soil
-contrast — 18 builders total including the earlier Chile/Argentina/
-NZ-adjacent/fortified batches).
+in `web/index.html` covers 13 as of 2026-08-05 (19 builders total: added
+Burgundy × 2, Loire × 3, and New Zealand × 1 — Marlborough climate,
+Wairau/Awatere sub-zone contrast, and winemaking reinforcement — this
+session, on top of the earlier Chile/Argentina/fortified batches).
 
 Regions with a written note and zero corresponding builder:
 
-- **New Zealand** — note added 2026-08-04. Candidate angle: Marlborough
-  climate + winemaking → Sauvignon Blanc style (mirrors the Mosel/California
-  pattern already in the app: natural factor, then winery/technique
-  reinforcement).
 - **Northern Rhône** — has a region note, 0 builders.
 
 No region note AND no builder yet:
